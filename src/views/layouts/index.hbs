@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html style="width: 100%;" class="" lang="es">
+	<head>
+		<title>The Best Staff TBS</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=0.78" />
+		<link rel="stylesheet" href="/css/main.css" />
+        {{!-- <link rel="stylesheet" href="/css/normalize.css" /> --}}
+        <link rel="stylesheet" href="/css/rwd.css" /> 
+        <link rel="stylesheet" href="/css/font-awesome.min.css" />
+		<!-- {{!-- bootstrapp & popper --}} -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+		<br>
+		 <!-- BOOTSTRAP -->
+		 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+		 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			 integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			 integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+			 crossorigin="anonymous"></script>
+		 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			 integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			 crossorigin="anonymous"></script>
+		 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+			 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			 crossorigin="anonymous"></script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	</head>
+    <body  class="" style="width: 100%; height: auto;">
+    <!-- CEO SEM  -->
+        <main style="margin:0 ;" class="">
+            {{>messages}}
+            {{>errors}}
+            {{{body}}}
+        </main>
+    <!-- Footer -->
+        <footer style="z-index: 1; position: relative; margin: -0.5rem;" id="footer">
+                <div class="inner">
+                    <h2>Contacto</h2>
+                    <form action="#" method="post">
+                        <div class="field half first">
+                            <label for="name">Nombre</label>
+                            <input name="name" id="name" type="text" placeholder="Name">
+                        </div>
+                        <div class="field half first">
+                            <label for="name">Apellido</label>
+                            <input name="apellido" id="apellido" type="text" placeholder="Name">
+                        </div>
+                        <div class="field half">
+                            <label for="email">Email</label>
+                            <input name="email" id="email" type="email" placeholder="Email">
+                        </div>
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+                        </div>
+                        <ul class="actions">
+                            <button value="Send Message" class="button alt" type="submit">Enviar</button>
+                        </ul>
+                    </form>
+                    <button style="margin-right: -70rem;" type="button" class="btn btn-outline-info">				
+                        <a href="/"><span class="">Volver</span></a>
+                    </button>
+                    <ul class="icons">
+                    <li><a href="#" class="icon round fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon round fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon round fa-instagram"><span class="label">Instagram</span></a></li>
+                    </ul>
+                </div>
+            <footer style="margin:auto; color:red; font: size 0.1em; text-align: center;">
+            <p>The Best Staff is a Trade Mark || All right reserved to Sebastian Payssé </p>
+        </footer>
+        </footer>
+    </body>
+
+    <!-- modal de cotizacion -->
+    <div style="position:absolute; z-index:9999999;margin: 1% 0 0 0;" class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div style="background-image: url(/images/tecladoluz.jpg);" class="modal-content panelControl">
+            <div class="modal-header">
+            <h5 style="margin-left:7rem; color: white;" class="modal-title" id="exampleModalLabel">¿Que desea cotizar?</h5>
+            <h5 ></h5>
+            </div>
+            <div class="modal-body">
+                <br>
+                <a href="/cotizandoStaffing" role="button" class="btn btn-success popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Staffing IT </a>
+                <hr>
+                <a href="/cotizarSoftware" role="button" class="btn btn-primary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Software project / Proyecto IT</a>
+                <hr>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Volver</button>
+            </div> 
+        </div>
+        </div>
+    </div>
+    <!-- modal de partener/talento -->
+    <div style="position:absolute; z-index:9999999; margin: 1% 0 0 0;" class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div style="background-image: url(/images/tecladoluz.jpg);" class="modal-content panelControl">
+            <div class="modal-header">
+            <h5 style="margin-left:7rem; color: white;" class="modal-title" id="exampleModalLabel">¡TBS te esta buscando!</h5>
+            <h5 ></h5>
+            </div>
+            <div class="modal-body">
+                <br>
+                <a href="/quieroserunpartner" role="button" class="btn btn-success popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Quiero ser un partner</a>
+                <hr>
+                <a href="/quierotrabajarentbs" role="button" class="btn btn-primary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Soy programador y quiero trabajar en TBS</a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Volver</button>
+            </div> 
+        </div>
+        </div>
+    </div>
+    <!-- Modal SignIn -->
+    <div style="padding: auto; margin: 1% 0 0 0; position:absolute; z-index:9999999" class="modal fade " id="signin1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div style=" padding:auto 0 5rem; padding:auto;" class="modal-dialog">
+            <div style="width: max-content; background-image: url(/images/tecladoluz.jpg)" class="modal-content panelControl">
+                <div style="margin:auto; padding:auto;" class="">
+                    <div align="center" class="" >
+                        <input style="width: 60%; height: 30%;" class="" id="" type="image" src="/images/TBS-IT1.jpg" >
+                    </div>
+                    <br>
+                    <h4 style="color: white; text-align: center;" class="modal-title" id="exampleModalLabel">
+                        Solo para clientes y empleados
+                        <br>
+                        ¡Bienvenid@!
+                    </h4>
+                </div>
+                <div style="margin:auto; padding:auto; width: auto; height: auto"  class="modal-body">
+                    <div style="padding: 1rem; text-align: center; text-size:1rem ;">
+                        <div style="margin: auto; padding: auto; width: auto;" class="" >
+                            <div class="container1"> 
+                                <h3>Iniciar sesión</h3>
+                                <br>
+                                <form action="/users/signin" method="POST">
+                                    <div style="padding: auto; margin: auto;" class="form-floating mb-3">
+                                        <input autocomplete="off" name="Email" style="color: aliceblue;width: 22rem; height: 5rem; background-color: gray;" type="email" class="form-control" id="floatingInput333" placeholder=" " required>
+                                        <label style="color: black;" for="floatingInput333"><h4>Email</h4></label>
+                                    </div>
+                                    <br>
+                                    <div style="padding: auto; margin: auto;" class="form-floating mb-3">
+                                        <input autocomplete="off" name="Email" style="color: aliceblue;width: 22rem; height: 5rem; background-color: gray;" type="password" class="form-control" id="floatingInput333" placeholder=" " required>
+                                        <label style="color: black;" for="floatingInput333"><h4>Password</h4></label>
+                                    </div>
+                                    <br>
+                                    <button id="" style="padding:0 0 0.1rem 0;" class="boton1 btn1">
+                                        <strong><h4>Entrar</h4></strong>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div hidden>
+                            <form action="/inscribirme" method="GET">
+                                <button type="submit" class="btn btn-block" data-toggle="modal" data-target="#spinner2">
+                                    Inscribirme
+                                </button>
+                            </form>
+                        </div>
+                        <div  class="btn btn-block">
+                            <a  href="/olvidemipassword"><h6>Olvidé mi Password</h5></a> 
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Volver</button>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+        var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+        return new bootstrap.Dropdown(dropdownToggleEl)
+        })
+        const labels = document.querySelectorAll('.form-control2 label')
+        labels.forEach(label => {
+        label.innerHTML = label.innerText
+        .split('')
+        .map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`)
+        .join('')
+        });
+    </script>
+    <!-- Scripts -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+</html>

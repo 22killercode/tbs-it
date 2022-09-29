@@ -1,0 +1,90 @@
+
+<input type="image" src="images/apweb2.png" alt="" style="margin: auto; position: absolute; width: 100%; height: auto;">
+<!-- Header -->
+<header id="header" class="alt">
+	<div class="logo"><a href="/">TBS Validador<span></span></a></div>
+	<a href="#menu"><span>Menu</span></a>
+</header>
+<!-- Nav -->
+<nav style="position:absolute; z-index: 99999999999999; color:white" id="menu">
+	<ul class="links">
+		<li><a href="/">Home</a></li>
+		<li style="cursor: pointer;" ><a data-bs-toggle="modal" data-bs-target="#exampleModal">Cotizar</a></li>				
+			<li><a href="/Staffing"><strong>Staffing</strong></a></li>
+			<li><a href="/SoftDev"><strong>Software Factory</strong></a></li>
+		<div hidden>
+		<hr>
+		<div class="dropdown" >
+			<button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-target="dropdown" aria-expanded="false">
+				Areas de desarrollo
+			</button>
+			<ul style="background-color: rgb(248, 98, 11) ;" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+				<li><a class="dropdown-item" href="webap.html">Web apps / Mobile / Web Design</a></li>
+				<li><a class="dropdown-item" href="discovery.html">Discovery & Design Thinking</a></li>
+				<li><a class="dropdown-item" href="IOT.html">I.O.T</a></li>
+				<li><a class="dropdown-item" href="blockChain.html">Block Chain</a></li>
+				<li><a class="dropdown-item" href="IA.html">A.I. / I.A. Bots</a></li>
+				<li><a class="dropdown-item" href="BigData.html">Big Data</a></li>
+				<li><a class="dropdown-item" href="gaming.html">Gaming</a></li>
+				<li><a class="dropdown-item" href="QA.html">Q.A. analist & testing</a></li>
+				<li><a class="dropdown-item" href="ciberSec.html">Ciber Security</a></li>
+				<li><a class="dropdown-item" href="serverless.html">Clouding & Serverless</a></li>
+			</ul>
+		</div>
+		<hr>
+		<div class="dropdown" >
+			<button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-target="dropdown" aria-expanded="false">
+				Industrias 
+			</button>
+			<ul style="background-color: rgb(248, 98, 11) ;" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+				<li><a class="dropdown-item" href="webap.html">Fintech & Banking</a></li>
+				<li><a class="dropdown-item" href="webap.html">Ingenieria & Mecatronica</a></li>
+				<li><a class="dropdown-item" href="discovery.html">Retails & Distributions</a></li>
+				<li><a class="dropdown-item" href="IOT.html"></a></li>
+				<li><a class="dropdown-item" href="blockChain.html">Block Chain</a></li>
+				<li><a class="dropdown-item" href="IA.html">Healt & Pharma</a></li>
+				<li><a class="dropdown-item" href="BigData.html">B2B</a></li>						
+			</ul>
+		</div>
+		<br>
+	</div>
+			<li><a href="/Nosotros">Nosotros</a></li>
+			<li hidden><a href="elements.html">Valores / Misión</a></li>
+			<li><a href="#five">Países donde tenemos presencia</a></li>
+			<li style="cursor: pointer;" ><a data-bs-toggle="modal" data-bs-target="#exampleModal1">Únete a Nosotros / Se un Partner</a></li>
+			<li hidden><a href="/Partner"></a></li>
+			<li><a href="#footer">Contacto</a></li>
+			<li hidden ><a href="#footer">Casos de éxitos</a></li hidden>
+	</ul>
+</nav>
+
+<div style="position: relative;">
+	<section style="margin: 1.5rem auto ;" id="post" class="" data-bg="">
+		<article style="width: 70%; margin:auto; padding:1.5rem; height: 45rem;" class="">
+			<div style="padding: 0.95rem; z-index: 2; width: 100%; background-color: rgb(38, 36, 36); opacity: 0.9; height: auto;" class=" ">
+						<br>
+						<header style="5rem auto" class="center ">
+							<h1>Validador</h2>
+						</header>
+						<div style="justify-content: center; text-align: justify ; color: aliceblue ; align-items: center;">
+							<h2>
+								<strong>{{Nombre}}</strong> Gracias por confiar en nosotros.
+								<br>
+								Te enviamos un email a tu casilla de emails. Por favor ingresa al mismo, busca en tu casilla de recibidos y/o spam y coloca abajo el código alfanumérico que te hemos enviado.
+							</h2>
+						</div> 
+						<br>
+						<div class="container card" style="font-size: 3rem ; text-align: center; background-color: black; color: aliceblue ; align-items: left;">
+							<h1><strong>Codigo:</strong></h1>
+							<form action="/validarRRHH" method="post">
+								<input placeholder="            Copia y pega aqui el codigo" style="border-color: red;" type="text" name="token" id="" required>
+								<button style="margin: 3rem 0 -5rem 0; font-size: 2rem ;" type="submit" class="alertaVerde" >Enviar</button>
+							</form>
+						</div>
+			</div>
+		</article>
+	</section>
+</div>
+
+
+
