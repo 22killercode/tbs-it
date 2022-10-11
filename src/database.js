@@ -21,7 +21,7 @@ try {
         useCreateIndex:true,
         useNewUrlParser:true,
         useUnifiedTopology:true,
-        useFindAndModify:false
+//        useFindAndModify:false
     })
         .then(db => console.log(`DB is connected`))
         .catch(err => console.error(err));
