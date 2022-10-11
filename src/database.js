@@ -18,9 +18,9 @@ const mongoose = require('mongoose');
 const dbConnecton = async()=>{
 try {
     await mongoose.connect('mongodb+srv://tbsit22:gfF0GBgvD7o5VIV0@tbsit.klyncbu.mongodb.net/tbsit', {
-        useCreateIndex:true,
-        useNewUrlParser:true,
-        useUnifiedTopology:true,
+        // useCreateIndex:true,
+        // useNewUrlParser:true,
+        // useUnifiedTopology:true,
 //        useFindAndModify:false
     })
         .then(db => console.log(`DB is connected`))
