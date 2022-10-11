@@ -18,10 +18,10 @@ const mongoose = require('mongoose');
 const dbConnecton = async()=>{
 try {
     await mongoose.connect('mongodb+srv://sebatbsit:<password>@tbsit.12drd1s.mongodb.net/testtbsit', {
-        useCreateIndex:true,
+        // useCreateIndex:true,
         useNewUrlParser:true,
         useUnifiedTopology:true,
-        useFindAndModify:false
+        // useFindAndModify:false
     })
         .then(db => console.log(`DB is connected`))
         .catch(err => console.error(err));
