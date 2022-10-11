@@ -29,6 +29,7 @@ try {
     throw new Error('Error en la conexion de la base de datos');
 };
 
+
 };
 
 dbConnecton()
