@@ -28,6 +28,7 @@
     "http": "0.0.0",
     "leaflet": "^1.6.0",
     "lowdb": "^1.0.0",
+    "memorystore": "^1.6.7",
     "method-override": "^3.0.0",
     "mongo": "^0.1.0",
     "mongoose": "^6.6.5",
