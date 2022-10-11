@@ -1,14 +1,11 @@
 //requerimientos
 const express        = require('express');
-
-const session        = require('express-session')
-const MemoryStore    = require('memorystore')(session)
-
 const cors           = require('cors')
 const path           = require('path');
 const exphbs         = require('express-handlebars');
 const methodOverride = require('method-override');
 const session        = require('express-session');
+const MemoryStore    = require('memorystore')(session)
 const flash          = require('connect-flash');
 const passport       = require('passport');
 const http           = require('http');
