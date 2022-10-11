@@ -801,7 +801,12 @@ router.post('/staffingData', [val2, validador1],async (req, res) => {
     console.log('llego a Stafingdata los datos personales',req.body)
     const data = {Nombre,Apellido,NumCel,Email,Empresa,Moneda,Ciudad,PagWeb}
     //console.log('Llego a Staffing backend',req.body, data)
-    res.render('partials/2cotizando', {data, token,Nombre,Apellido,NumCel,Email,Empresa,Moneda,Ciudad,PagWeb})
+    if (Moneda == "Pesos Argentinos") {
+        const pesosArg = true
+        res.render('partials/2cotizando', {data,pesosArg, token,Nombre,Apellido,NumCel,Email,Empresa,Moneda,Ciudad,PagWeb})
+    } else {
+        res.render('partials/2cotizando', {data, token,Nombre,Apellido,NumCel,Email,Empresa,Moneda,Ciudad,PagWeb})
+    }
 });
 
 

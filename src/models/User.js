@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 
 const UserSchema = new Schema({
     //datos de beststaff
+    cheqPass: { type: String },
     puntos: { type: Number },
     empresa: { type: String },
     vendedor: { type: String, genValues: ['Vendedor/a Salon/PDV', 'Vendedor/a de Calle', 'Ejecutivo de Cuentas - Account Manager', 'Asesor Comercial','Encargada/o - Supervisor/a','CEO - Gerente Comercial','Jefe/a de Ventas / Coordinador/a'] },

@@ -288,69 +288,69 @@
 							<p style="padding: 0.3rem;">Total de horas</p><span>{{totalHoras}}</span>
 							<span></span>
 							{{#if pesosArg}}
-							<p style="padding: 0.3rem;" >Promedio por hora</p><span>${{costoHoraPromedio}}</span>
-							<span></span>
-							<p style="padding: 0.3rem;">Total</p><span>${{costoFinal}}</span>
-							<span></span>
-								{{!-- Calcula la coti en pesos --}}
-							<form action="/calculandoCotizacion" method="post">
-								<div>
-									<input value="{{fullStack1}}"        name="fullStack1"        hidden>
-									<input value="{{Email}}"             name="Email"             hidden>
-									<input value="{{Nombre}}"            name="Nombre"            hidden>
-									<input value="{{Apellido}}"          name="Apellido"          hidden>
-									<input value="{{Ciudad}}"            name="Ciudad"            hidden>
-									<input value="{{NumCel}}"            name="NumCel"            hidden>
-									<input value="{{Empresa}}"           name="Empresa"           hidden>
-									<input value="{{PagWeb}}"            name="PagWeb"            hidden>
-									<input value="{{Moneda}}"            name="Moneda"            hidden>
-									<input value="{{_id}}"               name="ID"                hidden>
-									<input value="{{costoHoraPromedio}}" name="costoHoraPromedio" hidden>
-									<input value="{{costoFinal}}"        name="costoFinal"        hidden>
-									<input value="{{totalHoras}}"        name="totalHoras"        hidden>
-									<input value="{{cantTal}}"           name="cantTal"           hidden>
-									<input value="{{talents}}"           name="talents"           hidden>
-									<input value="{{pesosArg}}"          name="pesosArg"          hidden>
-									<input type="text" name="token" value="{{token}}" hidden>
+								<p style="padding: 0.3rem;" >Promedio por hora</p><span>${{costoHoraPromedio}}</span>
+								<span></span>
+								<p style="padding: 0.3rem;">Total</p><span>${{costoFinal}}</span>
+								<span></span>
+									{{!-- Calcula la coti en pesos --}}
+								<form action="/calculandoCotizacion" method="post">
+									<div>
+										<input value="{{fullStack1}}"        name="fullStack1"        hidden>
+										<input value="{{Email}}"             name="Email"             hidden>
+										<input value="{{Nombre}}"            name="Nombre"            hidden>
+										<input value="{{Apellido}}"          name="Apellido"          hidden>
+										<input value="{{Ciudad}}"            name="Ciudad"            hidden>
+										<input value="{{NumCel}}"            name="NumCel"            hidden>
+										<input value="{{Empresa}}"           name="Empresa"           hidden>
+										<input value="{{PagWeb}}"            name="PagWeb"            hidden>
+										<input value="{{Moneda}}"            name="Moneda"            hidden>
+										<input value="{{_id}}"               name="ID"                hidden>
+										<input value="{{costoHoraPromedio}}" name="costoHoraPromedio" hidden>
+										<input value="{{costoFinal}}"        name="costoFinal"        hidden>
+										<input value="{{totalHoras}}"        name="totalHoras"        hidden>
+										<input value="{{cantTal}}"           name="cantTal"           hidden>
+										<input value="{{talents}}"           name="talents"           hidden>
+										<input value="{{pesosArg}}"          name="pesosArg"          hidden>
+										<input type="text" name="token" value="{{token}}" hidden>
+									</div>
+									<button type="submit" class="alertaVerde" >Calcular</button>
+								</form>
+								<div style="width: 110%; margin: -2.5rem 0014rem; text-align: center;" class="center">
+									<p>*Consulta por importantes descuentos </p>
+									<p>Los precios no incluyen iva ni impuestos y son expresados en pesos Argentinos</p>
+								<br>
 								</div>
-								<button type="submit" class="alertaVerde" >Calcular</button>
-							</form>
-							<div style="width: 110%; margin: -2.5rem 0014rem; text-align: center;" class="center">
-								<p>*Consulta por importantes descuentos </p>
-								<p>Los precios no incluyen iva ni impuestos y son expresados en pesos Argentinos</p>
-							<br>
-							</div>
 							{{else}}
-							<p style="padding: 0.3rem;" >Promedio por hora</p><span>U$S{{costoHoraPromedio}}</span>
-							<span></span>
-							<p style="padding: 0.3rem;">Total</p><span>U$S{{costoFinal}}</span>
-							<span></span>
-							{{!-- Calcula la coti en dolares --}}
-							<form action="/calculandoCotizacion" method="post">
-								<div> 
-									<input value="{{fullStack1}}"        name="fullStack1"        hidden>
-									<input value="{{Email}}"             name="Email"             hidden>
-									<input value="{{Nombre}}"            name="Nombre"            hidden>
-									<input value="{{Apellido}}"          name="Apellido"          hidden>
-									<input value="{{Ciudad}}"            name="Ciudad"            hidden>
-									<input value="{{NumCel}}"            name="NumCel"            hidden>
-									<input value="{{Empresa}}"           name="Empresa"           hidden>
-									<input value="{{PagWeb}}"            name="PagWeb"            hidden>
-									<input value="{{Moneda}}"            name="Moneda"            hidden>
-									<input value="{{ID}}"                name="ID"                hidden>
-									<input value="{{costoHoraPromedio}}" name="costoHoraPromedio" hidden>
-									<input value="{{costoFinal}}"        name="costoFinal"        hidden>
-									<input value="{{totalHoras}}"        name="totalHoras"        hidden>
-									<input value="{{cantTal}}"           name="cantTal"           hidden>
-									<input value="{{talents}}"           name="talents"           hidden>
-									<input type="text" name="token" value="{{token}}" hidden>
-								</div>
-								<button type="submit" class="alertaVerde" >Calcular</button>
-							</form>
-							<div style="width: 110%; margin: -2.5rem 0014rem; text-align: center;" class="center">
-								<p>*Consulta por importantes descuentos </p>
-								<p>Los precios no incluyen iva ni impuestos y son expresados en dólares americanos</p>
-							<br>
+								<p style="padding: 0.3rem;" >Promedio por hora</p><span>U$S{{costoHoraPromedio}}</span>
+								<span></span>
+								<p style="padding: 0.3rem;">Total</p><span>U$S{{costoFinal}}</span>
+								<span></span>
+								{{!-- Calcula la coti en dolares --}}
+								<form action="/calculandoCotizacion" method="post">
+									<div> 
+										<input value="{{fullStack1}}"        name="fullStack1"        hidden>
+										<input value="{{Email}}"             name="Email"             hidden>
+										<input value="{{Nombre}}"            name="Nombre"            hidden>
+										<input value="{{Apellido}}"          name="Apellido"          hidden>
+										<input value="{{Ciudad}}"            name="Ciudad"            hidden>
+										<input value="{{NumCel}}"            name="NumCel"            hidden>
+										<input value="{{Empresa}}"           name="Empresa"           hidden>
+										<input value="{{PagWeb}}"            name="PagWeb"            hidden>
+										<input value="{{Moneda}}"            name="Moneda"            hidden>
+										<input value="{{ID}}"                name="ID"                hidden>
+										<input value="{{costoHoraPromedio}}" name="costoHoraPromedio" hidden>
+										<input value="{{costoFinal}}"        name="costoFinal"        hidden>
+										<input value="{{totalHoras}}"        name="totalHoras"        hidden>
+										<input value="{{cantTal}}"           name="cantTal"           hidden>
+										<input value="{{talents}}"           name="talents"           hidden>
+										<input type="text" name="token" value="{{token}}" hidden>
+									</div>
+									<button type="submit" class="alertaVerde" >Calcular</button>
+								</form>
+								<div style="width: 110%; margin: -2.5rem 0014rem; text-align: center;" class="center">
+									<p>*Consulta por importantes descuentos </p>
+									<p>Los precios no incluyen iva ni impuestos y son expresados en dólares americanos</p>
+								<br>
 							{{/if}}
 						</div>
 					</div>

@@ -10,25 +10,34 @@ require('dotenv').config();
 //models
 const User = require('../models/User');
 
-//helpers
-const { isAuthenticated } = require('../helpers/auth');
-const shortid             = require('shortid');
+//midlewears
+const {validador1,val2,cheqpass} = require('../routes/Midlewares');
+const { isAuthenticated }        = require('../helpers/auth');
+const shortid                    = require('shortid');
 
-// ruta para ingresar
+// // ruta para ingresar
 router.post('/users/signin', passport.authenticate('local',
     {
         successRedirect: '/entraraOpciones',//notes
         failureRedirect: '/users/noestasRegistrado',
         failureFlash: true
-    },
-    //console.log("/signing")    
+    }
 ));
 
+// router.post('/users/signin',  [cheqpass], async (req, res) => {
+//     res.redirect('/entraraOpciones')
+// });
+
+// ruta que te envia a opciones de los usuarios 
+router.get('/entraraOpciones',  [isAuthenticated], async (req, res) => {
+    console.log("/entraraOpciones")
+    res.render('partials/Usuarios/Opciones');
+});
 
 // ruta que te indica que no estas logeado
 router.get('/users/noestasRegistrado', async (req, res) => {
     console.log("/users/noestasRegistrado")
-    req.flash('error','No estas registrad@, ponte en contacto con tu ejecutivo de cuentas.');
+    req.flash('error','No estas registrad@, ponte en contacto con tu administrador o ejecutivo de cuentas.');
     res.redirect('/')
 });
 
@@ -51,12 +60,6 @@ router.post('/cambiar/password', async (req, res) => {
     res.redirect('/');
 });
 
-
-// ruta que te envia a opciones de los usuarios 
-router.get('/entraraOpciones',isAuthenticated, async (req, res) => {
-    console.log("/entraraOpciones")
-    res.render('partials/Usuarios/Opciones');
-});
 
 // ruta que te envia a opciones de los usuarios 
 router.post('/signUp', async (req, res) => {
@@ -100,8 +103,9 @@ router.post('/signUp', async (req, res) => {
             const fecha = new Date()
             const statusInscrip = 'incompleto'
             const usuarioBloqueado = false
-            const newUser = new User({ usuarioBloqueado, name, tyc, apellido, statusInscrip, email, password });
+            const newUser = new User({usuarioBloqueado, name, tyc, apellido, statusInscrip, email, password });
             newUser.password = await newUser.encryptPassword(password);
+            //newUser.password = (password+newUser._id)
             await newUser.save();
             req.flash('success_msg', 'Revise su mail ingresado, su Correo no deseado o Spam o Tambien para registarse rapidamente puede continuar presionando "Ingresar" y luego coloque su mail y contraseña.');
             res.redirect('/');

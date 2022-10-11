@@ -123,6 +123,33 @@ val2 = async( req, res, next) => {
         }
 }
 
+const cheqpass = async( req, res, next) => {
+    const cheq = req.body
+    const email = req.body.email
+    const password = req.body.password
+    console.log(" que llego al del req.body",email, password)
+    const validar = await usuario.findOne({email:email})
+    console.log(" que llego al validador cheqpass",cheq, validar)
+    if(!validar){
+        console.log("No hay datos",validar)
+        req.flash('error', 'Fallo en el validador, Revise su Email ingresado')
+        res.redirect('/')
+        return false 
+    }
+    else{
+        const cheqPass = (password+validar._id)
+        console.log(" En el validador revisa el email y el password",cheqPass)
+        if (email == validar.email && validar.password == cheqPass  ) {
+            console.log('si valido el password')
+            return next();
+        }
+            else{ 
+                req.flash('error', 'Fallo en el validador, su password es incorrecto')
+                res.redirect('/users/noestasRegistrado')
+                return false 
+        }
+    }
+}
 
 function metodo1(a,b,c) {
     if (c) {
@@ -135,5 +162,6 @@ function metodo1(a,b,c) {
 module.exports = {
     validador1,
     val2,
-    metodo1
+    metodo1,
+    cheqpass
 };  
