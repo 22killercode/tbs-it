@@ -48,21 +48,19 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
+const MemoryStore = require('memorystore')(session)
 app.use(session({
     secret: 'aniseba22',
     resave: true,
-    saveUninitialized: true
-}));
-// mermoria opara sesiones
-const MemoryStore = require('memorystore')(session)
-app.use(session({
+    saveUninitialized: true,
     cookie: { maxAge: 86400000 },
     store: new MemoryStore({
       checkPeriod: 86400000 // prune expired entries every 24h
     }),
     resave: false,
     secret: 'keyboard cat'
-}))
+
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
