@@ -15,7 +15,7 @@ const mongoose = require('mongoose');
 // //Conexion al ambiente de produccion
 const dbConnecton = async()=>{
 try {
-    await mongoose.connect(process.env.MONGODB_URI, {
+    await mongoose.connect('mongodb+srv://TBS-ITpaysse22:TBS-ITpaysse221409cluster0.0hjhjyw.mongodb.net', {
         useCreateIndex:true,
         useNewUrlParser:true,
         useUnifiedTopology:true,
