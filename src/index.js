@@ -5,7 +5,6 @@ const path           = require('path');
 const exphbs         = require('express-handlebars');
 const methodOverride = require('method-override');
 const session        = require('express-session');
-const MemoryStore    = require('memorystore')(session)
 const flash          = require('connect-flash');
 const passport       = require('passport');
 const http           = require('http');
@@ -27,15 +26,7 @@ require('./config/passport');
 const server = http.Server(app);
 const io = socketIO(server);
 
-// mermoria opara sesiones
-app.use(session({
-    cookie: { maxAge: 86400000 },
-    store: new MemoryStore({
-      checkPeriod: 86400000 // prune expired entries every 24h
-    }),
-    resave: false,
-    secret: 'keyboard cat'
-}))
+
 
 
 //Settings 
@@ -62,6 +53,16 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+// mermoria opara sesiones
+const MemoryStore = require('memorystore')(session)
+app.use(session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    }),
+    resave: false,
+    secret: 'keyboard cat'
+}))
 
 app.use(passport.initialize());
 app.use(passport.session());
