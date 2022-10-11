@@ -20,6 +20,7 @@ const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-ac
 
 //inicializations
 const app = express();
+require('dotenv').config();
 require('./database');
 require('./config/passport');
 const server = http.Server(app);

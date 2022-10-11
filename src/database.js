@@ -18,6 +18,7 @@ try {
     await mongoose.connect(process.env.MONGODB_URI, {
         useCreateIndex:true,
         useNewUrlParser:true,
+        useUnifiedTopology:true,
         useFindAndModify:false
     })
         .then(db => console.log(`DB is connected`))
@@ -25,7 +26,7 @@ try {
         
 } catch (error) {
     console.log('No se conecto la BD', error);
-    throw new Errro('Error en la conexion de la base de datos');
+    throw new Error('Error en la conexion de la base de datos');
 };
 
 };
