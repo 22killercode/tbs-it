@@ -17,11 +17,11 @@ const mongoose = require('mongoose');
 
 const dbConnecton = async()=>{
 try {
-    await mongoose.connect('=mongodb+srv://sebatbsit:KcZorfwjhcurNKEI@tbsit.12drd1s.mongodb.net/testtbsit', {
-        // useCreateIndex:true,
-        // useNewUrlParser:true,
-        // useUnifiedTopology:true,
-//        useFindAndModify:false
+    await mongoose.connect('=mongodb+srv://sebatbsit:KcZorfwjhcurNKEI@tbsit.12drd1s.mongodb.net/tbsit', {
+        useCreateIndex:true,
+        useNewUrlParser:true,
+        useUnifiedTopology:true,
+        useFindAndModify:false
     })
         .then(db => console.log(`DB is connected`))
         .catch(err => console.error(err));
