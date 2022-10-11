@@ -17,7 +17,7 @@ const mongoose = require('mongoose');
 
 const dbConnecton = async()=>{
 try {
-    await mongoose.connect('mongodb+srv://sebatbsit:<password>@tbsit.12drd1s.mongodb.net/testtbsit', {
+    await mongoose.connect('mongodb+srv://sebatbsit:KcZorfwjhcurNKEI@tbsit.12drd1s.mongodb.net/testtbsit', {
         // useCreateIndex:true,
         useNewUrlParser:true,
         useUnifiedTopology:true,
