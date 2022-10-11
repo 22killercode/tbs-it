@@ -59,7 +59,6 @@ app.use(session({
     }),
     resave: false,
     secret: 'keyboard cat'
-
 }));
 
 app.use(passport.initialize());

@@ -1,22 +1,23 @@
 const mongoose = require('mongoose');
 
-// mongoose.set('useFindAndModify', false);
+//mongoose.set('useFindAndModify', false);
 
 // mongoose.connect('mongodb://localhost/tbs',{
-//     // useCreateIndex:true,
-//     // useNewUrlParser:true,
-//     // useUnifiedTopology:true,
+// //         useCreateIndex:true,
+// //         useNewUrlParser:true,
+// //         useUnifiedTopology:true,
+// // //        useFindAndModify:false
 // })
 
 // .then(db => console.log('DB esta correctamente conectada'))
 // .catch(err => console.error(err));
 
 
-// //Conexion al ambiente de produccion
+//Conexion al ambiente de produccion
 
 const dbConnecton = async()=>{
 try {
-    await mongoose.connect('mongodb+srv://TBS-ITpaysse22:TBS-ITpaysse221409cluster0.0hjhjyw.mongodb.net/', {
+    await mongoose.connect('mongodb+srv://TBS-ITpaysse22:TBS-ITpaysse221409cluster0.0hjhjyw.mongodb.net/TBSDB', {
         useCreateIndex:true,
         useNewUrlParser:true,
         useUnifiedTopology:true,
