@@ -1,5 +1,9 @@
 //requerimientos
 const express        = require('express');
+
+const session        = require('express-session')
+const MemoryStore    = require('memorystore')(session)
+
 const cors           = require('cors')
 const path           = require('path');
 const exphbs         = require('express-handlebars');
@@ -25,9 +29,8 @@ require('./database');
 require('./config/passport');
 const server = http.Server(app);
 const io = socketIO(server);
-const session = require('express-session')
-const MemoryStore = require('memorystore')(session)
 
+// mermoria opara sesiones
 app.use(session({
     cookie: { maxAge: 86400000 },
     store: new MemoryStore({
