@@ -15,6 +15,8 @@ const mongoose = require('mongoose');
 // //Conexion al ambiente de produccion
 const dbConnecton = async()=>{
 
+
+    
 try {
     await mongoose.connect(process.env.MONGODB_URI, {
         useCreateIndex:true,
