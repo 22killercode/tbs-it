@@ -3,7 +3,7 @@
 	<head>
 		<title>The Best Staff TBS</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=0.75" />
+		<meta name="viewport" content="width=device-width, initial-scale=0.70 !important" />
 		<link rel="stylesheet" href="/css/main.css" />
         {{!-- <link rel="stylesheet" href="/css/normalize.css" /> --}}
         <link rel="stylesheet" href="/css/rwd.css" /> 
@@ -136,39 +136,39 @@
         </div>
     </div>
     <!-- Modal SignIn -->
-    <div style="padding: auto; margin: 1% 0 0 0; position:absolute; z-index:9999999" class="modal fade " id="signin1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div style=" padding:auto 0 5rem; padding:auto;" class="modal-dialog">
+    <div style="padding: auto; margin: 1% 0 0 0; position:absolute; z-index:9999999; height: min-content !important; font-size: 0.8rem !important;" class="modal fade " id="signin1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div style=" padding:auto 0 5rem; " class="modal-dialog">
             <div style="width: max-content; background-image: url(/images/tecladoluz.jpg)" class="modal-content panelControl">
                 <div style="margin:auto; padding:auto;" class="">
                     <div align="center" class="" >
                         <input style="width: 60%; height: 30%;" class="" id="" type="image" src="/images/TBS-IT1.jpg" >
                     </div>
                     <br>
-                    <h4 style="color: white; text-align: center;" class="modal-title" id="exampleModalLabel">
+                    <h5 style="color: white; text-align: center;" class="modal-title" id="exampleModalLabel">
                         Solo para clientes y empleados
                         <br>
                         ¡Bienvenid@!
-                    </h4>
+                    </h5>
                 </div>
-                <div style="margin:auto; padding:auto; width: auto; height: auto"  class="modal-body">
+                <div style="margin: -1.5rem 0 0 -1.5rem; padding:auto; width: auto; height: auto"  class="modal-body">
                     <div style="padding: 1rem; text-align: center; text-size:1rem ;">
                         <div style="margin: auto; padding: auto; width: auto;" class="" >
                             <div class="container1"> 
-                                <h3>Iniciar sesión</h3>
+                                <h4>Iniciar sesión</h4>
                                 <br>
                                 <form action="/users/signin" method="post">
                                     <div style="padding: auto; margin: auto;" class="form-floating mb-3">
                                         <input autocomplete="off" name="email" style="color: aliceblue;width: 22rem; height: 5rem; background-color: gray;" type="email" class="form-control" id="floatingInput333" placeholder=" " required>
-                                        <label style="color: black;" for="floatingInput333"><h4>Email</h4></label>
+                                        <label style="color: black;" for="floatingInput333"><h5>Email</h5></label>
                                     </div>
                                     <br>
                                     <div style="padding: auto; margin: auto;" class="form-floating mb-3">
                                         <input autocomplete="off" name="password" style="color: aliceblue;width: 22rem; height: 5rem; background-color: gray;" type="password" class="form-control" id="floatingInput333" placeholder=" " required>
-                                        <label style="color: black;" for="floatingInput333"><h4>Password</h4></label>
+                                        <label style="color: black;" for="floatingInput333"><h5>Password</h5></label>
                                     </div>
                                     <br>
                                     <button id="" style="padding:0 0 0.1rem 0;" class="boton1 btn1">
-                                        <strong><h4>Entrar</h4></strong>
+                                        <strong><h5>Entrar</h5></strong>
                                     </button>
                                 </form>
                             </div>
@@ -180,12 +180,12 @@
                                 </button>
                             </form>
                         </div>
-                        <div  class="btn btn-block">
+                        <div style="margin: -1.5rem 0 0 -1.5rem"  class="btn btn-block">
                             <a  href="/olvidemipassword"><h6>Olvidé mi Password</h5></a> 
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div style="margin: -1.5rem 0 0 -2rem" class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Volver</button>
                 </div> 
             </div>
