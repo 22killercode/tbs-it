@@ -404,8 +404,8 @@ router.post('/dataPartner',async (req, res) => {
                 },10000);
 
             }else{
-                req.flash('error', 'Debe ser una archivo PDF o Word')
-                res.render('partials/RRHH/programadores');
+                req.flash('error', 'Debe ser un archivo PDF o Word')
+                res.render('partials/RRHH/Partners');
             }
         };
 });
