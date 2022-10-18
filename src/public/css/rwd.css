@@ -1,13 +1,3 @@
-.contenedor{
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 2500px;
-    min-width: 300px;
-    overflow: hidden;
-    margin: -3rem 0 0 0;
-    padding: auto;
-    word-wrap: break-word;
-}
 
 .box1{
     box-sizing: border-box;
@@ -45,12 +35,45 @@
     border-radius: 1rem;
 }
 
+
+/******** Responsive Web Desing ******/
+
+
+.contenedor{
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 2500px;
+    min-width: 300px;
+    overflow: hidden;
+    margin: -3rem 0 0 0; 
+    padding: auto;
+    word-wrap: break-word;
+}
+
 /* Medidas de las pantallas */
 @media screen and (max-width: 1680px) {
     .contenedor{
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 80% !important;
+    }
+    .id1{
         width: 100%;
         max-width: 100em;
         min-width: 80em;
+        margin: 0 !important;
+    }
+    .id2{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+        margin: 0 20% -10% 0 !important;
+    }
+    .id3{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+        margin: 0 20rem 0 0 !important;
     }
     .Img{
         width: 100%;
@@ -92,9 +115,9 @@
 }
 @media screen and (max-width: 980px) {
     .contenedor{
-        width: 100%;
-        max-width: 100em;
-        min-width: 80em;
+        width: 80%;
+        max-width: 80em;
+        min-width: 60em;
     }
     .Img{
         width: 100%;
@@ -136,9 +159,9 @@
 }
 @media screen and (max-width: 480px) {
     .contenedor{
-        width: 100%;
-        max-width: 100em;
-        min-width: 80em;
+        width: 80%;
+        max-width: 80em;
+        min-width: 60em;
     }
     .Img{
         width: 100%;
