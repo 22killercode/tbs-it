@@ -71,7 +71,7 @@ span
 	.container.\31 25\25 {
 		width: 100%;
 		max-width: 100em;
-		min-width: 80em;
+		min-width: 100em;
 	}
 
 	.container.\37 5\25 {
@@ -87,7 +87,7 @@ span
 	}
 
 	.container {
-		width: 80em;
+		width: 100em;
 	}
 
 	@media screen and (max-width: 1680px) {

@@ -51,7 +51,10 @@
 }
 
 @media only screen and (orientation: landscape){
-
+    #portrait{
+        orientation: portrait;
+    }
+}
 /* Medidas de las pantallas */
 @media screen and (max-width: 1680px) {
     body{
@@ -197,5 +200,4 @@
         max-width: 100em;
         min-width: 80em;
     }
-}
 }
