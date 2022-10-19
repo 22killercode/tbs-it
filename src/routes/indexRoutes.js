@@ -2877,12 +2877,14 @@ router.post('/contacto',async (req, res) => {
     <p><strong>Nombre:</strong> ${names}  <span></span><strong>Apellido:</strong> ${apellido}</p> 
     <p><strong>Email de contacto:</strong> ${email}</p>
     <p><strong> Pais:</strong> ${pais}</p>
-    <br>
-    <p><strong>Mensaje:</strong> ${message}</p>
-        Consulte con su Ejecutivo de cuentas asignado todas las cuestiones tecnicas y dudas que tenga asi como bonificasiones.
+    <div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;">
+        <h6>
+            <strong>Mensaje:</strong> ${message}
+        <h6>
+    </div>
 </div>
     <br>
-    <div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;" hidden><h6>This message has been generated automatically by "TBS" for a user/client acomplish whit international rules of mailing services and tbs we are not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction..</h6><div><span></span><a href="http://tbsit.co">
+    <div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;"><h6>This message has been generated automatically by "TBS" for a user/client acomplish whit international rules of mailing services and tbs we are not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction..</h6><div><span></span><a href="http://tbsit.co">
     </div>
 </body>
 </html>`;
