@@ -2877,9 +2877,10 @@ router.post('/contacto',async (req, res) => {
     <p><strong>Nombre:</strong> ${names}  <span></span><strong>Apellido:</strong> ${apellido}</p> 
     <p><strong>Email de contacto:</strong> ${email}</p>
     <p><strong> Pais:</strong> ${pais}</p>
+    <p><strong>Mensaje:</strong></p>
     <div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;">
         <h6>
-            <strong>Mensaje:</strong> ${message}
+            ${message}
         <h6>
     </div>
 </div>
