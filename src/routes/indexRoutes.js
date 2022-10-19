@@ -20,8 +20,11 @@ const usuario       = require('../models/User');
 const Tokens        = require('../models/Tokens');
 const cotiStaffing  = require('../models/cotiStaffing');
 const cotizaciones  = require('../models/cotizaciones');
+const mensajes      = require('../models/messages');
+//middlewares
 const JSONTransport = require('nodemailer/lib/json-transport');
 const { Script } = require('vm');
+const { nextTick } = require('process');
 const PrecioDolar = 292
 //Variables
 const HorasMes             = 160
@@ -2850,7 +2853,72 @@ Esta pre-cotizacion carece de responsabilidad contractual entre las partes. Todo
     })
 });
 
-//**************************************************************************** */
+//***************CONTACTO************************************************************* */
 
+// Calculo de cotizacion custom software
+router.post('/contacto',async (req, res) => {
+
+    const {names, apellido, message, email, pais} = req.body
+    console.log("te llego el mensaje", req.body)
+    req.flash('error', 'Gracias por tu mensaje te responderemos a la brevedad')
+    res.redirect("/")
+
+    // envia mail
+    const cotiEntro = `<html>
+<body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
+<input type="image" src="images/fondoempresas.jpg" alt="" style="margin: -2rem000; position: absolute; width: 200%; height: auto;">
+<div style="justify-content: center ; align-items: center;">
+    <p>
+        <strong>Entro un nuevo mensaje/consulta</strong>
+    </p>
+</div>
+<div class="" style="text-align: left; align-items: left;">
+    <h4>Datos:</h4>
+    <p><strong>Nombre:</strong> ${names}  <span></span><strong>Apellido:</strong> ${apellido}</p> 
+    <p><strong>Email de contacto:</strong> ${email}</p>
+    <p><strong> Pais:</strong> ${pais}</p>
+    <br>
+    <p><strong>Mensaje:</strong> ${message}</p>
+        Consulte con su Ejecutivo de cuentas asignado todas las cuestiones tecnicas y dudas que tenga asi como bonificasiones.
+</div>
+    <br>
+    <div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;" hidden><h6>This message has been generated automatically by "TBS" for a user/client acomplish whit international rules of mailing services and tbs we are not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction..</h6><div><span></span><a href="http://tbsit.co">
+    </div>
+</body>
+</html>`;
+    // con EL MAIL DEL CLIENTE ADMINISTRADO POR GOOGLE
+    const pemail = "sebastianpaysse@gmail.com"
+    const password = "qtwcqebleraupety"
+    const senderMail = pemail
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+        user: email,
+        pass: password,
+        }
+    });
+    let conAdjunto = {
+        from: senderMail, // sender address,
+        to: pemail,
+        subject: "Hola, llego un nuevo mensaje",
+        html:cotiEntro ,
+        // attachments: [
+        //   {   // file on disk as an attachment
+        //       filename: nombreAdjunto,
+        //       path: datosAdjuntados[0]
+        //   },
+        // ]
+    };
+    transporter.sendMail(conAdjunto, (er,info)=>{
+        if(er){
+        console.log("error",er)
+        }else{
+            console.log("info",info) 
+        }
+    })
+    // guarda en BD
+    const guardarMess = new mensajes ({ names, apellido, message, email, pais })
+    await guardarMess.save();
+});
 
 module.exports = router;  

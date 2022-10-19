@@ -57,22 +57,26 @@
         <footer style="z-index: 1; position: relative; margin: -0.5rem;" id="footer">
                 <div class="inner">
                     <h2>Contacto</h2>
-                    <form action="#" method="post">
+                    <form action="/contacto" method="post">
                         <div class="field half first">
                             <label for="name">Nombre</label>
-                            <input name="name" id="name" type="text" placeholder="Name">
+                            <input name="names" id="name" type="text" placeholder="Name">
+                        </div>
+                        <div class="field half ">
+                            <label for="apellido">Apellido</label>
+                            <input name="apellido" id="apellido" type="text" placeholder="Apellido">
                         </div>
                         <div class="field half first">
-                            <label for="name">Apellido</label>
-                            <input name="apellido" id="apellido" type="text" placeholder="Name">
-                        </div>
-                        <div class="field half">
                             <label for="email">Email</label>
                             <input name="email" id="email" type="email" placeholder="Email">
                         </div>
+                        <div class="field half">
+                            <label for="pais">Pais/Ciudad</label>
+                            <input name="pais" id="pais" type="text" placeholder="Pais/Ciudad">
+                        </div>                        
                         <div class="field">
-                            <label for="message">Message</label>
-                            <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+                            <label for="message">Mensaje</label>
+                            <textarea name="message" id="message" rows="6" placeholder="Mensaje"></textarea>
                         </div>
                         <ul class="actions">
                             <button value="Send Message" class="button alt" type="submit">Enviar</button>
