@@ -2143,7 +2143,6 @@ else{
     Modulo pasarela de pagos no solicitado
     `)
 }
-
 if (clouding) {
     if (Moneda == "Pesos Argentinos") {
         const PA = parseInt(clouding1) * parseInt(PrecioDolar)
@@ -2163,7 +2162,6 @@ else{
     Modulo clouding no solicitado
     `)
 }
-
 if (traking) {
     if (Moneda == "Pesos Argentinos") {
         const PA = tracking1 * PrecioDolar
@@ -2183,7 +2181,6 @@ else{
     Modulo tracking no solicitado
     `)
 }
-
 if (CiberSeg) {
     if (Moneda == "Pesos Argentinos") {
         const PA = ciberSeg1 * PrecioDolar
@@ -2239,7 +2236,8 @@ if (Moneda == "Pesos Argentinos") {
         await guardarCoti.save()
         
     }
-} else {// es en dolares
+// es en dolares
+} else {
     ar.push(presio1)
     const PreciociberSeg1      = parseInt(ciberSeg1)
     const PrecioPWAS1          = parseInt(PWAS1)
