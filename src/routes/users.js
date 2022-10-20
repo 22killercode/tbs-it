@@ -44,7 +44,7 @@ router.get('/users/noestasRegistrado', async (req, res) => {
 // ruta para inscribirte
 router.get('/inscribirme', async (req, res) => {
     console.log("/inscribirme")
-    res.render('partials/Usuarios/Inscribirme');
+    res.render('partials/Usuarios/inscribirme');
 });
 
 // ruta olvide mi passsword
