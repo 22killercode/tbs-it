@@ -35,43 +35,88 @@ router.get('/quierotrabajarentbs',async (req, res) => {
 
 //obtiene los datos enviados por el programador
 router.post('/dataTalento',async (req, res) => {
-    
     const {Nombre, Apellido, NumCel, Email, senority, nivelIngles, MonedaCobro, PaisResi, CiudadResi, Empresa, ModTrab, linke,tecnoBackend, tecnoFrontend} = req.body;
-    
     const {Archivo} = req.files;
     const nombreAdjunto = []
     console.log("que llega",req.body,  req.files)
     if(!req.files || Object.keys(req.files).lehgth === 0  ) { 
         res.status(400).json({msg:'No se subio ningun archivo'});
-        return;
+        req.flash('error', 'Debe subir un CV con extension .PDF o .Word')
+        res.render('partials/RRHH/programadores');
     }else{
             const nombreCorto = Archivo.name.split('.');
             const extension = nombreCorto[nombreCorto.length - 1]
             const extValidas = ['pdf', 'word', 'doc', 'docx','txt', 'ppt']
             //validacion de extensiones
-            if (extValidas.includes(extension)) {
-                const idAdjunto     = shortid.generate();
-                const idAdjCompleto = (idAdjunto + '.' + extension)
-                console.log('cual es el id idData y del adjunto CVS',idAdjCompleto)
-                // sube el archivo al servidor
-                const uploadPath = path.join (__dirname, '../../uploads/Cvs', idAdjCompleto);
-                Archivo.mv(uploadPath,async (err)=>{
-                    if (err){
-                    return console.log(err);  
-                    }
-                });
+        if (extValidas.includes(extension)) {
+                const errors = [];
+                if (!Archivo) {
+                    errors.push({ text: 'Incluya su CV en .pdf o .word' });
+                }
+                if (Nombre.length <= 0) {
+                    errors.push({ text: 'Coloque su nombre' });
+                }
+                if (Apellido.length <= 0) {
+                    errors.push({ text: 'Coloque su apellido' });
+                }
+                if (NumCel.length <= 0) {
+                    errors.push({ text: 'Coloque su numero celular' });
+                }
+                if (Email.length <= 0) {
+                    errors.push({ text: 'Coloque su mail' });
+                }
+                if (!MonedaCobro) {
+                    errors.push({ text: 'Incluya que tipo de moneda prefiere' });
+                }
+                if (senority.length <= 0) {
+                    errors.push({ text: 'Agregue su senority' });
+                }
+                if (nivelIngles.length <= 0) {
+                    errors.push({ text: 'Agregue su nivel de ingles' });
+                }
+                if (PaisResi.length <= 0) {
+                    errors.push({ text: 'Agregue su país de residencia' });
+                }
+                if (CiudadResi.length <= 0) {
+                    errors.push({ text: 'Agregue su ciudad de residencia' });
+                }
+                if (ModTrab.length <= 0) {
+                    errors.push({ text: 'Agregue su preferencia de trabajo' });
+                }
+                if (linke.length <= 0) {
+                    errors.push({ text: 'Agregue su link de linkedin o pagina web' });
+                }
+                if (tecnoBackend.length <= 0) {
+                    errors.push({ text: 'Agregue su tecnologia backend' });
+                }
+                if (tecnoFrontend.length <= 0) {
+                    errors.push({ text: 'Agregue su tecnologia frontend' });
+                }
+                if (errors.length > 0) {
+                    req.flash('errors', errors);
+                    res.redirect('/quierotrabajarentbs');
+                    // res.render('partials/RRHH/programadores', {Nombre, Apellido, NumCel, Email, senority, nivelIngles, MonedaCobro, PaisResi, CiudadResi, Empresa, ModTrab, linke,tecnoBackend, tecnoFrontend });
+                    console.log("cuantos errores encontro?",errors);
+                } else {
+                    const idAdjunto     = shortid.generate();
+                    const idAdjCompleto = (idAdjunto + '.' + extension)
+                    console.log('cual es el id idData y del adjunto CVS',idAdjCompleto)
+                    // sube el archivo al servidor
+                    const uploadPath = path.join (__dirname, '../../uploads/Cvs', idAdjCompleto);
+                    Archivo.mv(uploadPath,async (err)=>{
+                        if (err){
+                        return console.log(err);  
+                        }
+                    });
                 res.render('partials/RRHH/validadorRRHH',{Nombre});
-                
                 // guardar en BD
                 const guardar = new talentos ({Nombre, Apellido, NumCel, Email, senority, nivelIngles, MonedaCobro, PaisResi, CiudadResi, Empresa, ModTrab, linke,tecnoBackend, tecnoFrontend, uploadPath})
                 guardar.save()
-
                 // enviar mail para validacion
                 //Genera Token de seguridad en BD
                 const token = shortid.generate()
                 const guardarToken = new Tokens ({ token })
                 await guardarToken.save()
-
                 const contentHTML = `<html>
                 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
                 <div style="justify-content: center ; align-items: center;">
@@ -166,7 +211,6 @@ router.post('/dataTalento',async (req, res) => {
                     pass: password,
                     }
                 });
-
                 let conAdjunto = {
                     from: senderMail, // sender address,
                     to: Email,
@@ -214,12 +258,12 @@ router.post('/dataTalento',async (req, res) => {
                         console.error('Something wrong happened removing the file', err);
                     });
                 },10000);
-
-            }else{
-                req.flash('error', 'Debe ser una archivo PDF o Word')
-                res.render('partials/RRHH/programadores');
             }
-        };
+        }else{
+            req.flash('error', 'Su CV debe ser una extension .PDF o .Word')
+            res.render('partials/RRHH/programadores');
+        }
+    };
 });
 
 //obtiene los datos enviados por el PARTNER

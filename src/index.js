@@ -79,8 +79,9 @@ require('./sockets')(io);
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
-    res.locals.error = req.flash('error');
-    res.locals.user = req.user || null;
+    res.locals.error     = req.flash('error');
+    res.locals.errors    = req.flash('errors');
+    res.locals.user      = req.user || null;
     next();
 });
 
@@ -105,7 +106,7 @@ app.use(express.static(path.join(__dirname, 'partials')));
 // });
 
 //server
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3009;
 server.listen(port, (err) => {
     console.log(`The Best Staff en desarrollo desde el Servidor con el puerto, ${port}`);
     if (err) {
