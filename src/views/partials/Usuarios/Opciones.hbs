@@ -1,23 +1,15 @@
-<div>
-    <div class="">
-    <input style=" width:6rem; height:4rem; border-radius: 0.5rem;" type="image" src="/images/TBS-IT1.jpg"/>
-    </div>
-    <div class="">
+<input style="position:absolute;margin-top: -4rem; padding:0; width: 100%; height: 230%;" class="" id="" type="image" src="/images/cerosyunos.jpg" >
+<div align="center" style="margin:0 0 0 15rem ;position: relative; z-index: 9999999999999; opacity:0.95;"> 
+    <div style="width: 80%; color: aliceblue; background-color: black;" class="box">
         <div class="">
-            <div style="margin: 0.5rem 0 1rem 0; " class="">
-                <input style="padding: 0rem 2.5rem 0.5rem 3rem; background-color: white;" class="divUno2" id="" type="image" src="/images/TBS-IT1.jpg" >
+            <div style="margin: 0; " class="">
+                <input style="padding: 0;" class="" id="" type="image" src="/images/TBS-IT1.jpg" >
             </div>
             {{!-- Acordeon principal donde van el logo y la foto --}}
-            <div style="margin: 1rem 0 -1rem 0;" class="panelControl">
+            <div style="background-color:black;margin: 1rem 0 -1rem 0;" class="panelControl">
                 <div class="flex">
-                    <div>
-                        <form action="/editarDatosPersonales" method="POST">
-                            <input type="text" value="{{dataUser._id}}" name="id" hidden>
-                            <button type="submit" class="none" data-toggle="modal" data-target="#spinner2"> <input style="margin: -2rem 0.1rem 0 -2.1rem; height: 4.5rem; width: 4.5rem; font-size: 0.1rem;" class="icon" type="image" src="{{subirLogo}}"></button>
-                        </form>
-                    </div>
                     <div class="">
-                        <p  style="font-size: 1.9rem; margin: -1.9rem -2.3rem 0 -.9rem ; padding: 0">
+                        <p  style="font-size: 1.5rem; margin: -1.9rem -2.3rem 0 -.9rem ; padding: 0">
                             <strong>
                                 {{user.name}}
                                 <br><br>
@@ -25,283 +17,37 @@
                             </strong>
                         </p>
                     </div>
-                    <div>
-                        <form action="/editarDatosPersonales" method="POST">
-                            <input type="text" value="{{dataUser._id}}" name="id" hidden>
-                            <button type="submit" class="none" data-toggle="modal" data-target="#spinner2"> <input style="margin: -2rem -1.8rem 0 2rem; height: 4.5rem; width: 4.5rem; font-size: 0.1rem;" class="icon" type="image" src="{{subirFoto}}"></button>
-                        </form>
-                    </div>
                 </div>
                 <br>
-                <div class="">
-                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner calesitaB fijoArriba">
-                                <div class="carousel-item active">                        
-                                    <h4> Hola {{user.name}} Bienvenid@</h5>                        
-                                </div>
-                                <div class="carousel-item">                        
-                                    <h4>Esta es tu actividad de hoy</h5>                        
-                                </div>
-                                <div class="carousel-item ">
-                                    {{#if cantMensIn }}                        
-                                    <h4 class="">Tienes {{cantMensIn}} Mensajes </h5>
-                                    {{else}}
-                                    <h4>Sin Mensajes Nuevos</h5>
-                                    {{/if}}
-                                </div>                    
-                                <div class="carousel-item">                        
-                                    <h4> Obtene mas puntos, Invita a tus Amigos</h5>                        
-                                </div>
-                                <div class="carousel-item">
-                                    {{#if userCoti}}                        
-                                    <h4>Tienes {{userCoti}} Cotizaciones Recibidas</h5>
-                                    {{else}}
-                                    <h4>Sin Cotizaciones Recibidas</h5>
-                                    {{/if}}
-                                </div>
-                                <div class="carousel-item">                        
-                                    <h4> Obtene tu Membresia y mas trabajo!</h5>                                
-                                </div>
-                                <div class="carousel-item">
-                                        {{#if dataOT1}}
-                                        <h4>Recibiste {{dataOT1.length}} O.T.</h5>
-                                        {{else}}
-                                        <h4>Recuerda Recomendar S&M a tus amigos.</h5>
-                                        {{/if}}
-                                </div>
-                                <div class="carousel-item">
-                                        {{#if dataOT2}}
-                                        <h4>Debes Terminar {{dataOT2.length}} O.T.</h5>
-                                        {{else}}
-                                        <h4>Soluciones & Mas la mejor comunidad</h5>
-                                        {{/if}}
-                                </div>
-                                <div class="carousel-item">                        
-                                    <h4>¡Dona algo hoy! </h5>                        
-                                </div>
-                            </div>
-                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true" hidden></span>
-                            <span class="visually-hidden"><span style="color: black;"><h1 style="color: black;">*</h1></span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true" hidden></span>
-                            <span class="visually-hidden"><span style="color: black;"><h1>*</h1></span>
-                        </a>
-                        </div>
-                </div>
+                <br>
             </div>
         </div>
         <br>
-        <div>
-
-
-<div class="panelControl accordion accordion-flush" id="accordionFlushExample" hidden>
-    <div class="acordeon accordion-item">
-        <h2  style="border-radius: 4rem;" class="accordion-header" id="flush-headingOne">
-            <button class="acordeonTitulo accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                <h2>Menu</h2>
-            </button>
-        </h2>
-        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-                            <br>
-                            <form action="/membresias" method="POST">
-                                <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>MEMBRESIAS</h3></button>
-                            </form>
-                            <br>
-                            <form action="/editarDatosPersonales" method="POST">
-                                <input type="text" value="{{dataUser._id}}" name="id" hidden>
-                                <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Mis Datos</h3></button>
-                            </form>
-                            <br>
-                            <form action="/nosotros" method="GET">
-                                <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Nosotros</h4></button>
-                            </form>
-                            <br>
-                            <form action="/instrucciones" method="GET">
-                                <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Instrucciones</h3></button>
-                            </form>
-                            <br>
-                            <form action="/mensajesDelSistema" method="GET">
-                                <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Mensajes del sistema</h3></button>
-                            </form>
-                            <br>
-                            <form action="/configuracionTBS" method="GET">
-                                <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Configuracion</h3></button>
-                            </form>
-                            <br>
+            <div>
+                <br>
+                <form action="/editarDatosPersonales" method="POST">
+                    <input type="text" value="{{dataUser._id}}" name="id" hidden>
+                    <button type="submit" class="btn-block" data-toggle="modal" data-target="#spinner2"><h3>Mis Datos</h3></button>
+                </form>
+                <form action="/configuracionTBS" method="GET">
+                    <button type="submit" class="btn-block" data-toggle="modal" data-target="#spinner2"><h3>Configuracion</h3></button>
+                </form>
+                <form action="/nosotros" method="GET">
+                    <button type="submit" class="btn-block" data-toggle="modal" data-target="#spinner2"><h3>Certificasciones</h4></button>
+                </form>
+                <form action="/instrucciones" method="GET">
+                    <button type="submit" class="btn-block" data-toggle="modal" data-target="#spinner2"><h3>Cotizaciones</h3></button>
+                </form>
+                <form action="/mensajesDelSistema" method="GET">
+                    <button type="submit" class="btn-block" data-toggle="modal" data-target="#spinner2"><h3>Mensajes/consultas</h3></button>
+                </form>
+                <form action="/" method="GET">
+                    <button type="submit" class="btn-block" data-toggle="modal" data-target="#spinner2"><h3>Salir</h3></button>
+                </form>                
+            </div>
         </div>
-        </div>
-    </div>
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-            Accordion Item #2
-        </button>
-        </h2>
-        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-        </div>
-    </div>
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-            Accordion Item #3
-        </button>
-        </h2>
-        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-        </div>
-    </div>
 </div>
 
-
-
-            <div class="acordeon">
-                <div class="acordeonItem">
-                    <input class="nocheck" type="checkbox" id="item101" name="uno" />
-                    <label class="acordeonTitulo" for="item101">
-                        <h2>Menu</h2>
-                    </label> 
-                    <div class="acordeonContenido">
-                        <br>
-                        <form action="/membresias" method="POST">
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>MEMBRESIAS</h3></button>
-                        </form>
-                        <br>
-                        <form action="/editarDatosPersonales" method="POST">
-                            <input type="text" value="{{dataUser._id}}" name="id" hidden>
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Mis Datos</h3></button>
-                        </form>
-                        <br>
-                        <form action="/nosotros" method="GET">
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Nosotros</h4></button>
-                        </form>
-                        <br>
-                        <form action="/instrucciones" method="GET">
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Instrucciones</h3></button>
-                        </form>
-                        <br>
-                        <form action="/mensajesDelSistema" method="GET">
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Mensajes del sistema</h3></button>
-                        </form>
-                        <br>
-                        <form action="/configuracionTBS" method="GET">
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Configuracion</h3></button>
-                        </form>
-                        <br>
-                    </div>
-                </div>
-            </div>
-            <div class="acordeon">
-                <div class="acordeonItem">
-                    <input class="nocheck" type="checkbox" id="ite101" name="uno" />
-                    <label class="acordeonTitulo" for="ite101">
-                        <h2>Campañas de Comunicasión</h2>
-                    </label>
-                    <div class="acordeonContenido">
-                        <form action="/opcionesdeGestion" method="GET" hidden>
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3><strong>Cargar Gestion de hoy</strong></h3></button>
-                        </form>
-                        <form action="/opcionesdeStaffing" method="GET" hidden>
-                            <button style="background-color: lightgreen;" type="submit" class="lefti boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>1 - Staff</h3></button>
-                        </form>
-                        <form action="/carteraDProductosYServicios" method="GET" hidden>
-                            <button style="background-color: lightgreen;" type="submit" class="lefti boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>2 - Productos / Servicios</h3></button>
-                        </form>
-                        <form action="/carteraClientes" method="GET" hidden>
-                            <button style="background-color: lightgreen;" type="submit" class="lefti boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>3 - Clientes & Cartera</h3></button>
-                        </form>
-                        <form action="/campanaMailer" method="GET">
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Campaña de Mailings</h3></button>
-                        </form>
-                        <br>
-                        <form action="/campanaMarketing" method="GET">
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2" style="background-color: gray;"><h3>Campaña de Marketing</h3></button>
-                        </form>
-                        <br>
-                        <form action="/campanaSMS" method="GET">
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2" style="background-color: gray;" ><h3>Campaña de SMS</h3></button>
-                        </form>
-                        <br>
-                        <form action="/campanaWhatssap" method="GET">
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2" style="background-color: gray;" ><h3>Campaña de Whatsapp</h3></button>
-                        </form>
-                        <br>
-                        <form action="/tipoDcampanacomercial" method="GET" hidden>
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Campaña Comercial Objetivos</h3></button>
-                        </form>
-                        <br>
-                    </div>
-                </div>
-            </div>
-            <div class="acordeon">
-                <div class="acordeonItem">
-                    <input class="nocheck" type="checkbox" id="inf101" name="uno" />
-                    <label class="acordeonTitulo" for="inf101">
-                        <h2>Estadisticas</h3>
-                    </label>
-                    <div class="acordeonContenido">
-                        <br>
-                        <form action="/estadisticas" method="GET">
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Estadisticas</h3></button>
-                        </form>
-                        <br>
-                        <form action="/estadisticas" method="GET" hidden>
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Informe Masivo</h3></button>
-                        </form>
-                        <br>
-                        <form action="/Productos&Sercicios" method="GET" hidden >
-                            <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Informes C</h3></button>
-                        </form>
-                            <a href="#producto" class="boton1 btn1 btn-block" hidden><h3>Productos / Servicios</h3></a>
-                        <br>
-                    </div>
-                </div>
-            </div>
-            <div hidden>
-            <form action="/opcionesdeGestion" method="GET">
-                <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3><strong>Cargar Gestion de hoy</strong></h3></button>
-            </form>
-            <br>
-            <form action="/donaciones" method="GET">
-                <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Oportunidades</h3></button>
-            </form>
-            <br>
-            <form action="/donaciones" method="GET">
-                <button type="submit" class="boton1 btn1 btn-block" data-toggle="modal" data-target="#spinner2"><h3>Nobleza</h3></button>
-            </form>
-
-        </div>
-        </div>
-        <div class="flex fijoAbajo" >
-            <form action="/" method="GET" hidden>
-                <button type="submit" class="icon" data-toggle="modal" data-target="#spinner2">Mess</button>
-            </form>
-            <form style="margin: 0 3rem 0 3rem;" action="/users/logout" method="GET">
-                <button type="submit" class="alerta" data-toggle="modal" data-target="#spinner2">Salir</button>
-            </form>
-            <form action="/cargarPersonasqEstanEnelChat" method="GET" hidden>
-                <button style="padding: 0.5rem;" type="submit" id="chatMesCant" class="icon" data-toggle="modal" data-target="#spinner2">
-                    {{#if cantChatsNews }}
-                        <div style="padding: -2rem;" class="flexlado">
-                            <div style="margin: 0.1rem; color: green; font-size: 1.5rem; padding: 0.1rem;" class="">{{cantChatsNews}}</div>
-                            <img style="width: 3rem; height: 3rem; padding: 0;" class="icon" src="/img/chatsColor.png"/>
-                            <div style="margin: 0.1rem; color: blue; font-size: 1.5rem; padding: 0rem;">{{CantConect}}</div>
-                        </div>
-                    {{else}}
-                        <div style="padding: -2rem;" class="flexlado">
-                            <div style="margin: 0rem; color: rgb(117, 136, 117); font-size: 1.5rem; padding: 0rem;" class="">{{cantChatsViejos}}</div>
-                            <img style="width: 3rem; margin: 0.1rem; height: 3rem; padding: 0;" class="none" src="/img/chatB&N.png"/>
-                            <div style="margin: 0.1rem; color: blue; font-size: 1.5rem; padding: 0rem;">{{CantConect}}</div>
-                        </div>
-                    {{/if}}
-                </button>
-            </form>
-        </div>
-    </div>
-</div>
 
 
 

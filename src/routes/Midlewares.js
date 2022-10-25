@@ -43,8 +43,8 @@ const precioIOS            = +12
 const idioma               = +3.5
 //Precios software factory
 //Bases
-const paginaWeb      = 500
-const appiRestFull   = 7000
+const paginaWeb      = 300
+const appiRestFull   = 5000
 const apiRestFullIOT = 20000
 // Modulos
 const ciberSeg1       = 10000
