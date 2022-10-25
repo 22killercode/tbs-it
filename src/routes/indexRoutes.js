@@ -48,9 +48,10 @@ const precioIOS            = +12
 //idioma
 const idioma               = +3.5
 //Precios software factory
+
 //Bases
-const paginaWeb      = 500
-const appiRestFull   = 7000
+const paginaWeb      = 300
+const appiRestFull   = 5000
 const apiRestFullIOT = 20000
 // Modulos
 const ciberSeg1       = 10000
@@ -59,6 +60,8 @@ const clouding1       = 5000
 const tracking1       = 7000
 const pasarelaPagos1  = 5000
 const Estadisticas1   = 5000
+
+
 //
 const setMinEraser = 1
 
@@ -1824,13 +1827,13 @@ router.get('/cotizarSoftware', async (req, res) => {
         res.render('partials/softFactory/1SF',{token})
         // revisar si hay aulgun token sin usar y lo borra
         const cheqVencimiento = await Tokens.find();
-        console.log("cuantos token encontro",cheqVencimiento )
+//        console.log("cuantos token encontro",cheqVencimiento )
         const cheqTime        = new Date()
         for (const a1 of cheqVencimiento) {
             const tiempo       = a1.date
             const difDtiempo   = (cheqTime - tiempo)
             const difTiempoMins = (parseInt(difDtiempo) / 1000 / 60 / 60 )
-            console.log("cuanta diferencia de tiempo hay",difTiempoMins )
+  //          console.log("cuanta diferencia de tiempo hay",difTiempoMins )
             if (difTiempoMins >= setMinEraser) {
                 const _id = a1._id
                 await Tokens.findByIdAndDelete(_id)
@@ -1899,6 +1902,7 @@ router.post('/EnviarCotizacionPW',[validador1], async (req, res) => {
         puto.push(precio)
     }
     const suma = puto[0] 
+    console.log("cuanto vale una pagina eb en argentos?", suma)
     res.render('partials/cotisSoftFactory/cotipagWeb', {suma, data, token});
     // Guarda en BD
     const PW = true
