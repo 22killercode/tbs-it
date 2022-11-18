@@ -43,8 +43,8 @@ const precioIOS            = +12
 const idioma               = +3.5
 //Precios software factory
 //Bases
-const paginaWeb      = 500
-const appiRestFull   = 7000
+const paginaWeb      = 300
+const appiRestFull   = 5000
 const apiRestFullIOT = 20000
 // Modulos
 const ciberSeg1       = 10000
@@ -114,7 +114,7 @@ val2 = async( req, res, next) => {
         errors.push({ text: 'Ingrese el tipo de moneda con el que piensa pagar' });
     }
     if (errors.length > 0) {
-        console.log('llego al rechazada de datos personales',errors)        
+        console.log('llego al rechazada de datos personales',errors)
         req.flash('errors', errors);
         res.redirect('/cotizandoStaffing');
     } else {

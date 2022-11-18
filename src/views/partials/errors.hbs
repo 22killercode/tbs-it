@@ -1,28 +1,29 @@
 {{#if error }}
-<div align="center" style="width: 50%; height: auto; margin-left:25%; border-radius:4rem; padding: 2rem ; margin-top: 10%; color: red;" class=" messError alert alert-danger alert-dismissible fade show" role="alert">
-    <div class="">
-        <h1 style="color:red ;">***!!!ATENCION!!!****</h1>
-        {{error}}
-        <br>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        {{#if volver }}
+<div align="center" style="" class="messError flexlado" role="alert">
+    <div style="margin-bottom:-5rem ;" class="">
+        <h4 style="color:rgb(200, 218, 224); margin-bottom:1rem;">***¡ATENCION!***</h4>
+        <h5>
+            {{error}}
+        </h5>
         <form action="/" method="get">
-            <button class="alertaVerde" >Volver</button>
+            <button class="alertaVerde" >Cerrar</button>
         </form>
-        {{/if}}
     </div>
+    <button style="height:1rem; position:absolute; align-items:right;margin-top:-2rem ;" type="button" class="close none" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </div>
 {{/if}}
 
 {{#each errors }}
-<div align="center" style="width: 60%; height: auto; margin-left: 20%; border-radius:4rem; padding: 2rem ; margin-top: 10%; color: red;" class=" messError alert alert-danger alert-dismissible fade show" role="alert">
-    <h2>***ATENCION!!!****</h2> 
-    {{text}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<div align="center" style="" class=" messError alert-dismissible fade show" role="alert">
+    <h4>***¡ATENCION!!!***</h4> 
+    <h5>{{text}}</h5>
+    {{!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
-    </button>
+    </button> --}}
+   {{!-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Volver</button>--}}
     <br>
+    <form action="/" method="get">
+        <button class="alerta" >Cerrar Todos</button>
+    </form>
 </div>
 {{/each}}

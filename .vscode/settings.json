@@ -1,10 +1,6 @@
 {
-    "liveServer.settings.port": 5501,
-    "git.ignoreLimitWarning": true,
     "cSpell.language": "en,es-ES",
     "cSpell.words": [
-        "metalmecanica",
-        "Multiusuarios",
-        "videollamada"
+        "interconsultas"
     ]
 }

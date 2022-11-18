@@ -1,295 +1,258 @@
-        {{!-- Home --}}
-<div id="portrait" class="contenedor">
-        <header class="fijoArriba mainDiv" style="margin: 0% 0 0 0; position: absolute;" id="header">
-            <div class="flexlado" style="margin:auto; padding:auto;">
-                <div id="id1" style="margin: 1% 10% 0 0; position: relative;">
-                    <a  data-bs-toggle="modal" data-bs-target="#signin1" class="none" type="submit">
-                        <input style=" width:6rem; height:4rem; border-radius: 0.5rem;" type="image" src="/images/TBS-IT1.jpg"/>
-                    <a/>
+    <nav align="" style="min-width: 95%;z-index: 9999; background-color: transparent;position:absolute ;" id="navbar" class="navbar navbar-expand-lg navbar"  aria-label="Main navigation">
+        <div class="container-xxl">
+            <a style="margin: 0 0 0 0 ;" class="navbar-brand" href="#">
+                <img src="/images/TBS-IT1.jpg" alt="" data-bs-toggle="modal" data-bs-target="#signin1"  width="100" height="50">
+            </a>
+            <span style="" ></span>
+            <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation"></button>
+            <a style="margin: 0 -4% 0 0 ; font-size: 1.5rem;" class="btn  btn-danger" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Menu</a>
+            
+            {{!--Interior Menu --}}
+            <div class="offcanvas offcanvas-end"  style="background-color:rgb(207, 51, 51) ;" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                <div class="offcanvas-header">
+                    <h5 id="offcanvasRightLabel"></h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div id="id2" style="margin: 1% 0 0 80%; position:relative">
-                    <a href="#menu"><button class="btn btn-danger">Menu</button></a>
+                <div class="offcanvas-body">
+                    <ul class="links">
+                        <li class="">
+                            <a class="" aria-current="page" href="/">Home</a>
+                                <li><hr class="dropdown-divider"></li>
+                        </li>
+                        <li class="">
+                            <a class="" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Cotizar</a>
+                                <li><hr class="dropdown-divider"></li>
+                        </li>
+                        <li class="">
+                            <a class="" href="/#staffing"><strong>Staffing</strong></a>
+                                <li><hr class="dropdown-divider"></li>
+                        </li>
+                        <li class="">
+                            <a class="" href="/#SoftwareFactory"><strong>Software Factory</strong></a>
+                                <li><hr class="dropdown-divider"></li>
+                        </li>
+                            <li class="">
+                            <a class="" href="/Nosotros">Nosotros</a>
+                            <li><hr class="dropdown-divider"></li>
+                        </li>
+                        <li class="">
+                            <a class="" href="/#paises">Paises donde tenemos precensia</a>
+                            <li><hr class="dropdown-divider"></li>
+                        </li>
+                        <li class="">
+                            <a class="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"><strong>Unete a nosotros / se un Partner</strong> </a>
+                            <li><hr class="dropdown-divider"></li>
+                        </li>
+                        <li class="">
+                            <a class="" href="#footer">Contact</a>
+                            <li><hr class="dropdown-divider"></li>
+                        </li>
+                        
+                    </ul>
+                    
+                
                 </div>
             </div>
-            <div id="id3" style="margin: 2% 44%; position:absolute;" >
-                <button style="padding:0 1.5rem 0 1.5rem " type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class="alertaVerde">COTIZAR</button>
-            </div>
-        </header>
-        <!-- Nav -->
-        <nav style="position:absolute; z-index: 99999999999999; color:white" id="menu">
-            <ul class="links">
-				<li><a href="/">Home</a></li>
-				<li style="cursor: pointer;" ><a data-bs-toggle="modal" data-bs-target="#exampleModal">Cotizar</a></li>				
-                <li><a href="#one"><strong>Staffing</strong></a></li>
-                <li><a href="#two"><strong>Software Factory</strong></a></li>
-                <div hidden>
-                <hr>
-                <div class="dropdown" >
-                    <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-target="dropdown" aria-expanded="false">
-                        Areas de desarrollo
-                    </button>
-                    <ul style="background-color: rgb(248, 98, 11) ;" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item" href="webap.html">Web apps / Mobile / Web Design</a></li>
-                        <li><a class="dropdown-item" href="discovery.html">Descovery & Design Thinking</a></li>
-                        <li><a class="dropdown-item" href="IOT.html">I.O.T</a></li>
-                        <li><a class="dropdown-item" href="blockChain.html">Block Chain</a></li>
-                        <li><a class="dropdown-item" href="IA.html">A.I. / I.A. Bots</a></li>
-                        <li><a class="dropdown-item" href="BigData.html">Big Data</a></li>
-                        <li><a class="dropdown-item" href="gaming.html">Gaming</a></li>
-                        <li><a class="dropdown-item" href="QA.html">Q.A. analist & testing</a></li>
-                        <li><a class="dropdown-item" href="ciberSec.html">Ciber Security</a></li>
-                        <li><a class="dropdown-item" href="serverless.html">Clouding & Serverless</a></li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="dropdown" >
-                    <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-target="dropdown" aria-expanded="false">
-                        Industrias 
-                    </button>
-                    <ul style="background-color: rgb(248, 98, 11) ;" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item" href="webap.html">Fintech & Banking</a></li>
-                        <li><a class="dropdown-item" href="webap.html">Ingenieria & Mecatronica</a></li>
-                        <li><a class="dropdown-item" href="discovery.html">Retails & Distributions</a></li>
-                        <li><a class="dropdown-item" href="IOT.html"></a></li>
-                        <li><a class="dropdown-item" href="blockChain.html">Block Chain</a></li>
-                        <li><a class="dropdown-item" href="IA.html">Healt & Pharma</a></li>
-                        <li><a class="dropdown-item" href="BigData.html">B2B</a></li>						
-                    </ul>
-                </div>
-                <br>
-            </div> 
-					<li><a href="/Nosotros">Nosotros</a></li>
-					<li hidden><a href="elements.html">Valores / Mision</a></li>
-					<li><a href="#six">Paises donde tenemos precensia</a></li>
-					<li style="cursor: pointer;" ><a data-bs-toggle="modal" data-bs-target="#exampleModal1">Unete a Nosotros / Se un Partner</a></li>
-					<li hidden><a href="/Partner"></a></li>
-					<li><a href="#footer">Contacto</a></li>
-					<li hidden ><a href="#footer">Casos de exitos</a></li hidden>
-            </ul>
-        </nav>
-        <div class="mainDiv" style="font-size:1.2rem; padding: 0; margin: 0; text-align: justify;" >
-            {{!-- INICIO --}}
-            <section style="" id="banner" class="bg-img"  data-bg="fondoempresas.jpg">
-                <div align="center" style="position: absolute;" class="inner">
-                    <header>
-                    <h4>You are in...</h3> 
-                        <br>
-                        <h1 style=" font-family: lobster"> The Best Staff</h1>
-                    <h3>Staffing IT & Software Solutions</h3>
-                    </header>
-                </div>
-                    <a style="margin: auto; background-color:lightgreen;" href="#one" class="more">
-                        Learn More
-                    </a>
-            </section>
-            <!-- staffin & IT Solution -->
-            <section id="one" class="wrapper post bg-img" data-bg="fondoempresas5.jpg">
-                <div class="inner">
-                    <article style=""  class="box">
-                        <header style="margin:-2rem 0 0 0">
-                            <h2 style="color:white">Staffing IT Solutions</h2>
-                        </header>
-                        <br>
-                        <div style="text-align:justify; font-size:1.2rem; color:aliceblue" class="content">
-                            <p>
-                                Nuestro genoma se compone del mejor talento de la región con más de 500 partners y 100 mil técnicos & ingenieros en todo el mundo IT lo que nos permite abarcar con variadas estrategias y precisión el análisis y la fabricación de software de las más variadas áreas e industrias. Aprovechamos la experiencia y Know-How de cada uno de nuestros partners, logrando que la unión de todos sea exponencialmente superior a la fuerza individual de cada uno, por esto en cada desafío hacemos interconsultas y logramos perfeccionar cada estrategia y decisión que tomamos a la hora de analizar y fabricar el mejor y más adecuado software. 
-                                <br><br>
-                                Somos los mejores en lo nuestro debido a que cada uno de nuestros partners colabora con toda su excelsa experiencia en lo que sabe para qué así sea, puesto TBS-IT no somos una empresa... Somos más de 500 empresas en una sola trabajando al unisonó para usted bajo la responsabilidad de TBS-IT.
-                                <br><br>
-                                Nuestras posibilidades de contratación son tanto Onsite como Online o mix garantizándole la mejor zona alineada para la más eficiente y optima comunicación. 
-                                <br><br>
-                                Nos especializamos en todas las tecnologías y senoritys, diseño UX/UI, DevOps, Scrumm Master con metodologías agiles y modernas siendo los únicos en el mercado que ofrecemos un protocolo profesional de cinco pasos que garantizan tu seguridad a la hora de contratar personal IT con una curva de adaptación muy breve y sin incurrir en costos por personal no satisfactorio que incluyen garantías de calidad y satisfacción.
-                            </p>
-                        </div>
-                        <br>
-                        <footer style="margin-bottom: -4rem;">
-                            <a href="/Staffing" class="button alt">Saber Mas</a>
-                        </footer>
-                        <br>
-                        <a style="margin-right: -95%;" type="button" class="btn btn-outline-info" href="/"><span class="">Volver</span>
-                        </a>
-                    </article>
-                </div>
-                <a href="#two" style="background-color:lightgreen" class="more">Learn More</a>
-            </section>
-            <!-- Dev Soft -->
-            <section  id="two" class="wrapper post bg-img" data-bg="dev1.jpg">
-                <div style=" padding: 0.1% !important; " class="inner">
-                    <article style="margin-top:2%;height: 70%;" class="box">
-                        <header style="margin-top:-3%;margin-bottom: -2%;" >
-                            <h2 style="color:white">Desarrollo de Software.</h2>
-                        </header>
-                        <br>
-                        <div style="font-size: 1.2rem;text-align: left; color:aliceblue;" class="content">
-                            <p> <strong> Metodologías para la fabricación de software de calidad</strong>
-                                <br><br>
-                                En TBS usamos metodologías ágiles, tanto con nuestros clientes internos como externos para la correcta fabricación de Software con los más altos estándares de calidad. 
-                                <br>
-                                Construimos su proyecto de software mediante el concepto "Llave en mano o time & materials" según se considere el caso.
-                                <br>
-                                Conformamos equipos, células/squads cuyas dimensiones son directamente proporcionales al presupuesto, tiempos y los resultados buscados, compuestos por talentos en todos los señoritys con garantía de producción, que están certificados en todas las metodologías y tecnologías .
-                                <br><br>
-                                Como parte integral del desarrollo de nuestras soluciones tecnológicas, ponemos especial atención al uso de las correctas prácticas de programación para generar software legible, de calidad, escalable, rápido y eficiente. Somos los únicos del mercado que ofrecemos un sistema de garantía vitalicia por el software que hacemos.
-                            </p>
-                            <br>
-                            <div class="">
-                                <img class="" style="height:10rem; whidt:5rem;border-radius: 1rem;margin: -1% 0 0 37%;" src="images/certificados1.png" class="d-block w-100" alt="...">
-                            </div>
-                        </div>
-                        <br>
-                        <footer style="margin-bottom: -3%;">
-                            <a href="/SoftDev" class="button alt">Saber Mas</a>
-                        </footer>
-                        <a style="margin-right: -95%;" type="button" class="btn btn-outline-info" href="/"><span class="">Volver</span>
-                        </a>
-                    </article>
-                </div>
-                <a style="background-color:lightgreen" href="#three" class="more">Learn More</a>
-            </section>
-            <!-- tecnologias -->
-            <section id="three" class="wrapper post bg-img" data-bg="webpage.png">
-                <div class="inner">
-                    <article class="box">
-                        <header>
-                            <h2>Tecnologias</h2>
-                        </header>
-                        <div style="text-align: left; font-size: 1.3rem; color:aliceblue" class="content">
-                            <p>
-                                Estamos constantemente capacitándonos en las últimas propuestas tecnológicas del mercado IT. 
-                                <br><br>
-                                Nuestros talentos están altamente capacitados y certificados, algunos seniors con hasta más de 8 años de experiencia en cada una de sus diciplinas y dispuestos a hacer realidad hasta el más desafiante proyecto.
-                                En TBS-IT la excelencia es nuestra obligación profesional. IT.
-                            </p>
-                            <br>
-                        </div>
-                        <div style="margin-bottom: -2rem;" align="center">
-                            <img style="height:18rem; whidt:25rem; border-radius: 1rem; margin: ;" src="images/tecnos.png">
-                        </div>
-                        <footer hidden>
-                            <a href="generic.html" class="button alt">Learn More</a>
-                        </footer>
-                        <br>
-                        <a style="margin-right: -95%;" type="button" class="btn btn-outline-info" href="/"><span class="">Volver</span>
-                        </a>
-                    </article>
-                </div>
-                <a style="background-color:lightgreen" href="#four" class="more">Learn More</a>
-            </section>
-            <!-- areas de desarrollo-->
-            <section id="four" class="wrapper post bg-img" data-bg="lenguajes2.png">
-                <div class="inner">
-                    <article class="box">
-                        <header>
-                            <h2>Areas de Desarrollo</h2>
-                        </header>
-                        <div style="text-align: left; color:aliceblue" class="content">
-                            <p>
-                                En TBS tenemos el más amplio portfolio de industrias en el área de desarrollo de Software IT & staffing delivery. 
-                                <br>
-                                Esto se debe a que somos una compañía compuesta por muchas otras compañías especialistas en cada industria lo que nos da mucha experiencia y nos hace increíblemente económicos y efectivos en el mercado.
-                                                                <br>
-                                Esto nos hace un equipo de talentos que por mucho supera a cualquier empresa puesto el gen de nuestra fuerza radica en la unión de los años de experiencias individuales de cada empresa partner que nos compone, haciendo que el total de las fuerzas sea por mucho muy superior a las individualidades de cada partner que nos compone y a cada empresa competencia que existe.
-                                <br>
-                                <br>
-                                <strong> Áreas en que somos especialistas:</strong>
-                                <br>
-                                •	Web apps / Mobile / Web Design.
-                                <br>
-                                •	Descovery & Design Thinking.
-                                                                <br> 
-                                •	I.O.T.
-                                                                <br>
-                                •	Block Chain.
-                                                                <br>
-                                •	A.I. / I.A. Bots.
-                                                                <br>
-                                •	Big Data.
-                                                                <br>
-                                •	Gaming.
-                                                                <br>
-                                •	Q.A. analist & testing.
-                                                                <br>
-                                •	Ciber Security.
-                                                                <br>
-                                •	Clouding & Serverless.
-                            </p>
-                        </div>
-                        <footer hidden>
-                            <a href="generic.html" class="button alt">Learn More</a>
-                        </footer>
-                        <br>
-                        <a style="margin-right: -95%;" type="button" class="btn btn-outline-info" href="/"><span class="">Volver</span>
-                        </a>
-                    </article>	
-                </div>
-                <a href="#five" style="background-color:lightgreen" class="more">Next</a>
-            </section>
-            <!-- Industrias -->
-            <section id="five" class="wrapper post bg-img" data-bg="induIT2.webp">
-            <div class="inner">
-                <article class="box">
-                    <header>
-                        <h2>Industrias que desarrollamos</h2>
-                    </header>
-                    <div style="text-align: left; color:aliceblue" class="content">
-                        <br>
-                        <p>
-                            En TBS poseemos ampla experiencia en todas las industrias entre ellas:
-                            <br><br>
-                            •	Laboratorios y Farmacéuticas
-                                                        <br>
-                            •	Banca & Fintech
-                                                        <br>
-                            •	Industria en grl / automotriz / IOT
-                                                        <br>
-                            •	Retails, Distribuidoras, Transportista (traking de productos y móviles).
-                                                        <br>
-                            •	Ventas (forecast), CRM´s, Contable / Facturación & Administración
-                                                        <br>
-                            •	Block blockChain
-                            <br>
-                            <br>
-                            Entre muchas otras.
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- modal de cotizacion -->
 
-                        </p>
-                    </div>
-                    <footer hidden>
-                        <a href="generic.html" class="button alt">Learn More</a>
-                    </footer>
-                    <br>
-                        <a style="margin-right: -95%;" type="button" class="btn btn-outline-info" href="/"><span class="">Volver</span>
-                        </a>
-                </article>	
+    <!-- Home -->
+<section id="banner" class="bg-img"  data-bg="fondoempresas.jpg">
+    <div style="opacity: 1;" aligne="center" class="inner mb-5 py-1">
+        <header style="margin-top: 1rem;">
+            <h4>You are in...</h4> 
+            <br>
+            <div style="font-family: lobster; opacity: 1 !important;">
+                <h1 > The Best Staff</h1>
             </div>
-            <a href="#six" style="background-color:lightgreen" class="more">Learn More</a>
-            </section>
-            <!-- Paises donde tenemos precensia: -->
-            <section id="six" class="wrapper post bg-img" data-bg="Munconec.jpg">
-            <div class="inner">
-            <article class="box">
-                <header>
-                    <h2>Países done temenos presencia:</h2>
-                </header>
-                <div style="text-align: left; color:aliceblue" class="content flexlado">
-                <h3>
-                    <br>
-                    Montevideo - Uruguay   /    Bs. As. & Córdoba - Argentina <br>
-                    Miami - USA   /
-                    Madrid - España <br>
-                    Santiago - Chile /
-                    México - Mex DF <br>
-                    Bogotá - Colombia /
-                    Lima - Perú <br>
-                    UK - Londres  / Amsterdam - Paises Bajos
-                </h3>
+            <h3>Staffing IT & Software Solutions</h3>
+        </header>
+        <div style="margin-top:3rem ;" class="justify-content-center" >
+            <button class="alertaVerde btn-lg" style="padding: 1.5rem !important;"  data-bs-toggle="modal" data-bs-target="#exampleModal"><h4>Cotizar</h4></button>
+        </div>
+    </div>
+        <a style="margin: auto; background-color:lightgreen;" href="#staffing" class="more">
+            Learn More
+        </a>
+</section>
+{{!-- staffing --}}
+<section  class="staff d-flex align-items-center text-light py-0" id="staffing">
+        <div style="" class="container inner" >
+            <div style="" class="carpetaNegra row wrapper post d-flex align-items-center">
+                <div style="opacity:inherit !important;" class="col-lg-12 inner responsive" data-aos="fade-right">
+                    <h3>Staffing IT  Solutions </h3>
+                    <p class="py-0 text-start">
+                        Nuestro genoma se compone del mejor talento de la región con más de 500 partners y 50 mil programadores & ingenieros en todo el mundo IT lo que nos permite abarcar con variadas estrategias y precisión el análisis y la fabricación de software de las más variadas áreas e industrias. Aprovechamos la experiencia y Know-How de cada uno de nuestros partners, logrando que la unión de todos sea exponencialmente superior a la fuerza individual de cada uno, por esto en cada desafío hacemos interconsultas y logramos perfeccionar cada estrategia y decisión que tomamos junto a usted y fabricar el mejor software.
+                    </p>
+                    <p class="py-0 text-start">
+                        Nos especializamos en todas las tecnologías y senoritys, diseño UX/UI, DevOps, Scrumm Master con metodologías agiles y modernas siendo los únicos en el mercado que ofrecemos un protocolo profesional de cinco pasos que garantizan tu seguridad a la hora de contratar personal IT con una curva de adaptación muy breve y sin incurrir en costos por personal no satisfactorio que incluyen garantías de calidad y satisfacción. 
+                        <br>
+                        Ofrecemos posibilidades de contratación son tanto Onsite como Online o mix garantizándole la mejor zona alineada para la más eficiente y optima comunicación.
+                    </p>
+                    <center>
+                        <div style="opacity:0.999 !important;margin-top: 2rem;" class="col-lg-12 text-center py-4 py-sm-0" data-aos="fade-down"> 
+                            <img class="img-fluid" style="border-radius: 1rem; width: 40%;" src="/images/staffing2.jpg" alt="tecno" >
+                        </div>
+                    <div class="my-3">
+                        <a class="btn btn-outline-secondary btn-lg" href="/Staffing"  >Saber Más</a>
+                    </div>
+                    </center>
+                </div>
+                <a href="#SoftwareFactory" style="background-color:lightgreen" class="more">Learn More</a>
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+</section> <!-- end of about -->
+<!-- Dev Soft -->
+<section class="dev wrapper post d-flex align-items-center text-light py-5"  id="SoftwareFactory">
+    <div class="container inner" >
+        <div class="carpetaNegra row d-flex align-items-center">
+            <div class="col-lg-12" data-aos="fade-right">
+                
+                <h2> Desarrollo de Software.</h2>
+                <p class="py-2 text-start">
+                    Desarrollo de Software.
+                    Metodologías para la fabricación de software de calidad.
+                    En TBS usamos metodologías ágiles, tanto con nuestros clientes internos como externos para la correcta fabricación de Software con los más altos estándares de calidad.
+                    Construimos su proyecto de software mediante el concepto "Llave en mano o time & materials" según se considere el caso.
+                    Conformamos equipos, células/squads cuyas dimensiones son directamente proporcionales al presupuesto, tiempos y los resultados buscados, compuestos por talentos en todos los señoritys con garantía de producción, que están certificados en todas las metodologías y tecnologías.
+                    Como parte integral del desarrollo de nuestras soluciones tecnológicas, ponemos especial atención al uso de las correctas prácticas de programación para generar software legible, de calidad, escalable, rápido y eficiente. Somos los únicos del mercado que ofrecemos un sistema de garantía vitalicia por el software que hacemos.
+                </p>
+            </div>
+            <div style="margin-top: 2rem;" class="col-lg-12 text-center py-4 py-sm-0" data-aos="fade-down"> 
+                <img class="img-fluid" style="border-radius: 1rem; width: 40%;" src="/images/certificados1.png" alt="tecno" >
+            </div>
+                <center>
+                <div class="my-3">
+                    <a class="btn btn-outline-secondary btn-lg" href="/SoftDev">Saber Más</a>
+                </div>
+                
+                </center>
+            
+        </div> <!-- end of row -->
+        
+    </div> <!-- end of container -->
+        <a style="background-color:lightgreen" href="#tecnologia" class="more">Learn More</a>
+</section> <!-- end of about -->
+{{!-- Tecnologias --}}
+<section class="tecnologia wrapper post d-flex align-items-center py-5" id="tecnologia" >
+    <div class="container inner text-light" >
+        <div class="carpetaNegra row d-flex align-items-center">
+            <div class="col-lg-12" data-aos="fade-right">
+                
+                <h2 class="py-2 d-flex justify-content-center">Tecnologias.</h2>
+                    <p class="text-start">
+                    Estamos constantemente capacitándonos en las últimas propuestas tecnológicas del mercado IT.
+                    Nuestros talentos están altamente capacitados y certificados, algunos seniors con hasta más de 8 años de experiencia en cada una de sus diciplinas y dispuestos a hacer realidad hasta el más desafiante proyecto. En TBS-IT la excelencia es nuestra obligación profesional. IT.
+                    </p>
+            </div>
+            <center>
+                <br>
+            <div class="col-lg-6 text-center py-4 py-sm-0" data-aos="fade-down">
+                <img class="img-fluid" style="border-radius: 1rem;" src="/images/tecnos.png" alt="tecno" >
+            </div>
+            </center>
+                <center>
+                
+                </center>
+    </div> <!-- end of row -->
+</div> <!-- end of container -->
+    <a style="background-color:lightgreen" href="#tecno" class="more">Learn More</a>
+</section> <!-- end of work -->
+<!-- Areas -->
+<section class="areas wrapper post d-flex align-items-center py-5" id="tecno" >
+    <div class="container inner text-light">
+        <div class="carpetaNegra row d-flex align-items-center" id="areas">
+
+            
+                <div class="col-xl-12 text-lg-start ">
+                        <h2 class=" d-flex justify-content-center"> Areas de desarrollo.</h2>
+                    <p>Consulted he eagerness unfeeling deficient existence of. Calling nothing end fertile for venture way boy. Esteem spirit temper too say adieus who tenemos el más amplio portfolio de industrias en el área de desarrollo de Software IT & staffing delivery.
+                    Esto se debe a que somos una compañía compuesta por muchas otras compañías especialistas en cada industria lo que nos da mucha experiencia y nos hace increíblemente económicos y efectivos en el mercado.
+                    Esto nos hace un equipo de talentos que por mucho supera a cualquier empresa puesto el gen de nuestra fuerza radica en la unión de los años de experiencias individuales de cada empresa partner que nos compone, haciendo que el total de las fuerzas sea por mucho muy superior a las individualidades de cada partner que nos compone y a cada empresa competencia que existe.
+                    </p>
+                    <p class="py-2">
+                        Áreas en que somos especialistas:
+                    </p>
+                        <p>• Web apps / Mobile / Web Design.</p> 
+                        <p>• Descovery & Design Thinking.</p> 
+                        <p>• I.O.T.</p>
+                        <p>• Block Chain.</p> 
+                        <P>• A.I. / I.A. Bots.</P> 
+                        <p>• Big Data.</p> 
+                        <p>• Gaming.</p> 
+                        <p>• Q.A. analist & testing.</p>
+                        <p> • Ciber Security.</p>
+                        <p>• Clouding & Serverless.</p>
+                    
+                    
+                </div> <!-- end of col -->
+            
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic-1 -->
+    <a style="background-color:lightgreen" href="#industrias" class="more">Learn More</a>
+    <!-- end of basic -->
+</section>
+{{!-- Industrias --}}
+<section class="dev2 wrapper post d-flex align-items-center py-5" id="industrias" >
+<div class="container inner text-light" >
+    <div class="carpetaNegra row d-flex align-items-center">
+        <div class="col-lg-12" data-aos="fade-right">
+                <h2 class="d-flex justify-content-center"> Industrias que desarrollamos</h2>
+            <h5 class="py-2 text-start">
+                En TBS poseemos amplia experiencia en todas las industrias entre ellas:
+            </h5>
+            <div class="row d-flex align-items-center ">
+                <div>
+                    <p align="left">
+                        •	Laboratorios y Farmacéuticas
+                                                    <br>
+                        •	Banca & Fintech
+                                                    <br>
+                        •	Industria en grl / automotriz / IOT
+                                                    <br>
+                        •	Retails, Distribuidoras, Transportista (traking de productos y móviles).
+                                                    <br>
+                        •	Ventas (forecast), CRM´s, Contable / Facturación & Administración
+                                                    <br>
+                        •	Block blockChain
+                        <br>
+                        <br>
+                        Entre muchas otras.
+                    </p>
                 </div>
                 <br>
-                <button type="button" class="btn btn-outline-info">				
-                <a href="/"><span class="">Volver</span></a>
-                </button>
-            </article>	
+                <div style="position: absolute; margin-left: 1rem;opacity:0.9 !important ;" hidden>
+                    <img class="img-fluid" style="border-radius: 1rem;" src="/images/indu.jpg" alt="tecno" >
+                </div>
             </div>
-            </section>
         </div>
-</div>
+        
+            
+</div> <!-- end of row -->
+</div> <!-- end of container -->
+<a style="background-color:lightgreen" href="#paises" class="more">Learn More</a>
+</section> <!-- end of work -->
+{{!-- paises --}}
+<section class="paises wrapper post  d-flex align-items-center py-5" id="paises" >
+<div class="container inner text-light" >
+    <div class="carpetaNegra row d-flex align-items-center">
+        <div class="col-lg-12" data-aos="fade-right">
+                <div class="text-center text-lg-center py-4 pt-lg-0">
+            <h2 class="py-2">Paises donde tenemos precensia.  </h2>
+                <p class="para-light">
+                <p> Montevideo - Uruguay / Bs. As. & Córdoba - Argentina</p>
+                <p>Miami - USA / Madrid - España</p> 
+                <p>Santiago - Chile / México - Mex DF</p> 
+                <p>Bogotá - Colombia / Lima - Perú</p> 
+                <p>UK - Londres / Amsterdam - Paises Bajos</p> 
+                </p>
+                </div>
+        </div>
+        
+</div> <!-- end of row -->
+</div> <!-- end of container -->
+<a style="background-color:lightgreen" href="#footer" class="more">Learn More</a>
+</section> <!-- end of work -->
 

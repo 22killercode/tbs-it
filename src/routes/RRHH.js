@@ -38,7 +38,7 @@ router.post('/dataTalento',async (req, res) => {
     const {Nombre, Apellido, NumCel, Email, senority, nivelIngles, MonedaCobro, PaisResi, CiudadResi, Empresa, ModTrab, linke,tecnoBackend, tecnoFrontend} = req.body;
     const {Archivo} = req.files;
     const nombreAdjunto = []
-    console.log("que llega",req.body,  req.files)
+    console.log("que llega data Talentoooooooooooooooooooooo",req.body,  req.files)
     if(!req.files || Object.keys(req.files).length === 0  ) { 
         res.status(400).json({msg:'No se subio ningun archivo'});
         req.flash('error', 'Debe subir un CV con extension .PDF o .Word')

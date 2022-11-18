@@ -48,9 +48,10 @@ const precioIOS            = +12
 //idioma
 const idioma               = +3.5
 //Precios software factory
+
 //Bases
-const paginaWeb      = 500
-const appiRestFull   = 7000
+const paginaWeb      = 300
+const appiRestFull   = 5000
 const apiRestFullIOT = 20000
 // Modulos
 const ciberSeg1       = 10000
@@ -59,6 +60,8 @@ const clouding1       = 5000
 const tracking1       = 7000
 const pasarelaPagos1  = 5000
 const Estadisticas1   = 5000
+
+
 //
 const setMinEraser = 1
 
@@ -1489,7 +1492,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
 });
 
 //Ruta para agendar la entrevista antes de enviar coti
-router.post('/calculandoCotizacion',[validador1],  async (req, res) => {
+router.post('/calculandoCotizacion', [validador1],  async (req, res) => {
     const {Email,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal} = req.body
     //Genera Token de seguridad en BD 
     const token = shortid.generate()
@@ -1816,7 +1819,7 @@ res.render("partials/5finCoti",{Nombre})
 //*******************COTIZACION DE SOFTWARE****************************************************** */
 
 //Ruta para cotizar software
-router.get('/cotizarSoftware', async (req, res) => {
+router.post('/cotizarSoftware',[validador1], async (req, res) => {
         //Genera Token de seguridad en BD
         const token = shortid.generate()
         const guardarToken = new Tokens ({ token })
@@ -1824,13 +1827,13 @@ router.get('/cotizarSoftware', async (req, res) => {
         res.render('partials/softFactory/1SF',{token})
         // revisar si hay aulgun token sin usar y lo borra
         const cheqVencimiento = await Tokens.find();
-        console.log("cuantos token encontro",cheqVencimiento )
+//        console.log("cuantos token encontro",cheqVencimiento )
         const cheqTime        = new Date()
         for (const a1 of cheqVencimiento) {
             const tiempo       = a1.date
             const difDtiempo   = (cheqTime - tiempo)
             const difTiempoMins = (parseInt(difDtiempo) / 1000 / 60 / 60 )
-            console.log("cuanta diferencia de tiempo hay",difTiempoMins )
+  //          console.log("cuanta diferencia de tiempo hay",difTiempoMins )
             if (difTiempoMins >= setMinEraser) {
                 const _id = a1._id
                 await Tokens.findByIdAndDelete(_id)
@@ -1840,13 +1843,13 @@ router.get('/cotizarSoftware', async (req, res) => {
 });
 
 //Ruta para cotizar software
-router.post('/dataQuote', [validador1], async (req, res) => {
+router.get('/dataQuote',  async (req, res) => {
     const token = shortid.generate()
     const guardarToken = new Tokens ({ token })
     await guardarToken.save()
     const {} = req.body
     const data = req.body
-    //console.log("que trae a cotizando soft", data)
+    console.log("que trae a cotizando soft", data)
     res.render('partials/softFactory/2SF', {data,token})
 });
 
@@ -1865,6 +1868,7 @@ router.post('/agendarEntrevista', [validador1], async (req, res) => {
         res.render("partials/agendas/agendaPW",{Nombre, data, token})
     } else {
         if (appirestFull) {
+            console.log("que hay en el req body / appirest", req.body);
             res.render("partials/agendas/agendaAPPIREST",{Nombre, data, token})
         } else {
             if (IOT) {
@@ -1889,7 +1893,7 @@ router.post('/EnviarCotizacionPW',[validador1], async (req, res) => {
     const guardarToken = new Tokens ({ token })
     await guardarToken.save()
     const data =  req.body
-    //console.log("que llega a calculo /EnviarCotizacionPW",data)
+    console.log("que llega a calculo /EnviarCotizacionPW",data)
     const puto = []
     if (Moneda == "Pesos Argentinos") {
         const precio = (paginaWeb * PrecioDolar)
@@ -1899,6 +1903,7 @@ router.post('/EnviarCotizacionPW',[validador1], async (req, res) => {
         puto.push(precio)
     }
     const suma = puto[0] 
+    console.log("cuanto vale una pagina eb en argentos?", suma)
     res.render('partials/cotisSoftFactory/cotipagWeb', {suma, data, token});
     // Guarda en BD
     const PW = true
@@ -2067,7 +2072,7 @@ router.post('/EnviarCotizacionAPPIREST',[validador1], async (req, res) => {
     const token = shortid.generate()
     const guardarToken = new Tokens ({ token })
     await guardarToken.save()
-    //console.log("que llega a calculo /EnviarCotizacion APPIREST",data,IOT)
+   console.log("que llega a calculo /EnviarCotizacion APPIREST",data,IOT)
     const sumar   = []
     const baseAR  = appiRestFull
     const baseIOT = apiRestFullIOT

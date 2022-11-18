@@ -1,147 +1,120 @@
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar bg-danger"  aria-label="Main navigation"  >
+    <div style="margin:-2rem 1rem -0.5rem 1rem !important;" class="container-xxl">
+        <a class="navbar-brand" href="/"> <strong> TBS Staffing S.G.N.S.</strong></a>
+        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+        </button>
+        <a class="btn btn-danger" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-list" style="font-size: 1.5em;"></i></a>
+        <div class="offcanvas offcanvas-end" style="background-color:rgb(224, 55, 55) ;" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Menu</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body ">
+                <ul class="links">
+                    <li class="">
+                        <a class="" aria-current="page" href="/">Home</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Cotizar</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" href="/Staffing">Staffing</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" href="/SoftDev">Software Factory</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" href="/Nosotros">Nosotros</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" href="/#paises">Paises donde tenemos precensia</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1">Unete a nosotros / se un Partner </a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" href="#footer">Contact</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="navbar-brand" href="#">
+                            <img src="/images/TBS-IT1.jpg" alt="" data-bs-toggle="modal" data-bs-target="#signin1"  width="210" height="180">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div> <!-- end of container -->
+</nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- modal de cotizacion -->
 
-<input type="image" src="images/fondoempresas.jpg" alt="" style="margin: 0; position: absolute; width: 100%; height: auto;">
-<!-- Header -->
-<header id="header" class="alt">
-	<div class="logo"><a href="/">TBS Appi Rest full Quote<span></span></a></div>
-	<a href="#menu"><span>Menu</span></a>
-</header>
-<!-- Nav -->
-<nav style="position:absolute; z-index: 99999999999999; color:white" id="menu">
-	<ul class="links">
-		<li><a href="/">Home</a></li>
-		<li style="cursor: pointer;" ><a data-bs-toggle="modal" data-bs-target="#exampleModal">Cotizar</a></li>				
-		<li><a href="/Staffing"><strong>Staffing</strong></a></li>
-		<li><a href="/SoftDev"><strong>Software Factory</strong></a></li>
-			<div class="dropdown" hidden >
-				<button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-target="dropdown" aria-expanded="false">
-					Areas de desarrollo
-				</button>
-				<ul style="background-color: rgb(248, 98, 11) ;" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-					<li><a class="dropdown-item" href="webap.html">Web apps / Mobile / Web Design</a></li>
-					<li><a class="dropdown-item" href="discovery.html">Discovery & Design Thinking</a></li>
-					<li><a class="dropdown-item" href="IOT.html">I.O.T</a></li>
-					<li><a class="dropdown-item" href="blockChain.html">Block Chain</a></li>
-					<li><a class="dropdown-item" href="IA.html">A.I. / I.A. Bots</a></li>
-					<li><a class="dropdown-item" href="BigData.html">Big Data</a></li>
-					<li><a class="dropdown-item" href="gaming.html">Gaming</a></li>
-					<li><a class="dropdown-item" href="QA.html">Q.A. analist & testing</a></li>
-					<li><a class="dropdown-item" href="ciberSec.html">Ciber Security</a></li>
-					<li><a class="dropdown-item" href="serverless.html">Clouding & Serverless</a></li>
-				</ul>
-			</div>
-			<div class="dropdown" hidden>
-				<button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-target="dropdown" aria-expanded="false">
-					Industrias 
-				</button>
-				<ul style="background-color: rgb(248, 98, 11) ;" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-					<li><a class="dropdown-item" href="webap.html">Fintech & Banking</a></li>
-					<li><a class="dropdown-item" href="webap.html">Ingeniería & Mecatronica</a></li>
-					<li><a class="dropdown-item" href="discovery.html">Retails & Distributions</a></li>
-					<li><a class="dropdown-item" href="IOT.html"></a></li>
-					<li><a class="dropdown-item" href="blockChain.html">Block Chain</a></li>
-					<li><a class="dropdown-item" href="IA.html">Healt & Pharma</a></li>
-					<li><a class="dropdown-item" href="BigData.html">B2B</a></li>						
-				</ul>
-			</div>
-		<li><a href="/Nosotros">Nosotros</a></li>
-		<li><a href="/#five">Industrias</a></li>		
-		<li><a href="/#six">Países donde tenemos presencia</a></li>
-		<li style="cursor: pointer;" ><a data-bs-toggle="modal" data-bs-target="#exampleModal1">Únete a Nosotros / Se un Partner</a></li>
-		<li><a href="#footer">Contacto</a></li>
-		<br>
-		<a  data-bs-toggle="modal" data-bs-target="#signin1" class="none" type="submit">
-			<input style=" width:14rem; height:10rem; border-radius: 0.5rem;" type="image" src="/images/TBS-IT1.jpg"/>
-		</a>
-	</ul>
-</nav>
-<section align="center" style="margin: -2.5% 0 -5.5% 0;" id="post" class="wrapper bg-img" data-bg="">
-	<div style="" class="inner">
-		<article style="width: 130%; margin: auto; padding:1.5rem" class="box">
-			<header style="margin-top:-2.rem" class="center">
-				<h1>Cotización de Staffing IT</h2>
-			</header>
-			<br>
-			<div style=" margin-bottom: 5rem"  class="">
-				<div style="text-align: center; margin:0 0 0 10rem; height: auto; width: 55rem; font-size: 1.5rem;">
-					<h2>Responde esta consulta y te enviaremos tu cotización</h3>
-						<h4>	
-							¿Cuando nuestro ejecutivo de cuentas puede ponerse en contacto?.
-						</h1>
-						<br>
-					<form action="/EnviarCotizacion/CustomSoft" method="post" style="margin-left: -20%; color: aliceblue;" >
-						<div class="flexlado" >
-							<div style="margin: auto;" class="form-floating">
-									<input name="fechaContact" style="width: 22rem; height: 5rem;color: black; background-color: gray;" type="datetime-local" class="form-control" id="floatingInput77" placeholder=" " required>
-									<label style="color: black;" for="floatingInput77">Fecha y Hora</label>
-							</div>
-							{{!-- zoom & google meet --}}
-							<div class="form-floating">
-								<input autocomplete="off" style="width: 22rem; height: 5rem;color: black; background-color: gray;" list="idioma1" type="text" class="form-control" id="Idioma22" placeholder=" " name="tipoCont" required>
-								<label for="Idioma22">Tipo de contacto</label>
-								<datalist id="idioma1">
-									<select name="" >
-										<option value="Zoom">Zoom</option>
-										<option value="GoogleMeet">GoogleMeet</option>
-									</select>
-								</datalist>
-							</div>
-						</div>
-						<br>
-						<div style="margin-left: 17%;color:aliceblue; opacity: 0.9;">
-							<textarea style=" background-color: gray" placeholder="Observaciones" name="Obs" id="" cols="10" rows="5"></textarea>
-							<p>Completa todos los campos</p>
-						</div>		
-									<input name="fullStack1"    value="{{data.fullStack1}}"    hidden>
-									<input name="Email"         value="{{data.Email}}"         hidden>
-									<input name="Nombre"        value="{{data.Nombre}}"        hidden>
-									<input name="Apellido"      value="{{data.Apellido}}"      hidden>
-									<input name="Ciudad"        value="{{data.Ciudad}}"        hidden>
-									<input name="NumCel"        value="{{data.NumCel}}"        hidden>
-									<input name="Empresa"       value="{{data.Empresa}}"       hidden>
-									<input name="PagWeb"        value="{{data.PagWeb}}"        hidden>
-									<input name="Moneda"        value="{{data.Moneda}}"        hidden>
-									<input name="ID"            value="{{data.ID}}"            hidden>
-									<input name="_id"           value="{{data._id}}"           hidden>
-									<input name="PWA"           value="{{data.PWA}}"           hidden>
-									<input name="Estadisticas"  value="{{data.Estadisticas}}"  hidden>
-									<input name="pasarelaPagos" value="{{data.pasarelaPagos}}" hidden>
-									<input name="traking"       value="{{data.traking}}"       hidden>
-									<input name="clouding"      value="{{data.clouding}}"      hidden>
-									<input name="IOT"           value="true"      hidden>
-									<input type="text" name="token" value="{{token}}" hidden>
-								<button style="margin-left: 18%; margin-bottom: -25%;" type="submit" class="alertaVerde" >Ver Cotización</button>
-					</form>
-					{{#if SD}}
-						<form action="/cotizarSoftware" method="get">
-							<button style="font-size: 1rem; padding: 0.5rem; margin: 1rem;" class="alerta label" type="submit">Volver</button>
-						</form>
-					{{else}}
-						{{!-- Vuelve a cotizando con los mismos datos --}}
-						<form action="/cotizandoIT" method="post">
-									<div>
-										<input value="{{fullStack1}}"        name="fullStack1"        hidden>
-										<input value="{{Email}}"             name="Email"             hidden>
-										<input value="{{Nombre}}"            name="Nombre"            hidden>
-										<input value="{{Apellido}}"          name="Apellido"          hidden>
-										<input value="{{Ciudad}}"            name="Ciudad"            hidden>
-										<input value="{{NumCel}}"            name="NumCel"            hidden>
-										<input value="{{Empresa}}"           name="Empresa"           hidden>
-										<input value="{{PagWeb}}"            name="PagWeb"            hidden>
-										<input value="{{Moneda}}"            name="Moneda"            hidden>
-										<input value="{{ID}}"                name="ID"                hidden>
-										<input value="{{costoHoraPromedio}}" name="costoHoraPromedio" hidden>
-										<input value="{{costoFinal}}"        name="costoFinal"        hidden>
-										<input value="{{totalHoras}}"        name="totalHoras"        hidden>
-										<input value="{{cantTal}}"           name="cantTal"           hidden>
-										<input value="{{talents}}"           name="talents"           hidden>
-										<input value="{{pesosArg}}"          name="pesosArg"          hidden>
-									</div>
-									<button style="font-size: 1rem; padding: 0.5rem; margin: 1rem;" class="alerta label" type="submit">Volver</button>
-						</form>
-					{{/if}}
-				</div>
-			</div>
-		</article>
-	</div>
+
+
+<section class="home2 py-5 d-flex align-items-center">
+  <div class="container  py-5 text-light" >
+    <div align="center" class="card py-4" style="border-radius: 1rem; background-color: rgb(38, 36, 36); opacity: 0.995;" >
+      <div class="card-body">
+        <div class="card-title text-center">
+          <h4>Cotización de pagina WEB</h4>
+          <p>{{Nombre}}, responde esta consulta y te enviaremos tu cotización.</p>
+          <br>
+          <p>	
+            ¿Cuando nuestro ejecutivo de cuentas puede ponerse en contacto?.
+          </p>
+        </div>
+      <br>
+      <form action="/EnviarCotizacion/CustomSoft" method="post" style="">
+      <div class="row g-2">
+        <div class="col-md">
+            <div class="form-floating">
+              <input name="fechaContact" style="color: black; background-color: gray;" type="datetime-local" class="form-control" id="floatingInput77" placeholder=" " required>
+            </div>
+        </div>
+				{{!-- zoom & google meet --}}
+          <div class="col-md">
+                <div class="form-floating">
+                  <input autocomplete="off" style="color: black; background-color: gray;" list="idioma1" type="text" class="form-control" id="Idioma22" placeholder=" " name="tipoCont" required>
+                  <label for="Idioma22">Tipo de contacto</label>
+                  <datalist id="idioma1">
+                    <select name="" >
+                      <option value="Zoom">Zoom</option>
+                      <option value="GoogleMeet">GoogleMeet</option>
+                    </select>
+                  </datalist>
+                </div>
+          </div>
+          <textarea style=" background-color: gray" placeholder="Observaciones" name="Obs" id="" cols="10" rows="5"></textarea>
+          <p >Completa todos los campos</p>
+      </div>
+      <div>
+        <input value="{{fullStack1}}"    name="fullStack1"        hidden>
+        <input value="{{data.Email}}"    name="Email"             hidden>
+        <input value="{{data.Nombre}}"   name="Nombre"            hidden>
+        <input value="{{data.Apellido}}" name="Apellido"          hidden>
+        <input value="{{data.Ciudad}}"   name="Ciudad"            hidden>
+        <input value="{{data.NumCel}}"   name="NumCel"            hidden>
+        <input value="{{data.Empresa}}"  name="Empresa"           hidden>
+        <input value="{{data.PagWeb}}"   name="PagWeb"            hidden>
+        <input value="{{data.Moneda}}"   name="Moneda"            hidden>
+        <input value="{{data.ID}}"       name="ID"                hidden>
+        <input value="{{_id}}"           name="_id"               hidden>
+      </div>
+          <input type="text" name="token" value="{{token}}" hidden>
+        <button style="margin-left: 18%; margin-bottom: -25%;" type="submit" class="alertaVerde" >Ver Cotización</button>
+      </form>
+        <form action="/cotizarSoftware" method="get" hidden>
+          <button  class="alerta label" type="submit">Volver</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </section>
 

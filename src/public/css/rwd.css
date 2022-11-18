@@ -102,7 +102,9 @@
 @media screen and (max-width: 1344px) {
     body{
         width: 100% !important;
-        overflow: hidden !important;
+        overflow-x: hidden !important;
+        /* importante! overflow <- sin la x hace que la pagina quede estatica y el escroll del mause
+        no pueda moverse, esto en dispositivos moviles */
     }
         .contenedor{
             width: 100% !important;

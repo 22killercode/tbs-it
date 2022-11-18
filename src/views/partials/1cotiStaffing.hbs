@@ -1,182 +1,206 @@
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar bg-danger"  aria-label="Main navigation"  >
+    <div style="margin:-2rem 1rem -0.5rem 1rem !important;" class="container-xxl">
+        <a class="navbar-brand" href="/"> <strong> TBS Staffing S.G.N.S.</strong></a>
+        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+        </button>
+        <a class="btn btn-danger" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-list" style="font-size: 1.5em;"></i></a>
+        <div class="offcanvas offcanvas-end" style="background-color:rgb(224, 55, 55) ;" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Menu</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body ">
+                <ul class="links">
+                    <li class="">
+                        <a class="" aria-current="page" href="/">Home</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Cotizar</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" href="/Staffing">Staffing</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" href="/SoftDev">Software Factory</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" href="/Nosotros">Nosotros</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" href="/#paises">Paises donde tenemos precensia</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1">Unete a nosotros / se un Partner </a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="" href="#footer">Contact</a>
+                        <li><hr class="dropdown-divider"></li>
+                    </li>
+                    <li class="">
+                        <a class="navbar-brand" href="#">
+                            <img src="/images/TBS-IT1.jpg" alt="" data-bs-toggle="modal" data-bs-target="#signin1"  width="210" height="180">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div> <!-- end of container -->
+</nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+    <!-- modal de cotizacion -->
+ 
 
-<input type="image" src="images/fondoempresas.jpg" alt="" style="margin: 0; position: absolute; width: 100%; height: 120%;">
-<!-- Header -->
-<header id="header" class="alt">
-	<div class="logo"><a href="/">TBS Staffing IT Quote<span></span></a></div>
-	<a href="#menu"><span>Menu</span></a>
-</header>
-<!-- Nav -->
-<nav style="position:absolute; z-index: 99999999999999; color:white" id="menu">
-	<ul class="links">
-		<li><a href="/">Home</a></li>
-		<li style="cursor: pointer;" ><a data-bs-toggle="modal" data-bs-target="#exampleModal">Cotizar</a></li>				
-		<li><a href="/Staffing"><strong>Staffing</strong></a></li>
-		<li><a href="/SoftDev"><strong>Software Factory</strong></a></li>
-			<div class="dropdown" hidden >
-				<button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-target="dropdown" aria-expanded="false">
-					Areas de desarrollo
-				</button>
-				<ul style="background-color: rgb(248, 98, 11) ;" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-					<li><a class="dropdown-item" href="webap.html">Web apps / Mobile / Web Design</a></li>
-					<li><a class="dropdown-item" href="discovery.html">Discovery & Design Thinking</a></li>
-					<li><a class="dropdown-item" href="IOT.html">I.O.T</a></li>
-					<li><a class="dropdown-item" href="blockChain.html">Block Chain</a></li>
-					<li><a class="dropdown-item" href="IA.html">A.I. / I.A. Bots</a></li>
-					<li><a class="dropdown-item" href="BigData.html">Big Data</a></li>
-					<li><a class="dropdown-item" href="gaming.html">Gaming</a></li>
-					<li><a class="dropdown-item" href="QA.html">Q.A. analist & testing</a></li>
-					<li><a class="dropdown-item" href="ciberSec.html">Ciber Security</a></li>
-					<li><a class="dropdown-item" href="serverless.html">Clouding & Serverless</a></li>
-				</ul>
-			</div>
-			<div class="dropdown" hidden>
-				<button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-target="dropdown" aria-expanded="false">
-					Industrias 
-				</button>
-				<ul style="background-color: rgb(248, 98, 11) ;" class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-					<li><a class="dropdown-item" href="webap.html">Fintech & Banking</a></li>
-					<li><a class="dropdown-item" href="webap.html">Ingeniería & Mecatronica</a></li>
-					<li><a class="dropdown-item" href="discovery.html">Retails & Distributions</a></li>
-					<li><a class="dropdown-item" href="IOT.html"></a></li>
-					<li><a class="dropdown-item" href="blockChain.html">Block Chain</a></li>
-					<li><a class="dropdown-item" href="IA.html">Healt & Pharma</a></li>
-					<li><a class="dropdown-item" href="BigData.html">B2B</a></li>						
-				</ul>
-			</div>
-		<li><a href="/Nosotros">Nosotros</a></li>
-		<li><a href="/#five">Industrias</a></li>		
-		<li><a href="/#six">Países donde tenemos presencia</a></li>
-		<li style="cursor: pointer;" ><a data-bs-toggle="modal" data-bs-target="#exampleModal1">Únete a Nosotros / Se un Partner</a></li>
-		<li><a href="#footer">Contacto</a></li>
-		<br>
-		<a  data-bs-toggle="modal" data-bs-target="#signin1" class="none" type="submit">
-			<input style=" width:14rem; height:10rem; border-radius: 0.5rem;" type="image" src="/images/TBS-IT1.jpg"/>
-		</a>
-	</ul>
-</nav>
-<div style="margin: -5% 5% 0 5% ;color: black ;" >
-	<section style="margin:0.5rem 0 0 0rem;" id="post" class="wrapper bg-img" data-bg="">
-		<div style="" class="inner">
-			<article style="width: 130%; margin:0; padding:1.5rem" class="box">
-				<header style="margin-top:-2.rem" class="center">
-					<h1>Cotización de Staffing IT</h2> 
-				</header>
-				<br>
-				<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-					<div style="" class="carousel-inner">
-						<div  class="carousel-item active" data-bs-interval="20000">
-							<div style=" margin-bottom: 5rem"  class="">
-								<div style="text-align: center; margin:0 0 0 10rem; height: 25rem; width: 55rem; font-size: 1.5rem;">
-									<h2>Vamos a cotizar tu equipo de staffing IT</h3>
-										<h4>	
-											Para comenzar necesitamos unos breves datos.
-											<br>
-											Recibirás un email con una pre cotización formal con valores base para comenzar una negociación con nuestro ejecutivo de cuentas.
-										</h1> 
-										<br>
-									<div style="color: aliceblue;margin:0 0 0 0rem;">
-										<form action="/staffingData" method="post">
-										<div class="flexlado" >
-											<div style="margin: auto;" class="form-floating">
-												<input name="Nombre" style="width: 22rem; height: 5rem;color: black; background-color: gray;" type="text" class="form-control" id="floatingInput77" placeholder=" " required>
-												<label style="color: black;" for="floatingInput77">Nombre</label>
-											</div>
-											<div style="margin: auto;" class="form-floating">
-												<input name="Apellido" style="color: aliceblue;width: 22rem;height: 5rem; background-color: gray;" type="text" class="form-control" id="floatingInput11" placeholder=" " required>
-												<label style="color: black;" for="floatingInput11">Apellido</label>
-											</div>
-										</div>
-										<br>
-										<div class="flexlado" >
-											<div style="margin: auto;" class="form-floating">
-												<input name="NumCel" style="color: aliceblue; width: 22rem;height: 5rem;background-color: gray;" type="number" class="form-control" id="floatingInput222" placeholder=" " required>
-												<label style="color: black;" for="floatingInput222">Numero Cel.</label>
-											</div>
-											<div style="margin: auto;" class="form-floating mb-3">
-												<input name="Email" style="color: aliceblue;width: 22rem; height: 5rem; background-color: gray;" type="email" class="form-control" id="floatingInput333" placeholder=" " required>
-												<label style="color: black;" for="floatingInput333">Email</label>
-											</div>
-										</div>
-										<br>
-										<p>Completa todos los campos</p>
-									</div>												
+ 
+<section style="margin-top: -4rem !important; min-height: 100%; " class="home2 py-5 d-flex align-items-center">
+  <div class="container text-light" >
+	<div class="text-center pb-4">
+        <h2 class="py-5"></h2>
+    </div>
+    <div class="container">
+        <div class="row d-flex align-items-center" style="border-radius: 1rem; background-color: rgba(20, 20, 20, 0.596)">
+            <div class="col-lg-12" data-aos="fade-right">
+                <div class="text-center pb-4">
+                    <br>
+                    <h2 class="py-2">Cotización de Staffing IT</h2>
+                </div>
+<div  id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+    <form action="/staffingData" method="post">
+    <div class="carousel-item active">
+         <div class="container-fluid text-light">
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center justify-content-lg-center align-items-center px-lg-5" data-aos="fade-down">
+                    <div style="width:90%">
+                        <div class="text-center text-lg-center py-2 pt-lg-0">
+							<h4 class="py-2">Vamos a cotizar tu equipo de staffing IT</h4>
+                            <h5 class="py-2">Para comenzar necesitamos unos breves datos.</h5>
+                            <h5 class="py-2">
+								Recibirás un email con una pre cotización formal con valores base para comenzar una negociación con nuestro ejecutivo de cuentas.
+							</h5>
+                        </div>
+                        <div>
+                            <div class="row" >
+                                <div class="col-lg-6">
+                                    <div class="form-group py-2 input-group-lg">
+                                        <input style="background-color: rgb(30, 101, 30);color: black;" type="text" class="form-control form-control-input" id="exampleFormControlInput1" name="Nombre" placeholder="Nombre">
+                                    </div>                                
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group py-2 input-group-lg">
+                                        <input style="background-color: rgb(30, 101, 30);color: black;" type="text" class="form-control form-control-input" id="exampleFormControlInput1" name="Apellido" placeholder="Apellido">
+                                    </div>                                
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-lg-6">
+                                    <div class="form-group py-2 input-group-lg">
+                                        <input style="background-color: rgb(30, 101, 30);color: black;" type="text" class="form-control form-control-input" id="exampleFormControlInput1" name="NumCel" placeholder="Numero Cel. Ejemplo +54 11 8888">
+                                    </div>                                
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group py-2 input-group-lg">
+                                        <input style="background-color: rgb(30, 101, 30);color: black;" type="text" class="form-control form-control-input" id="exampleFormControlInput2" name="Email" placeholder="Email">
+                                    </div>                                 
+                                </div>
+                            </div> 
+							<p class="text-center">Completa los campos</p>                         
+                        </div>
+                    </div> <!-- end of div -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+        <br><br>
+     <div class="carousel-caption d-md-block">
+      </div>
+    </div>
+
+	<div class="carousel-item">
+         <div class="container-fluid text-light">
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center justify-content-lg-center align-items-center px-lg-5" data-aos="fade-down">
+                    <div style="width:90%">
+                        <div class="text-center text-lg-center py-4 pt-lg-0">
+							<h4 class="py-2">Completa esta información</h4>
+                        </div>
+                        <div>
+                            <div class="row" >
+                                <div class="col-lg-6">
+                                    <div class="form-group py-2 input-group-lg">
+                                        <input style="background-color: rgb(30, 101, 30);color: black;" type="text" class="form-control form-control-input" id="exampleFormControlInput1" name="Empresa" placeholder="Empresa">
+                                    </div>                                
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group py-2 input-group-lg">
+										 <input style="background-color: rgb(30, 101, 30);color: black;" type="text" class="form-control form-control-lg" list="pais1"  id="Pais22" name="Moneda" placeholder="Pago en">
+                                    <datalist id="pais1">
+                                        <select name="" >
+                                        <option value="Dolar">Dolar</option>
+                                        <option value="Pesos Argentinos">Pesos Argentinos</option>                                                        
+                                        </select>
+                                      </datalist>
+                                    </div>                                
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-lg-6">
+                                    <div class="form-group py-2 input-group-lg">
+                                        <input style="background-color: rgb(30, 101, 30);color: black;" type="text" class="form-control form-control-input" id="exampleFormControlInput1" name="Ciudad" placeholder="Ciudad">
+                                    </div>                                
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group py-2 input-group-lg">
+                                        <input style="background-color: rgb(30, 101, 30);color: black;" style="background-color: rgb(30, 101, 30);color: black;" type="text" class="form-control form-control-input" id="exampleFormControlInput2" name="PagWeb" placeholder="Pagina web">
+                                    </div>  
+									<input type="text" name="token" value="{{token}}" hidden>
+
+                                </div>
+                                <br>
+                                <p class="text-center">Completa los campos</p>                         
+								<div style="margin-top: 3rem;" class="d-flex justify-content-center">
+								<button style="font-size: 1rem; padding: 1.2rem; height: min-content;" class="alertaVerde label" type="submit" >Enviar</button>                               
 								</div>
-							</div>
-						</div>
-						<div  class="carousel-item" data-bs-interval="20000">
-							<div style="text-align: center; margin-bottom: 5rem"  class="">
-								<div style="margin:0 0 0 10rem; height: 25rem; width: 55rem; font-size: 1.5rem;">
-									<h4>Completa esta información</h3>
-										<br>
-										<br>
-									<div style="color: aliceblue;margin:0 0 0 0rem;">
-										<div class="flexlado" >
-											<div style="margin: auto;" class="form-floating">
-												<input name="Empresa" style="width: 22rem; height: 5rem; background-color: gray;" type="text" class="form-control" id="floatingInput55" placeholder=" " required>
-												<label style="color: black;" for="floatingInput55">Empresa</label>
-											</div>
-											<div style="margin: auto;" class="form-floating">
-
-												<input autocomplete="off" style="width: 22rem; height: 5rem; background-color: gray;"list="pais1" type="text" class="form-control" id="Pais22" placeholder=" " name="Moneda" required>
-												<label style="color: black;" for="Pais22">Pago en:</label>
-												<datalist id="pais1">
-													<select name="" >
-														<option value="Dolar">Dolar</option>
-														<option value="Pesos Argentinos">Pesos Argentinos</option>
-													</select>
-												</datalist>
-
-											</div>
-										</div>
-										<br>
-										<div class="flexlado" >
-											<div style="margin: auto;" class="form-floating">
-												<input  name="Ciudad" style="color: aliceblue; width: 22rem;height: 5rem;background-color: gray;" type="text" class="form-control" id="floatingInput7" placeholder=" " required>
-												<label style="color: black;" for="floatingInput7">Ciudad</label>
-											</div>
-												<div style="margin: auto;" class="form-floating mb-3">
-												<input name="PagWeb" style="color: aliceblue;width: 22rem; height: 5rem; background-color: gray;" type="text" class="form-control" id="floatingInput8" placeholder=" " >
-												<label style="color: black;" for="floatingInput8">Pagina Web</label>
-											</div>
-										</div>
-										<input type="text" name="token" value="{{token}}" hidden>
-										<br>
-										<p>Completa todos los campos</p>
-										<button style="font-size: 1.2rem;padding: 1.5rem; height: min-content;" class="alertaVerde label" type="submit" >Enviar</button>
-										</form>
-									</div>												
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</article>
-			<br>
-			<footer style="" class="fijoAbajo">
-				<div style="position: relative;" class="fijoAbajo flexlado" >
-					<div style="max-height: 0.1rem;"      class="carousel-indicators" hidden>
-						<button  type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-						<button  type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-						<button  type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-						<button  type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
-					</div>
-				</div>
-				<ul style="margin: 0 22% 0 0"; class="actions flexlado">
-					<li style="margin: 0 50% 0 0";>
-						<button style="padding: .7rem; height: min-content;" class="alertaVerde label" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">Anterior
-						</button>
-					</li>
-					<li style="" class=""hidden>
-						<a href="/"class="alertaVerde">Volver<a/>
-					</li>
-					<li style="margin: 0 0 0 70%">
-						<button style="padding: .7rem; height: min-content;" class="alertaVerde label" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">Siguiente
-						</button>
-					</li>
-				</ul>
-			</footer>
-			
-		</div>
-	</section>
+                            </div> 
+                        </div>
+                    </div> <!-- end of div -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+        <br><br>
+     <div class="carousel-caption d-md-block">
+      </div>
+    </div>
+    </form>
+  </div>
 </div>
+
+</div>
+</div>
+</div>
+<div class="position-relative m-4">
+<ul style="margin-top: -1rem;"  class="action flexlado">
+  <li style="margin-right: 5rem";>
+  <button style="padding: 1rem; height: min-content;" class="alertaVerde" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+   Anterior
+  </button>
+  </li>
+  <li style="margin-left: -7rem"; class="position-absolute top-0 start-100">
+  <button style="padding: 1rem; height: min-content;" class="alertaVerde" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+   Siguiente
+  </button>
+  </li>
+  </ul>
+  </div>
+</div>
+</section>
+<section class="home2 py-5">
+     <div class="text-center pb-4">
+        <h2 class="py-5"></h2>
+    </div>
+</section>
