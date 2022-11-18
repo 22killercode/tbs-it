@@ -1842,7 +1842,7 @@ router.get('/cotizarSoftware',async (req, res) => {
 });
 
 //Ruta para cotizar software
-router.get('/dataQuote',  async (req, res) => {
+router.post('/dataQuote', [validador1], async (req, res) => {
     const token = shortid.generate()
     const guardarToken = new Tokens ({ token })
     await guardarToken.save()
