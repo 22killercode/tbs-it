@@ -1819,7 +1819,7 @@ res.render("partials/5finCoti",{Nombre})
 //*******************COTIZACION DE SOFTWARE****************************************************** */
 
 //Ruta para cotizar software
-router.post('/cotizarSoftware',[validador1], async (req, res) => {
+router.get('/cotizarSoftware',[validador1], async (req, res) => {
         //Genera Token de seguridad en BD
         const token = shortid.generate()
         const guardarToken = new Tokens ({ token })
