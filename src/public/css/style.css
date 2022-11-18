@@ -296,7 +296,7 @@ li {
 }
 
 .menuAncho{
-	margin:1rem!important;
+	margin:-1rem 1rem -0.5rem 1rem !important;
 }
 .carpetaNegra{
 	min-height:75% !important;
