@@ -815,7 +815,6 @@ router.post('/staffingData', [val2, validador1],async (req, res) => {
     }
 });
 
-
 //Ruta para cotizar los recursos
 router.post('/cotizandoIT',[validador1], async (req, res) => {
     //Genera Token de seguridad en BD
@@ -1819,7 +1818,7 @@ res.render("partials/5finCoti",{Nombre})
 //*******************COTIZACION DE SOFTWARE****************************************************** */
 
 //Ruta para cotizar software
-router.get('/cotizarSoftware',[validador1], async (req, res) => {
+router.get('/cotizarSoftware',async (req, res) => {
         //Genera Token de seguridad en BD
         const token = shortid.generate()
         const guardarToken = new Tokens ({ token })
