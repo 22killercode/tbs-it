@@ -299,12 +299,12 @@ li {
 	margin:-1.5rem 1rem -0.5rem 1rem !important;
 }
 .carpetaNegra{
-	min-height:80% !important;
+	min-height:70% !important;
 	font-size: 1.1rem !important;
 	margin: 2rem 0.5rem 1rem 0.5rem !important;
 	padding: 1rem 1rem 1rem 1rem !important;
 	border-radius: 2rem;
-	opacity: 0.99;
+	opacity: 0.95;
 	background-color:rgb(25, 24, 24);
 	min-width:90%;
 }
