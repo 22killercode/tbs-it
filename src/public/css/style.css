@@ -305,7 +305,7 @@ li {
 	padding: 1rem 1rem 1rem 1rem !important;
 	border-radius: 2rem;
 	opacity: 0.95;
-	background-color:rgb(2, 2, 2);
+	background-color:rgba(1, 0, 0, 0.596);
 	min-width:90%;
 }
 
@@ -867,13 +867,12 @@ li {
 /***********************/
 /*     More Scroll     */
 /***********************/
-.moreScroll{
-	
+.moreScroll{	
 	display: block;
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
-  }
+}
 
 
 /***********************/
