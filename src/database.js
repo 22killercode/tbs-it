@@ -15,15 +15,19 @@ const mongoose = require('mongoose');
                 .catch(err => console.error(err));
                 
             } catch (error) {
-                mongoose.connect('mongodb://localhost/tbs',{
-                    //         useCreateIndex:true,
-                    //         useNewUrlParser:true,
-                    //         useUnifiedTopology:true,
-                    // //        useFindAndModify:false
-                    })
-            
-                    .then(db => console.log('DB esta correctamente conectada'))
-                    .catch(err => console.error(err));
+                try {
+                    mongoose.connect('mongodb://localhost/tbs',{
+                        //         useCreateIndex:true,
+                        //         useNewUrlParser:true,
+                        //         useUnifiedTopology:true,
+                        // //        useFindAndModify:false
+                        })
+                
+                        .then(db => console.log('DB esta correctamente conectada'))
+                        
+                    } catch (error) {
+                    console.error(error);
+                }
             };
         };
         
