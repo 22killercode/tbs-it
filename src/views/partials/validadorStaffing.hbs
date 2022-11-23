@@ -1,27 +1,23 @@
-<nav align="" style="min-width: 95%;z-index: 9999; background-color: transparent;position:absolute;font-size:1.4rem;" id="navbar" class="navbar navbar-expand-lg navbar"  aria-label="Main navigation">
-    <div class="container-xxl">
-        <a style="margin: 0 0 0 0 ;" class="navbar-brand" href="#">
-            <img src="/images/TBS-IT1.jpg" alt="" data-bs-toggle="modal" data-bs-target="#signin1"  width="100" height="50">
-        </a>
-        <span style="" ></span>
-        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation"></button>
-        <a style="margin: 0 -4% 0 0 ; font-size: 1.5rem;" class="btn  btn-danger" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Menu</a>
-        
-        {{!--Interior Menu --}}
-        <div class="offcanvas offcanvas-end"  style="background-color:rgb(207, 51, 51) ;" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+<nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar bg-danger"  aria-label="Main navigation">
+    <div style="margin:-2rem 1rem -0.5rem 1rem !important;" class="container-xxl">
+        <a class="navbar-brand" href="/"> <strong> TBS Staffing S.G.N.S.</strong></a>
+        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+        </button>
+        <a class="btn btn-danger" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-list" style="font-size: 1.5em;"></i></a>
+        <div class="offcanvas offcanvas-end" style="background-color:rgb(224, 55, 55) ;" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
             <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel"></h5>
+                <h5 id="offcanvasRightLabel">Menu</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
+            <div class="offcanvas-body ">
                 <ul class="links">
                     <li class="">
                         <a class="" aria-current="page" href="/">Home</a>
-                            <li><hr class="dropdown-divider"></li>
+                        <li><hr class="dropdown-divider"></li>
                     </li>
                     <li class="">
                         <a class="" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Cotizar</a>
-                            <li><hr class="dropdown-divider"></li>
+                        <li><hr class="dropdown-divider"></li>
                     </li>
                     <li class="">
                         <a class="" href="/Staffing"><strong>Staffing</strong></a>
@@ -31,7 +27,7 @@
                         <a class="" href="/SoftDev"><strong>Software Factory</strong></a>
                         <li><hr class="dropdown-divider"></li>
                     </li>
-                        <li class="">
+                    <li class="">
                         <a class="" href="/Nosotros">Nosotros</a>
                         <li><hr class="dropdown-divider"></li>
                     </li>
@@ -40,22 +36,24 @@
                         <li><hr class="dropdown-divider"></li>
                     </li>
                     <li class="">
-                        <a class="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"><strong>Unete a nosotros / se un Partner</strong> </a>
+                        <a class="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"><strong>Unete a nosotros / se un Partner</strong></a>
                         <li><hr class="dropdown-divider"></li>
                     </li>
                     <li class="">
-                        <a class="" href="#footer">Contacto</a>
+                        <a class="" href="#footer">Contact</a>
                         <li><hr class="dropdown-divider"></li>
                     </li>
-                    
+                    <li class="">
+                        <a class="navbar-brand" href="#">
+                            <img src="/images/TBS-IT1.jpg" alt="" data-bs-toggle="modal" data-bs-target="#signin1"  width="210" height="180">
+                        </a>
+                    </li>
                 </ul>
-                
-            
             </div>
         </div>
     </div> <!-- end of container -->
 </nav> <!-- end of navbar -->
-<!-- end of navigation -->
+    <!-- end of navigation -->
 <!-- modal de cotizacion -->
     <!-- modal de cotizacion -->
 
@@ -98,9 +96,7 @@
                                     <input value="{{talents}}"           name="talents"           hidden>
                                     <input value="{{pesosArg}}"          name="pesosArg"          hidden>
                                     <input value="{{_id}}"               name="_id"               hidden>
-                                    <br>
-                                    <br>
-                                    <br>
+<br>
                                 <button style="margin: 3rem 0 -10rem 0; font-size: 2rem ;" type="submit" class="alertaVerde" >Enviar
                                 </button>
                             </form>
