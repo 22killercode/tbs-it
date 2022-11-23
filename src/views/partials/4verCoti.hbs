@@ -65,7 +65,7 @@
 			</div>
 			<div class="card-body">
 					<p>
-						{{Nombre}} queremos expresarte nuestro agradecimiento por dejarnos participar como oferentes de servicios en esta oportunidad. Es un privilegio, para nosotros, poder ser considerados candidatos como proveedores para ayudarlos a lograr sus objetivos.</p>
+						<strong>{{Nombre}}</strong> queremos expresarte nuestro agradecimiento por dejarnos participar como oferentes de servicios en esta oportunidad. Es un privilegio, para nosotros, poder ser considerados candidatos como proveedores para ayudarlos a lograr sus objetivos.</p>
 						
 						<p>TBS es una empresa dedicada a la creación de soluciones en el campo de tecnologías de la información. Contamos con talento de alto valor, con experiencia y constantemente actualizados sobre las últimas tecnologías con el fin de brindar el mejor servicio. 
 						
@@ -112,7 +112,7 @@
 						</table>
 					</div>
 					{{!-- resumen de calcular --}}
-					<div class="fijoAbajo btn btn-danger">
+					<div align="center" class="fijoAbajo btn btn-danger">
 						<div class="flex">
 							<p style="padding: ">Cantidad de talentos</p><span>{{cantTal}}</span>
 							<span></span>
@@ -142,13 +142,10 @@
 									<p>Los precios no incluyen iva ni impuestos y son expresados en dólares americanos</p>
 								</div>
 							{{/if}}
-							<br>
-							<form align="" style="margin-left: -2rem;" action="/finalCoti" method="post">
-								<div>
-									{{!-- ocultos solo para traspaso y guardar --}}
-									<div>											
-										<input value="{{Nombre}}" name="Nombre" hidden>
-									</div>
+							<br><br>
+							<form style="" action="/finalCoti" method="post">
+								<div align="center">
+									<input value="{{Nombre}}" name="Nombre" hidden>
 									<button type="submit" class="alertaVerde" >Terminar</button>
 								</div>
 							</form>
@@ -158,8 +155,8 @@
 		</div>
 	</div>
 </section>
-<section class="home2 py-5">
+{{!-- <section class="home2 py-5">
 	<div class="text-center pb-4">
         <h2 class="py-5"></h2>
     </div>
-</section>
+</section> --}}
