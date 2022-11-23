@@ -155,10 +155,14 @@
 											<label for="Cantmeses22">Tiempo</label>
 											<datalist id="mes1">
 												<select name="" >
+													{{#if pesosArg}}
+													<option value="3 meses">3 meses<option>														
+													{{/else}}
 													<option value="3 meses">3 meses</option>
 													<option value="6 meses">6 meses</option>
 													<option value="9 meses">9 meses</option>
 													<option value="12 meses">12 meses</option>
+													{{/if}}
 												</select>
 											</datalist>
 										</div>
