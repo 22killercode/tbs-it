@@ -797,11 +797,11 @@ router.get('/cotizandoStaffing', async (req, res) => {
     };
 });
 
-router.get('/staffingData', async (req, res) => {
+router.get('/staffingData1', async (req, res) => {
     res.render('partials/2cotizando')
 });
 //Ruta para obtener los datos de staffing
-router.post('/staffingData2', [val2, validador1],async (req, res) => {
+router.post('/staffingData', [val2, validador1],async (req, res) => {
     const {Nombre,Apellido,NumCel,Email,Empresa,Moneda,Ciudad,PagWeb} = req.body
     //Genera Token de seguridad en BD
     const token = shortid.generate()

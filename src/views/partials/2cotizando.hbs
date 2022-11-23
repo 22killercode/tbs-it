@@ -66,9 +66,9 @@
                             <h4>{{Nombre}} vamos a formar tu Dream Team</h4>
                                     <h6>Horas mensuales mínimas 160. <br>
                                     De izquierda a derecha elegí la tecnología del talento que necesitas, Señority, idioma, etc presionas agregar y así formas el equipo que necesitas. <br> Abajo calcula automáticamente los costos iniciales. </h6>
-							<div style="color: aliceblue; margin: 0 0 1.5rem 0rem;">
+							<div style="color: aliceblue; margin:auto" >
 								<form style="margin:0;" action="/cotizandoIT" method="post">
-									<div style="margin:2rem000" class="flex" >
+									<div style="margin:0" class="flex">
 										{{!-- Tecno --}}
 										<div class="form-floating">
 											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="tec12" type="text" class="form-control" id="floatingInput123" placeholder=" " name="tecno"  required>
@@ -190,22 +190,21 @@
 												</select>
 											</datalist>
 										</div> 
-										{{!-- ocultos solo para traspaso y guardar --}}
-										<div>
-											<input value="{{fullStack1}}"name="fullStack1"hidden>
-											<input value="{{Email}}"     name="Email"     hidden>
-											<input value="{{Nombre}}"    name="Nombre"    hidden>
-											<input value="{{Apellido}}"  name="Apellido"  hidden>
-											<input value="{{Ciudad}}"    name="Ciudad"    hidden>
-											<input value="{{NumCel}}"    name="NumCel"    hidden>
-											<input value="{{Empresa}}"   name="Empresa"   hidden>
-											<input value="{{PagWeb}}"    name="PagWeb"    hidden>
-											<input value="{{Moneda}}"    name="Moneda"    hidden>
-											<input value="{{ID}}"        name="ID"        hidden>
-										</div>
 										{{!-- boton --}}
-										<div style="padding: 0.3rem ;" class="form-floating">
-											<input type="text" name="token" value="{{token}}" hidden>
+										<div class="form-floating" style="padding: 0.3rem ;">
+											<div hidden>
+												<input value="{{fullStack1}}"name="fullStack1"hidden>
+												<input value="{{Email}}"     name="Email"     hidden>
+												<input value="{{Nombre}}"    name="Nombre"    hidden>
+												<input value="{{Apellido}}"  name="Apellido"  hidden>
+												<input value="{{Ciudad}}"    name="Ciudad"    hidden>
+												<input value="{{NumCel}}"    name="NumCel"    hidden>
+												<input value="{{Empresa}}"   name="Empresa"   hidden>
+												<input value="{{PagWeb}}"    name="PagWeb"    hidden>
+												<input value="{{Moneda}}"    name="Moneda"    hidden>
+												<input value="{{ID}}"        name="ID"        hidden>
+												<input type="text" name="token" value="{{token}}" hidden>
+											</div>
 											<button id="boton222" class="btn btn-success" type="">Agregar</button>
 										</div>
 									</div>
