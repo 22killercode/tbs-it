@@ -217,80 +217,98 @@
 					</div>
 				</div>
 		{{!-- insertos --}}
-				<div align="center" class="" style="height:max-content;width: 100%;opacity: 0.95; margin: 25rem auto ; color: white; font-size: 0.95rem;" id="">
-					{{#if ID}}
-						<h5 class="btn-primary" style="width:100%;">Equipo / team / Squadd</h5>
-					{{/if}}
-					<div style="width:100%;" class="grid text-center flex">
-						<div style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-							<h5 scope="col" class="btn-success" style="padding:0.5rem;" class="btn-success" style="padding:0.5rem;">Tecnologia</h5>
-							{{#each talents}}
-								<h6 style="text-align: left; align-items: baseline; padding:0.5">{{tecno}}</h6>
-							{{/each}}
-						</div>
-						<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-							<h5 scope="col" class="btn-success" style="padding:0.5rem;">Señority</h5>
-							{{#each talents}}
-								<h6  style="text-align: left;padding:0.5">{{senority}}</h6>
-							{{/each}}
-						</div>
-						<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-							<h5 scope="col" class="btn-success" style="padding:0.5rem;">Tiempo</h5>
-							{{#each talents}}
-								<h6  style="text-align: left; padding:0.5">{{Cantmeses}}</h6>
-							{{/each}}
-						</div>
-						<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-							<h5 scope="col" class="btn-success" style="padding:0.5rem;">Idioma</h5>
-							{{#each talents}}
-								<h6  style="text-align: left; padding:0.5">{{Idioma}}</h6>
-							{{/each}}
-						</div>
-						<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-							<h5 scope="col" class="btn-success" style="padding:0.5rem;">Moneda</h5>
-							{{#each talents}}
-								<h6  style="text-align: left; padding:0.5">{{Moneda}}</h6>
-							{{/each}}
-						</div>
-						<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-							<h5 scope="col" class="btn-success" style="padding:0.5rem;">Pais Trabaja</h5>
-							{{#each talents}}
-								<h6  style="text-align: left; padding:0.5">{{Pais}}</h6>
-							{{/each}}
-						</div>
-						<div style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-							<h5 scope="col" class="btn-success" style="padding:0.5rem;">Sub Total</h5>							
-							{{#each talents}}
-								<h6  style="text-align: left; padding:0.5">{{#if pesosArg}}U$S{{else}}${{/if}}{{Precio}}</h6>
-							{{/each}}
-						</div>
-						<div  style="background-color: black; margin: 0;" class="g-col-6 g-col-sm">
-							<img style="width:3rem; height:2.5rem; margin:1rem 1rem 0.5rem 1rem;" src="/images/minitrash.png" class="icon" >
-							{{#each talents}}
-							{{!-- eliminarTalento --}}
-									<form style="margin: 0;" action="/eliminarTalento" method="post">
-										<div>
-											<input value="{{_id}}"      type="text" name="_id"       hidden>
-											<input value="{{Email}}"    type="email"name="Email"    hidden>
-											<input value="{{Nombre}}"   type="text" name="Nombre"   hidden>
-											<input value="{{Apellido}}" type="text" name="Apellido" hidden>
-											<input value="{{Ciudad}}"   type="text" name="Ciudad"   hidden>
-											<input value="{{NumCel}}"   type="text" name="NumCel"   hidden>
-											<input value="{{Empresa}}"  type="text" name="Empresa"  hidden>
-											<input value="{{PagWeb}}"   type="text" name="PagWeb"   hidden>
-											<input value="{{Moneda}}"   type="text" name="Moneda"   hidden>
-											<input value="{{ID}}"       type="text" name="ID"       hidden>
-											<input value="{{fullStack1}}"type="text"name="fullStack1"hidden>
-										</div>
-										<button type="submit" class="none" style="color:white;" >X</button>
-									</form>
-							{{/each}}
+				<div style="height:max-content;width: 100%;opacity: 0.95; background-color: black;">
+					<div align="center" class="" style="height:max-content;width: 100%;opacity: 0.95; margin: 25rem auto ; color: white; font-size: 0.95rem;" id="">
+						{{#if ID}}
+							<h5 class="btn-danger" style="width:100%;">Equipo / team / Squadd</h5>
+						{{/if}}
+						<div style="width:100%;" class="grid flex">
+							<div style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" class="btn-success" style="padding:0.5rem;" class="btn-success" style="padding:0.5rem;">Tecnologia</h5>
+								<hr style="margin:0;">
+								{{#each talents}}
+									<h6 style="text-align: left; align-items: baseline; padding:0.5">{{tecno}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Señority</h5>
+								<hr style="margin:0;">
+								{{#each talents}}
+									<h6  style="text-align: left;padding:0.5">{{senority}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Tiempo</h5>
+								<hr style="margin:0;">
+								{{#each talents}}
+									<h6  style="text-align: left; padding:0.5">{{Cantmeses}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Idioma</h5>
+								<hr style="margin:0;">	
+								{{#each talents}}
+									<h6  style="text-align: left; padding:0.5">{{Idioma}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Moneda</h5>
+								<hr style="margin:0;">
+								{{#each talents}}
+									<h6  style="text-align: left; padding:0.5">{{Moneda}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Pais Trabaja</h5>
+								<hr style="margin:0;">
+								{{#each talents}}
+									<h6  style="text-align: left; padding:0.5">{{Pais}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Sub Total</h5>
+								<hr style="margin:0;">							
+								{{#each talents}}
+									<h6  style="text-align: left; padding:0.5">{{#if pesosArg}}U$S{{else}}${{/if}}{{Precio}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div  style="background-color: black; margin: 0;" class="g-col-6 g-col-sm">
+								<img style="width:3rem; height:2.5rem; margin:1rem 1rem 0.5rem 1rem;" src="/images/minitrash.png" class="icon" >
+								<hr style="margin:0;">
+								{{#each talents}}
+								{{!-- eliminarTalento --}}
+										<form style="margin: 0;" action="/eliminarTalento" method="post">
+											<div>
+												<input value="{{_id}}"      type="text" name="_id"       hidden>
+												<input value="{{Email}}"    type="email"name="Email"    hidden>
+												<input value="{{Nombre}}"   type="text" name="Nombre"   hidden>
+												<input value="{{Apellido}}" type="text" name="Apellido" hidden>
+												<input value="{{Ciudad}}"   type="text" name="Ciudad"   hidden>
+												<input value="{{NumCel}}"   type="text" name="NumCel"   hidden>
+												<input value="{{Empresa}}"  type="text" name="Empresa"  hidden>
+												<input value="{{PagWeb}}"   type="text" name="PagWeb"   hidden>
+												<input value="{{Moneda}}"   type="text" name="Moneda"   hidden>
+												<input value="{{ID}}"       type="text" name="ID"       hidden>
+												<input value="{{fullStack1}}"type="text"name="fullStack1"hidden>
+											</div>
+											<button type="submit" class="none" style="color:white;" >X</button>
+										</form>
+										<hr style="margin:0;">
+								{{/each}}
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 	{{!-- footer de calcular --}}
-			<div style="width:100%; border-radius:1rem; position: relative;" align="center" class="btn btn-danger">
+			<div style="margin-top:-20rem; margin-bottom: -12rem; width:100%; border-radius:1rem; position:sticky;" align="center" class="btn btn-danger fijoAbajo">
 				<div class="">
 					{{#if pesosArg}}
 					<div class="row">
@@ -303,7 +321,7 @@
 									<input type="text" name="token" value="{{token}}" hidden>
 								</div>
 								<input type="email" value="{{Email}}" name="Email" hidden>
-								<button style="width:fit-content;" class="alertaVerde" >Borrar todo</button>
+								<button style="" class="alertaVerde" >Borrar todo</button>
 							</form>
 						</div>
 						<div class="col-sm">
