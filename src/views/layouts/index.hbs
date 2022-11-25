@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head> 
+    {{!-- config --}}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- SEO Meta Tags -->
     <meta name="description" content="The Best Staff TBS">
     <meta name="Sebastián Payssé Senior fullstack MERN" content="TBS-IT">
-    
     <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
 	<meta property="og:site_name" content="" /> <!-- website name -->
 	<meta property="og:site" content="" /> <!-- website link -->
@@ -16,10 +15,8 @@
 	<meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
 	<meta property="og:url" content="" /> <!-- where do you want your post to link to -->
 	<meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
-
     <!-- Webpage Title -->
     <title>The Best Staff TBS</title>
-
     <!-- Styles -->
     <link rel="stylesheet" href="/css/main.css" /> 
     <link rel="stylesheet" href="/css/rwd.css" /> 
@@ -35,61 +32,121 @@
     <link rel="icon" href="/images/tbslogo3.jpg">
 </head>
     <!-- CEO SEM  -->
+    <body>
+        {{!-- menu rojo se cvambio ID --}}
+        <header>
+            <nav style="z-index:7;" id="navbar" class="navbar navbar-expand-lg fixed-top navbar bg-danger"  aria-label="Main navigation">
+                <div style="margin:-2rem 1rem -0.5rem 1rem !important;" class="container-xxl">
+                    <a class="navbar-brand" href="/"> <strong> TBS-IT Home</strong></a>
+                    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                    </button>
+                    <a class="btn btn-danger" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling21" aria-controls="offcanvasScrolling"><i class="bi bi-list" style="font-size: 1.5em;"></i></a>
+                    {{!-- contenido menu --}}
+                    <div class="offcanvas offcanvas-end" style="background-color:rgb(224, 55, 55) !important;" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling21" aria-labelledby="offcanvasScrollingLabel">
+                        <div class="offcanvas-header">
+                            <h5 id="offcanvasRightLabel">Menu</h5>
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body ">
+                            <ul class="links">
+                                <li class="">
+                                    <a class="" aria-current="page" href="/">Home</a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Cotizar</a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" href="/Staffing"><strong>Staffing</strong></a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" href="/SoftDev"><strong>Software Factory</strong></a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" href="/Nosotros">Nosotros</a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" href="/#paises">Paises donde tenemos precensia</a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"><strong>Unete a nosotros / se un Partner</strong></a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" href="#footer">Contacto</a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="navbar-brand" href="#">
+                                        <img src="/images/TBS-IT1.jpg" alt="" data-bs-toggle="modal" data-bs-target="#signin1"  width="200" height="170">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!-- end of container -->
+            </nav>
+        </header>
         <main>
             {{>messages}}
             {{>errors}}
             {{{body}}}
         </main>
-    <!-- Contact -->
-    <footer  style="" id="footer">
-        <div class="inner">
-            <h2>Contacto</h2>
-            <form action="/contacto" method="post">
-                <div class="field half first">
-                    <label for="name">Nombre</label>
-                    <input name="names" id="name" type="text" placeholder="Name" required>
-                </div>
-                <div class="field half ">
-                    <label for="apellido">Apellido</label>
-                    <input name="apellido" id="apellido" type="text" placeholder="Apellido" required>
-                </div>
-                <div class="field half first">
-                    <label for="email">Email</label>
-                    <input name="email" id="email" type="email" placeholder="Email" required>
-                </div>
-                <div class="field half">
-                    <label for="pais">Pais/Ciudad</label>
-                    <input name="pais" id="pais" type="text" placeholder="Pais/Ciudad" required>
-                </div>                        
-                <div class="field">
-                    <label for="message">Mensaje</label>
-                    <textarea name="message" id="message" rows="6" placeholder="Mensaje"></textarea>
-                </div>
-                <ul class="actions">
-                    <button value="Send Message" class="btn btn-outline-light" type="submit">Enviar</button>
+        <!-- Contact -->
+        <footer  style="" id="footer">
+            <div class="inner">
+                <h2>Contacto</h2>
+                <form action="/contacto" method="post">
+                    <div class="field half first">
+                        <label for="name">Nombre</label>
+                        <input name="names" id="name" type="text" placeholder="Name" required>
+                    </div>
+                    <div class="field half ">
+                        <label for="apellido">Apellido</label>
+                        <input name="apellido" id="apellido" type="text" placeholder="Apellido" required>
+                    </div>
+                    <div class="field half first">
+                        <label for="email">Email</label>
+                        <input name="email" id="email" type="email" placeholder="Email" required>
+                    </div>
+                    <div class="field half">
+                        <label for="pais">Pais/Ciudad</label>
+                        <input name="pais" id="pais" type="text" placeholder="Pais/Ciudad" required>
+                    </div>                        
+                    <div class="field">
+                        <label for="message">Mensaje</label>
+                        <textarea name="message" id="message" rows="6" placeholder="Mensaje"></textarea>
+                    </div>
+                    <ul class="actions">
+                        <button value="Send Message" class="btn btn-outline-light" type="submit">Enviar</button>
+                    </ul>
+                </form>
+                <button style="margin-right: -70rem;" type="button" class="btn btn-outline-info" hidden>				
+                    <a href="/"><span class="">Volver</span></a>
+                </button>
+                <ul class="icons">
+                <li><a href="#" class="icon round fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon round fa-facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon round fa-instagram"><span class="label">Instagram</span></a></li>
                 </ul>
-            </form>
-            <button style="margin-right: -70rem;" type="button" class="btn btn-outline-info" hidden>				
-                <a href="/"><span class="">Volver</span></a>
-            </button>
-            <ul class="icons">
-            <li><a href="#" class="icon round fa-twitter"><span class="label">Twitter</span></a></li>
-            <li><a href="#" class="icon round fa-facebook"><span class="label">Facebook</span></a></li>
-            <li><a href="#" class="icon round fa-instagram"><span class="label">Instagram</span></a></li>
-            </ul>
-        </div>
-        <footer style="margin:auto; color:red; font: size 0.1em; text-align: center;">
-        <p>The Best Staff is a Trade Mark || All right reserved to Sebastian Payssé </p>
+            </div>
+            <footer style="margin:auto; color:red; font: size 0.1em; text-align: center;">
+            <p>The Best Staff is a Trade Mark || All right reserved to Sebastian Payssé </p>
+            </footer>
         </footer>
-    </footer>
-    <!-- Back To Top Button -->
-    <button onclick="topFunction()" id="myBtn">
-        <img src="./images/up-arrow.png" alt="alternative">
-    </button>
-    <!-- end of back to top button -->
+        <!-- Back To Top Button -->
+        <button onclick="topFunction()" id="myBtn">
+            <img src="./images/up-arrow.png" alt="alternative">
+        </button>
+        <!-- end of back to top button -->
     </body>
-<div>
 <!-- MODALES  -->
+<div>
     <!-- Cotizar -->
     <div style="position:absolute; z-index:9999999;margin: 1% 0 0 0;" class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
