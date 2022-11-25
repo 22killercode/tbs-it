@@ -1664,12 +1664,14 @@ Esta pre-cotizacion carece de responsabilidad contractual entre las partes. Todo
         *Nuesto Ejecutivo de Cuentas se pondrá en contacto con usted en la fecha y el horario que nos indico
         <br>
         <br>
+        <h4>
         Fecha de contacto: ${fechaContact} de la ciudad de: ${Ciudad}  Tipo de contacto:  ${tipoCont}
-        <br>    
+        <br>
         Observaciones:
         <br>
         ${Obs}
         <br>
+        </h4>
     </div>
     <br>
     <div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;" hidden><h6>This message has been generated automatically by "TBS" for a user/client acomplish whit international rules of mailing services and tbs we are not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction..</h6><div><span></span><a href="http://tbsit.co">
@@ -1703,7 +1705,6 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
             <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Señority</th>
             <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Tiempo</th>
             <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Idioma</th>
-            <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Pais Trabaja</th>
             <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Sub Total</th>
         </tr>
     </thead>
@@ -1719,13 +1720,14 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
         <br>
         *Deberas ponerte en contacto con el cliente en la fecha y el horario que nos indico.
         <br>
-        <br>
+        <h4>
         Fecha de contacto: ${fechaContact} de la ciudad de: ${Ciudad}  Tipo de contacto:  ${tipoCont}
-        <br>    
+        <br>
         Observaciones:
         <br>
         ${Obs}
         <br>
+        </h4>
     </div>
     <br>
     <div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;" hidden><h6>This message has been generated automatically by "TBS" for a user/client acomplish whit international rules of mailing services and tbs we are not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction..</h6><div><span></span><a href="http://tbsit.co">
