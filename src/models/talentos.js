@@ -3,8 +3,6 @@ const { Schema } = mongoose;
 
 const talentos = new Schema({
 
-    sebastian     :   {type:String },
-    emailBlock    :   {type:String },
     Nombre        :   {type:String},
     Apellido      :   {type:String},
     NumCel        :   {type:String},
@@ -20,6 +18,7 @@ const talentos = new Schema({
     uploadPath    :   {type:String},
     partner       :   {type:Boolean},
     tipoPartner   :   {type:String},
+    portfolio : [],
 
     date: { type: Date, default: Date.now },
     user: { type: String }

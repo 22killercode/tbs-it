@@ -83,9 +83,6 @@ router.post('/dataTalento',async (req, res) => {
                 if (ModTrab.length <= 0) {
                     errors.push({ text: 'Agregue su preferencia de trabajo' });
                 }
-                if (linke.length <= 0) {
-                    errors.push({ text: 'Agregue su link de linkedin o pagina web' });
-                }
                 if (tecnoBackend.length <= 0) {
                     errors.push({ text: 'Agregue su tecnologia backend' });
                 }
@@ -95,8 +92,7 @@ router.post('/dataTalento',async (req, res) => {
                 if (errors.length > 0) {
                     req.flash('errors', errors);
                     res.redirect('/quierotrabajarentbs');
-                    // res.render('partials/RRHH/programadores', {Nombre, Apellido, NumCel, Email, senority, nivelIngles, MonedaCobro, PaisResi, CiudadResi, Empresa, ModTrab, linke,tecnoBackend, tecnoFrontend });
-                    console.log("cuantos errores encontro?",errors);
+//                    console.log("cuantos errores encontro?",errors);
                 } else {
                     const idAdjunto     = shortid.generate();
                     const idAdjCompleto = (idAdjunto + '.' + extension)
@@ -108,9 +104,10 @@ router.post('/dataTalento',async (req, res) => {
                         return console.log(err);  
                         }
                     });
-                res.render('partials/RRHH/validadorRRHH',{Nombre});
+                res.render('partials/RRHH/validadorRRHH',{Nombre, Email});
                 // guardar en BD
-                const guardar = new talentos ({Nombre, Apellido, NumCel, Email, senority, nivelIngles, MonedaCobro, PaisResi, CiudadResi, Empresa, ModTrab, linke,tecnoBackend, tecnoFrontend, uploadPath})
+                const portfolio = []
+                const guardar   = new talentos ({Nombre, Apellido, NumCel, Email, senority, nivelIngles, MonedaCobro, PaisResi, CiudadResi, Empresa, ModTrab, linke,tecnoBackend, tecnoFrontend, uploadPath, portfolio})
                 guardar.save()
                 // enviar mail para validacion
                 //Genera Token de seguridad en BD
@@ -502,13 +499,44 @@ router.post('/dataPartner',async (req, res) => {
 
 // validador RRHH
 router.post('/validarRRHH',[validador1], (req, res) => {
-    req.flash('success_msg','Gracias por inscribirte nos pondremos en contacto en breve');
-    res.render('partials/RRHH/gracias');
+    const{Email} = req.body
+    console.log("que llega a validador", req.body)
+    if (Email) {
+        res.render('partials/RRHH/portfolio',{Email});        
+    } else {
+        req.flash('success_msg','Gracias por inscribirte nos pondremos en contacto en breve');
+        res.render('partials/RRHH/gracias');
+    }
+});
+
+
+//ruta para entrar al cuestinario de programadores
+router.post('/portfolioTalento',async (req, res) => {
+    console.log("/portfolioTalento", req.body)
+    const {Email} = req.body
+    res.render('partials/RRHH/portfolio',{Email});
+});
+
+//ruta para procesar el cuestinario de programadores
+router.post('/portfolioTalentos',async (req, res) => {
+    const {Email, link, titulo} = req.body
+    const port = await talentos.findOne({Email:Email})
+    console.log("/portfolioTalentos",req.body,port)
+    const portfolio = port.portfolio
+    portfolio.push({link, titulo})
+    await talentos.findOneAndUpdate({Email:Email}, {portfolio});
+    res.render('partials/RRHH/portfolio', {portfolio, Email});
 });
 
 // validador RRHH
 router.get('/validadorRRHHs', (req, res) => {
     res.render('partials/RRHH/validadorRRHH');
+});
+
+// final talentos
+router.get('/fintal', (req, res) => {
+    req.flash('success_msg','Gracias por inscribirte nos pondremos en contacto en breve');
+    res.render('partials/RRHH/gracias');
 });
 
 

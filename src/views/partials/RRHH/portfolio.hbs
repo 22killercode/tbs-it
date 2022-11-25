@@ -1,0 +1,56 @@
+<section class="develops py-5 d-flex align-items-center">
+    <div class="container" style="height:70%;" >
+        <div class="container">
+            <div align="center" class="carpetaNegra row d-flex align-items-center;" style="margin-top:0;">
+                <div class="col-lg-12" data-aos="fade-right">
+                    <div class="text-center pb-4">
+                        <h2 style="margin-bottom:-1rem" class="py-2">Portfolio</h2>
+                    </div>
+                    <form action="/portfolioTalentos" method="post" class="card-body">
+                        <div align="center">
+                            <h4>
+                                Agrega los links de los trabajos que realizaste o participaste.
+                                <br>
+                                paginas web, sitios web, app web, mobile, etc.
+                                <br>
+                                <br>
+                                <strong>Esto te ayudara a tener mucho mas posibilidades de que nuestros clientes te elijan para sus proyectos.</strong>
+                            </h4>
+                        </div>
+                        <br>
+                        <div style="width:70%;" align="center">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Titulo</label>
+                                <input name="titulo" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Titulo">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput2" class="form-label">Link</label>
+                                <input name="link" type="text" class="form-control" id="exampleFormControlInput2" placeholder="Link">
+                            </div>
+                        <div>
+                            <input name="Email" value="{{Email}}"hidden>
+                            <button type="submit" align="center" class="alertaVerde">Agregar</button>
+                    </form>
+                    <div class="card">
+                        {{#each portfolio}}
+                            <div style="color:black;" class="container text-center">
+                                <div class="row">
+                                    <div class="col">
+                                        {{titulo}}
+                                    </div>
+                                    <div class="col">
+                                        {{link}}
+                                    </div>
+                                </div>
+                            </div>                        
+                        {{/each}}
+                    </div>
+                    <br>
+                    <form style="margin-bottom:-2rem;" action="/fintal" method="get">
+                        <button type="submit" class="alertaVerde">Terminar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
