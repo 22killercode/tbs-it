@@ -1,5 +1,20 @@
 const mongoose = require('mongoose');
 
+// try {
+//     mongoose.connect('mongodb://localhost/tbs',{
+//         //         useCreateIndex:true,
+//         //         useNewUrlParser:true,
+//         //         useUnifiedTopology:true,
+//         // //        useFindAndModify:false
+//         })
+
+//         .then(db => console.log('DB esta correctamente conectada'))
+        
+//     } catch (error) {
+//     console.error(error);
+// }
+
+
 //mongoose.set('useFindAndModify', false);
 
 
