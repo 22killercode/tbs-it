@@ -1,0 +1,37 @@
+<section class="develops py-5 d-flex align-items-center">
+    <div class="container" style="height:70%;" >
+        <div class="container">
+            <div align="center" class="carpetaNegra row d-flex align-items-center;" style="margin-top:0;">
+                <div class="col-lg-12" data-aos="fade-right">
+                    <div class="text-center pb-4">
+                        <h2 style="margin-bottom:-1rem" class="py-2">Portfolio</h2>
+                    </div>
+                    <div align="center">
+                    </div>
+                        <br>
+                    <div class="card">
+                        {{#each portfolio}}
+                            <div style="color:black; background-color: aqua;" class="">
+                                <div class="row">
+                                    <div style="margin:0.5rem;" class="col container text-center">
+                                        {{Nombre}}
+                                    </div>
+                                    <div style="margin:0.5rem;" class="col container text-center">
+                                        {{titulo}}
+                                    </div>
+                                    <div style="margin:0.5rem;" class="col container text-center">
+                                        <a href="{{link}}">{{link}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                    <br>
+                    <form class="fijoAbajo" style="margin-bottom:-2rem;" action="/" method="get">
+                        <button type="submit" class="alertaVerde">Volver</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

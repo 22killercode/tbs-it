@@ -512,7 +512,7 @@ router.post('/validarRRHH',[validador1], (req, res) => {
 
 //ruta para entrar al cuestinario de programadores
 router.post('/portfolioTalento',async (req, res) => {
-    console.log("/portfolioTalento", req.body)
+//    console.log("/portfolioTalento", req.body)
     const {Email} = req.body
     res.render('partials/RRHH/portfolio',{Email});
 });
@@ -521,7 +521,7 @@ router.post('/portfolioTalento',async (req, res) => {
 router.post('/portfolioTalentos',async (req, res) => {
     const {Email, link, titulo} = req.body
     const port = await talentos.findOne({Email:Email})
-    console.log("/portfolioTalentos",req.body,port)
+  //  console.log("/portfolioTalentos",req.body,port)
     const portfolio = port.portfolio
     portfolio.push({link, titulo})
     await talentos.findOneAndUpdate({Email:Email}, {portfolio});
@@ -537,6 +537,25 @@ router.get('/validadorRRHHs', (req, res) => {
 router.get('/fintal', (req, res) => {
     req.flash('success_msg','Gracias por inscribirte nos pondremos en contacto en breve');
     res.render('partials/RRHH/gracias');
+});
+
+
+// portfolio empresa
+router.get('/portfolioTalentosTBS', async (req, res) => {
+    const port = await talentos.find()
+    const portfolio = []
+    for (const a1 of port) {
+        const portfo = a1.portfolio
+        for (const a2 of portfo) {
+            const titulo = a2.titulo
+            const link   = a2.link
+            portfolio.push({titulo,link})
+        }
+        const Nombre = a1.Nombre
+        portfolio.push({Nombre})
+    }
+    console.log("/portfolioTalentosTBS",portfolio)
+    res.render('partials/RRHH/PTTBS',{portfolio});
 });
 
 

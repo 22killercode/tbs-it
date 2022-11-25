@@ -16,8 +16,6 @@ const mongoose = require('mongoose');
 
 
 //mongoose.set('useFindAndModify', false);
-
-
     const dbConnecton = async()=>{
         try {
             await mongoose.connect('mongodb+srv://sebatbsit:KcZorfwjhcurNKEI@tbsit.12drd1s.mongodb.net/testtbsit', {
