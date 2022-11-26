@@ -1,9 +1,10 @@
-<section style="margin: 0 -3rem 0 0;" class="home2 py-5 d-flex align-items-center">
-  <div class="carpetaNegra container  py-5" >
-    <div align="center" class="py-2">
+<section class="home2 py-5 d-flex align-items-center">
+	<div align="center" class="container py-5 text-light" >
+		<div class="card py-2" style="height:max-content; background-color: rgb(38, 36, 36); opacity: 0.95; border-radius: 2rem !important;margin:-1rem  0 -4rem 0; padding:1rem;" >
       <div class="container-md">
         <div class="row g-2">
               <div style="margin:0;" align="center">
+                <br>
                 <h2> Cotización de Staffing IT</h2>
                 <br>
                 <h2>Responde esta consulta y te enviaremos tu cotización</h2>
@@ -57,7 +58,7 @@
               </form>
               <div align="center" style="" >
                     {{!-- Vuelve a cotizando con los mismos datos --}}
-                    <form action="/cotizandoIT" method="post">
+                    <form action="/volverIT" method="post">
                           <div>
                             <input value="{{fullStack1}}"        name="fullStack1"        hidden>
                             <input value="{{Email}}"             name="Email"             hidden>
@@ -75,7 +76,8 @@
                             <input value="{{cantTal}}"           name="cantTal"           hidden>
                             <input value="{{talents}}"           name="talents"           hidden>
                             <input value="{{pesosArg}}"          name="pesosArg"          hidden>
-                          <input type="text" name="token" value="{{token}}" hidden>
+                            <input type="text" name="token" value="{{token}}" hidden>
+                            <input value="true"name="volver"  hidden>
                           </div>
                           <button style="" class="alerta label" type="submit">Volver</button>
                     </form>

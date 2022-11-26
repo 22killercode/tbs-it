@@ -1493,6 +1493,679 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
 
 });
 
+//Ruta para cotizar los recursos
+router.post('/volverIT',[validador1], async (req, res) => {
+    //Genera Token de seguridad en BD
+    const token = shortid.generate()
+    const guardarToken = new Tokens ({ token })
+    await guardarToken.save();
+
+    const {tecno,fullStack1,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} = req.body;
+    console.log("Que llega a cotizandoIT",req.body)
+    const talents1 = await cotiStaffing.find({Email:Email});
+    const ID = talents1._id
+    const cantTal  = talents1.length
+    //datos
+    const totMeses           = []
+    const precioFinal3mese   = []
+    const precioFinal6mese   = []
+    const precioFinal9mese   = []
+    const precioFinal12mese  = []
+
+    //Calculo total de meses
+    for (const a1 of talents1) {
+        const meses    = a1.Cantmeses
+        const tecno    = a1.tecno
+        const Idioma   = a1.Idioma
+        const Senority = a1.senority
+        const Pais     = a1.Pais
+        const Moneda   = a1.Moneda
+        const sumandotodo = []
+
+        if (meses == '3 meses') {
+            totMeses.push(3)
+            //calculo del precio
+            if (tecno == 'JAVA' ||tecno == "JS" ||tecno == "NODE" ||tecno == "Django" ||tecno == "Python" ||tecno == "GO" ||tecno == "PHP" ||tecno == "C#" ||tecno == "C++" ||tecno == ".Net" ||tecno == "Kotlin" ||tecno == "Pearl" ||tecno == "Apache" ||tecno == "Ruby" ||tecno =="Cobol") {
+                console.log("entro por el bakend")
+                sumandotodo.push(precioBackend)
+                //suma por idioma
+                if (Idioma !== "Español") {
+                    sumandotodo.push(idioma)
+                    console.log("Idioma")
+                }
+                //suma por fullStack
+                if (fullStack1 == "Full Stack LAMP" ||fullStack1 ==  "Full Stack MERN / MEAN" ||fullStack1 ==  "Full Stack Grl.") {
+                    sumandotodo.push(fullStack)
+                    console.log("fullStack")
+                }
+                // calculo por Pais
+                if (Pais == "USA" || Pais == "Europa" || Pais == "Otro") {
+                    sumandotodo.push(precioUsaEur)
+                    console.log("Europa",Pais)
+                }
+                if (Pais == "Argentina") {
+                    sumandotodo.push(precioArg)
+                    console.log("Argentina")
+                }
+                if (Pais == "Latam sin Arg.") {
+                    sumandotodo.push(precioLatam)
+                    console.log("Latam")
+                }
+                //Calculo por señority
+                if (Senority == "Junior 1 año") {
+                    sumandotodo.push(precioJunior)
+                    console.log("Junior")
+                }
+                if (Senority == "Junior Advance 2años") {
+                    sumandotodo.push(precioJuniorAdnvance)
+                    console.log("Advance")
+                }
+                if (Senority == "Semi Senior 4 años") {
+                    sumandotodo.push(precioSemiSenior)
+                    console.log("Semi")
+                }
+                if (Senority == "Technical Leader 8 años") {
+                    sumandotodo.push(precioTL)
+                    console.log("Technical")
+                }
+                //Mobile
+                if (tecno == "Android") {
+                    sumandotodo.push(precioAndroid)
+                    console.log("Android")
+                }
+                if (tecno == "IOS") {
+                    sumandotodo.push(precioIOS)
+                    console.log("IOS")
+                }
+                console.log("que hay en sumando todo",sumandotodo)
+                // sumamos todo
+                const PrecioFinalHora = sumandotodo.reduce((a, b) => a + b, 0);
+                console.log("PrecioFinalHora",PrecioFinalHora )
+                const cantTotalHoras = parseInt(HorasMes)*3 //de cada talento elegido
+                console.log("cantTotalHoras",cantTotalHoras )
+                const presio1 = (parseInt(PrecioFinalHora)*parseInt(HorasMes)*3)
+                console.log("presio total del talento en 3 meses",presio1 )
+                // lu subimos al array para que sume con los otros talentos elegidos
+                precioFinal3mese.push(presio1)
+                const Preci = presio1
+                console.log("cual es el precio final 3meses?",presio1 )
+                if (Moneda == "Pesos Argentinos") {
+                    const Precio = Preci * PrecioDolar
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }else{
+                    const Precio = Preci
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }
+            }else{
+                console.log("entro por el fronend")
+                sumandotodo.push(precioFrontend)
+                //suma por idioma
+                if (Idioma !== "Español") {
+                    sumandotodo.push(idioma)
+                    console.log("Idioma")
+                }
+                //suma por idioma
+                if (tecno == "QA Automation") {
+                sumandotodo.push(QAuto)
+                console.log("Idioma")
+                }
+                //suma por fullStack
+                if (tecno == "Full Stack LAMP" ||tecno ==  "Full Stack MERN / MEAN" ||tecno ==  "Full Stack Grl.") {
+                    sumandotodo.push(fullStack)
+                    console.log("fullStack")
+                }
+                // calculo por Pais
+                if (Pais == "USA" || Pais == "Europa" || Pais == "Otro") {
+                    sumandotodo.push(precioUsaEur)
+                    console.log("Europa",Pais)
+                }
+                if (Pais == "Argentina") {
+                    sumandotodo.push(precioArg)
+                    console.log("Argentina")
+                }
+                if (Pais == "Latam sin Arg.") {
+                    sumandotodo.push(precioLatam)
+                    console.log("Latam")
+                }
+                //Calculo por señority
+                if (Senority == "Junior 1 año") {
+                    sumandotodo.push(precioJunior)
+                    console.log("Junior")
+                }
+                if (Senority == "Junior Advance 2años") {
+                    sumandotodo.push(precioJuniorAdnvance)
+                    console.log("Advance")
+                }
+                if (Senority == "Semi Senior 4 años") {
+                    sumandotodo.push(precioSemiSenior)
+                    console.log("Semi")
+                }
+                if (Senority == "Technical Leader 8 años") {
+                    sumandotodo.push(precioTL)
+                    console.log("Technical")
+                }
+                //Mobile
+                if (tecno == "Android") {
+                    sumandotodo.push(precioAndroid)
+                    console.log("Android")
+                }
+                if (tecno == "IOS") {
+                    sumandotodo.push(precioIOS)
+                    console.log("IOS")
+                }
+                console.log("que hay en sumando todo",sumandotodo)
+                // sumamos todo
+                const PrecioFinalHora = sumandotodo.reduce((a, b) => a + b, 0);
+                console.log("PrecioFinalHora",PrecioFinalHora )
+                const cantTotalHoras = parseInt(HorasMes)*3 //de cada talento elegido
+                console.log("cantTotalHoras",cantTotalHoras )
+                const presio1 = (parseInt(PrecioFinalHora)*parseInt(HorasMes)*3)
+                console.log("presio total del talento en 3 meses",presio1 )
+                // lu subimos al array para que sume con los otros talentos elegidos
+                precioFinal3mese.push(presio1)
+                const Preci = presio1
+                //console.log("cual es el precio final 3meses?",presio1 )
+                if (Moneda == "Pesos Argentinos") {
+                    const Precio = Preci * PrecioDolar
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }else{
+                    const Precio = Preci
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }
+                }
+        }
+        if (meses == '6 meses') {
+            totMeses.push(3)
+            //calculo del precio
+            if (tecno == 'JAVA' ||tecno == "JS" ||tecno == "NODE" ||tecno == "Django" ||tecno == "Python" ||tecno == "GO" ||tecno == "PHP" ||tecno == "C#" ||tecno == "C++" ||tecno == ".Net" ||tecno == "Kotlin" ||tecno == "Pearl" ||tecno == "Apache" ||tecno == "Ruby" ||tecno =="Cobol") {
+                console.log("entro por el bakend")
+                sumandotodo.push(precioBackend)
+                //suma por idioma
+                if (Idioma !== "Español") {
+                    sumandotodo.push(idioma)
+                    console.log("Idioma")
+                }
+                //suma por fullStack
+                if (fullStack1 == "Full Stack LAMP" ||fullStack1 ==  "Full Stack MERN / MEAN" ||fullStack1 ==  "Full Stack Grl.") {
+                    sumandotodo.push(fullStack)
+                    console.log("fullStack")
+                }
+                // calculo por Pais
+                if (Pais == "USA" || Pais == "Europa" || Pais == "Otro") {
+                    sumandotodo.push(precioUsaEur)
+                    console.log("Europa",Pais)
+                }
+                if (Pais == "Argentina") {
+                    sumandotodo.push(precioArg)
+                    console.log("Argentina")
+                }
+                if (Pais == "Latam sin Arg.") {
+                    sumandotodo.push(precioLatam)
+                    console.log("Latam")
+                }
+                //Calculo por señority
+                if (Senority == "Junior 1 año") {
+                    sumandotodo.push(precioJunior)
+                    console.log("Junior")
+                }
+                if (Senority == "Junior Advance 2años") {
+                    sumandotodo.push(precioJuniorAdnvance)
+                    console.log("Advance")
+                }
+                if (Senority == "Semi Senior 4 años") {
+                    sumandotodo.push(precioSemiSenior)
+                    console.log("Semi")
+                }
+                if (Senority == "Technical Leader 8 años") {
+                    sumandotodo.push(precioTL)
+                    console.log("Technical")
+                }
+                //Mobile
+                if (tecno == "Android") {
+                    sumandotodo.push(precioAndroid)
+                    console.log("Android")
+                }
+                if (tecno == "IOS") {
+                    sumandotodo.push(precioIOS)
+                    console.log("IOS")
+                }
+                console.log("que hay en sumando todo",sumandotodo)
+                // sumamos todo
+                const PrecioFinalHora = sumandotodo.reduce((a, b) => a + b, 0);
+                console.log("PrecioFinalHora",PrecioFinalHora )
+                const cantTotalHoras = parseInt(HorasMes)*6 //de cada talento elegido
+                console.log("cantTotalHoras",cantTotalHoras )
+                const presio1 = (parseInt(PrecioFinalHora)*parseInt(HorasMes)*6)
+                console.log("presio total del talento en 6 meses",presio1 )
+                // lu subimos al array para que sume con los otros talentos elegidos
+                precioFinal3mese.push(presio1)
+                const Preci = presio1
+                console.log("cual es el precio final 6 meses?",presio1 )
+                if (Moneda == "Pesos Argentinos") {
+                    const Precio = Preci * PrecioDolar
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }else{
+                    const Precio = Preci
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }
+            }else{
+                console.log("entro por el fronend")
+                sumandotodo.push(precioFrontend)
+                //suma por idioma
+                if (Idioma !== "Español") {
+                    sumandotodo.push(idioma)
+                    console.log("Idioma")
+                }
+                //suma por idioma
+                if (tecno == "QA Automation") {
+                sumandotodo.push(QAuto)
+                console.log("Idioma")
+                }
+                //suma por fullStack
+                if (tecno == "Full Stack LAMP" ||tecno ==  "Full Stack MERN / MEAN" ||tecno ==  "Full Stack Grl.") {
+                    sumandotodo.push(fullStack)
+                    console.log("fullStack")
+                }
+                // calculo por Pais
+                if (Pais == "USA" || Pais == "Europa" || Pais == "Otro") {
+                    sumandotodo.push(precioUsaEur)
+                    console.log("Europa",Pais)
+                }
+                if (Pais == "Argentina") {
+                    sumandotodo.push(precioArg)
+                    console.log("Argentina")
+                }
+                if (Pais == "Latam sin Arg.") {
+                    sumandotodo.push(precioLatam)
+                    console.log("Latam")
+                }
+                //Calculo por señority
+                if (Senority == "Junior 1 año") {
+                    sumandotodo.push(precioJunior)
+                    console.log("Junior")
+                }
+                if (Senority == "Junior Advance 2años") {
+                    sumandotodo.push(precioJuniorAdnvance)
+                    console.log("Advance")
+                }
+                if (Senority == "Semi Senior 4 años") {
+                    sumandotodo.push(precioSemiSenior)
+                    console.log("Semi")
+                }
+                if (Senority == "Technical Leader 8 años") {
+                    sumandotodo.push(precioTL)
+                    console.log("Technical")
+                }
+                //Mobile
+                if (tecno == "Android") {
+                    sumandotodo.push(precioAndroid)
+                    console.log("Android")
+                }
+                if (tecno == "IOS") {
+                    sumandotodo.push(precioIOS)
+                    console.log("IOS")
+                }
+                console.log("que hay en sumando todo",sumandotodo)
+                // sumamos todo
+                const PrecioFinalHora = sumandotodo.reduce((a, b) => a + b, 0);
+                console.log("PrecioFinalHora",PrecioFinalHora )
+                const cantTotalHoras = parseInt(HorasMes)*6 //de cada talento elegido
+                console.log("cantTotalHoras",cantTotalHoras )
+                const presio1 = (parseInt(PrecioFinalHora)*parseInt(HorasMes)*6)
+                console.log("presio total del talento en 6 meses",presio1 )
+                // lu subimos al array para que sume con los otros talentos elegidos
+                precioFinal3mese.push(presio1)
+                const Preci = presio1
+                console.log("cual es el precio final 6 meses?",presio1 )
+                if (Moneda == "Pesos Argentinos") {
+                    const Precio = Preci * PrecioDolar
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }else{
+                    const Precio = Preci
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }
+                }
+        }
+        if (meses == '9 meses') {
+            totMeses.push(3)
+            //calculo del precio
+            if (tecno == 'JAVA' ||tecno == "JS" ||tecno == "NODE" ||tecno == "Django" ||tecno == "Python" ||tecno == "GO" ||tecno == "PHP" ||tecno == "C#" ||tecno == "C++" ||tecno == ".Net" ||tecno == "Kotlin" ||tecno == "Pearl" ||tecno == "Apache" ||tecno == "Ruby" ||tecno =="Cobol") {
+                console.log("entro por el bakend")
+                sumandotodo.push(precioBackend)
+                //suma por idioma
+                if (Idioma !== "Español") {
+                    sumandotodo.push(idioma)
+                    console.log("Idioma")
+                }
+                //suma por fullStack
+                if (fullStack1 == "Full Stack LAMP" ||fullStack1 ==  "Full Stack MERN / MEAN" ||fullStack1 ==  "Full Stack Grl.") {
+                    sumandotodo.push(fullStack)
+                    console.log("fullStack")
+                }
+                // calculo por Pais
+                if (Pais == "USA" || Pais == "Europa" || Pais == "Otro") {
+                    sumandotodo.push(precioUsaEur)
+                    console.log("Europa",Pais)
+                }
+                if (Pais == "Argentina") {
+                    sumandotodo.push(precioArg)
+                    console.log("Argentina")
+                }
+                if (Pais == "Latam sin Arg.") {
+                    sumandotodo.push(precioLatam)
+                    console.log("Latam")
+                }
+                //Calculo por señority
+                if (Senority == "Junior 1 año") {
+                    sumandotodo.push(precioJunior)
+                    console.log("Junior")
+                }
+                if (Senority == "Junior Advance 2años") {
+                    sumandotodo.push(precioJuniorAdnvance)
+                    console.log("Advance")
+                }
+                if (Senority == "Semi Senior 4 años") {
+                    sumandotodo.push(precioSemiSenior)
+                    console.log("Semi")
+                }
+                if (Senority == "Technical Leader 8 años") {
+                    sumandotodo.push(precioTL)
+                    console.log("Technical")
+                }
+                //Mobile
+                if (tecno == "Android") {
+                    sumandotodo.push(precioAndroid)
+                    console.log("Android")
+                }
+                if (tecno == "IOS") {
+                    sumandotodo.push(precioIOS)
+                    console.log("IOS")
+                }
+                console.log("que hay en sumando todo",sumandotodo)
+                // sumamos todo
+                const PrecioFinalHora = sumandotodo.reduce((a, b) => a + b, 0);
+                console.log("PrecioFinalHora",PrecioFinalHora )
+                const cantTotalHoras = parseInt(HorasMes)*9 //de cada talento elegido
+                console.log("cantTotalHoras",cantTotalHoras )
+                const presio1 = (parseInt(PrecioFinalHora)*parseInt(HorasMes)*9)
+                console.log("presio total del talento en 9 meses",presio1 )
+                // lu subimos al array para que sume con los otros talentos elegidos
+                precioFinal3mese.push(presio1)
+                const Preci = presio1
+                console.log("cual es el precio final 9 meses?",presio1 )
+                if (Moneda == "Pesos Argentinos") {
+                    const Precio = Preci * PrecioDolar
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }else{
+                    const Precio = Preci
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }
+            }else{
+                console.log("entro por el fronend")
+                sumandotodo.push(precioFrontend)
+                //suma por idioma
+                if (Idioma !== "Español") {
+                    sumandotodo.push(idioma)
+                    console.log("Idioma")
+                }
+                //suma por idioma
+                if (tecno == "QA Automation") {
+                    sumandotodo.push(QAuto)
+                    console.log("Idioma")
+                    }
+                //suma por fullStack
+                if (tecno == "Full Stack LAMP" ||tecno ==  "Full Stack MERN / MEAN" ||tecno ==  "Full Stack Grl.") {
+                    sumandotodo.push(fullStack)
+                    console.log("fullStack")
+                }
+                // calculo por Pais
+                if (Pais == "USA" || Pais == "Europa" || Pais == "Otro") {
+                    sumandotodo.push(precioUsaEur)
+                    console.log("Europa",Pais)
+                }
+                if (Pais == "Argentina") {
+                    sumandotodo.push(precioArg)
+                    console.log("Argentina")
+                }
+                if (Pais == "Latam sin Arg.") {
+                    sumandotodo.push(precioLatam)
+                    console.log("Latam")
+                }
+                //Calculo por señority
+                if (Senority == "Junior 1 año") {
+                    sumandotodo.push(precioJunior)
+                    console.log("Junior")
+                }
+                if (Senority == "Junior Advance 2años") {
+                    sumandotodo.push(precioJuniorAdnvance)
+                    console.log("Advance")
+                }
+                if (Senority == "Semi Senior 4 años") {
+                    sumandotodo.push(precioSemiSenior)
+                    console.log("Semi")
+                }
+                if (Senority == "Technical Leader 8 años") {
+                    sumandotodo.push(precioTL)
+                    console.log("Technical")
+                }
+                //Mobile
+                if (tecno == "Android") {
+                    sumandotodo.push(precioAndroid)
+                    console.log("Android")
+                }
+                if (tecno == "IOS") {
+                    sumandotodo.push(precioIOS)
+                    console.log("IOS")
+                }
+                console.log("que hay en sumando todo",sumandotodo)
+                // sumamos todo
+                const PrecioFinalHora = sumandotodo.reduce((a, b) => a + b, 0);
+                console.log("PrecioFinalHora",PrecioFinalHora )
+                const cantTotalHoras = parseInt(HorasMes)*9 //de cada talento elegido
+                console.log("cantTotalHoras",cantTotalHoras )
+                const presio1 = (parseInt(PrecioFinalHora)*parseInt(HorasMes)*9)
+                console.log("presio total del talento en 9 meses",presio1 )
+                // lu subimos al array para que sume con los otros talentos elegidos
+                precioFinal3mese.push(presio1)
+                const Preci = presio1
+                console.log("cual es el precio final 9 meses?",presio1 )
+                if (Moneda == "Pesos Argentinos") {
+                    const Precio = Preci * PrecioDolar
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }else{
+                    const Precio = Preci
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }
+                }
+        }
+        if (meses == '12 meses') {
+            totMeses.push(3)
+            //calculo del precio
+            if (tecno == 'JAVA' ||tecno == "JS" ||tecno == "NODE" ||tecno == "Django" ||tecno == "Python" ||tecno == "GO" ||tecno == "PHP" ||tecno == "C#" ||tecno == "C++" ||tecno == ".Net" ||tecno == "Kotlin" ||tecno == "Pearl" ||tecno == "Apache" ||tecno == "Ruby" ||tecno =="Cobol") {
+                console.log("entro por el bakend")
+                sumandotodo.push(precioBackend)
+                //suma por idioma
+                if (Idioma !== "Español") {
+                    sumandotodo.push(idioma)
+                    console.log("Idioma")
+                }
+                //suma por fullStack
+                if (fullStack1 == "Full Stack LAMP" ||fullStack1 ==  "Full Stack MERN / MEAN" ||fullStack1 ==  "Full Stack Grl.") {
+                    sumandotodo.push(fullStack)
+                    console.log("fullStack")
+                }
+                // calculo por Pais
+                if (Pais == "USA" || Pais == "Europa" || Pais == "Otro") {
+                    sumandotodo.push(precioUsaEur)
+                    console.log("Europa",Pais)
+                }
+                if (Pais == "Argentina") {
+                    sumandotodo.push(precioArg)
+                    console.log("Argentina")
+                }
+                if (Pais == "Latam sin Arg.") {
+                    sumandotodo.push(precioLatam)
+                    console.log("Latam")
+                }
+                //Calculo por señority
+                if (Senority == "Junior 1 año") {
+                    sumandotodo.push(precioJunior)
+                    console.log("Junior")
+                }
+                if (Senority == "Junior Advance 2años") {
+                    sumandotodo.push(precioJuniorAdnvance)
+                    console.log("Advance")
+                }
+                if (Senority == "Semi Senior 4 años") {
+                    sumandotodo.push(precioSemiSenior)
+                    console.log("Semi")
+                }
+                if (Senority == "Technical Leader 8 años") {
+                    sumandotodo.push(precioTL)
+                    console.log("Technical")
+                }
+                //Mobile
+                if (tecno == "Android") {
+                    sumandotodo.push(precioAndroid)
+                    console.log("Android")
+                }
+                if (tecno == "IOS") {
+                    sumandotodo.push(precioIOS)
+                    console.log("IOS")
+                }
+                console.log("que hay en sumando todo",sumandotodo)
+                // sumamos todo
+                const PrecioFinalHora = sumandotodo.reduce((a, b) => a + b, 0);
+                console.log("PrecioFinalHora",PrecioFinalHora )
+                const cantTotalHoras = parseInt(HorasMes)*12 //de cada talento elegido
+                console.log("cantTotalHoras",cantTotalHoras )
+                const presio1 = (parseInt(PrecioFinalHora)*parseInt(HorasMes)*12)
+                console.log("presio total del talento en 12 meses",presio1 )
+                // lu subimos al array para que sume con los otros talentos elegidos
+                precioFinal3mese.push(presio1)
+                const Preci = presio1
+                console.log("cual es el precio final 12 meses?",presio1 )
+                if (Moneda == "Pesos Argentinos") {
+                    const Precio = Preci * PrecioDolar
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }else{
+                    const Precio = Preci
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }
+            }else{
+                console.log("entro por el fronend")
+                sumandotodo.push(precioFrontend)
+                //suma por idioma
+                if (Idioma !== "Español") {
+                    sumandotodo.push(idioma)
+                    console.log("Idioma")
+                }
+                //suma por idioma
+                if (tecno == "QA Automation") {
+                    sumandotodo.push(QAuto)
+                    console.log("Idioma")
+                    }
+                //suma por fullStack
+                if (tecno == "Full Stack LAMP" ||tecno ==  "Full Stack MERN / MEAN" ||tecno ==  "Full Stack Grl.") {
+                    sumandotodo.push(fullStack)
+                    console.log("fullStack")
+                }
+                // calculo por Pais
+                if (Pais == "USA" || Pais == "Europa" || Pais == "Otro") {
+                    sumandotodo.push(precioUsaEur)
+                    console.log("Europa",Pais)
+                }
+                if (Pais == "Argentina") {
+                    sumandotodo.push(precioArg)
+                    console.log("Argentina")
+                }
+                if (Pais == "Latam sin Arg.") {
+                    sumandotodo.push(precioLatam)
+                    console.log("Latam")
+                }
+                //Calculo por señority
+                if (Senority == "Junior 1 año") {
+                    sumandotodo.push(precioJunior)
+                    console.log("Junior")
+                }
+                if (Senority == "Junior Advance 2años") {
+                    sumandotodo.push(precioJuniorAdnvance)
+                    console.log("Advance")
+                }
+                if (Senority == "Semi Senior 4 años") {
+                    sumandotodo.push(precioSemiSenior)
+                    console.log("Semi")
+                }
+                if (Senority == "Technical Leader 8 años") {
+                    sumandotodo.push(precioTL)
+                    console.log("Technical")
+                }
+                //Mobile
+                if (tecno == "Android") {
+                    sumandotodo.push(precioAndroid)
+                    console.log("Android")
+                }
+                if (tecno == "IOS") {
+                    sumandotodo.push(precioIOS)
+                    console.log("IOS")
+                }
+                console.log("que hay en sumando todo",sumandotodo)
+                // sumamos todo
+                const PrecioFinalHora = sumandotodo.reduce((a, b) => a + b, 0);
+                console.log("PrecioFinalHora",PrecioFinalHora )
+                const cantTotalHoras = parseInt(HorasMes)*12 //de cada talento elegido
+                console.log("cantTotalHoras",cantTotalHoras )
+                const presio1 = (parseInt(PrecioFinalHora)*parseInt(HorasMes)*12)
+                console.log("presio total del talento en 12 meses",presio1 )
+                // lu subimos al array para que sume con los otros talentos elegidos
+                precioFinal3mese.push(presio1)
+                const Preci = presio1
+                console.log("cual es el precio final 12 meses?",presio1 )
+                if (Moneda == "Pesos Argentinos") {
+                    const Precio = Preci * PrecioDolar
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }else{
+                    const Precio = Preci
+                    await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
+                }
+                }
+        }
+    };
+
+    const talents     = await cotiStaffing.find({Email:Email});
+    // suma los meses
+    const totalMeses = totMeses.reduce((a, b) => a + b, 0);
+    // precio final por mesde todo el squad
+    const array1 = precioFinal3mese.concat(precioFinal6mese);
+    const array2 = precioFinal9mese.concat(precioFinal12mese);
+    const array3 = array1.concat(array2);
+    const costoF = array3.reduce((a, b) => a + b, 0);
+
+    //revisa si es en dolares o pesos argentinos y renderiza
+    if (Moneda == "Pesos Argentinos") {        
+        const costoFinal = costoF * PrecioDolar
+        const pesosArg = true
+        // suma las horas totales
+        const totalHoras = (totalMeses*HorasMes)
+        // promedia cosato por hora grl
+        const costoHoraPromedio1 = (costoFinal/totalHoras)
+        const costoHoraPromedio = Math.round(costoHoraPromedio1)
+        //console.log("Calculo final ", totalMeses, costoHoraPromedio,costoFinal,totalHoras)
+        res.render('partials/2cotizando',{token,ID,fullStack1, pesosArg,costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
+    } else {
+        // promedia cosato por hora grl
+        const costoFinal = costoF
+        const totalHoras = (totalMeses * HorasMes)
+        // promedia cosato por hora grl
+        const costoHoraPromedio1 = (costoFinal/totalHoras)
+        const costoHoraPromedio = Math.round(costoHoraPromedio1)
+        //console.log("que hay ", totalMeses, costoHoraPromedio,costoFinal,totalHoras)
+        res.render('partials/2cotizando',{token,ID,fullStack1, costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
+
+    }
+
+});
+
 //Ruta para agendar la entrevista antes de enviar coti
 router.post('/calculandoCotizacion', [validador1],  async (req, res) => {
     const {Email,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal} = req.body
@@ -1605,7 +2278,6 @@ router.post('/EnviarCotizacion',[validador1], async (req, res) => {
                 </tr>
             </tbody>
             `)
-            
             dataM.push(culo)
     }
     //console.log("que Se logro ANTES del splice",dataM)
@@ -1632,6 +2304,7 @@ const contentHTML = `<html>
 <p><strong>Nombre:</strong> ${Nombre}  <span></span><strong>Apellido:</strong> ${Apellido}</p> 
 <p><strong>Empresa:</strong> ${Empresa}  <span></span><strong>Email de contacto:</strong> ${Email}</p>
 <p><strong> Moneda de facturacion:</strong> ${Moneda}</p>
+<p><strong> Idioma:</strong> ${idioma}</p>
 Esta pre-cotizacion carece de responsabilidad contractual entre las partes. Todos los precios son tentativos, estan sujetos a una negociasion final y a la presentacion de una propuesta formal que incluye: NDA, SLA´s condiciones comerciales, garantias, seguros, forma de pagos y descuentos convenidos.
 </div>   
 <div style="">
@@ -1644,7 +2317,6 @@ Esta pre-cotizacion carece de responsabilidad contractual entre las partes. Todo
                 <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Tecnologia</th>
                 <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Señority</th>
                 <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Tiempo</th>
-                <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Idioma</th>
                 <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Sub Total</th>
             </tr>
         </thead>
@@ -1692,6 +2364,7 @@ const cotiEntro = `<html>
 <p><strong>Nombre:</strong> ${Nombre}  <span></span><strong>Apellido:</strong> ${Apellido}</p> 
 <p><strong>Empresa:</strong> ${Empresa}  <span></span><strong>Email de contacto:</strong> ${Email}</p>
 <p><strong> Moneda de facturacion:</strong> ${Moneda}</p>
+<p><strong> Idioma:</strong> ${idioma}</p>
 Ponte en contacto con el cliente en el horario que el solicito y logra cerrar una propuesta formal averiguando sus nececidades descubriendo nuevas, sus puntos de dolor. Tambien ponte en contacto con tu lider y acuerden una estrategia y propuesta formal que se envia con copia a tu lider e incluye: NDA, SLA´s condiciones comerciales, garantias, seguros, forma de pagos y descuentos convenidos.
 </div>   
 <div style="align-items: center;">
@@ -1704,7 +2377,6 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
             <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Tecnologia</th>
             <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Señority</th>
             <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Tiempo</th>
-            <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Idioma</th>
             <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Sub Total</th>
         </tr>
     </thead>
@@ -2076,7 +2748,7 @@ router.post('/EnviarCotizacionAPPIREST',[validador1], async (req, res) => {
     const token = shortid.generate()
     const guardarToken = new Tokens ({ token })
     await guardarToken.save()
-   console.log("que llega a calculo /EnviarCotizacion APPIREST",data,IOT)
+  // console.log("que llega a calculo /EnviarCotizacion APPIREST",data,IOT)
     const sumar   = []
     const baseAR  = appiRestFull
     const baseIOT = apiRestFullIOT
