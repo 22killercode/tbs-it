@@ -90,23 +90,6 @@
 												</select>
 											</datalist>
 										</div>
-										{{!-- Meses --}}
-										<div class="form-floating">
-											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="mes1" type="text" class="form-control" id="Cantmeses22" placeholder=" " name="Cantmeses" required>
-											<label for="Cantmeses22">Tiempo</label>
-											<datalist id="mes1">
-												<select name="" >
-													{{#if pesosArg}}
-													<option value="3 meses">3 meses<option>														
-													{{else}}
-													<option value="3 meses">3 meses</option>
-													<option value="6 meses">6 meses</option>
-													<option value="9 meses">9 meses</option>
-													<option value="12 meses">12 meses</option>
-													{{/if}}
-												</select>
-											</datalist>
-										</div>
 										{{!-- Idioma --}}
 										<div class="form-floating">
 											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="idioma1" type="text" class="form-control" id="Idioma22" placeholder=" " name="Idioma" required>
@@ -135,7 +118,24 @@
 													<option value="Otro">Otro</option>
 												</select>
 											</datalist>
-										</div> 
+										</div>
+										{{!-- Tiempo --}}
+										<div class="form-floating">
+											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="mes1" type="text" class="form-control" id="Cantmeses22" placeholder=" " name="Cantmeses" required>
+											<label for="Cantmeses22">Tiempo</label>
+											<datalist id="mes1">
+												<select name="" >
+													{{#if pesosArg}}
+													<option value="3 meses">3 meses<option>														
+													{{else}}
+													<option value="3 meses">3 meses</option>
+													<option value="6 meses">6 meses</option>
+													<option value="9 meses">9 meses</option>
+													<option value="12 meses">12 meses</option>
+													{{/if}}
+												</select>
+											</datalist>
+										</div>
 										{{!-- boton --}}
 										<div class="form-floating" style="padding: 0.3rem ;">
 											<div hidden>
@@ -162,9 +162,9 @@
 		{{!-- insertos --}}
 				<div style="height:max-content;width: 100%;opacity: 0.95; background-color: black;">
 					<div align="center" class="" style="height:max-content;width: 100%;opacity: 0.95; margin: 25rem auto ; color: white; font-size: 0.95rem;" id="">
-						{{#if ID}}
-							<h5 class="btn-danger" style="width:100%;">Equipo / team / Squadd</h5>
-						{{/if}}
+					{{#if ID}}
+						<h5 class="btn-danger" style="width:100%;">Equipo / team / Squadd</h5>
+					{{/if}}
 						<div style="width:100%;" class="grid flex">
 							<div style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
 								<h5 scope="col" class="btn-success" style="padding:0.5rem;" class="btn-success" style="padding:0.5rem;">Tecnologia</h5>
@@ -179,14 +179,6 @@
 								<hr style="margin:0;">
 								{{#each talents}}
 									<h6  style="text-align: left;padding:0.5">{{senority}}</h6>
-									<hr style="margin:0;">
-								{{/each}}
-							</div>
-							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Tiempo</h5>
-								<hr style="margin:0;">
-								{{#each talents}}
-									<h6  style="text-align: left; padding:0.5">{{Cantmeses}}</h6>
 									<hr style="margin:0;">
 								{{/each}}
 							</div>
@@ -207,10 +199,18 @@
 								{{/each}}
 							</div>
 							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Pais Trabaja</h5>
+								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Lugar Trabajo</h5>
 								<hr style="margin:0;">
 								{{#each talents}}
 									<h6  style="text-align: left; padding:0.5">{{Pais}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Tiempo</h5>
+								<hr style="margin:0;">
+								{{#each talents}}
+									<h6  style="text-align: left; padding:0.5">{{Cantmeses}}</h6>
 									<hr style="margin:0;">
 								{{/each}}
 							</div>

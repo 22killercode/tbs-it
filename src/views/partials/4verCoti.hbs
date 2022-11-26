@@ -1,6 +1,6 @@
 <section class="home2 py-5 d-flex align-items-center">
 	<div class="container py-5 text-light" >
-		<div class="card py-2" style="background-color: rgb(38, 36, 36); opacity: 0.995; border-radius: 1rem !important" >
+		<div class="card py-2" style="height:max-content; background-color: rgb(38, 36, 36); opacity: 0.995; border-radius: 1rem !important;margin-bottom:-4rem;" >
 			<br>
 			<div class="card-title text-center">
 				<h4>Cotización de Staffing IT</h4>
@@ -19,6 +19,8 @@
 					<p><strong>Empresa:</strong> {{Empresa}}<span> </span><strong>Email:</strong> {{Email}}</p>
 					<p><strong> Moneda de facturación:</strong> {{Moneda}}</p>
 					<p>
+						ATENCION:
+						<br>
 						Todos los precios son tentativos, están sujetos a una negociación final y a la presentación de una propuesta formal que incluye: NDA, SLA´s condiciones comerciales, garantías, seguros, forma de pagos y descuentos convenidos.
 					</p>
 					<div class="table-responsive">
@@ -53,47 +55,72 @@
 							{{/each}}
 						</table>
 					</div>
-					{{!-- resumen de calcular --}}
-					<div align="center" class="fijoAbajo btn btn-danger">
-						<div class="flex">
-							<p style="padding: ">Cantidad de talentos</p><span>{{cantTal}}</span>
-							<span></span>
-							<p style="padding: ">Total de horas</p><span>{{totalHoras}}</span>
-							<span></span>
-							{{#if pesosArg}}
-								<p style="padding: " >Promedio por hora</p><span>${{costoHoraPromedio}}</span>
-								<span></span>
-								<p style="padding:" hidden>Mensual</p><span hidden>${{PrecioMes}}</span>
-								<span></span>
-								<p style="padding:">Total Contrato</p><span>${{costoFinal}}</span>
-								<span></span>
-								<div style="width: 110%; margin: 0.0rem auto; text-align: center;" class="center">
-									<p>*Consulta por importantes descuentos.</p>
-									<p>Los precios no incluyen iva ni impuestos y son expresados en pesos Argentinos.</p>
-									<p>Consulte si necesita periodos superiores a tres meses.</p>
-								</div>
-							{{else}}
-								<p style="padding:" >Promedio por hora</p><span>${{costoHoraPromedio}}</span>
-								<span></span>
-								<p style="padding: " hidden>Mensual</p><span hidden>${{PrecioMes}}</span>
-								<span></span>
-								<p style="padding: ">Total Contrato</p><span>U$S{{costoFinal}}</span>
-								<span></span>
-								<br>
-								<div style="width: 110%; margin-top: 1rem auto; text-align: center;" class="center">
-									<p>*Consulta por importantes descuentos </p>
-									<p>Los precios no incluyen iva ni impuestos y son expresados en dólares americanos</p>
-								</div>
-							{{/if}}
-							<br><br>
-							<form style="" action="/finalCoti" method="post">
-								<div align="center">
-									<input value="{{Nombre}}" name="Nombre" hidden>
-									<button type="submit" class="alertaVerde" >Terminar</button>
-								</div>
-							</form>
+				{{!-- resumen de calcular --}}
+				<div style="margin: auto; width:100%; border-radius:1rem; position:relative;" align="center" class="btn btn-danger fijoAbajo">
+					<div class="">
+						{{#if pesosArg}}
+						<div class="row">
+							<div class="col-sm">
+								<p style="padding: 0.3rem;">Cantidad de talentos</p><span>{{cantTal}}</span>
+							</div>
+							<div class="col-sm">
+								<p style="padding: 0.3rem;">Total de horas</p><span>{{totalHoras}}</span>
+							</div>
+							<div class="col-sm">
+								<p style="padding: 0.3rem;" >Promedio por hora ${{costoHoraPromedio}}</p>
+							</div>
+							<div class="col-sm">
+								<p style="padding: 0.3rem;">Total ${{costoFinal}}</p>
+							</div>
 						</div>
+						{{else}}
+						<div style="font-weight:bold;" class="row">
+							<div class="col-sm">
+								<p style="padding: 0.3rem;">Cantidad de talentos</p><span>{{cantTal}}</span>
+							</div>
+							<div class="col-sm">
+								<p style="padding: 0.3rem;">Total de horas</p><span>{{totalHoras}}</span>
+							</div>
+							<div class="col-sm">
+								<p style="padding: 0.3rem;" >Promedio por hora U$S{{costoHoraPromedio}}</p>
+							</div>
+							<div class="col-sm">
+								<p style="padding: 0.3rem;">Total U$S{{costoFinal}}</p>
+							</div>
+						</div>
+						{{/if}}
+						<br>
+						<div class="center">
+							{{#if pesosArg}}
+									<div style="width: 100%; margin: -2.5rem 0rem; text-align: center;" class="center">
+										<br>
+										<p>*Consulta por importantes descuentos.</p>
+										<p>Los precios no incluyen iva ni impuestos y son expresados en pesos argentinos.</p>
+										<p>Consulte por periodos superiores a tres meses.</p>
+										<br>
+										<br>
+									</div>
+							{{else}}
+									<div style="width: 100%; margin: -2.5rem 0rem; text-align: center;" class="center">
+										<br>
+										<p>*Consulta por importantes descuentos </p>
+										<p>Los precios no incluyen iva ni impuestos y son expresados en dolares americanos</p>
+										<br>
+										<br>
+									</div>
+							{{/if}}
+						</div>
+						<form  action="/finalCoti" method="post">
+							<div style="margin:auto">
+								{{!-- ocultos solo para traspaso y gurdar --}}
+								<div>											
+									<input value="{{Nombre}}" name="Nombre" hidden>
+								</div>
+								<button type="submit" class="alertaVerde" >Terminar</button>
+							</div>
+						</form>
 					</div>
+				</div>
 			</div>
 		</div>
 	</div>
