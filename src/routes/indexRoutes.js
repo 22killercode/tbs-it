@@ -2273,7 +2273,6 @@ router.post('/EnviarCotizacion',[validador1], async (req, res) => {
                     <td  style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">${tecno}</td>
                     <td  style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">${sen}</td>
                     <td  style="whidt:max-content;padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">${tiempo}</td>
-                    <td  style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">${Idioma}</td>
                     <td  style="whidt:max-content;padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">$${Precio}</td>
                 </tr>
             </tbody>
@@ -2304,7 +2303,6 @@ const contentHTML = `<html>
 <p><strong>Nombre:</strong> ${Nombre}  <span></span><strong>Apellido:</strong> ${Apellido}</p> 
 <p><strong>Empresa:</strong> ${Empresa}  <span></span><strong>Email de contacto:</strong> ${Email}</p>
 <p><strong> Moneda de facturacion:</strong> ${Moneda}</p>
-<p><strong> Idioma:</strong> ${idioma}</p>
 Esta pre-cotizacion carece de responsabilidad contractual entre las partes. Todos los precios son tentativos, estan sujetos a una negociasion final y a la presentacion de una propuesta formal que incluye: NDA, SLA´s condiciones comerciales, garantias, seguros, forma de pagos y descuentos convenidos.
 </div>   
 <div style="">
@@ -2352,6 +2350,7 @@ Esta pre-cotizacion carece de responsabilidad contractual entre las partes. Todo
 </div>
 </body>
                     </html>`;
+// aviso al Ejecutivo cuentas
 const cotiEntro = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 <div style="justify-content: center ; align-items: center;">
@@ -2364,7 +2363,6 @@ const cotiEntro = `<html>
 <p><strong>Nombre:</strong> ${Nombre}  <span></span><strong>Apellido:</strong> ${Apellido}</p> 
 <p><strong>Empresa:</strong> ${Empresa}  <span></span><strong>Email de contacto:</strong> ${Email}</p>
 <p><strong> Moneda de facturacion:</strong> ${Moneda}</p>
-<p><strong> Idioma:</strong> ${idioma}</p>
 Ponte en contacto con el cliente en el horario que el solicito y logra cerrar una propuesta formal averiguando sus nececidades descubriendo nuevas, sus puntos de dolor. Tambien ponte en contacto con tu lider y acuerden una estrategia y propuesta formal que se envia con copia a tu lider e incluye: NDA, SLA´s condiciones comerciales, garantias, seguros, forma de pagos y descuentos convenidos.
 </div>   
 <div style="align-items: center;">
@@ -2380,7 +2378,7 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
             <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Sub Total</th>
         </tr>
     </thead>
-    <div > ${dataM2} </div>
+    <div> ${dataM2} </div>
 </table>
     <h4 style="padding: 0.3rem; align-items: center">
         Cantidad de talentos  ${cantTal} | Total de horas ${totalHoras}  |  Promedio por hora $ ${costoHoraPromedio} | Total Contrato $ ${costoFinal}
