@@ -188,32 +188,32 @@
     </div>
     <!-- Modal SignIn -->
     <div style="position:absolute; z-index:9999999; margin: 1% 0 0 0;" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" id="signin1">
-    <div class="modal-dialog">
-        <div class="modal-content text-light modalo" >
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Solo para clientes y empleados</h5>
-            <button type="button" class="btn-close btn-success" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <h4>Bienvenid@s</h4>
-            <form action="/users/signin" method="post">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Email</label>
-                    <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <div class="modal-dialog">
+            <div class="modal-content text-light modalo" >
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Solo para clientes y empleados</h5>
+                    <button type="button" class="btn-close btn-success" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
-                    <input name="password" type="password" class="form-control" id="exampleFormControlInput1" placeholder="*****">
+                <div class="modal-body">
+                    <h4>Bienvenid@s</h4>
+                    <form action="/users/signin" method="post">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Email</label>
+                            <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput2" class="form-label">Contraseña</label>
+                            <input name="password" type="password" class="form-control" id="exampleFormControlInput2" placeholder="*****">
+                        </div>
+                        <button type="button" class="alertaVerde">Entrar</button>
+                    </form>
+                    <br><br>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary text-light" data-bs-dismiss="modal">Volver</button>
                 </div>
-                <button type="button" class="alertaVerde">Entrar</button>
-            </form>
-            <br><br>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-sm btn-secondary text-light" data-bs-dismiss="modal">Volver</button>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-    </div>
     </div>
 </div>
     <script>
