@@ -1,60 +1,76 @@
 <section class="cotiappi py-5 d-flex align-items-center">
-  <div class="container text-light" >
-    		<div class="text-center pb-4">
-        <h2 class="py-5"></h2>
-    </div>
-	 <div class="text-center pb-4">
+	<div class="text-center pb-4">
 		<div style="margin-bottom: 0; padding: 2%; width: 100%; background-color: rgb(38, 36, 36); opacity: 0.9;" class="fijoArriba ">
-						<header style="5rem auto" class="center ">
-							<h2>Pre-Cotización de Pagina WEB</h2>
-						</header>
-						<div style="justify-content: center ; color: aliceblue ; align-items: center;">
-							<p>
-								<strong>{{data.Nombre}}</strong> queremos expresarte nuestro agradecimiento por dejarnos participar en esta inportante oportunidad. Es un privilegio, para nosotros, poder ser considerados candidatos como proveedores para ayudarlos a lograr sus objetivos.
-								<br>
-								TBS-it-IT es una compañía dedicada a la creación de soluciones en el campo de tecnologías de la información. Contamos con talento de alto valor, con experiencia y constantemente actualizados sobre las últimas tecnologías con el fin de brindar el mejor servicio. 
-								<br>
-								Por tres meses o un año, por un solo recurso o un equipo completo, ofrecemos los mejores recursos con experiencia directa en su industria y con los sistemas y tecnologías que necesita, asi que nuevamente, gracias por elegirnos, como socio tecnológico, a la hora de abordar sus proyectos.
-							</p>
-						</div>
-						<div class="container card" style="text-align: left; background-color: black; color: aliceblue ; align-items: left;">
-							<h4><strong>Datos:</strong></h4>
-							<p><strong>Nombre:</strong> {{data.Nombre}} <span></span><strong>Apellido:</strong> {{data.Apellido}}</p> 
-							<p><strong>Empresa:</strong> {{data.Empresa}}<span></span><strong>Email:</strong> {{data.Email}}</p>
-							<p><strong> Moneda de facturación:</strong> {{data.Moneda}}</p>
-							<p> <strong> Propuesta Comercial </strong>
-							<br>
-							El precio puede variar y va desde un inicial de <strong> Valor {{data.Moneda}}: ${{suma}}</strong> hasta según requerimientos del cliente.
-							<br>
-							Mas iva e impuestos.
-							<br>
-							Mantenimiento mensual con un 50% de descuento.
-							<br>
-							Todos los precios son tentativos, están sujetos a una negociación final y a la presentación de una propuesta formal que incluye: NDA, SLA´s condiciones comerciales, garantías, seguros, forma de pagos y descuentos convenidos.
-							<br>
-							consulte con su Ejecutivo de cuentas asignado todas las cuestiones técnicas y dudas que tenga asi como bonificaciones.
-							<br>
-						<div style="width: 100%; margin: auto; text-align: center;" class="center"></div>
-							<p>
-								*Nuestro Ejecutivo de Cuentas se pondrá en contacto con usted en la fecha y el horario que nos indico
-								<br>
-								Fecha de contacto: {{data.fechaContact}} de la ciudad de {{data.Ciudad}}.
-								<br>
-								Tipo de contacto:  {{data.tipoCont}}
-								<br>    
-								Observaciones:
-								<br>
-								{{data.Obs}}
-								<br>
-							</p>
-						</div>
-						<form action="/cotizarSoftware" method="get" align="center">
-							<button style="font-size: 1rem; padding: 0.5rem; margin: auto;" class="alerta" type="submit">Volver</button>
-						</form>
+			<header style="5rem auto" class="center ">
+				<h2>Pre-Cotización de Pagina WEB</h2>
+			</header>
+			<div style="text-align:justify; color: aliceblue ; align-items: center;">
+				<p>
+					<strong>{{data.Nombre}}</strong> queremos expresarte nuestro agradecimiento por dejarnos participar en esta inportante oportunidad. Es un privilegio, para nosotros, poder ser considerados candidatos como proveedores para ayudarlos a lograr sus objetivos.
+					<br>
+					TBS-it-IT es una compañía dedicada a la creación de soluciones en el campo de tecnologías de la información. Contamos con talento de alto valor, con experiencia y constantemente actualizados sobre las últimas tecnologías con el fin de brindar el mejor servicio. 
+					<br>
+					Por tres meses o un año, por un solo recurso o un equipo completo, ofrecemos los mejores recursos con experiencia directa en su industria y con los sistemas y tecnologías que necesita, asi que nuevamente, gracias por elegirnos, como socio tecnológico, a la hora de abordar sus proyectos.
+				</p>
 			</div>
-		
-	
+				<div class="container card" style="text-align: left; background-color: black; color: aliceblue ; align-items: left;">
+					<h4><strong>Datos:</strong></h4>
+					<p><strong>Nombre:</strong> {{data.Nombre}} <span></span><strong>Apellido:</strong> {{data.Apellido}}</p> 
+					<p><strong>Empresa:</strong> {{data.Empresa}}<span></span><strong>Email:</strong> {{data.Email}}</p>
+					<p><strong> Moneda de facturación:</strong> {{data.Moneda}}</p>
+					<p> <strong> Propuesta Comercial </strong>
+					<br>
+					<strong>Incluye:</strong>
+					<br>
+					<p>
+						* R.W.D. Responsive Web Design para que funcione en cualquier dispositivo incluyendo smartTV.
+						<br>
+						* Diseño y bosquejo grl. Adaptamos tus ideas, fotos, colores, imágenes, videos, audios, al marco de la pagina.
+						<br>
+						* Menu y submenus desplegables que se necesiten.
+						<br>
+						* Carrousel para la exposición moderna de contenido gráfico.
+						<br>
+						* Modal de contacto y envió de email a la casilla de correo que nos indique.
+						<br>
+						Condiciones:
+						<br>
+						* Tipo de contrato: Llave en mano.
+						<br>
+						* Mantenimiento mensual con 50% off.
+						<br>
+						* Consulte por la version Mobile, IOS y Android.
+					</p>
+					<br>
+					El precio puede variar y va desde un inicial de <strong> Valor {{data.Moneda}}: ${{suma}}</strong> hasta según requerimientos del cliente.
+					<br>
+					Mas iva e impuestos.
+					<br>
+					Mantenimiento mensual con un 50% de descuento.
+					<br>
+					Todos los precios son tentativos, están sujetos a una negociación final y a la presentación de una propuesta formal que incluye: NDA, SLA´s condiciones comerciales, garantías, seguros, forma de pagos y descuentos convenidos.
+					<br>
+					consulte con su Ejecutivo de cuentas asignado todas las cuestiones técnicas y dudas que tenga asi como bonificaciones.
+					<br>
+				</div>
+				<div style="width: 100%; margin: auto; text-align: center;" class="center">
+					<p>
+						*Nuestro Ejecutivo de Cuentas se pondrá en contacto con usted en la fecha y el horario que nos indico
+						<br>
+						Fecha de contacto: {{data.fechaContact}} de la ciudad de {{data.Ciudad}}.
+						<br>
+						Tipo de contacto:  {{data.tipoCont}}
+						<br>    
+						Observaciones:
+						<br>
+						{{data.Obs}}
+						<br>
+					</p>
+				</div>
+				<form action="/cotizarSoftware" method="get" align="center">
+					<button style="font-size: 1rem; padding: 0.5rem; margin: auto;" class="alerta" type="submit">Volver</button>
+				</form>
+			</div>
 		</div>
-
 	</div>
 </section>
