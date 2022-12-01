@@ -338,7 +338,8 @@ li {
 /****************/
 .tecnologia {
 	/* FONDO DEGRADADO*/
-	background-image:  url(/images/webpage.png);
+	/* background-image:  url(/images/webpage.png); */
+	background-image:  url(/images/lenguajes2.png);	
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -350,7 +351,8 @@ li {
 /****************/
 .areas {
 	/* FONDO DEGRADADO*/
-	background-image:  url(/images/lenguajes2.png);
+/*	background-image:  url(/images/lenguajes2.png);*/
+	background-image:  url(/images/webpage.png);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
