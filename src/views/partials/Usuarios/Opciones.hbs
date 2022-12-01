@@ -1,12 +1,12 @@
 <input style="position:absolute;margin-top: -4rem; padding:0; width: 100%; height: 230%;" class="" id="" type="image" src="/images/cerosyunos.jpg" >
 <div align="center" style="margin:0 0 0 15rem ;position: relative; z-index: 9999999999999; opacity:0.95;"> 
     <div style="width: 80%; color: aliceblue; background-color: black;" class="box">
-        <div class="">
+        <div class="panelControl">
             <div style="margin: 0; " class="">
-                <input style="padding: 0;" class="" id="" type="image" src="/images/TBS-IT-IT1.jpg" >
+                <input style="padding: 0;" class="" id="" type="image" src="/images/TBS-IT1.jpg" >
             </div>
             {{!-- Acordeon principal donde van el logo y la foto --}}
-            <div style="background-color:black;margin: 1rem 0 -1rem 0;" class="panelControl">
+            <div style="background-color:black;margin: 1rem 0 -1rem 0;" class="">
                 <div class="flex">
                     <div class="">
                         <p  style="font-size: 1.5rem; margin: -1.9rem -2.3rem 0 -.9rem ; padding: 0">
@@ -23,26 +23,26 @@
             </div>
         </div>
         <br>
-            <div>
+            <div >
                 <br>
-                <form action="/editarDatosPersonales" method="POST">
+                <form class="btn-success" action="/editarDatosPersonales" method="POST">
                     <input type="text" value="{{dataUser._id}}" name="id" hidden>
-                    <button type="submit" class="btn-block" data-toggle="modal" data-target="#spinner2"><h3>Mis Datos</h3></button>
+                    <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Mis Datos</h3></button>
                 </form>
-                <form action="/configuracionTBS-IT" method="GET">
-                    <button type="submit" class="btn-block" data-toggle="modal" data-target="#spinner2"><h3>Configuracion</h3></button>
+                <form class="btn-success" action="/configuracionTBS-IT" method="GET">
+                    <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Configuracion</h3></button>
                 </form>
-                <form action="/nosotros" method="GET">
-                    <button type="submit" class="btn-block" data-toggle="modal" data-target="#spinner2"><h3>Certificasciones</h4></button>
+                <form class="btn-success" action="/nosotros" method="GET">
+                    <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Certificasciones</h4></button>
                 </form>
-                <form action="/instrucciones" method="GET">
-                    <button type="submit" class="btn-block" data-toggle="modal" data-target="#spinner2"><h3>Cotizaciones</h3></button>
+                <form class="btn-success" action="/instrucciones" method="GET">
+                    <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Cotizaciones</h3></button>
                 </form>
-                <form action="/mensajesDelSistema" method="GET">
-                    <button type="submit" class="btn-block" data-toggle="modal" data-target="#spinner2"><h3>Mensajes/consultas</h3></button>
+                <form class="btn-success" action="/mensajesDelSistema" method="GET">
+                    <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Mensajes/consultas</h3></button>
                 </form>
-                <form action="/" method="GET">
-                    <button type="submit" class="btn-block" data-toggle="modal" data-target="#spinner2"><h3>Salir</h3></button>
+                <form class="btn-success" action="/" method="GET">
+                    <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Salir</h3></button>
                 </form>                
             </div>
         </div>
