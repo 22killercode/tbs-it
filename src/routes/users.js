@@ -42,7 +42,7 @@ router.get('/users/noestasRegistrado', async (req, res) => {
 });
 
 // ruta para inscribirte
-router.get('/inscribirme', async (req, res) => {
+router.get('/inscribirme22', async (req, res) => {
     console.log("/inscribirme")
     res.render('partials/Usuarios/inscribirme');
 });
