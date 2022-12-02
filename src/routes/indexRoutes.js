@@ -67,7 +67,7 @@ const setMinEraser = 1
 
 
 //aqui programas el html inicial
-router.get('/dataQuote1', (req, res) => {
+router.get('/dataQuote', (req, res) => {
     res.render('partials/softFactory/2SF')
 });
 
@@ -2524,7 +2524,7 @@ router.get('/cotizarSoftware',async (req, res) => {
 });
 
 //Ruta para cotizar software
-router.post('/dataQuote', [validador1], async (req, res) => {
+router.post('/dataQuote1', [validador1], async (req, res) => {
     const token = shortid.generate()
     const guardarToken = new Tokens ({ token })
     await guardarToken.save()

@@ -1,351 +1,330 @@
 <section class="develops2 py-5 align-items-center">
-		<div class="row d-flex align-items-center carpetaNegra" 
-			style="border-radius:1rem; min-height:30rem; width:90%; margin:auto; padding:auto;font-size: 0.9rem; color:aliceblue;">
-				<div style="padding:-2rem 0 -2rem 0;" class="col-lg-12" data-aos="fade-right">
-					<div style="padding:0;" id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-						<div style="padding:-4rem 0 -3rem 0;" class="carousel-inner">
-							{{!-- inicio 4 opciones --}}
-							<div style="padding:auto;" class="carousel-item active" data-bs-interval="20000">
-								<div style="padding:auto;" class="container-fluid text-light">
-									<div style="padding:auto;" class="row">
-										<div style="margin:auto" style="z-index: 999999; width:90%">
-											<h4 align="center">
-												<strong>En este carrousel encontraras 4 opciones de cotización:</strong>
-											</h4>
-											<div>
-												<p>
-													<br>
-													<strong> 1ero </strong> Paginas WEB simples, donde podrás comunicar todo lo referente a vos, tu comercio, experiencias, profesión, pasiones y lo que desees, en un formato ameno, con inteligencia UX/UI.
-													<br>
-													<br>
-													<strong> 2do </strong> Aplicaciones WEB que son Appirest/full super seguras que responden desde el backend y se realizan con lo ultimo de tecnologías de los fullstac´s MERN MEAN (Mongo Express, Angular y Node o Mongo Express React/ React native y NODE). También puedes incluir los módulos que quieras como por ejemplo el modulo PWA que hace que las AppWeb sean funcionales a aplicaciones híbridas por tanto funcionan igual que una aplicación móvil en cualquier dispositivo, sin necesidad de internet y no ocupan demasiado espacio como una app nativa.
-												</p>
+		<div style="color:aliceblue; margin: -1rem 2rem;" class="row d-flex align-items-center" style="">
+			<div class="carpetaNegra col-lg-12" data-aos="fade-right">
+				<div style="padding:0;" id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+					<div style="padding:;" class="carousel-inner">
+						{{!-- inicio 4 opciones --}}
+						<div style="padding:auto;" class="carousel-item active" data-bs-interval="20000">
+							<div style="padding:auto;" class="container-fluid text-light">
+								<div style="padding:auto;" class="row">
+									<div style="margin:auto" style="z-index: 999999; width:90%">
+										<h4 align="center">
+											<strong>En este carrousel encontraras 4 opciones de cotización:</strong>
+										</h4>
+										<div>
+											<p>
 												<br>
-												<p>
-													<strong> 3ero </strong> Appweb I.O.T. como ya es sabido puedes controlar y monitorear todo tipo de dispositivos, maquinaria, sensores, cámaras, etc con aplicasiones y placas Arduino, Raspberry, etc desde cualquier dispositivo movil o PC en cualquier parte del planeta. Nosotros te ayudamos a hacer tu app I.O.T. 
-													<br>
-													<br>
-													<strong> 4to </strong> Software customizable, es decir en cualquier tecnología podemos construir, reparar, modificar, cualquier software y adaptarlo a las nuevas tecnologías. Esto es ideal para quienes tienen que lidiar con las viejas tecnologías, "...la pesada herencia IT...", y pasar a micro servicios.
-												</p>
-											</div>
-										</div> <!-- end of div -->
-									</div> <!-- end of row -->
-								</div> <!-- end of container -->
-							</div>
-							{{!-- paginas web --}}
-							<div style="padding:1rem;" class="carousel-item" data-bs-interval="20000">
-									<div style="margin-top:-2rem;" class="row d-flex align-items-center">
-											<div class="col-lg-7" data-aos="fade-right">
-												<h3>Paginas Web con R.W.D. </h2>
+												<strong> 1ero </strong> Paginas WEB simples, donde podrás comunicar todo lo referente a vos, tu comercio, experiencias, profesión, pasiones y lo que desees, en un formato ameno, con inteligencia UX/UI.
 												<br>
-												<p>
-													Te ofrecemos paginas donde podrás expresar el contenido comercial, personal, y/o profesional que necesites.
-													<br>
-													<br>
-													<strong>Incluye:</strong>
-													<br>
-													* R.W.D. Responsive Web Design para que funcione en cualquier dispositivo incluyendo smartTV.
-													<br>
-													* Diseño y bosquejo grl. Adaptamos tus ideas, fotos, colores, imágenes, videos, audios, al marco de la pagina.
-													<br>
-													* Menu y submenus desplegables que se necesiten.
-													<br>
-													* Carrousel para la exposición moderna de contenido gráfico.
-													<br>
-													* Modal de contacto y envió de email a la casilla de correo que nos indique.
-													<br>
-													<br>
-													<strong> Condiciones:</strong>
-													<br>
-													* Tipo de contrato: Llave en mano.
-													<br>
-													* Mantenimiento mensual con 50% off.
-													<br>
-													* Consulte por la version Mobile, IOS y Android.
-												</p>
-											</div>
-											<div align="center" style="margin-top:12rem ;" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
-												<img class="img-fluid" src="/images/webpage.png" alt="about" >
-												<form action="/agendarEntrevista" method="post">
-													<input type="text" name="Nombre"   value="{{data.Nombre}}"   hidden>
-													<input type="text" name="Apellido" value="{{data.Apellido}}" hidden>
-													<input type="text" name="NumCel"   value="{{data.NumCel}}"   hidden>
-													<input type="text" name="Email"    value="{{data.Email}}"    hidden>
-													<input type="text" name="Empresa"  value="{{data.Empresa}}"  hidden>
-													<input type="text" name="Moneda"   value="{{data.Moneda}}"   hidden>
-													<input type="text" name="Ciudad"   value="{{data.Ciudad}}"   hidden>
-													<input type="text" name="PagWeb"   value="{{data.PagWeb}}"   hidden>
-													<input type="text" name="PgWb"     value="{{data.PagWeb}}"   hidden>
-													<input type="text" name="token"    value="{{token}}"         hidden>
-													<button style="align-items: center; margin: 1rem auto;" type="submit" class="alertaBlack">Ver Precio & condiciones</button>
-												</form>
-											</div>
-									</div> <!-- end of row -->
-									<div class="carousel-caption d-md-block">
-									</div>
-							</div>
-							{{!-- aplicasiones web --}}
-							<div style="padding:1rem;" class="carousel-item" data-bs-interval="20000">
-								<div class="row d-flex align-items-center">
+												<br>
+												<strong> 2do </strong> Aplicaciones WEB que son Appirest/full super seguras que responden desde el backend y se realizan con lo ultimo de tecnologías de los fullstac´s MERN MEAN (Mongo Express, Angular y Node o Mongo Express React/ React native y NODE). También puedes incluir los módulos que quieras como por ejemplo el modulo PWA que hace que las AppWeb sean funcionales a aplicaciones híbridas por tanto funcionan igual que una aplicación móvil en cualquier dispositivo, sin necesidad de internet y no ocupan demasiado espacio como una app nativa.
+											</p>
+											<br>
+											<p>
+												<strong> 3ero </strong> Appweb I.O.T. como ya es sabido puedes controlar y monitorear todo tipo de dispositivos, maquinaria, sensores, cámaras, etc con aplicasiones y placas Arduino, Raspberry, etc desde cualquier dispositivo movil o PC en cualquier parte del planeta. Nosotros te ayudamos a hacer tu app I.O.T. 
+												<br>
+												<br>
+												<strong> 4to </strong> Software customizable, es decir en cualquier tecnología podemos construir, reparar, modificar, cualquier software y adaptarlo a las nuevas tecnologías. Esto es ideal para quienes tienen que lidiar con las viejas tecnologías, "...la pesada herencia IT...", y pasar a micro servicios.
+												<br>
+												<br>
+											</p>
+										</div>
+									</div> <!-- end of div -->
+								</div> <!-- end of row -->
+							</div> <!-- end of container -->
+						</div>
+						{{!-- paginas web --}}
+						<div style="padding:2rem; margin-top:0;" class="carousel-item" data-bs-interval="20000">
+								<div style="margin:-5rem 1rem;" class="row d-flex align-items-center">
 									<div class="col-lg-7" data-aos="fade-right">
-										<h3>Aplicasion WEB Appis rest full</h3>
-										<br>
+										<h3>Paginas/Sitio Web con R.W.D. </h2>
 										<p>
-											Las aplicaciones WEB o Appis rest Full Web, son aplicaciones que corren desde el backend con la mejor tecnología, sobre cualquier navegador de internet y que operar como programas integrales desde cualquier dispositivo y desde cualquier parte del planeta.
+											Te ofrecemos paginas/sitio WEB donde podrás expresar el contenido comercial, personal, y/o profesional que necesites.
+											<br><br>
+											La diferencia entre una pagina web simple y un sitio web es que aquí
+											<strong>Incluye:</strong>
+											<br>
+											* R.W.D. Responsive Web Design para que funcione en cualquier dispositivo incluyendo smartTV.
+											<br>
+											* Diseño y bosquejo grl. Adaptamos tus ideas, fotos, colores, imágenes, videos, audios, al marco de la pagina.
+											<br>
+											* Menu y submenus desplegables que se necesiten.
+											<br>
+											* Carrousel para la exposición moderna de contenido gráfico.
+											<br>
+											* Modal de contacto y envió de email a la casilla de correo que nos indique.
 											<br>
 											<br>
-											Recomendamos programarlas en tecnologías MERN (Mongo, Expres, React, NODE) o MAEN (Mongo, Expres, Angular, NODE) que son los idiomas de programación mas modernos, super flexibles, seguros, rápidos, escalables y universales en idioma JS (Java Script). Se usan este tipo de tecnologías para hacer Markets Place del tipo Mercado Libre, Amazon, etc, Pedidos Ya, Uber, o CRM´s para la gestión financiera, comercial, administrativas, para el seguimientos, control y administración de muy diversas empresas e industrias del mercado.
+											<strong> Condiciones:</strong>
 											<br>
-											
+											* Tipo de contrato: Llave en mano.
+											<br>
+											* Mantenimiento mensual con 50% off.
+											<br>
+											* Consulte por la version Mobile, IOS y Android.
 										</p>
 									</div>
-									<div style="margin-top:5rem;" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
-										<img class="img-fluid" src="/images/pcApps.jpg" alt="about" >
+									<div align="center" style="margin-top:7rem" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
+										<img style="border-radius:1rem;" class="img-fluid" src="/images/webpage.png" alt="about" >
+										<form action="/agendarEntrevista" method="post">
+											<input type="text" name="Nombre"   value="{{data.Nombre}}"   hidden>
+											<input type="text" name="Apellido" value="{{data.Apellido}}" hidden>
+											<input type="text" name="NumCel"   value="{{data.NumCel}}"   hidden>
+											<input type="text" name="Email"    value="{{data.Email}}"    hidden>
+											<input type="text" name="Empresa"  value="{{data.Empresa}}"  hidden>
+											<input type="text" name="Moneda"   value="{{data.Moneda}}"   hidden>
+											<input type="text" name="Ciudad"   value="{{data.Ciudad}}"   hidden>
+											<input type="text" name="PagWeb"   value="{{data.PagWeb}}"   hidden>
+											<input type="text" name="PgWb"     value="{{data.PagWeb}}"   hidden>
+											<input type="text" name="token"    value="{{token}}"         hidden>
+											<button style="align-items: center; margin: 1rem auto;" type="submit" class="alertaBlack">Ver Precio & condiciones</button>
+										</form>
 									</div>
-								</div> <!-- end of row -->
-								<div class="carousel-caption d-md-block">
+								</div>
+						</div>
+						{{!-- aplicasiones web --}}
+						<div style="padding:1rem;" class="carousel-item" data-bs-interval="20000">
+							<div class="row d-flex align-items-center">
+								<div class="col-lg-7" data-aos="fade-right">
+									<br>
+									<h3>Aplicasion WEB Appis rest full</h3>
+									<br>
+									<p>
+										Las aplicaciones WEB o Appis rest Full Web, son aplicaciones que corren desde el backend con la mejor tecnología, sobre cualquier navegador de internet y que operar como programas integrales desde cualquier dispositivo y desde cualquier parte del planeta.
+										<br>
+										<br>
+										Recomendamos programarlas en tecnologías MERN (Mongo, Expres, React, NODE) o MAEN (Mongo, Expres, Angular, NODE) que son los idiomas de programación mas modernos, super flexibles, seguros, rápidos, escalables y universales en idioma JS (Java Script). Se usan este tipo de tecnologías para hacer Markets Place del tipo Mercado Libre, Amazon, etc, Pedidos Ya, Uber, o CRM´s para la gestión financiera, comercial, administrativas, para el seguimientos, control y administración de muy diversas empresas e industrias del mercado.
+										<br>
+									</p>
+								</div>
+								<br>
+								<div style="margin-top:5rem;" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
+									<img style="border-radius:1rem;" class="img-fluid" src="/images/pcApps.jpg" alt="about" >
 								</div>
 							</div>
-							{{!--Aplicasion WEB Appis rest full - continuacion 1- --}}
-							<div style="padding:1rem;" class="carousel-item" data-bs-interval="20000">
-								<div class="row d-flex align-items-center">
-										<div class="col-lg-7" data-aos="fade-right">
-											<h3>Aplicación WEB Appis rest full - continuacion -</h2>
-															<br>
-															<ul>
-																<strong> Incluye:</strong>
-																<li>
-																Análisis, estudio UX/UI, Discovery de necesidades y problemáticas, diseño, bosquejo y maquetado para convertir tu sueño realidad de forma rápida y profesional.
-																</li>
-																<li>
-																R.W.D. Responsive Web Design para que funcione en cualquier dispositivo.
-																</li>
-																<li>
-																Multiusuarios con gestión independiente.
-																</li>
-																<li>
-																Menu con los items que se necesiten incluyendo sub menus.
-																</li>
-																<li>
-																Posibilidad de poner fotos gift videos audio.
-																</li>
-																<li>
-																Carruseles para la exposición moderna de contenido gráfico.
-																</li>
-																<li>
-																Modal de contacto y envió de email a la casilla de correo que nos indique
-																</li>										
-																<li>
-																Base de datos de formato Non SQL, que es mas ágil y rápida (MongoDB) que guarda la información básica de contacto de quien entra y solicita algún productos o cotización y sirve para generar estadísticas y control sobre tus clientes y ventas.
-																</li>
-																<li>
-																Menu de administración, configuración y control de la app web.
-																</li>
-															</ul>
-															<br>
-										</div>
-										<div class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
-											<img class="img-fluid" src="/images/appwebs2.png" alt="about" >
-										</div>
-									</div> <!-- end of row -->
-									<div class="carousel-caption d-md-block">
-									</div>
-							</div>
-							{{!--Aplicasion WEB Appis rest full - continuacion boton- --}}
-							<div style="padding:1rem;" class="carousel-item" data-bs-interval="20000">
-								<div class="row d-flex align-items-center">
-									<form action="/agendarEntrevista" method="post" class="flexlado">
-										<div class="col-lg-7" data-aos="fade-right">
-											<h3>Aplicación WEB Appis rest full - continuación-</h2>
-											<br>
-											<p>
-												<strong>Módulos que puede incluir:</strong>
-												<br>
-												<br>
-												<div class="form-check form-switch">
-													<input name="PWA" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-													<label class="form-check-label" for="flexSwitchCheckDefault">
-														* P.W.A. Progresive Web App, entre sus varias funciones adapta cualquier pagina o appi web de forma progresiva con la finalidad de que funcione aun sin conexión a internet incluyendo sus push notification, etc.
-													</label>
-												</div>
-												<div class="form-check form-switch">
-													<input name="Estadisticas" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault1">
-													<label class="form-check-label" for="flexSwitchCheckDefault1">
-														* Estadísticas y menúes de control varios con alertas configurable por desvíos en objetivos sesteados por el cliente.
-													</label>
-												</div>
-												<div class="form-check form-switch">
-													<input name="pasarelaPagos" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2">
-													<label class="form-check-label" for="flexSwitchCheckDefault2">
-														* Pasarelas de pago del tipo MODO, Pay pal, Mercado pago etc
-													</label>
-												</div>
-												<div class="form-check form-switch">
-													<input name="traking" class="form-check-input" type="checkbox" id="2323">
-													<label class="form-check-label" for="2323">
-														* Traking geoposicional de automóviles, direcciones, mensajería, etc
-													</label>
-												</div>
-												<div class="form-check form-switch">
-													<input name="clouding" class="form-check-input" type="checkbox" id="44">
-													<label class="form-check-label" for="44">
-														* Clouding en goole, Heroku, Microsoft Azure, Amazon, etc.
-													</label>
-												</div>
-												<br>
-												<strong>Condiciones:</strong>
-												<br>
-												* Tipo de contrato: Mix, llave en mano y según complejidad asociada puede ser Time & Materials.
-												<br>
-												* Consulte pot descuento en el mantenimiento mensual con 50% off.
-												<br>
-												* Cosulte por la version nativa Mobile, IOS y Android.
-												<br>
-											</p>
-										</div>
-										{{!-- foto y boton --}}
-										<div align="center" style="margin-top: 7rem;" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
-											<img style="margin: auto ;" class="img-fluid" src="/images/apweb2.png" alt="about" >
-												<div hidden>
-													<input name="Nombre"        value="{{data.Nombre}}"   hidden>
-													<input name="Apellido"      value="{{data.Apellido}}" hidden>
-													<input name="NumCel"        value="{{data.NumCel}}"   hidden>
-													<input name="Email"         value="{{data.Email}}"    hidden>
-													<input name="Empresa"       value="{{data.Empresa}}"  hidden>
-													<input name="Moneda"        value="{{data.Moneda}}"   hidden>
-													<input name="Ciudad"        value="{{data.Ciudad}}"   hidden>
-													<input name="PagWeb"        value="{{data.PagWeb}}"   hidden>
-													<input name="appirestFull"  value="true"              hidden>
-													<input name="SD"            value="SD"                hidden>
-													<input name="token"         value="{{token}}"         hidden>
-												</div>
-											<button style="align-items: center; margin: 2rem auto;" type="submit" class="alertaBlack">Ver Precio & condiciones</button>
-										</div>
-									</form>
-							<div class="carousel-caption d-md-block">
-							</div>
-								</div> <!-- end of row -->
-							</div>
-							{{!--Aplicasion WEB Appis rest full IOT - --}}
-							<div style="padding:1rem;" class="carousel-item">
-									<div class="row d-flex align-items-center">
-										<div class="col-lg-7" data-aos="fade-right">
-										<h3>Aplicación rest full I.O.T.</h2>
-											<br>
-											<p>
-												Las aplicaciones rest Full I.O.T. son programas que corren desde el backend y sobre cualquier navegador de internet y que operar como programas integrales desde cualquier dispositivo y en cualquier parte del planeta. Las programamos en tecnologías MERN (Mongo, Expres, React, NODE) o MAEN (Mongo, Expres, Angular, NODE) que son los idiomas de programación mas modernos, super seguras. flexibles, rápidos, escalables y universales en JS (Java Script).
-												<br>
-												<br>
-												Tienen como objetivo principal controlar placas del tipos Raspberry o Arduino entre tantas otras, que poseen la finalidad de controlar y auditar todo tipo de dispositivos electromecánicos y sensores.
-												<br>
-												<br>
-												Se utilizan en todo tipo de industrias, seguridad en general, ambiental, de trasporte, aserias, marítimas, aeronáuticas, filtración, etc entre tantas otras y sirven para controlar todo tipo de maquinarias y monitorear todo tipo de sensores a la distancia y desde cualquier dispositivo, de forma automática o manual.
-												<br>
-											</p>
-										</div>
-										<div style="margin-top:6rem;" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
-											<img class="img-fluid" src="/images/IOT.webp" alt="about" >
-										</div>
-									</div> <!-- end of row -->
-									<div class="carousel-caption d-md-block">
-									</div>
-							</div>
-							{{!--Aplicasion WEB Appis rest full IOT - continuacion 1- --}}
-							<div style="padding:1rem;" class="carousel-item">
-								<div class="row d-flex align-items-center">
+							<br>
+							<br>
+						</div>
+						{{!--Aplicasion WEB Appis rest full - continuacion 1- --}}
+						<div style="padding:1rem;" class="carousel-item" data-bs-interval="20000">
+							<div class="row d-flex align-items-center">
 									<div class="col-lg-7" data-aos="fade-right">
-										<h3>Aplicasion rest full I.O.T. -Continuación-</h2>
+										<h3>Aplicación WEB Appis rest full - continuacion -</h2>
 														<br>
 														<ul>
-															<strong>Incluye:</strong>
+															<strong> Incluye:</strong>
+															<li>
+															Análisis, estudio UX/UI, Discovery de necesidades y problemáticas, diseño, bosquejo y maquetado para convertir tu sueño realidad de forma rápida y profesional.
+															</li>
+															<li>
+															R.W.D. Responsive Web Design para que funcione en cualquier dispositivo.
+															</li>
 															<li>
 															Multiusuarios con gestión independiente.
 															</li>
 															<li>
+															Menu con los items que se necesiten incluyendo sub menus.
+															</li>
+															<li>
+															Posibilidad de poner fotos gift videos audio.
+															</li>
+															<li>
+															Carruseles para la exposición moderna de contenido gráfico.
+															</li>
+															<li>
+															Modal de contacto y envió de email a la casilla de correo que nos indique
+															</li>										
+															<li>
 															Base de datos de formato Non SQL, que es mas ágil y rápida (MongoDB) que guarda la información básica de contacto de quien entra y solicita algún productos o cotización y sirve para generar estadísticas y control sobre tus clientes y ventas.
 															</li>
 															<li>
-															R.W.D. Responsive Web Design para que funcione en cualquier dispositivo incluyendo smartTV.
-															</li>
-															<li>
-															Menúes y sub menúes varios y a necesidad.
-															</li>
-															<li>
-															Multimedia incluida, fotos gift videos audio.
-															</li>
-															<li>
-															Carrousel para la exposición moderna de contenido gráfico.
-															</li>
-															<li>
-															Modal y formularios varios de contactos. 
-															</li>
-															<li>
-															Envió de email, sms o whatssap al destino que se necesite.
+															Menu de administración, configuración y control de la app web.
 															</li>
 														</ul>
 														<br>
 									</div>
-									<div style="margin-top:6rem;" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
-										<img class="img-fluid" src="/images/iot2.jpg" alt="about" >
+									<div class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
+										<img class="img-fluid" src="/images/appwebs2.png" alt="about" >
 									</div>
 								</div> <!-- end of row -->
-							<div class="carousel-caption d-md-block">
-							
-							</div>
-							</div>
-							{{!-- Aplicasion rest full I.O.T. -Continuacion- 2--}}
-							<div style="padding:1rem;" class="carousel-item " data-bs-interval="20000">
-								<form action="/EnviarCotizacionAPPIREST" method="post"> 
-									<div class="row d-flex align-items-center">
-										<div class="col-lg-7" data-aos="fade-right">
-											<h3>Aplicasion rest full I.O.T. -Continuacion-</h2>
-												<br>
-												<p>
-													<strong>Modulos que puedes incluir:</strong>
-													<br>
-													<br>
-													<div class="form-check form-switch">
-														<input name="PWA" class="form-check-input" type="checkbox" id="11">
-														<label class="form-check-label" for="11">
-															* P.W.A. Progresive Web App, entre sus varias funciones adapta cualquier pagina o appi web de forma progresiva con la finalidad de que funcione aun sin conexión a internet incluyendo, icono y sus push notification, etc.
-														</label>
-													</div>
-													<div class="form-check form-switch">
-														<input name="Estadisticas" class="form-check-input" type="checkbox" id="22">
-														<label class="form-check-label" for="22">
-															* Estadísticas varias y alertas a disposición por desvíos en sensores y/o objetivos seteados por el cliente.
-														</label>
-													</div>
-													<div class="form-check form-switch">
-														<input name="pasarelaPagos" class="form-check-input" type="checkbox" id="33">
-														<label class="form-check-label" for="33">
-															* Pasarelas de pago del tipo MODO, Pay pal, Mercado pago etc
-														</label>
-													</div>
-													<div class="form-check form-switch">
-														<input name="traking" class="form-check-input" type="checkbox" id="23213">
-														<label class="form-check-label" for="23213">
-															* Traking geoposicional de automóviles, direcciones, mensajería, etc
-														</label>
-													</div>
-													<div class="form-check form-switch">
-														<input name="clouding" class="form-check-input" type="checkbox" id="4411">
-														<label class="form-check-label" for="4411">
-															* Clouding en goole, Heroku, Microsoft Azure, Amazon, etc.
-														</label>
-													</div>
-													<strong>Condiciones:</strong>
-													<br>
-													* Tipo de contrato: Mix, Llave en mano y según complejidad asociada puede ser Time & Materials.
-													<br>
-													* Mantenimiento mensual con 50% off.
-													<br>
-													* Cosulte por la version Mobile, IOS y Android.
-												</p>
-										</div>
-										<div style="margin-top:6rem;" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
-											<img class="img-fluid" src="/images/iot3.jpg" alt="about" >
+								<div class="carousel-caption d-md-block">
+								</div>
+						</div>
+						{{!--Aplicasion WEB Appis rest full - continuacion boton- --}}
+						<div style="padding:1rem;" class="carousel-item" data-bs-interval="20000">
+							<div style="margin-bottom:-1rem;" class="row d-flex align-items-center">
+								<form action="/agendarEntrevista" method="post" class="flexlado">
+									<div class="col-lg-7" data-aos="fade-right">
+										<h3>Aplicación WEB Appis rest full - continuación-</h2>
+										<br>
+										<p>
+											<strong>Módulos que puede incluir:</strong>
 											<br>
+											<br>
+											<div class="form-check form-switch">
+												<input name="PWA" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+												<label class="form-check-label" for="flexSwitchCheckDefault">
+													* P.W.A. Progresive Web App, entre sus varias funciones adapta cualquier pagina o appi web de forma progresiva con la finalidad de que funcione aun sin conexión a internet incluyendo sus push notification, etc.
+												</label>
+											</div>
+											<div class="form-check form-switch">
+												<input name="Estadisticas" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault1">
+												<label class="form-check-label" for="flexSwitchCheckDefault1">
+													* Estadísticas y menúes de control varios con alertas configurable por desvíos en objetivos sesteados por el cliente.
+												</label>
+											</div>
+											<div class="form-check form-switch">
+												<input name="pasarelaPagos" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault2">
+												<label class="form-check-label" for="flexSwitchCheckDefault2">
+													* Pasarelas de pago del tipo MODO, Pay pal, Mercado pago etc
+												</label>
+											</div>
+											<div class="form-check form-switch">
+												<input name="traking" class="form-check-input" type="checkbox" id="2323">
+												<label class="form-check-label" for="2323">
+													* Traking geoposicional de automóviles, direcciones, mensajería, etc
+												</label>
+											</div>
+											<div class="form-check form-switch">
+												<input name="clouding" class="form-check-input" type="checkbox" id="44">
+												<label class="form-check-label" for="44">
+													* Clouding en goole, Heroku, Microsoft Azure, Amazon, etc.
+												</label>
+											</div>
+										</p>
+									</div>
+									{{!-- foto y boton --}}
+									<div align="center" style="margin:7rem 1rem -8em 1rem" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
+										<img style="margin:auto; border-radius:1rem;" class="img-fluid" src="/images/apweb2.png" alt="about" >
+											<div hidden>
+												<input name="Nombre"        value="{{data.Nombre}}"   hidden>
+												<input name="Apellido"      value="{{data.Apellido}}" hidden>
+												<input name="NumCel"        value="{{data.NumCel}}"   hidden>
+												<input name="Email"         value="{{data.Email}}"    hidden>
+												<input name="Empresa"       value="{{data.Empresa}}"  hidden>
+												<input name="Moneda"        value="{{data.Moneda}}"   hidden>
+												<input name="Ciudad"        value="{{data.Ciudad}}"   hidden>
+												<input name="PagWeb"        value="{{data.PagWeb}}"   hidden>
+												<input name="appirestFull"  value="true"              hidden>
+												<input name="SD"            value="SD"                hidden>
+												<input name="token"         value="{{token}}"         hidden>
+											</div>
+										<button style="align-items: center; margin: 1rem 0 0 -1rem;" type="submit" class="alertaBlack">Ver Precio & condiciones</button>
+									</div>
+								</form>
+							</div> <!-- end of row -->
+						</div>
+						{{!--Aplicasion WEB Appis rest full IOT - --}}
+						<div style="padding:1rem;" class="carousel-item" data-bs-interval="20000">
+								<div class="row d-flex align-items-center">
+									<div class="col-lg-7" data-aos="fade-right">
+									<h3>Aplicación rest full I.O.T.</h2>
+										<br>
+										<p>
+											Las aplicaciones rest Full I.O.T. son programas que por seguridad corren desde el backend y sobre cualquier navegador de internet y que operar como programas integrales desde cualquier dispositivo y en cualquier parte del planeta. Las programamos en tecnologías MERN (Mongo, Expres, React, NODE) o MAEN (Mongo, Expres, Angular, NODE) que son los idiomas de programación mas modernos, super seguras. flexibles, rápidos, escalables y universales en JS (Java Script).
+											<br>
+											Tienen como objetivo principal controlar placas del tipos Raspberry o Arduino entre tantas otras, que poseen la finalidad de controlar y auditar todo tipo de dispositivos electromecánicos y sensores.
+											<br>
+											Se utilizan en todo tipo de industrias, seguridad en general, ambiental, de trasporte, aserias, marítimas, aeronáuticas, filtración, etc entre tantas otras y sirven para controlar todo tipo de maquinarias y monitorear todo tipo de sensores a la distancia y desde cualquier dispositivo, de forma automática o manual.
+											<br>
+										</p>
+									</div>
+									<div style="margin-top:5rem;" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
+										<img style="border-radius:1rem;" class="img-fluid" src="/images/IOT.webp" alt="about" >
+									</div>
+								</div> <!-- end of row -->
+								<div class="carousel-caption d-md-block">
+								</div>
+						</div>
+						{{!--Aplicasion WEB Appis rest full IOT - continuacion 1- --}}
+						<div style="padding:1rem;" class="carousel-item" data-bs-interval="20000">
+							<div class="row d-flex align-items-center">
+								<div class="col-lg-7" data-aos="fade-right">
+									<h3>Aplicasion rest full I.O.T. -Continuación-</h2>
+													<br>
+													<ul>
+														<strong>Incluye:</strong>
+														<li>
+														Multiusuarios con gestión independiente.
+														</li>
+														<li>
+														Base de datos de formato Non SQL, que es mas ágil y rápida (MongoDB) que guarda la información básica de contacto de quien entra y solicita algún productos o cotización y sirve para generar estadísticas y control sobre tus clientes y ventas.
+														</li>
+														<li>
+														R.W.D. Responsive Web Design para que funcione en cualquier dispositivo incluyendo smartTV.
+														</li>
+														<li>
+														Menúes y sub menúes varios y a necesidad.
+														</li>
+														<li>
+														Multimedia incluida, fotos gift videos audio.
+														</li>
+														<li>
+														Carrousel para la exposición moderna de contenido gráfico.
+														</li>
+														<li>
+														Modal y formularios varios de contactos. 
+														</li>
+														<li>
+														Envió de email, sms o whatssap al destino que se necesite.
+														</li>
+													</ul>
+													<br>
+								</div>
+								<div style="margin-top:7rem;" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
+									<img class="img-fluid" style="border-radius:1rem;" src="/images/iot2.jpg" alt="about" >
+								</div>
+							</div> <!-- end of row -->
+						<div class="carousel-caption d-md-block">
+						
+						</div>
+						</div>
+						{{!-- Aplicasion rest full I.O.T. -Continuacion- 2--}}
+						<div style="padding:1rem; margin-top:1rem;" class="carousel-item " data-bs-interval="20000">
+							<form action="/EnviarCotizacionAPPIREST" method="post"> 
+								<div style="margin:-3rem auto;" class="row d-flex align-items-center">
+									<div class="col-lg-7" data-aos="fade-right">
+										<h3>Aplicasion rest full I.O.T. -Continuacion-</h2>
+											<br>
+											<p>
+												<strong>Modulos que puedes incluir:</strong>
+												<br>
+												<br>
+												<div class="form-check form-switch">
+													<input name="PWA" class="form-check-input" type="checkbox" id="11">
+													<label class="form-check-label" for="11">
+														* P.W.A. Progresive Web App, entre sus varias funciones adapta cualquier pagina o appi web de forma progresiva con la finalidad de que funcione aun sin conexión a internet incluyendo, icono y sus push notification, etc.
+													</label>
+												</div>
+												<div class="form-check form-switch">
+													<input name="Estadisticas" class="form-check-input" type="checkbox" id="22">
+													<label class="form-check-label" for="22">
+														* Estadísticas varias y alertas a disposición por desvíos en sensores y/o objetivos seteados por el cliente.
+													</label>
+												</div>
+												<div class="form-check form-switch">
+													<input name="pasarelaPagos" class="form-check-input" type="checkbox" id="33">
+													<label class="form-check-label" for="33">
+														* Pasarelas de pago del tipo MODO, Pay pal, Mercado pago etc
+													</label>
+												</div>
+												<div class="form-check form-switch">
+													<input name="traking" class="form-check-input" type="checkbox" id="23213">
+													<label class="form-check-label" for="23213">
+														* Traking geoposicional de automóviles, direcciones, mensajería, etc
+													</label>
+												</div>
+												<div class="form-check form-switch">
+													<input name="clouding" class="form-check-input" type="checkbox" id="4411">
+													<label class="form-check-label" for="4411">
+														* Clouding en goole, Heroku, Microsoft Azure, Amazon, etc.
+													</label>
+												</div>
+											</p>
+									</div>
+									<div style="margin-top:6rem;" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down">
+										<img style="border-radius:1rem;" class="img-fluid" src="/images/iot3.jpg" alt="about" >
+										<div> 
 											<input type="text" name="Nombre"   value="{{data.Nombre}}"   hidden>
 											<input type="text" name="Apellido" value="{{data.Apellido}}" hidden>
 											<input type="text" name="NumCel"   value="{{data.NumCel}}"   hidden>
@@ -358,241 +337,234 @@
 											<input type="text" name="token" value="{{token}}" hidden>
 											<button style="align-items: center; margin: 1rem 0 0 5rem;" type="submit" class="alertaBlack">Ver Precio & condiciones</button>
 										</div>
-									</div> <!-- end of row -->
-								</form>
-								<div class="carousel-caption d-md-block">
-								
-								</div>
-							</div>
-							{{!-- Aplicasion rest full I.O.T. -Continuacion- 3--}}
-							<div style="padding:1rem;" class="carousel-item">
-								<div class="row d-flex align-items-center">
-										<div class="col-lg-7" data-aos="fade-right">
-											<h3>Custom Software y herencias de software</h2>
-											<p>
-												Hacemos todo tipo de desarrollo de programas en el lenguaje que necesites JS, C#, Python, C++, JAVA, GO, .Net, Híbridos Mobile, IOS, Android, etc.	Abarcamos el amplio espectro de tecnologías de programación para darte todas las herramientas al momento de construir software de calidad o para MIGRAR a micro servicios lo que denominamos como <strong> "...la pesada herencia.." </strong> que nuestra generación a heredado sobre los tan diversos monolíticos que aun están en vigencia en varias industrias como la bancaria, fintech, metalmecanica, administrativa y financiera.
-											</p>
-											<br>
-												<strong> Incluye:</strong>
-											<ul>
-												<li>
-													* Análisis de su sistema actual en el idioma en el que esta.
-												</li>
-												<li> 
-													* Discovery de necesidades, puntos de dolor y problemáticas, 
-												</li>
-												<li>
-													* Estudio UX/UI, diseño, bosquejo y maquetado para que el nuevo soft realmente se adapte a las necesidades y rápidamente se convierta en algo real de forma rápida y profesional.
-												</li>
-												<li>
-													* Analisis y desarrollo de las bases de datos que se necesiten según la ocasión tanto SQL como noSQL y en modalidades de server propio o clouding.
-												</li>
-												<li>
-													* Metodologías ágiles del tipo Scrumm, acordando con el cliente los plazos de los parciales entregables denominados sprint.
-												</li>
-												<li>
-													* R.W.D. Responsive Web Design para que funcione en cualquier dispositivo incluyendo smartTV.
-												</li>
-											</ul>
-										</div>
-									<div style="margin-top:4rem;" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
-										<img style="min-height: 4rem;" class="img-fluid" src="/images/lenguajes2.png" alt="about" >
-										</div>
+									</div>
 								</div> <!-- end of row -->
-							<div class="carousel-caption d-md-block">
-							
-							</div>
-							</div>
-							{{!--Custom Software y pesadas herencias -Continuacion 4--}}
-							<div style="padding:1rem;" class="carousel-item " data-bs-interval="10000">
-								<form action="/agendarEntrevista" method="post">
-									<div class="row d-flex align-items-center">
-										<div class="col-lg-7" data-aos="fade-right">
-											<h3>Custom Software y pesadas herencias.</h2>
-											<p>Elija las tecnologías y tipo de software con las que actualmente trabaja o desea trabajar en su proyecto.</p>
-											<div class="flexlado" >
-												<div class="form-floating">
-													<input autocomplete="off" style="background-color: black; color: aliceblue;" list="tec12" type="text" class="form-control" id="floatingInput123" placeholder=" " name="tecnoBackend" required>
-													<label for="floatingInput123">Tecnologias Backend</label>
-													<datalist id="tec12">
-														<select name="">
-															<optgroup label="Backend">
-																<option value="Full Stack LAMP">Full Stack LAMP</option>
-																<option value="Full Stack MERN / MEAN">Full Stack MERN / MEAN</option>
-																<option value="Full Stack Grl.">Full Stack Grl.</option>
-																<option value='JAVA'>JAVA</option>
-																<option value="JS">JS</option>
-																<option value="NODE">NODE</option>
-																<option value="Django">Django</option>
-																<option value="Python">Python</option>
-																<option value="GO">GO</option>
-																<option value="PHP">PHP</option>
-																<option value="C#">C#</option>
-																<option value="C++">C++</option>
-																<option value=".Net">.Net/ Net core</option>
-																<option value="Kotlin">Kotlin</option>
-																<option value="Pearl">Pearl</option>
-																<option value="Apache">Apache</option>
-																<option value="Ruby">Ruby / Rubi on rails</option>
-																<option value="Cobol">Cobol</option>
-																<option value="QA Manual">QA Manual</option>
-																<option value="QA Automation">QA Automation</option>
-															</optgroup>
-															<label><strong>Mobile</strong></p>
-															<option value="IOS / Swift">IOS / Swift</option>
-															<option value="Android">Android</option>
-															<p><strong>Full´s Stack´s</strong></p>
-															<option value="MERN">MERN</option>
-															<option value="MEAN">MEAN</option>
-															<option value="LAMP">LAMP</option>
-															<p><strong>O.S.</strong></p>
-															<option value="Linux">Linux</option>
-															<option value="Windows / Win Mobile">Windows / Win Mobile</option>
-															<option value="Android">Android</option>
-															<option value="IOS">IOS</option>
-														</select>
-													</datalist>
-												</div>
-												<div class="form-floating">
-													<input autocomplete="off" style="background-color: black; color: aliceblue;" list="tec1222" type="text" class="form-control" id="fron" placeholder=" " name="tecnoFrontend" required>
-													<label for="fron">Tecnologias frontend</label>
-													<datalist id="tec1222">
-														<select name="">
-															<p><strong>Frontend</strong></p>
-															<option value="React">React</option>
-															<option value="Maquetador HTML CSS">Maquetador HTML CSS</option>
-															<option value="React Native">React Native</option>
-															<option value="Angular">Angular</option>
-															<option value="HTML">HTML</option>
-															<option value="CSS + (Boostrap)">CSS + (Boostrap)</option>
-															<option value="VUE">VUE</option>
-															<option value="Type Script">Type Script</option>
-															<option value="JQuery">JQuery</option>
-															<option value="Flutter">Flutter</option>
-															<label><strong>Mobile</strong></p>
-															<option value="IOS / Swift">IOS / Swift</option>
-															<option value="Android">Android</option>
-															<p><strong>Full´s Stack´s</strong></p>
-															<option value="MERN">MERN</option>
-															<option value="MEAN">MEAN</option>
-															<option value="LAMP">LAMP</option>
-															<option value="Android">Android</option>
-															<option value="IOS">IOS</option>
-														</select>
-													</datalist>
-												</div>
-												<div class="form-floating">
-													<input autocomplete="off" style="background-color: black; color: aliceblue;" list="741" type="text" class="form-control" id="1236" placeholder=" " name="sofObjetivo" required>
-													<label for="1236">Objetivo de su software </label>
-													<datalist id="741">
-														<select name="">
-															<option value="CRM">CRM</option>
-															<option value="Market Place">Market Place</option>
-															<option value="Tracking">Tracking</option>
-															<option value="IOT">IOT</option>
-															<option value="Gaming">Gaming</option>
-															<option value="Fintech & Bancario">Fintech & Bancario</option>
-															<option value="Otras">Otras</option>
-														</select>
-													</datalist>
-												</div>
-												<div class="form-floating">
-													<input autocomplete="off" style="background-color: black; color: aliceblue;" list="1741" type="text" class="form-control" id="11236" placeholder=" " name="RubroEmp" required>
-													<label for="11236">Elija el rubro.</label>
-													<datalist id="1741">
-														<select name="">
-															<option value="Industria Grl.">Industria Grl.</option>
-															<option value="Comercio Online">Comercio Online</option>
-															<option value="Farmaceutica & Medica">Farmacéutica & Medica</option>
-															<option value="Banca">Banca</option>
-															<option value="Otras">Otras</option>
-														</select>
-													</datalist>
-												</div>
-											</div>
-											<br>
-											<p>
-												<strong>Módulos que puedes incluir:</strong>
-												<br>
-												<br>
-													<div class="form-check form-switch">
-														<input name="PWA" class="form-check-input" type="checkbox" id="121">
-														<label class="form-check-label" for="121">
-															* P.W.A. Progresive Web App, entre sus varias funciones adapta cualquier pagina o appi web de forma progresiva con la finalidad de que funcione aun sin conexion a internet incluyendo sus push notification, etc.
-														</label>
-													</div>
-													<div class="form-check form-switch">
-														<input name="Estadisticas" class="form-check-input" type="checkbox" id="222">
-														<label class="form-check-label" for="222">
-															* Estadisticas varias y alertas a disposicion por desvios en sensore y/o objetivos seteados por el cliente.
-														</label>
-													</div>
-													<div class="form-check form-switch">
-														<input name="pasarelaPagos" class="form-check-input" type="checkbox" id="323">
-														<label class="form-check-label" for="323">
-															* Pasarelas de pago del tipo MODO, Pay pal, Mercado pago etc
-														</label>
-													</div>
-													<div class="form-check form-switch">
-														<input name="clouding" class="form-check-input" type="checkbox" id="424">
-														<label class="form-check-label" for="424">
-															* Clouding en goole, Heroku, Microsoft Azure, Amazon, etc.
-														</label>
-													</div>
-													<div class="form-check form-switch">
-														<input name="CiberSeg" class="form-check-input" type="checkbox" id="422444">
-														<label class="form-check-label" for="422444">
-															* Ciber Seguridad, en la modalidad de garantia extendida.
-														</label>
-													</div>
-													<div class="form-check form-switch">
-														<input name="traking" class="form-check-input" type="checkbox" id="2321333">
-														<label class="form-check-label" for="2321333">
-															* Traking geoposicional de automoviles, direcciones, mensajeria, etc
-														</label>
-													</div>
-													* Consulte por la version nativa Mobile, IOS y Android.
-											</p>
-										</div>
-										<div class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
-										<img style="margin-top:7.5rem; height: 25rem;" class="img-fluid" src="/images/enlasmanos.jpg" alt="about" >
-										{{!-- PWA,Estadisticas,pasarelaPagos,clouding,traking,CiberSe --}}
-										<input type="text" name="Nombre"        value="{{data.Nombre}}"   hidden>
-										<input type="text" name="Apellido"      value="{{data.Apellido}}" hidden>
-										<input type="text" name="NumCel"        value="{{data.NumCel}}"   hidden>
-										<input type="text" name="Email"         value="{{data.Email}}"    hidden>
-										<input type="text" name="Empresa"       value="{{data.Empresa}}"  hidden>
-										<input type="text" name="Moneda"        value="{{data.Moneda}}"   hidden>
-										<input type="text" name="Ciudad"        value="{{data.Ciudad}}"   hidden>
-										<input type="text" name="PagWeb"        value="{{data.PagWeb}}"   hidden>
-										<input type="text" name="custom"        value="true"              hidden>
-										<input type="text" name="SD"            value="SD"                hidden>
-										<input type="text" name="token" value="{{token}}" hidden>
-										<br>
-										<button style="align-items: center; margin: 1rem  auto;" type="submit" class="alertaBlack">Ver condiciones</button>
+							</form>
+						</div>
+
+						{{!--Custom Software y pesadas herencias --}}
+						<div style="padding:1rem;" class="carousel-item" data-bs-interval="20000">
+							<div class="row d-flex align-items-center">
+									<div class="col-lg-7" data-aos="fade-right">
+										<h3>Custom Software y herencias de software</h2>
+										<p>
+											Hacemos todo tipo de desarrollo de programas en el lenguaje que necesites JS, C#, Python, C++, JAVA, GO, .Net, Híbridos Mobile, IOS, Android, etc.	Abarcamos el amplio espectro de tecnologías de programación para darte todas las herramientas al momento de construir software de calidad o para MIGRAR a micro servicios lo que denominamos como <strong> "...la pesada herencia.." </strong> sobre los tan diversos monolíticos que aun están en vigencia en varias industrias.
+										</p>
+											<strong> Incluye:</strong>
+										<ul>
+											<li>
+												* Discovery de necesidades, puntos de dolor y problemáticas, análisis de su sistema actual en el idioma en el que esta.
+											</li>
+											<li>
+												* Estudio UX/UI, diseño, bosquejo y maquetado con R.W.D. Responsive Web Design para que funcione en cualquier dispositivo incluyendo smartTV.
+											</li>
+											<li>
+												* Analisis y desarrollo de las bases de datos que se necesiten según la ocasión tanto SQL como noSQL y en modalidades de server propio o clouding.
+											</li>
+											<li>
+												* Metodologías ágiles del tipo Scrumm, acordando con el cliente los plazos de los parciales entregables denominados sprint.
+											</li>
+											<li>
+												* R.W.D. Responsive Web Design para que funcione en cualquier dispositivo incluyendo smartTV.
+											</li>
+										</ul>
 									</div>
-									</div> <!-- end of row -->
-									<div class="carousel-caption d-md-block">
+									<div style="margin-top:-2rem;" class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
+										<img style="min-height:4rem; border-radius:1rem;" class="img-fluid" src="/images/lenguajes2.png" alt="about" >
 									</div>
-								</form>
 							</div>
 						</div>
-					</div>	
+						{{!--Custom Software y pesadas herencias -Continuacion 1--}}
+						<div style="padding:1rem; margin-bottom:2rem;" class="carousel-item " data-bs-interval="10000">
+							<div align="center" style="margin-bottom:-0rem;">
+								<h3>Custom Software y pesadas herencias.</h2>
+								<p>Elija las tecnologías y tipo de software con las que actualmente trabaja o desea trabajar en su proyecto.</p>
+							</div>
+							<form action="/agendarEntrevista" method="post">
+								<div align="" class="row d-flex align-items-center">
+									<div class="flexlado" >
+										<div class="form-floating">
+											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="tec12" type="text" class="form-control" id="floatingInput123" placeholder=" " name="tecnoBackend" required>
+											<label for="floatingInput123">Tecnologias Backend</label>
+											<datalist id="tec12">
+												<select name="">
+													<optgroup label="Backend">
+														<option value="Full Stack LAMP">Full Stack LAMP</option>
+														<option value="Full Stack MERN / MEAN">Full Stack MERN / MEAN</option>
+														<option value="Full Stack Grl.">Full Stack Grl.</option>
+														<option value='JAVA'>JAVA</option>
+														<option value="JS">JS</option>
+														<option value="NODE">NODE</option>
+														<option value="Django">Django</option>
+														<option value="Python">Python</option>
+														<option value="GO">GO</option>
+														<option value="PHP">PHP</option>
+														<option value="C#">C#</option>
+														<option value="C++">C++</option>
+														<option value=".Net">.Net/ Net core</option>
+														<option value="Kotlin">Kotlin</option>
+														<option value="Pearl">Pearl</option>
+														<option value="Apache">Apache</option>
+														<option value="Ruby">Ruby / Rubi on rails</option>
+														<option value="Cobol">Cobol</option>
+														<option value="QA Manual">QA Manual</option>
+														<option value="QA Automation">QA Automation</option>
+													</optgroup>
+													<label><strong>Mobile</strong></p>
+													<option value="IOS / Swift">IOS / Swift</option>
+													<option value="Android">Android</option>
+													<p><strong>Full´s Stack´s</strong></p>
+													<option value="MERN">MERN</option>
+													<option value="MEAN">MEAN</option>
+													<option value="LAMP">LAMP</option>
+													<p><strong>O.S.</strong></p>
+													<option value="Linux">Linux</option>
+													<option value="Windows / Win Mobile">Windows / Win Mobile</option>
+													<option value="Android">Android</option>
+													<option value="IOS">IOS</option>
+												</select>
+											</datalist>
+										</div>
+										<div class="form-floating">
+											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="tec1222" type="text" class="form-control" id="fron" placeholder=" " name="tecnoFrontend" required>
+											<label for="fron">Tecnologias frontend</label>
+											<datalist id="tec1222">
+												<select name="">
+													<p><strong>Frontend</strong></p>
+													<option value="React">React</option>
+													<option value="Maquetador HTML CSS">Maquetador HTML CSS</option>
+													<option value="React Native">React Native</option>
+													<option value="Angular">Angular</option>
+													<option value="HTML">HTML</option>
+													<option value="CSS + (Boostrap)">CSS + (Boostrap)</option>
+													<option value="VUE">VUE</option>
+													<option value="Type Script">Type Script</option>
+													<option value="JQuery">JQuery</option>
+													<option value="Flutter">Flutter</option>
+													<label><strong>Mobile</strong></p>
+													<option value="IOS / Swift">IOS / Swift</option>
+													<option value="Android">Android</option>
+													<p><strong>Full´s Stack´s</strong></p>
+													<option value="MERN">MERN</option>
+													<option value="MEAN">MEAN</option>
+													<option value="LAMP">LAMP</option>
+													<option value="Android">Android</option>
+													<option value="IOS">IOS</option>
+												</select>
+											</datalist>
+										</div>
+										<div class="form-floating">
+											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="741" type="text" class="form-control" id="1236" placeholder=" " name="sofObjetivo" required>
+											<label for="1236">Objetivo de su software </label>
+											<datalist id="741">
+												<select name="">
+													<option value="CRM">CRM</option>
+													<option value="Market Place">Market Place</option>
+													<option value="Tracking">Tracking</option>
+													<option value="IOT">IOT</option>
+													<option value="Gaming">Gaming</option>
+													<option value="Fintech & Bancario">Fintech & Bancario</option>
+													<option value="Otras">Otras</option>
+												</select>
+											</datalist>
+										</div>
+										<div class="form-floating">
+											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="1741" type="text" class="form-control" id="11236" placeholder=" " name="RubroEmp" required>
+											<label for="11236">Elija el rubro.</label>
+											<datalist id="1741">
+												<select name="">
+													<option value="Industria Grl.">Industria Grl.</option>
+													<option value="Comercio Online">Comercio Online</option>
+													<option value="Farmaceutica & Medica">Farmacéutica & Medica</option>
+													<option value="Banca">Banca</option>
+													<option value="Otras">Otras</option>
+												</select>
+											</datalist>
+										</div>
+									</div>
+									<div style="margin-top:-1rem;" class="col-lg-7" data-aos="fade-right">
+										<p>
+											<strong>Módulos que puedes incluir:</strong>
+											<br>
+											<br>
+												<div class="form-check form-switch">
+													<input name="PWA" class="form-check-input" type="checkbox" id="121">
+													<label class="form-check-label" for="121">
+														* P.W.A. Progresive Web App, entre sus varias funciones adapta cualquier pagina o appi web de forma progresiva con la finalidad de que funcione aun sin conexion a internet incluyendo sus push notification, etc.
+													</label>
+												</div>
+												<div class="form-check form-switch">
+													<input name="Estadisticas" class="form-check-input" type="checkbox" id="222">
+													<label class="form-check-label" for="222">
+														* Estadisticas varias y alertas a disposicion por desvios en sensore y/o objetivos seteados por el cliente.
+													</label>
+												</div>
+												<div class="form-check form-switch">
+													<input name="pasarelaPagos" class="form-check-input" type="checkbox" id="323">
+													<label class="form-check-label" for="323">
+														* Pasarelas de pago del tipo MODO, Pay pal, Mercado pago etc
+													</label>
+												</div>
+												<div class="form-check form-switch">
+													<input name="clouding" class="form-check-input" type="checkbox" id="424">
+													<label class="form-check-label" for="424">
+														* Clouding en goole, Heroku, Microsoft Azure, Amazon, etc.
+													</label>
+												</div>
+												<div class="form-check form-switch">
+													<input name="CiberSeg" class="form-check-input" type="checkbox" id="422444">
+													<label class="form-check-label" for="422444">
+														* Ciber Seguridad, en la modalidad de garantia extendida.
+													</label>
+												</div>
+												<div class="form-check form-switch">
+													<input name="traking" class="form-check-input" type="checkbox" id="2321333">
+													<label class="form-check-label" for="2321333">
+														* Traking geoposicional de automoviles, direcciones, mensajeria, etc
+													</label>
+												</div>
+												* Consulte por la version nativa Mobile, IOS y Android.
+										</p>
+									</div>
+									<div class="col-lg-5 text-center py-4 py-sm-0" data-aos="fade-down"> 
+									<img style="border-radius:1rem;margin:4rem 0 0 -2rem; height: 20rem;" class="img-fluid" src="/images/enlasmanos.jpg" alt="about" >
+									<div>
+									{{!-- PWA,Estadisticas,pasarelaPagos,clouding,traking,CiberSe --}}
+									<input type="text" name="Nombre"        value="{{data.Nombre}}"   hidden>
+									<input type="text" name="Apellido"      value="{{data.Apellido}}" hidden>
+									<input type="text" name="NumCel"        value="{{data.NumCel}}"   hidden>
+									<input type="text" name="Email"         value="{{data.Email}}"    hidden>
+									<input type="text" name="Empresa"       value="{{data.Empresa}}"  hidden>
+									<input type="text" name="Moneda"        value="{{data.Moneda}}"   hidden>
+									<input type="text" name="Ciudad"        value="{{data.Ciudad}}"   hidden>
+									<input type="text" name="PagWeb"        value="{{data.PagWeb}}"   hidden>
+									<input type="text" name="custom"        value="true"              hidden>
+									<input type="text" name="SD"            value="SD"                hidden>
+									<input type="text" name="token" value="{{token}}" hidden>
+									<br>
+									<button style="align-items: center; margin: 1rem  auto;" type="submit" class="alertaBlack">Ver condiciones</button>
+									</div>
+								</div>
+								</div>
+							</form>
+						</div>
+					</div>
 				</div>	
+			</div>	
 		</div>
 		{{!-- botonera --}}
-		<div style="margin-top:-2rem;" class="position-relative m-4">
+		<div style="margin-top:-5rem;" class="position-relative m-4">
 			<ul style="margin-top: -1rem;"  class="action flexlado">
-			<li style="margin-right: 5rem";>
-			<button style="padding: 1rem; height: min-content;" class="alertaVerde" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-			Anterior
-			</button>
-			</li>
-			<li style="margin-left: -7rem"; class="position-absolute top-0 start-100">
-			<button style="padding: 1rem; height: min-content;" class="alertaVerde" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-			Siguiente
-			</button>
-			</li>
+				<li style="margin-right: 6rem";>
+				<button style="padding: 1rem; height: min-content;" class="alertaVerde" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+				Anterior
+				</button>
+				</li>
+				<li style="margin-left: -9rem"; class="position-absolute top-0 start-100">
+				<button style="padding: 1rem; height: min-content;" class="alertaVerde" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+				Siguiente
+				</button>
+				</li>
 			</ul>
 		</div>
 </section>
