@@ -3574,8 +3574,8 @@ router.post('/contacto',async (req, res) => {
 </body>
 </html>`;
     // con EL MAIL DEL CLIENTE ADMINISTRADO POR GOOGLE
-    const pemail = "sebastianpaysse@gmail.com"
-    const password = "qtwcqebleraupety"
+    const pemail = "info@tbs-it.net"
+    const password = "Sebatbs@22"
     const senderMail = pemail
     const transporter = nodemailer.createTransport({
         service: 'gmail',
