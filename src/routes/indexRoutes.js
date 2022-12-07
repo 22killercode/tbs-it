@@ -2217,12 +2217,9 @@ router.post('/calculandoCotizacion', [validador1],  async (req, res) => {
                     </div>
                     </body>
                     </html>`;
-                    const email = "sebastianpaysse@gmail.com"
-                    const password = "qtwcqebleraupety"
+                    const email = "tbs-it.info@tbs-it.net"
                     const senderMail = email
-
-
-
+// google
                     // const transporter = nodemailer.createTransport({
                     //     service: 'gmail',
                     //     auth: {
@@ -2231,8 +2228,21 @@ router.post('/calculandoCotizacion', [validador1],  async (req, res) => {
                     //     }
                     // });
                     
-                    
-                    
+    // con EL MAIL DEL CLIENTE ADMINISTRADO POR Hostinger
+    const transporter = nodemailer.createTransport({
+        host: "smtp.hostinger.com",
+        port: 465,
+        secure: true, // use TLS
+        auth: {
+            user: "tbs-it.info@tbs-it.net",
+            pass: "Sebatbs@22",
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false,
+        },
+    });
+
                     let conAdjunto = {
                         from: senderMail, // sender address,
                         to: Email,
@@ -2420,24 +2430,62 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
 </body>
                     </html>`;
                     
-    // con EL MAIL DEL CLIENTE ADMINISTRADO POR GOOGLE
-    const email = "sebastianpaysse@gmail.com"
-    const password = "qtwcqebleraupety"
+    // // con EL MAIL DEL CLIENTE ADMINISTRADO POR GOOGLE
+    // const email = "sebastianpaysse@gmail.com"
+    // const password = "qtwcqebleraupety"
+    // const senderMail = email
+    // const transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //     user: email,
+    //     pass: password,
+    //     }
+    // });
+    // const transporter1 = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //     user: email,
+    //     pass: password,
+    //     }
+    // });
+
+    // con EL MAIL DEL CLIENTE ADMINISTRADO POR Hostinger
+    const email = "tbs-it.info@tbs-it.net"
     const senderMail = email
+
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: "smtp.hostinger.com",
+        port: 465,
+        secure: true, // use TLS
         auth: {
-        user: email,
-        pass: password,
-        }
+            user: "tbs-it.info@tbs-it.net",
+            pass: "Sebatbs@22",
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false,
+        },
     });
+
     const transporter1 = nodemailer.createTransport({
-        service: 'gmail',
+        host: "smtp.hostinger.com",
+        port: 465,
+        secure: true, // use TLS
         auth: {
-        user: email,
-        pass: password,
-        }
+            user: "tbs-it.info@tbs-it.net",
+            pass: "Sebatbs@22",
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false,
+        },
     });
+
+
+
+
+
+
 
     let conAdjunto = {
         from: senderMail, // sender address,
@@ -2693,24 +2741,38 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
 </div>
 </body>
 </html>`;
-    // con EL MAIL DEL CLIENTE ADMINISTRADO POR GOOGLE
-    const email = "sebastianpaysse@gmail.com"
-    const password = "qtwcqebleraupety"
-    const senderMail = email
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-        user: email,
-        pass: password,
-        }
-    });
-    const transporter1 = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-        user: email,
-        pass: password,
-        }
-    });
+        // con EL MAIL DEL CLIENTE ADMINISTRADO POR Hostinger
+        const email = "tbs-it.info@tbs-it.net"
+        const senderMail = email
+    
+        const transporter = nodemailer.createTransport({
+            host: "smtp.hostinger.com",
+            port: 465,
+            secure: true, // use TLS
+            auth: {
+                user: "tbs-it.info@tbs-it.net",
+                pass: "Sebatbs@22",
+            },
+            tls: {
+                // do not fail on invalid certs
+                rejectUnauthorized: false,
+            },
+        });
+    
+        const transporter1 = nodemailer.createTransport({
+            host: "smtp.hostinger.com",
+            port: 465,
+            secure: true, // use TLS
+            auth: {
+                user: "tbs-it.info@tbs-it.net",
+                pass: "Sebatbs@22",
+            },
+            tls: {
+                // do not fail on invalid certs
+                rejectUnauthorized: false,
+            },
+        });
+    
 
     let conAdjunto = {
         from: senderMail, // sender address,
@@ -3129,24 +3191,38 @@ El precio inicial es de un <strong>Valor total: ${Moneda}: ${suma1} </strong>.
 </body>
 </html>`;
                     
-    // con EL MAIL DEL CLIENTE ADMINISTRADO POR GOOGLE
-    const email = "sebastianpaysse@gmail.com"
-    const password = "qtwcqebleraupety"
+    // con EL MAIL DEL CLIENTE ADMINISTRADO POR Hostinger
+    const email = "tbs-it.info@tbs-it.net"
     const senderMail = email
+
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: "smtp.hostinger.com",
+        port: 465,
+        secure: true, // use TLS
         auth: {
-        user: email,
-        pass: password,
-        }
+            user: "tbs-it.info@tbs-it.net",
+            pass: "Sebatbs@22",
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false,
+        },
     });
+
     const transporter1 = nodemailer.createTransport({
-        service: 'gmail',
+        host: "smtp.hostinger.com",
+        port: 465,
+        secure: true, // use TLS
         auth: {
-        user: email,
-        pass: password,
-        }
+            user: "tbs-it.info@tbs-it.net",
+            pass: "Sebatbs@22",
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false,
+        },
     });
+   
 
     let conAdjunto = {
         from: senderMail, // sender address,
@@ -3483,7 +3559,7 @@ Esta pre-cotizacion carece de responsabilidad contractual entre las partes. Todo
                     </html>`;
                     
     
-    // con EL MAIL DEL CLIENTE ADMINISTRADO POR GOOGLE
+    // con EL MAIL DEL CLIENTE ADMINISTRADO POR Hostinger
     const email = "tbs-it.info@tbs-it.net"
     const senderMail = email
 
