@@ -3574,14 +3574,14 @@ router.post('/contacto',async (req, res) => {
 </body>
 </html>`;
     // con EL MAIL DEL CLIENTE ADMINISTRADO POR GOOGLE
-    const senderMail = "info@tbs-it.net"
+    const senderMail = "tbs-it.info@tbs-it.net"
     
     const transporter5 = nodemailer.createTransport({
         host: "smtp.hostinger.com",
         port: 465,
         secure: true, // use TLS
         auth: {
-            user: "info@tbs-it.net",
+            user: "tbs-it.info@tbs-it.net",
             pass: "Sebatbs@22",
         },
         tls: {
