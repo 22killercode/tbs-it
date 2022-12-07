@@ -3574,19 +3574,25 @@ router.post('/contacto',async (req, res) => {
 </body>
 </html>`;
     // con EL MAIL DEL CLIENTE ADMINISTRADO POR GOOGLE
-    const pemail = "info@tbs-it.net"
-    const password = "Sebatbs@22"
-    const senderMail = pemail
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
+    const senderMail = "info@tbs-it.net"
+    
+    const transporter5 = nodemailer.createTransport({
+        host: "smtp.hostinger.com",
+        port: 465,
+        secure: true, // use TLS
         auth: {
-        user: email,
-        pass: password,
-        }
+            user: "info@tbs-it.net",
+            pass: "Sebatbs@22",
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false,
+        },
     });
+
     let conAdjunto = {
         from: senderMail, // sender address,
-        to: pemail,
+        to: email,
         subject: "Hola, llego un nuevo mensaje",
         html:cotiEntro ,
         // attachments: [
@@ -3596,7 +3602,13 @@ router.post('/contacto',async (req, res) => {
         //   },
         // ]
     };
-    transporter.sendMail(conAdjunto, (er,info)=>{
+
+
+
+
+
+
+    transporter5.sendMail(conAdjunto, (er,info)=>{
         if(er){
         console.log("error",er)
         }else{
