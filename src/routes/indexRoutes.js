@@ -2220,13 +2220,19 @@ router.post('/calculandoCotizacion', [validador1],  async (req, res) => {
                     const email = "sebastianpaysse@gmail.com"
                     const password = "qtwcqebleraupety"
                     const senderMail = email
-                    const transporter = nodemailer.createTransport({
-                        service: 'gmail',
-                        auth: {
-                        user: email,
-                        pass: password,
-                        }
-                    });
+
+
+
+                    // const transporter = nodemailer.createTransport({
+                    //     service: 'gmail',
+                    //     auth: {
+                    //     user: email,
+                    //     pass: password,
+                    //     }
+                    // });
+                    
+                    
+                    
                     let conAdjunto = {
                         from: senderMail, // sender address,
                         to: Email,
@@ -3273,7 +3279,6 @@ else{
     const data = {custom,siMod,sofObjetivo,RubroEmp,tecnoFrontend,tecnoBackend,fechaContact,tipoCont,Obs,CustomSoft,appirestFull,IOT,Email,SD,pw,PWA,Estadisticas,pasarelaPagos,clouding,traking,CiberSeg,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda}
     console.log("que llega a calculo / EnviarCotizacion CUSTOM SOFT",data)
     res.render('partials/cotisSoftFactory/cotiCustom', {data});
-    // guarda en BD
     // Guarda en BD
     const desarrollo = ["Custom Software Factory"]
     const guardarCoti = new cotizaciones ({desarrollo,custom,siMod,sofObjetivo,RubroEmp,tecnoFrontend,tecnoBackend,fechaContact,tipoCont,Obs,CustomSoft,appirestFull,IOT,Email,SD,pw,PWA,Estadisticas,pasarelaPagos,clouding,traking,CiberSeg,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda})
@@ -3479,22 +3484,35 @@ Esta pre-cotizacion carece de responsabilidad contractual entre las partes. Todo
                     
     
     // con EL MAIL DEL CLIENTE ADMINISTRADO POR GOOGLE
-    const email = "sebastianpaysse@gmail.com"
-    const password = "qtwcqebleraupety"
+    const email = "tbs-it.info@tbs-it.net"
     const senderMail = email
+
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: "smtp.hostinger.com",
+        port: 465,
+        secure: true, // use TLS
         auth: {
-        user: email,
-        pass: password,
-        }
+            user: "tbs-it.info@tbs-it.net",
+            pass: "Sebatbs@22",
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false,
+        },
     });
+
     const transporter1 = nodemailer.createTransport({
-        service: 'gmail',
+        host: "smtp.hostinger.com",
+        port: 465,
+        secure: true, // use TLS
         auth: {
-        user: email,
-        pass: password,
-        }
+            user: "tbs-it.info@tbs-it.net",
+            pass: "Sebatbs@22",
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false,
+        },
     });
 
     let conAdjunto = {
@@ -3548,7 +3566,7 @@ router.post('/contacto',async (req, res) => {
     res.redirect("/")
 
     // envia mail
-    const cotiEntro = `<html>
+const cotiEntro = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 <input type="image" src="images/fondoempresas.jpg" alt="" style="margin: -2rem000; position: absolute; width: 200%; height: auto;">
 <div style="justify-content: center ; align-items: center;">
