@@ -436,24 +436,37 @@ router.post('/dataPartner',async (req, res) => {
                     </div>
                     </body>
                     </html>`;
-                    // con EL MAIL DEL CLIENTE ADMINISTRADO POR GOOGLE
-                    const email = "sebastianpaysse@gmail.com"
-                    const password = "qtwcqebleraupety"
-                    const senderMail = email
-                    const transporter = nodemailer.createTransport({
-                        service: 'gmail',
-                        auth: {
-                        user: email,
-                        pass: password,
-                        }
-                    });
-                    const transporter1 = nodemailer.createTransport({
-                        service: 'gmail',
-                        auth: {
-                        user: email,
-                        pass: password,
-                        }
-                    });
+    // con EL MAIL DEL CLIENTE ADMINISTRADO POR Hostinger
+    const email = "tbs-it.info@tbs-it.net"
+    const senderMail = email
+
+    const transporter = nodemailer.createTransport({
+        host: "smtp.hostinger.com",
+        port: 465,
+        secure: true, // use TLS
+        auth: {
+            user: "tbs-it.info@tbs-it.net",
+            pass: "Sebatbs@22",
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false,
+        },
+    });
+
+    const transporter1 = nodemailer.createTransport({
+        host: "smtp.hostinger.com",
+        port: 465,
+        secure: true, // use TLS
+        auth: {
+            user: "tbs-it.info@tbs-it.net",
+            pass: "Sebatbs@22",
+        },
+        tls: {
+            // do not fail on invalid certs
+            rejectUnauthorized: false,
+        },
+    });
 
                     let conAdjunto = {
                         from: senderMail, // sender address,
