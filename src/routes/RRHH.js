@@ -439,7 +439,7 @@ router.post('/dataPartner',async (req, res) => {
     // con EL MAIL DEL CLIENTE ADMINISTRADO POR Hostinger
     const email = "tbs-it.info@tbs-it.net"
     const senderMail = email
-
+    // hostinger
     const transporter = nodemailer.createTransport({
         host: "smtp.hostinger.com",
         port: 465,
@@ -453,7 +453,6 @@ router.post('/dataPartner',async (req, res) => {
             rejectUnauthorized: false,
         },
     });
-
     const transporter1 = nodemailer.createTransport({
         host: "smtp.hostinger.com",
         port: 465,
@@ -467,7 +466,6 @@ router.post('/dataPartner',async (req, res) => {
             rejectUnauthorized: false,
         },
     });
-
                     let conAdjunto = {
                         from: senderMail, // sender address,
                         to: Email,

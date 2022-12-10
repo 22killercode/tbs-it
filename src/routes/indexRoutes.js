@@ -2173,7 +2173,7 @@ router.post('/volverIT',[validador1], async (req, res) => {
 
 });
 
-//Ruta para agendar la entrevista antes de enviar coti
+//Ruta para agendar la entrevista antes de enviar coti MAIL VALIDADOR
 router.post('/calculandoCotizacion', [validador1],  async (req, res) => {
     const {Email,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal} = req.body
     //Genera Token de seguridad en BD 
@@ -2441,14 +2441,6 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
         pass: password45,
         }
     });
-    // const transporter1 = nodemailer.createTransport({
-    //     service: 'gmail',
-    //     auth: {
-    //     user: email,
-    //     pass: password,
-    //     }
-    // });
-
     // con EL MAIL DEL CLIENTE ADMINISTRADO POR Hostinger
     const email = "tbs-it.info@tbs-it.net"
     const senderMail = email
@@ -3688,7 +3680,7 @@ const cotiEntro = `<html>
 
     let conAdjunto = {
         from: senderMail, // sender address,
-        to: email,
+        to: senderMail,
         subject: "Hola, llego un nuevo mensaje",
         html:cotiEntro ,
         // attachments: [
