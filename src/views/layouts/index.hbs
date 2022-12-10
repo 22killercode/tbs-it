@@ -38,62 +38,63 @@
     <body>
         {{!-- menu Grl rojo --}}
         <header>
-            <nav style="margin:-1rem auto; z-index:6;" id="navbar" class="navbar navbar-expand-lg fixed-top navbar bg-danger"  aria-label="Main navigation">
-                <div style="margin-bottom:-0.6rem;" class="container-xxl">
-                    <a style="margin-top:-0.5rem;" class="navbar-brand" href="/"> <strong> TBS-IT Home</strong></a>
-                    <button style="margin-top:-0.65rem;" class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
-                    </button>
-                    
-                    {{!-- gif tecnos animado --}}
-                    <img src="/images/tec-firma.gif" alt="" style="margin:-0.4rem 4rem 0.5rem 0rem; width:65%; height:2.3rem; padding: 0; border-radius:1rem;">
+            <nav style="margin:-1rem 0 1rem 0; z-index:6;" id="navbar" class="navbar navbar-expand-lg fixed-top navbar bg-danger"  aria-label="Main navigation">
+                <div style="margin:-0.51rem 0 0 0rem;" class="container-xxl">
+                        <a style="margin:0rem;" class="navbar-brand" href="/"> <strong>Home</strong></a>
+                        <button style="margin:0rem;" class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                        </button>
+                        
+                        {{!-- gif tecnos animado --}}
+                        <img class="flex" src="/images/tec-firma.gif" alt="" style="margin:-1.99rem 0rem -2.5rem 0; min-width:5rem;max-width:67%; height:2.3rem; padding: 0; border-radius:1rem;">
 
-                    <a style="margin-top:-0.8rem; margin-bottom:0rem;" class="btn btn-danger" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling21" aria-controls="offcanvasScrolling">
-                        <i class="bi bi-list" style="font-size: 1.4em;"></i>
-                    </a>
-                    {{!-- contenido menu --}}
-                    <div class="offcanvas offcanvas-end" style="background-color:rgb(224, 55, 55) !important;" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling21" aria-labelledby="offcanvasScrollingLabel">
-                        <div class="offcanvas-header">
-                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <ul class="links">
-                                <li class="">
-                                    <a class="" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Cotizar</a>
+                        <a style="margin:0;" class="btn btn-danger" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling21" aria-controls="offcanvasScrolling">
+                            <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+                        </a>
+                        {{!-- contenido menu --}}
+                        <div class="offcanvas offcanvas-end" style="margin:0;background-color:rgb(224, 55, 55) !important;" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling21" aria-labelledby="offcanvasScrollingLabel">
+                            <div class="offcanvas-header">
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <ul class="links">
+                                    <li class="">
+                                        <a class="" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Cotizar</a>
+                                            <li><hr class="dropdown-divider"></li>
+                                    </li>
+                                    <li class="">
+                                        <a class="" href="/Staffing"><strong>Staffing</strong></a>
                                         <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <li class="">
-                                    <a class="" href="/Staffing"><strong>Staffing</strong></a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <li class="">
-                                    <a class="" href="/SoftDev"><strong>Software Factory</strong></a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <li class="">
-                                    <a class="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"><strong>Unite a nosotros / se un Partner</strong> </a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <li class="">
-                                    <a class="" href="/Nosotros">Nosotros</a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <li class="" hidden>
-                                    <a class="" href="/portfolioTalentosTBS-IT">Portfolio</a>
-                                    <li><hr class="dropdown-divider" hidden></li>
-                                </li>                        
-                                <li class="">
-                                    <a class="" href="/#paises">Países donde tenemos presencia</a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <li class="">
-                                    <a class="" href="#footer">Contacto</a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <br>
-                                <li>
-                                    <img src="/images/tec-firma.gif" alt="" style="width:100%; border-radius:1rem;">
-                                </li>
-                            </ul>
+                                    </li>
+                                    <li class="">
+                                        <a class="" href="/SoftDev"><strong>Software Factory</strong></a>
+                                        <li><hr class="dropdown-divider"></li>
+                                    </li>
+                                    <li class="">
+                                        <a class="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"><strong>Unite a nosotros / se un Partner</strong> </a>
+                                        <li><hr class="dropdown-divider"></li>
+                                    </li>
+                                    <li class="">
+                                        <a class="" href="/Nosotros">Nosotros</a>
+                                        <li><hr class="dropdown-divider"></li>
+                                    </li>
+                                    <li class="" hidden>
+                                        <a class="" href="/portfolioTalentosTBS-IT">Portfolio</a>
+                                        <li><hr class="dropdown-divider" hidden></li>
+                                    </li>                        
+                                    <li class="">
+                                        <a class="" href="/#paises">Países donde tenemos presencia</a>
+                                        <li><hr class="dropdown-divider"></li>
+                                    </li>
+                                    <li class="">
+                                        <a class="" href="#footer">Contacto</a>
+                                        <li><hr class="dropdown-divider"></li>
+                                    </li>
+                                    <br>
+                                    <li>
+                                        <img src="/images/tec-firma.gif" alt="" style="width:100%; border-radius:1rem;">
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div> <!-- end of container -->
