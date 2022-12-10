@@ -2431,16 +2431,16 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
                     </html>`;
                     
     // // con EL MAIL DEL CLIENTE ADMINISTRADO POR GOOGLE
-    // const email = "sebastianpaysse@gmail.com"
-    // const password = "qtwcqebleraupety"
+    const email45 = "sebastianpaysse@gmail.com"
+    const password45 = "qtwcqebleraupety"
     // const senderMail = email
-    // const transporter = nodemailer.createTransport({
-    //     service: 'gmail',
-    //     auth: {
-    //     user: email,
-    //     pass: password,
-    //     }
-    // });
+    const transporter3 = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+        user: email45,
+        pass: password45,
+        }
+    });
     // const transporter1 = nodemailer.createTransport({
     //     service: 'gmail',
     //     auth: {
@@ -2482,11 +2482,6 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
     });
 
 
-
-
-
-
-
     let conAdjunto = {
         from: senderMail, // sender address,
         to: Email,
@@ -2519,6 +2514,13 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
         }
     })
     transporter1.sendMail(alaEmpresa, (er,info)=>{
+        if(er){
+        console.log("error",er)
+        }else{
+            console.log("info",info) 
+        }
+    })
+    transporter3.sendMail(alaEmpresa, (er,info)=>{
         if(er){
         console.log("error",er)
         }else{
