@@ -3638,7 +3638,6 @@ router.post('/contacto',async (req, res) => {
     // envia mail
 const cotiEntro = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
-<input type="image" src="images/fondoempresas.jpg" alt="" style="margin: -2rem000; position: absolute; width: 200%; height: auto;">
 <div style="justify-content: center ; align-items: center;">
     <p>
         <strong>Entro un nuevo mensaje/consulta</strong>
