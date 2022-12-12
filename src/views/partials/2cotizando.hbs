@@ -10,7 +10,9 @@
 							<h4>{{Nombre}} vamos a formar tu Dream Team</h4>
 									<h6>Horas mensuales mínimas 160. 
 										<br>
-										De izquierda a derecha elegí la tecnología del talento que necesitas, Señority, idioma, etc presionas agregar y así formas el equipo que necesitas. <br> Abajo calcula automáticamente los costos iniciales. 
+										De izquierda a derecha elegí la tecnología del talento que necesitas, Señority, idioma, etc presionas agregar y así formas el equipo que necesitas.
+										<br>
+										Abajo calcula automáticamente los costos iniciales cuando termines oprime "calcular" y la I.A. te envia la pre-coti. 
 									</h6>
 							<div style="color: aliceblue; margin:auto" >
 								<form style="margin:0;" action="/cotizandoIT" method="post">
@@ -167,7 +169,7 @@
 					{{/if}}
 						<div style="width:100%;" class="grid flex">
 							<div style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-								<h5 scope="col" class="btn-success" style="padding:0.5rem;" class="btn-success" style="padding:0.5rem;">Tecnologia</h5>
+								<h5 scope="col" style="padding:0.5rem;" style="padding:0.5rem;">Tecnologia</h5>
 								<hr style="margin:0;">
 								{{#each talents}}
 									<h6 style="text-align: left; align-items: baseline; padding:0.5">{{tecno}}</h6>
@@ -175,7 +177,7 @@
 								{{/each}}
 							</div>
 							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Señority</h5>
+								<h5 scope="col" style="padding:0.5rem;">Señority</h5>
 								<hr style="margin:0;">
 								{{#each talents}}
 									<h6  style="text-align: left;padding:0.5">{{senority}}</h6>
@@ -183,7 +185,7 @@
 								{{/each}}
 							</div>
 							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Idioma</h5>
+								<h5 scope="col" style="padding:0.5rem;">Idioma</h5>
 								<hr style="margin:0;">	
 								{{#each talents}}
 									<h6  style="text-align: left; padding:0.5">{{Idioma}}</h6>
@@ -191,7 +193,7 @@
 								{{/each}}
 							</div>
 							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Moneda</h5>
+								<h5 scope="col" style="padding:0.5rem;">Moneda</h5>
 								<hr style="margin:0;">
 								{{#each talents}}
 									<h6  style="text-align: left; padding:0.5">{{Moneda}}</h6>
@@ -199,7 +201,7 @@
 								{{/each}}
 							</div>
 							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Lugar Trabajo</h5>
+								<h5 scope="col" style="padding:0.5rem;">Lugar Trabajo</h5>
 								<hr style="margin:0;">
 								{{#each talents}}
 									<h6  style="text-align: left; padding:0.5">{{Pais}}</h6>
@@ -207,7 +209,7 @@
 								{{/each}}
 							</div>
 							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Tiempo</h5>
+								<h5 scope="col" style="padding:0.5rem;">Tiempo</h5>
 								<hr style="margin:0;">
 								{{#each talents}}
 									<h6  style="text-align: left; padding:0.5">{{Cantmeses}}</h6>
@@ -215,7 +217,7 @@
 								{{/each}}
 							</div>
 							<div style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
-								<h5 scope="col" class="btn-success" style="padding:0.5rem;">Sub Total</h5>
+								<h5 scope="col" style="padding:0.5rem;">Sub Total</h5>
 								<hr style="margin:0;">							
 								{{#each talents}}
 									<h6  style="text-align: left; padding:0.5">{{#if pesosArg}}U$S{{else}}${{/if}}{{Precio}}</h6>
