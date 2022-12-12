@@ -3640,7 +3640,9 @@ const cotiEntro = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 <div style="diplay:grid; place-items:center">
 
-<img style="diplay:grid; place-items:center; width:90%; height:50%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;  "src="https://tbs-it.net/images/tbsLogo3.jpg">
+<img style=width:90%; height:50%; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;  "src="https://tbs-it.net/images/tbsLogo3.jpg">
+
+<br>
 <br>
     <p>
         <strong>Entro un nuevo mensaje/consulta</strong>
