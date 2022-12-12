@@ -3639,6 +3639,8 @@ router.post('/contacto',async (req, res) => {
 const cotiEntro = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 <div style="justify-content: center ; align-items: center;">
+<img style="z-index:99999999999999999999 !important; width:80%; height:55%;"
+    src="https://tbs-it.net/logo">
     <p>
         <strong>Entro un nuevo mensaje/consulta</strong>
     </p>
@@ -3690,11 +3692,6 @@ const cotiEntro = `<html>
         // ]
     };
 
-
-
-
-
-
     transporter5.sendMail(conAdjunto, (er,info)=>{
         if(er){
         console.log("error",er)
@@ -3705,6 +3702,13 @@ const cotiEntro = `<html>
     // guarda en BD
     const guardarMess = new mensajes ({ names, apellido, message, email, pais })
     await guardarMess.save();
+});
+
+
+//Ruta para llegar al Signin
+router.get('/logo', async (req, res) => {
+    console.log('Llego a /logo')
+    res.render('partials/img/logo')
 });
 
 module.exports = router;  
