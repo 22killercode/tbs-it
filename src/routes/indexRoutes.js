@@ -2502,7 +2502,7 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
     let alaEmpresa = {
         from: senderMail, // sender address,
         to: senderMail,
-        Cc:["sebastian.paysse@tbs-it.net","sebastian.paysse@gmail.com"],
+        cc:["sebastian.paysse@tbs-it.net","sebastian.paysse@gmail.com"],
         subject: "Enhorabuena!!! entro una nueva cotizacion de" + ' ' + Empresa  + ' ' ,
         html: cotiEntro,
         // attachments: [
@@ -2797,7 +2797,7 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
     let alaEmpresa = {
         from: senderMail, // sender address,
         to: senderMail,
-        Cc:["sebastian.paysse@tbs-it.net","sebastian.paysse@gmail.com"],
+        cc:["sebastian.paysse@tbs-it.net","sebastian.paysse@gmail.com"],
         subject: "Enhorabuena!!! entro una nueva cotizacion de" + ' ' + Empresa  + ' ' ,
         html: cotiEntro,
         // attachments: [
@@ -3249,7 +3249,7 @@ El precio inicial es de un <strong>Valor total: ${Moneda}: ${suma1} </strong>.
     let alaEmpresa = {
         from: senderMail, // sender address,
         to: senderMail,
-        Cc:["sebastian.paysse@tbs-it.net","sebastian.paysse@gmail.com"],
+        cc:["sebastian.paysse@tbs-it.net","sebastian.paysse@gmail.com"],
         subject: "Enhorabuena!!! entro una nueva cotizacion de" + ' ' + Empresa  + ' ' ,
         html: cotiEntro,
         // attachments: [
@@ -3259,6 +3259,7 @@ El precio inicial es de un <strong>Valor total: ${Moneda}: ${suma1} </strong>.
         //   },
         // ]
     };
+
 
 
     transporter.sendMail(conAdjunto, (er,info)=>{
