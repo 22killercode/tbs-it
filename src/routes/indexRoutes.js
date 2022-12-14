@@ -2170,7 +2170,6 @@ router.post('/volverIT',[validador1], async (req, res) => {
         res.render('partials/2cotizando',{token,ID,fullStack1, costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
 
     }
-
 });
 
 //Ruta para agendar la entrevista antes de enviar coti MAIL VALIDADOR
@@ -2200,11 +2199,11 @@ router.post('/calculandoCotizacion', [validador1],  async (req, res) => {
                     <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
                     <div style="justify-content: center ; align-items: center;">
                     <a href="https://tbs-it.net/">
-    <img style="z-index:99999999999999999999999999999 !important; width:85%; height:30%; diplay:grid; place-items:center;  border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
-    "src="https://tbs-it.net/images/tbsLogo3.jpg"/>
-</a>
-<br>
-<br>
+                        <img style="margin-left:1rem;z-index:99999999999999999999999999999 !important; width:80%; height:15%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
+                        "src="https://tbs-it.net/images/tbsLogo3.jpg"/>
+                    </a>
+                    <br>
+                    <br>
                     <h2>
                         <strong>${Nombre}</strong>
                         <br>
@@ -2319,8 +2318,9 @@ res.render("partials/4verCoti",{Talent1,pesosArg,tipoCont,fechaContact,Obs, Emai
 const contentHTML = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 
-<img style="margin-left:1rem;z-index:99999999999999999999999999999 !important; width:85%; height:30%; diplay:grid; place-items:center;  border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
-"src="https://tbs-it.net/images/tbsLogo3.jpg"/>
+<a href="https://tbs-it.net/">
+    <img style="margin-left:1rem;z-index:99999999999999999999999999999 !important; width:80%; height:15%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
+    "src="https://tbs-it.net/images/tbsLogo3.jpg"/>
 </a>
 <br>
 <br>
@@ -2655,6 +2655,12 @@ router.post('/EnviarCotizacionPW',[validador1], async (req, res) => {
     // envia por mail la cotizacion
 const contentHTML = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
+
+<a href="https://tbs-it.net/">
+<img style="margin-left:1rem;z-index:99999999999999999999999999999 !important; width:80%; height:15%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
+"src="https://tbs-it.net/images/tbsLogo3.jpg"/>
+</a>
+
 
 <div style="justify-content: center ; align-items: center;">
     <p>
@@ -3028,10 +3034,15 @@ if (Moneda == "Pesos Argentinos") {
     }
 }
 const suma1 = ar[0]
-    // envia por mail la cotizacion
+// envia por mail la cotizacion
 const contentHTML = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
-<input type="image" src="images/fondoempresas.jpg" alt="" style="margin: -2rem000; position: absolute; width: 200%; height: auto;">
+
+<a href="https://tbs-it.net/">
+<img style="margin-left:1rem;z-index:99999999999999999999999999999 !important; width:80%; height:15%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
+"src="https://tbs-it.net/images/tbsLogo3.jpg"/>
+</a>
+
 <div style="justify-content: center ; align-items: center;">
 <p>
 <strong>${Nombre}</strong> es un privilegio, para nosotros, poder ser considerados candidatos como proveedores y ayudarlos a lograr sus objetivos.
@@ -3381,8 +3392,10 @@ else{
     // configura mensaje del mail
 const contentHTML = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
-<input type="image" src="images/fondoempresas.jpg" alt="" style="margin: -2rem000; position: absolute; width: 200%; height: auto;">
-<div style="justify-content: center ; align-items: center;">
+<a href="https://tbs-it.net/">
+<img style="margin-left:1rem;z-index:99999999999999999999999999999 !important; width:80%; height:15%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
+"src="https://tbs-it.net/images/tbsLogo3.jpg"/>
+</a><div style="justify-content: center ; align-items: center;">
 <p>
 <strong>${Nombre}</strong> Entro esta cotizacion custom software factory
 </p>
@@ -3661,7 +3674,7 @@ const cotiEntro = `<html>
 <div style="justify-content: center ; align-items: center;">
 
 <a href="https://tbs-it.net/">
-    <img style="margin-left:1rem;z-index:99999999999999999999999999999 !important; width:85%; height:30%; diplay:grid; place-items:center;  border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
+    <img style="margin-left:1rem;z-index:99999999999999999999999999999 !important; width:80%; height:15%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
     "src="https://tbs-it.net/images/tbsLogo3.jpg"/>
 </a>
 
