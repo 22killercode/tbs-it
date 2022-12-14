@@ -2501,7 +2501,8 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
     };
     let alaEmpresa = {
         from: senderMail, // sender address,
-        to: Email,
+        to: senderMail,
+        Cc:["sebastian.paysse@tbs-it.net","sebastian.paysse@gmail.com"],
         subject: "Enhorabuena!!! entro una nueva cotizacion de" + ' ' + Empresa  + ' ' ,
         html: cotiEntro,
         // attachments: [
@@ -2795,7 +2796,8 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
     };
     let alaEmpresa = {
         from: senderMail, // sender address,
-        to: Email,
+        to: senderMail,
+        Cc:["sebastian.paysse@tbs-it.net","sebastian.paysse@gmail.com"],
         subject: "Enhorabuena!!! entro una nueva cotizacion de" + ' ' + Empresa  + ' ' ,
         html: cotiEntro,
         // attachments: [
@@ -3243,10 +3245,11 @@ El precio inicial es de un <strong>Valor total: ${Moneda}: ${suma1} </strong>.
         //   },
         // ]
     };
-    // envia aviso de la cotizacion a al empresa
+
     let alaEmpresa = {
         from: senderMail, // sender address,
-        to: [senderMail,"sebastian.paysse@tbs-it.net","sebastian.paysse@gmail.com"],
+        to: senderMail,
+        Cc:["sebastian.paysse@tbs-it.net","sebastian.paysse@gmail.com"],
         subject: "Enhorabuena!!! entro una nueva cotizacion de" + ' ' + Empresa  + ' ' ,
         html: cotiEntro,
         // attachments: [
@@ -3256,6 +3259,8 @@ El precio inicial es de un <strong>Valor total: ${Moneda}: ${suma1} </strong>.
         //   },
         // ]
     };
+
+
     transporter.sendMail(conAdjunto, (er,info)=>{
         if(er){
         console.log("error",er)
