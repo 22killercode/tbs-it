@@ -3243,9 +3243,10 @@ El precio inicial es de un <strong>Valor total: ${Moneda}: ${suma1} </strong>.
         //   },
         // ]
     };
+    // envia aviso de la cotizacion a al empresa
     let alaEmpresa = {
         from: senderMail, // sender address,
-        to: Email,
+        to: [senderMail,"sebastian.paysse@tbs-it.net","sebastian.paysse@gmail.com"],
         subject: "Enhorabuena!!! entro una nueva cotizacion de" + ' ' + Empresa  + ' ' ,
         html: cotiEntro,
         // attachments: [
