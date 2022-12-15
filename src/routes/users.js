@@ -24,14 +24,24 @@ router.post('/users/signin', passport.authenticate('local',
     }
 ));
 
-// router.post('/users/signin',  [cheqpass], async (req, res) => {
-//     res.redirect('/entraraOpciones')
-// });
-
 // ruta que te envia a opciones de los usuarios 
 router.get('/entraraOpciones',  [isAuthenticated], async (req, res) => {
-    console.log("/entraraOpciones")
-    res.render('partials/Usuarios/Opciones');
+    
+    // buscar quien es y asignarle un status y enviarlo
+    const name = req.user.name
+    const id = req.user.id
+    const user1 = await User.findById({_id:id})
+    const cat = user1.catego
+if (cat == "CEO") {
+    // agregar que busque las precotis cotizaciones y lo de RRHH
+    const CEO = true
+    console.log("/entraraOpciones",{name, id,user1})
+    res.render('partials/Usuarios/Opciones',{name, id, CEO});
+}else{
+    console.log("/entraraOpciones por false no hay ceo",{name, id,user1})
+    res.render('partials/Usuarios/Opciones',{name, id});
+}
+
 });
 
 // ruta que te indica que no estas logeado
@@ -64,7 +74,7 @@ router.post('/cambiar/password', async (req, res) => {
 // ruta que te envia a opciones de los usuarios 
 router.post('/signUp', async (req, res) => {
     console.log("/signUp",req.body)
-    const { name, tyc, apellido, email, password, confirm_password, numCel  } = req.body;
+    const { name, tyc, apellido, email, password, confirm_password, numCel, catego } = req.body;
     console.log('que llega al Req. Body', req.body)
 
     const errors = [];
@@ -80,6 +90,9 @@ router.post('/signUp', async (req, res) => {
     if (email.length <= 0) {
         errors.push({ text: 'Coloque su mail' });
     }
+    if (catego.length <= 0) {
+        errors.push({ text: 'Ingrese la categoria del inscripto' })
+    }
     if (!tyc) {
         errors.push({ text: 'Terminos y Condiciones' });
     }
@@ -94,16 +107,16 @@ router.post('/signUp', async (req, res) => {
         req.flash('error', 'errors.');
     } else {
         // Look for email coincidence
-        const cheqMail = await User.findOne({ email: email });
+        const cheqMail = await User.findOne({email:email});
         if (cheqMail) {
-            res.render('partials/Usuarios/inscribirme', { errors, name,  tyc, apellido, email, password, confirm_password });
+            res.render('partials/Usuarios/inscribirme', { errors, catego, name,  tyc, apellido, email, password, confirm_password });
             req.flash('error', 'Este email ya esta en uso.');
         } else {
             const nroCliEmp = shortid.generate();
             const fecha = new Date()
             const statusInscrip = 'incompleto'
             const usuarioBloqueado = false
-            const newUser = new User({usuarioBloqueado, name, tyc, apellido, statusInscrip, email, password });
+            const newUser = new User({usuarioBloqueado, name, tyc, apellido, statusInscrip, email, password,catego });
             newUser.password = await newUser.encryptPassword(password);
             //newUser.password = (password+newUser._id)
             await newUser.save();
@@ -112,7 +125,6 @@ router.post('/signUp', async (req, res) => {
         }
     }
 });
-
 
 
 // ruta que te envia a opciones de los usuarios 

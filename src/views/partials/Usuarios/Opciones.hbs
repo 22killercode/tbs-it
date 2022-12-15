@@ -1,51 +1,102 @@
-<input style="position:absolute;margin-top: -4rem; padding:0; width: 100%; height: 230%;" class="" id="" type="image" src="/images/cerosyunos.jpg" >
-<div align="center" style="margin:0 0 0 15rem ;position: relative; z-index: 9999999999999; opacity:0.95;"> 
-    <div style="width: 80%; color: aliceblue; background-color: black;" class="box">
-        <div class="panelControl">
-            <div style="margin: 0; " class="">
-                <input style="padding: 0;" class="" id="" type="image" src="/images/TBS-IT1.jpg" >
+<input style="position:absolute; height:200%; width:150%;" class="" id="" type="image" src="/images/cerosyunos.jpg" >
+<div align="center" style="" class="container xxl carpetaNegra"> 
+    <div style="" class="">
+
+            <div align="left" style="" class="">
+                <input style="padding: 0; height: 20%; width: 20%;" class="" id="" type="image" src="/images/TBS-IT1.jpg" >
+            </div>
+            <div class="flex">
+                <div class="">
+                    <p  style="font-size: 1.5rem; margin: auto ; padding: 0">
+                        <strong>
+                            {{user.name}}
+                            <br><br>
+                            ¿Que vamos a hacer hoy?
+                        </strong>
+                    </p>
+                </div>
             </div>
             {{!-- Acordeon principal donde van el logo y la foto --}}
-            <div style="background-color:black;margin: 1rem 0 -1rem 0;" class="">
-                <div class="flex">
-                    <div class="">
-                        <p  style="font-size: 1.5rem; margin: -1.9rem -2.3rem 0 -.9rem ; padding: 0">
-                            <strong>
-                                {{user.name}}
-                                <br><br>
-                                ¿Que vamos a hacer hoy?
-                            </strong>
-                        </p>
+            {{!-- poner if del ceo --}}
+            {{#if CEO}}
+                <div class="container-xxl" style="background-color: gray; margin-bottom: 3rem;">
+                    <h4 style="margin:1rem;" >QUICK VIEW</h4>
+                    <div style="background-color: white;color: black; padding:0.5rem; margin:1rem;" class="row">
+                        <p align="left" > Staffing</p>
+                        <div class="col-md-4">
+                            <form action="" method="get">
+                                <button type="submit" class="btn btn-primary">
+                                Pre-Cotis <span class="badge text-bg-secondary">{{precot}}</span>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary">
+                            Cotizaciones <span class="badge text-bg-secondary">{{cotis}}</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div style="background-color: white;color: black; padding:0.5rem; margin:1rem;" class="row">
+                        <p align="left">Software</p>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary">
+                            Pagina web<span class="badge text-bg-secondary">{{pagweb}}</span>
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary">
+                            Sitios web <span class="badge text-bg-secondary">{{SitWeb}}</span>
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary">
+                            IOT<span class="badge text-bg-secondary">{{IOT}}</span>
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary">
+                            Custom <span class="badge text-bg-secondary">{{Cus}}</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div style="background-color: white;color: black; padding:0.5rem; margin:1rem;max-resolution: 3rem;" class="row">
+                        <p align="left" >RRHH</p>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary">
+                            Partners <span class="badge text-bg-secondary">{{part}}</span>
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary">
+                            Programadores <span class="badge text-bg-secondary">{{prog}}</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <br>
-                <br>
-            </div>
-        </div>
-        <br>
-            <div >
-                <br>
-                <form class="btn-success" action="/editarDatosPersonales" method="POST">
-                    <input type="text" value="{{dataUser._id}}" name="id" hidden>
-                    <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Mis Datos</h3></button>
-                </form>
-                <form class="btn-success" action="/configuracionTBS-IT" method="GET">
-                    <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Configuracion</h3></button>
-                </form>
-                <form class="btn-success" action="/nosotros" method="GET">
-                    <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Certificasciones</h4></button>
-                </form>
-                <form class="btn-success" action="/instrucciones" method="GET">
-                    <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Cotizaciones</h3></button>
-                </form>
-                <form class="btn-success" action="/mensajesDelSistema" method="GET">
-                    <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Mensajes/consultas</h3></button>
-                </form>
-                <form class="btn-success" action="/" method="GET">
-                    <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Salir</h3></button>
-                </form>                
-            </div>
-        </div>
+            {{/if}}
+    </div>
+    <br>
+    <div>
+    <form class="btn-success" action="/editarDatosPersonales" method="POST">
+        <input type="text" value="{{dataUser._id}}" name="id" hidden>
+        <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Mis Datos</h3></button>
+    </form>
+    <form class="btn-success" action="/configuracionTBS-IT" method="GET">
+        <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Configuracion</h3></button>
+    </form>
+    <form class="btn-success" action="/nosotros" method="GET">
+        <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Certificasciones</h4></button>
+    </form>
+    <form class="btn-success" action="/instrucciones" method="GET">
+        <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Cotizaciones</h3></button>
+    </form>
+    <form class="btn-success" action="/mensajesDelSistema" method="GET">
+        <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Mensajes/consultas</h3></button>
+    </form>
+    <form class="btn-success" action="/" method="GET">
+        <button type="submit" class="btn" data-toggle="modal" data-target="#spinner2"><h3>Salir</h3></button>
+    </form>                
+    </div>
 </div>
 
 

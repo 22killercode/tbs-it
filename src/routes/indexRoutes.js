@@ -3750,4 +3750,13 @@ router.get('/logo', async (req, res) => {
     res.render('partials/img/logo')
 });
 
+
+//Ruta para llegar al Signin
+router.get('/dev', async (req, res) => {
+    console.log('Llego a /logo')
+    res.render('partials/Usuarios/Opciones')
+});
+
+
+
 module.exports = router;  

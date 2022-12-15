@@ -45,14 +45,24 @@
                     </div>
                     <div class="flexlado" >
                         <div class="form-control1">
-                            <input style="color:white ;" name="numCel" value="{{numCel}}" type="text" required>
+                            <input style="color:white ;" name="numCel"type="text" required>
                             <label>Numero Celular</label>
                         </div>
                         <div class="form-control1">
-                            <input style="color:white ;" name="email" value="{{email}}" type="email" required>
+                            <input style="color:white ;" name="email" type="email" required>
                             <label>Email</label>
                         </div>
                     </div>
+                        <div class="form-control1">
+                            <input style="color:white ;" list="catego1" name="catego" type="text" required>
+                            <label>Categoria</label>
+                            <datalist id="catego1" >
+                                <option value="CEO">CEO</option>
+                                <option value="EECC">EECC</option>
+                                <option value="RRHH">RRHH</option>
+                                <option value="Tech">Tech</option>
+                            </datalist>
+                        </div>                        
                         <br> 
                         <h4>Tu password debe contener 8 caracteres alfanuméricos</h5>
                     <div class="flexlado" >
