@@ -25,7 +25,7 @@ const mensajes      = require('../models/messages');
 const JSONTransport = require('nodemailer/lib/json-transport');
 const { Script } = require('vm');
 const { nextTick } = require('process');
-const PrecioDolar = 292
+const PrecioDolar = 300
 //Variables
 const HorasMes             = 160
 //precios TOP USS
