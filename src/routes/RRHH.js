@@ -15,8 +15,7 @@ const nodemailer        = require('nodemailer');
 const shortid           = require('shortid');
 
 //models 
-const Tokens            = require('../models/Tokens');
-const Talentos          = require('../models/talentos');
+const Tokens   = require('../models/Tokens');
 const talentos = require('../models/talentos');
 
 

@@ -16,16 +16,17 @@ const nodemailer = require('nodemailer');
 const shortid = require('shortid');
 
 //models 
-const usuario       = require('../models/User');
 const Tokens        = require('../models/Tokens');
 const cotiStaffing  = require('../models/cotiStaffing');
 const cotizaciones  = require('../models/cotizaciones');
 const mensajes      = require('../models/messages');
+const talentos     = require('../models/talentos');
+
 //middlewares
 const JSONTransport = require('nodemailer/lib/json-transport');
 const { Script } = require('vm');
 const { nextTick } = require('process');
-const PrecioDolar = 300
+const PrecioDolar = 350
 //Variables
 const HorasMes             = 160
 //precios TOP USS
@@ -50,7 +51,7 @@ const idioma               = +3.5
 //Precios software factory
 
 //Bases
-const paginaWeb      = 300
+const paginaWeb      = 150
 const appiRestFull   = 5000
 const apiRestFullIOT = 20000
 // Modulos
@@ -104,7 +105,7 @@ router.get('/Signin', async (req, res) => {
 });
 
 
-//Ruta para eliminar talento
+//Ruta para eliminar talento del staff seleccionado
 router.post('/eliminarTalento', async (req, res) => {
     const {_id,fullStack1,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} = req.body
     console.log('Llego a Staffing backend',req.body)

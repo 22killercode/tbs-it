@@ -19,7 +19,7 @@ const Tokens        = require('../models/Tokens');
 
 const JSONTransport = require('nodemailer/lib/json-transport');
 const { Script } = require('vm');
-const PrecioDolar = 300
+const PrecioDolar = 350
 //Variables
 const HorasMes             = 160
 //precios TOP USS
@@ -43,7 +43,7 @@ const precioIOS            = +12
 const idioma               = +3.5
 //Precios software factory
 //Bases
-const paginaWeb      = 300
+const paginaWeb      = 150
 const appiRestFull   = 5000
 const apiRestFullIOT = 20000
 // Modulos

@@ -9,6 +9,9 @@ require('dotenv').config();
 
 //models
 const User = require('../models/User');
+const cotiStaffing = require('../models/cotiStaffing');
+const cotizaciones = require('../models/cotizaciones');
+const talentos     = require('../models/talentos');
 
 //midlewears
 const {validador1,val2,cheqpass} = require('../routes/Midlewares');
@@ -28,20 +31,53 @@ router.post('/users/signin', passport.authenticate('local',
 router.get('/entraraOpciones',  [isAuthenticated], async (req, res) => {
     
     // buscar quien es y asignarle un status y enviarlo
-    const name = req.user.name
-    const id = req.user.id
+    const id    = req.user.id
     const user1 = await User.findById({_id:id})
-    const cat = user1.catego
-if (cat == "CEO") {
-    // agregar que busque las precotis cotizaciones y lo de RRHH
-    const CEO = true
-    console.log("/entraraOpciones",{name, id,user1})
-    res.render('partials/Usuarios/Opciones',{name, id, CEO});
-}else{
-    console.log("/entraraOpciones por false no hay ceo",{name, id,user1})
-    res.render('partials/Usuarios/Opciones',{name, id});
-}
+    const cat   = user1.catego
+    if (cat == "CEO") {
+        // busca las precotis cotizaciones y lo de RRHH
+        const precots    = await cotiStaffing.find()
+        const totalCotis = await cotizaciones.find()
+        const talent     = await talentos.find()
+        const precot     = precots.length
+        // averiguamos que tipo de cotis son
+        const cotiSt     = []
+        const cotiPW     = []
+        const cotiIOT    = []
+        const cotiCus    = []
+        for (const a1 of totalCotis) {
+            const staffing  = a1.talents.length
+            const PW  = a1.PW
+            const IOT = a1.IOT
+            const CUS = a1.CUS
+            if (staffing >= 1) {
+                cotiSt.push(staffing)
+            }
+            // cotis de PW
+            if (PW) {
+                cotiPW.push(1)
+            }
+            // cotis de PW
+            if (IOT) {
+                cotiIOT.push(1)
+            }
+            // cotis de PW
+            if (CUS) {
+                cotiCus.push(1)
+            }
+        }
+// hacer las sumatorias d elos arrays de cada tipo de coti
+// const cotiStaf   = cotiSt[0] hace rla sumatria del array
 
+const prog    = talent.length
+        const part    = talent.length
+        const CEO = true
+        console.log("/entraraOpciones",{id,user1, precot,cotiSt})
+        res.render('partials/Usuarios/Opciones',{ id, CEO, precot,cotiStaf, prog, part});
+    }else{
+        console.log("/entraraOpciones por false no hay ceo",{id,user1})
+        res.render('partials/Usuarios/Opciones',{id});
+    }
 });
 
 // ruta que te indica que no estas logeado
