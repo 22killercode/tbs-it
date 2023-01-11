@@ -30,8 +30,8 @@ const PrecioDolar = 350
 //Variables
 const HorasMes             = 160
 //precios TOP USS
-const precioBackend        = 60
-const precioFrontend       = 55
+const precioBackend        = 55
+const precioFrontend       = 50
 // descuentos por pais USS
 const precioArg            = -25
 const precioLatam          = -15
