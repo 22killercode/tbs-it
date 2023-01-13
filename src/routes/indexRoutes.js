@@ -790,7 +790,7 @@ router.get('/cotizandoStaffing', async (req, res) => {
     res.render('partials/1cotiStaffing',{token})
     // revisar si hay aulgun token sin usar y lo borra
     const cheqVencimiento = await Tokens.find();
-    console.log("cuantos token encontro",cheqVencimiento )
+    //console.log("cuantos token encontro",cheqVencimiento )
     const cheqTime        = new Date()
     for (const a1 of cheqVencimiento) {
         const tiempo       = a1.date
