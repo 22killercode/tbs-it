@@ -220,7 +220,7 @@
 								<h5 scope="col" style="padding:0.5rem;">Sub Total</h5>
 								<hr style="margin:0;">							
 								{{#each talents}}
-									<h6  style="text-align: left; padding:0.5">{{#if pesosArg}}U$S{{else}}${{/if}}{{Precio}}</h6>
+									<h6  style="text-align: left; padding:0.5">{{#if pesosArg}}${{else}}U$S{{/if}}{{Precio}}</h6>
 									<hr style="margin:0;">
 								{{/each}}
 							</div>
@@ -276,19 +276,18 @@
 						</div>
 						<div class="col-sm">
 							<p style="padding: 0.3rem;">Total de horas</p>
-							<br>
 							<span>{{totalHoras}}</span>
 						</div>
 						<div class="col-sm">
 							<p style="padding: 0.3rem;" >Promedio por hora $
 								<br>
-								{{costoHoraPromedio}}
+								$ {{costoHoraPromedio}}
 							</p>
 						</div>
 						<div class="col-sm">
 							<p style="padding: 0.3rem;">Total $ 
 								<br>
-								{{costoFinal}}
+								$ {{costoFinal}}
 							</p>
 						</div>
 						{{!-- Calcula la coti en pesos --}}
@@ -336,19 +335,18 @@
 						</div>
 						<div class="col-sm">
 							<p style="padding: 0.3rem;">Total de horas</p>
-							<br>
 							<span>{{totalHoras}}</span>
 						</div>
 						<div class="col-sm">
 							<p style="padding: 0.3rem;" >Promedio por hora U$S
 								<br>
-								{{costoHoraPromedio}}
+								U$S {{costoHoraPromedio}}
 							</p>
 						</div>
 						<div class="col-sm">
 							<p style="padding: 0.3rem;">Total U$S 
 								<br>
-								{{costoFinal}}
+								U$S {{costoFinal}}
 							</p>
 						</div>
 						{{!-- Calcula la coti en dolares --}}
