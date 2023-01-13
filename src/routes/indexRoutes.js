@@ -796,7 +796,7 @@ router.get('/cotizandoStaffing', async (req, res) => {
         const tiempo       = a1.date
         const difDtiempo   = (cheqTime - tiempo)
         const difTiempoMins = (parseInt(difDtiempo) / 1000 / 60 / 60 )
-        console.log("cuanta diferencia de tiempo hay",difTiempoMins )
+        //console.log("cuanta diferencia de tiempo hay",difTiempoMins )
         if (difTiempoMins >= setMinEraser) {
             const _id = a1._id
             await Tokens.findByIdAndDelete(_id)
