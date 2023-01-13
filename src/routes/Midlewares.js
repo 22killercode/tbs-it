@@ -31,8 +31,8 @@ const precioLatam          = -15
 const precioUsaEur         = +5
 // descuentos por señority USS
 const precioTL             = +20
-const precioSemiSenior     = -15
-const precioJuniorAdnvance = -17
+const precioSemiSenior     = -10
+const precioJuniorAdnvance = -15
 const precioJunior         = -19
 const fullStack            = +10
 const QAuto                = +3.5
