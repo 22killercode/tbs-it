@@ -12,6 +12,7 @@ const socketIO       = require('socket.io');
 const Handlebars     = require('handlebars');
 const dotEnv         = require("dotenv").config();
 const fileUpload     = require('express-fileupload');
+const favicon        = require('serve-favicon')
 
 
 // parche de handlebars
@@ -104,6 +105,7 @@ app.use(express.static(path.join(__dirname, 'partials')));
 // //    res.status(404).render('/')
 //     res.status(404).redirect('/error404')
 // });
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 //server
 const port = process.env.PORT || 3009;
