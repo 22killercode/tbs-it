@@ -6500,21 +6500,24 @@ span
   }
   
   .messError {
+	align-items: center;
+	display: block;	
 	position: absolute !important;
-	color: black !important;
+	color: White;
 	background-color: red;
-	margin: 9rem 2rem 2rem 2rem !important;
-	padding: 1rem !important;
-	border-radius: 1.5rem !important;
-	font-size: 3.5rem !important;
-	width: 25rem !important;
-	height: max-content !important;
-	box-shadow: 0.5em 0.5em 0.5em 0.5em black !important;
-	border-top: white 0.1em solid !important;
-	border-left: white 0.1em solid !important;
-	border-bottom: darkgray 0.1em solid !important;
-	border-right: grey 0.1em solid !important;
+	margin: auto;
+	padding: 1rem;
+	border-radius: 1.5rem;
+	font-size: 3.5rem;
+	width: max-content;
+	height: max-content;
+	box-shadow: 0.5em 0.5em 0.5em 0.5em black;
+	border-top: white 0.1em solid;
+	border-left: white 0.1em solid;
+	border-bottom: darkgray 0.1em solid;
+	border-right: grey 0.1em solid;
 	z-index: 9999999999999999999999999999999999999999999999!important;
+  
   }
   
   /****************************calificasiones*********************************************/
