@@ -314,7 +314,7 @@ li {
 /****************/
 .staff {
 	/* FONDO DEV, DEGRADADO*/
-	background-image: url(/images/fondoempresas5.jpg);
+	background-image: url(/images/itstaffing.jpg);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -339,7 +339,7 @@ li {
 .tecnologia {
 	/* FONDO DEGRADADO*/
 	/* background-image:  url(/images/webpage.png); */
-	background-image:  url(/images/lenguajes2.png);	
+	background-image:  url(/images/lenguajesit3.jpg);	
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -369,6 +369,7 @@ li {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	opacity:0.94 !important;
 }
 
 /****************/
@@ -376,11 +377,12 @@ li {
 /****************/
 .paises {
 	/* FONDO DEGRADADO*/
-	background-image:  url(/images/Munconec.jpg);
+	background-image:  url(/images/paisesPrece.jpg);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
+	opacity:1 !important;
 }
 
 /****************/
