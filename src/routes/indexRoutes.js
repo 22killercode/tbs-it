@@ -1516,27 +1516,28 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
 
     //revisa si es en dolares o pesos argentinos y renderiza
     if (Moneda == "Pesos Argentinos") {        
+        const pesosArg    = true
         const costoFinal1 = costoF * PrecioDolar
         const costoFinal  = formatoPesos.format(costoFinal1);
-        const pesosArg    = true
         // suma las horas totales
         const totalHoras = (totalMeses*HorasMes)
         // promedia cosato por hora grl
         const costoHoraPromedio1 = (costoFinal1/totalHoras)
         const costoHoraPromedio2 = Math.round(costoHoraPromedio1) 
         const costoHoraPromedio  = formatoPesos.format(costoHoraPromedio2);
-        console.log("Calculo final cotizando IT",costoF,costoFinal1, costoHoraPromedio1,costoHoraPromedio2, costoHoraPromedio)
+        console.log("Calculo final cotizando IT",pesosArg,costoF,costoFinal1, costoHoraPromedio1,costoHoraPromedio2, costoHoraPromedio)
         res.render('partials/2cotizando',{token,ID,fullStack1, pesosArg,costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
     } else {
+        const pesosArg   = false
         // promedia cosato por hora grl
         const costoFinal = formatoPesos.format(costoF);
         const totalHoras = (totalMeses * HorasMes)
-        // promedia cosato por hora grl
+        // promedia el  costo por hora grl
         const costoHoraPromedio1 = (costoF/totalHoras)
         const costoHoraPromedio2 = Math.round(costoHoraPromedio1)
         const costoHoraPromedio  = formatoPesos.format(costoHoraPromedio2);
         console.log("Calculo final cotizando IT",costoF, costoHoraPromedio1,costoHoraPromedio2, costoHoraPromedio)
-        res.render('partials/2cotizando',{token,ID,fullStack1, costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
+        res.render('partials/2cotizando',{pesosArg,token,ID,fullStack1, costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
     }
 
 });
@@ -2207,18 +2208,19 @@ router.post('/volverIT',[validador1], async (req, res) => {
 
     //revisa si es en dolares o pesos argentinos y renderiza
     if (Moneda == "Pesos Argentinos") {        
+        const pesosArg    = true
         const costoFinal1 = costoF * PrecioDolar
         const costoFinal  = formatoPesos.format(costoFinal1);
-        const pesosArg    = true
         // suma las horas totales
         const totalHoras = (totalMeses*HorasMes)
         // promedia cosato por hora grl
         const costoHoraPromedio1 = (costoFinal1/totalHoras)
         const costoHoraPromedio2 = Math.round(costoHoraPromedio1) 
         const costoHoraPromedio  = formatoPesos.format(costoHoraPromedio2);
-        console.log("Calculo final cotizando IT",costoF,costoFinal1, costoHoraPromedio1,costoHoraPromedio2, costoHoraPromedio)
+        console.log("Calculo final cotizando IT",pesosArg,costoF,costoFinal1, costoHoraPromedio1,costoHoraPromedio2, costoHoraPromedio)
         res.render('partials/2cotizando',{token,ID,fullStack1, pesosArg,costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
     } else {
+        const pesosArg   = false
         // promedia cosato por hora grl
         const costoFinal = formatoPesos.format(costoF);
         const totalHoras = (totalMeses * HorasMes)
@@ -2227,7 +2229,7 @@ router.post('/volverIT',[validador1], async (req, res) => {
         const costoHoraPromedio2 = Math.round(costoHoraPromedio1)
         const costoHoraPromedio  = formatoPesos.format(costoHoraPromedio2);
         console.log("Calculo final cotizando IT",costoF, costoHoraPromedio1,costoHoraPromedio2, costoHoraPromedio)
-        res.render('partials/2cotizando',{token,ID,fullStack1, costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
+        res.render('partials/2cotizando',{pesosArg,token,ID,fullStack1, costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
     }
 });
 

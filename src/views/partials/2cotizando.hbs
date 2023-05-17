@@ -151,6 +151,7 @@
 												<input value="{{PagWeb}}"    name="PagWeb"    hidden>
 												<input value="{{Moneda}}"    name="Moneda"    hidden>
 												<input value="{{ID}}"        name="ID"        hidden>
+												<input value="{{pesosArg}}"  name="pesosArg"  hidden>
 												<input type="text" name="token" value="{{token}}" hidden>
 											</div>
 											<button id="boton222" class="btn btn-success" type="">Agregar</button>
@@ -220,7 +221,7 @@
 								<h5 scope="col" style="padding:0.5rem;">Sub Total</h5>
 								<hr style="margin:0;">							
 								{{#each talents}}
-									<h6  style="text-align: left; padding:0.5">{{#if pesosArg}}Dólares{{else}}Pesos{{/if}} {{Precio}}</h6>
+									<h6  style="text-align: left; padding:0.5">{{#if pesosArg}}Pesos{{else}}Dólares{{/if}} {{Precio}}</h6>
 									<hr style="margin:0;">
 								{{/each}}
 							</div>
@@ -242,6 +243,7 @@
 												<input value="{{Moneda}}"   type="text" name="Moneda"   hidden>
 												<input value="{{ID}}"       type="text" name="ID"       hidden>
 												<input value="{{fullStack1}}"type="text"name="fullStack1"hidden>
+												<input value="{{pesosArg}}"          name="pesosArg"  hidden>
 											</div>
 											<button type="submit" class="none" style="color:white;" >X</button>
 										</form>
@@ -263,6 +265,7 @@
 								<div>
 									<input value="{{Email}}"    type="email"name="Email"    hidden>
 									<input value="{{ID}}"       type="text" name="ID"       hidden>
+									<input value="{{pesosArg}}"          name="pesosArg"          hidden>
 									<input type="text" name="token" value="{{token}}" hidden>
 								</div>
 								<input type="email" value="{{Email}}" name="Email" hidden>
@@ -324,6 +327,7 @@
 									<input value="{{Email}}"    type="email"name="Email"    hidden>
 									<input value="{{ID}}"       type="text" name="ID"       hidden>
 									<input type="text" name="token" value="{{token}}" hidden>
+									<input value="{{pesosArg}}"          name="pesosArg"          hidden>				
 								</div>
 								<input type="email" value="{{Email}}" name="Email" hidden>
 								<button class="alertaVerde" >Borrar todo</button>
