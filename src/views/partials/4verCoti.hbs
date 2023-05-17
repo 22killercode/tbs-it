@@ -7,9 +7,9 @@
 			</div>
 			<div class="card-body">
 					<p>
-						<strong>{{Nombre}}</strong> queremos expresarte nuestro agradecimiento por dejarnos participar como oferentes de servicios en esta oportunidad. Es un privilegio, para nosotros, poder ser considerados candidatos como proveedores para ayudarlos a lograr sus objetivos.</p>
+						<strong>{{Nombre}}</strong> {{pesosArg}} queremos expresarte nuestro agradecimiento por dejarnos participar como oferentes de servicios en esta oportunidad. Es un privilegio, para nosotros, poder ser considerados candidatos como proveedores para ayudarlos a lograr sus objetivos.</p>
 						
-						<p>TBS-IT es una empresa dedicada a la creación de soluciones en el campo de tecnologías de la información. Contamos con talento de alto valor, con experiencia y constantemente actualizados sobre las últimas tecnologías con el fin de brindar el mejor servicio. 
+						<p>TBS-IT nos dedicamos a la creación de soluciones escalables y solidas en el campo de tecnologías de la información. Contamos con talento de alto valor, con experiencia y constantemente actualizados sobre las últimas tecnologías con el fin de brindar el mejor servicio y relaciones a largo plazo. 
 						
 						Por tres meses o un año, por un solo recurso o un equipo completo, ofrecemos los mejores recursos con experiencia directa en su industria y con los sistemas y tecnologías que necesita, asi que nuevamente, gracias por elegirnos, como socio tecnológico, a la hora de abordar sus proyectos.
 					</p>
@@ -31,7 +31,6 @@
 								<th scope="col">Señority</th>
 								<th scope="col">Tiempo</th>
 								<th scope="col">Idioma</th>
-								<th scope="col" hidden>Moneda</th>
 								<th scope="col">País Trabaja</th>
 								<th scope="col">Sub Total</th>
 								<th scope="col" hidden>Sub Total Mes</th>
@@ -40,12 +39,12 @@
 							{{#each Talent1}}
 							<tbody style="font-size: ;color: aliceblue;">
 								<tr style="padding:0">
-									<td  style=" padding:">{{tecno}}</td>
-									<td  style=" padding:">{{senority}}</td>
-									<td  style=" padding:">{{Cantmeses}}</td>
-									<td  style=" padding:">{{Idioma}}</td>
-									<td  style=" padding:">{{Pais}}</td>
-									<td  style=" padding:">{{#if pesosArg}}Dólares{{else}}Pesos{{/if}} {{Precio}}</td>
+									<td  style="">{{tecno}}</td>
+									<td  style="">{{senority}}</td>
+									<td  style="">{{Cantmeses}}</td>
+									<td  style="">{{Idioma}}</td>
+									<td  style="">{{Pais}}</td>
+									<td  style="">{{#if pesosArg}}Pesos{{else}}Dólares{{/if}} {{Precio}}</td>
 									<td  style="">	</td>
 								</tr>
 							</tbody>
@@ -101,7 +100,7 @@
 									<div style="width: 100%; margin: -2.5rem 0rem; text-align: center;" class="center">
 										<br>
 										<p>*Consulta por importantes descuentos </p>
-										<p>Los precios no incluyen iva ni impuestos y son expresados en dolares americanos</p>
+										<p>Los precios no incluyen iva ni impuestos y son expresados en dólares americanos</p>
 										<br>
 										<br>
 									</div>

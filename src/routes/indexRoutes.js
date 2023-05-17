@@ -842,9 +842,12 @@ router.post('/staffingData', [val2, validador1],async (req, res) => {
     //console.log('Llego a Staffing backend',req.body, data)
     if (Moneda == "Pesos Argentinos") {
         const pesosArg = true
+        console.log('Se va a 2cotizando cone stos datos',data,pesosArg)
         res.render('partials/2cotizando', {data,pesosArg, token,Nombre,Apellido,NumCel,Email,Empresa,Moneda,Ciudad,PagWeb})
     } else {
-        res.render('partials/2cotizando', {data, token,Nombre,Apellido,NumCel,Email,Empresa,Moneda,Ciudad,PagWeb})
+        const pesosArg = false
+        console.log('Se va a 2cotizando cone stos datos',data,pesosArg)
+        res.render('partials/2cotizando', {data,pesosArg, token,Nombre,Apellido,NumCel,Email,Empresa,Moneda,Ciudad,PagWeb})
     }
 });
 
@@ -2235,14 +2238,22 @@ router.post('/volverIT',[validador1], async (req, res) => {
 
 //Ruta para agendar la entrevista antes de enviar coti MAIL VALIDADOR
 router.post('/calculandoCotizacion', [validador1],  async (req, res) => {
-    const {Email,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal} = req.body
+    const {Email,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal} = req.body
+    const pesosArg1 = []
+    if (Moneda == "Pesos Argentinos") {  
+        pesosArg1.push(true)
+    }
+    else{
+        pesosArg1.push(false)
+    }
+    const pesosArg = pesosArg1[0]
     //Genera Token de seguridad en BD 
     const token = shortid.generate()
     const guardarToken = new Tokens ({ token })
     await guardarToken.save()
     //guardar en base de datos como coti formal
     const talents     = await cotiStaffing.find({Email:Email});
-    console.log("Que llega a calculandoCotizacion", talents)
+    console.log("Que llega a calculandoCotizacion", pesosArg)
     if (talents.length == 0) {
         req.flash('error', 'Empieza de nuevo y agrega algún talento');
         res.redirect('/');
@@ -2251,71 +2262,71 @@ router.post('/calculandoCotizacion', [validador1],  async (req, res) => {
     const ID = guardarCoti._id
 //    console.log("Que id tiene desde clculando cotizacion",ID)
     await guardarCoti.save()
-               // revisa si ese email ya esta validado y renderiza
-                const validarEmail = await Tokens.findOne({Email:Email});
-                if (validarEmail == null) {
-                    res.render('partials/validadorStaffing', {Email,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal,ID});
-                    // enviar mail para validar staffing
-                    const contentHTML = `<!DOCTYPE html>
-                    <html>
-                    <head>
-                        <meta charset="UTF-8">
-                    <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
-                    <div style="justify-content: center ; align-items: center;">
-                    <a href="https://tbs-it.net/">
-                        <img style="margin:auto;z-index:99999999999999999999999 !important; width:40%; height:7%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
-                        "src="https://tbs-it.net/images/tbsLogo3.jpg"/>
-                    </a>
-                    </head>
-                    <br>
-                    <br>
-                    <h2>
-                        <strong>${Nombre}</strong>
-                        <br>
-                        Por favor vuelve a tu pagina web e ingresa el codigo alfanumerico que esta escrito abajo, para validar tus datos y en breve te estara llegando nuestra pre-cotizacion.
-                    </h2>
-                        <div style="text-align: center; justify-content: center; background:black; color:white;">
-                            <h1>
-                                ${token}
-                            </h1>
-                        </div>
-                    <div class="" style="text-align: left; align-items: left;">
-                    <br>
-                    <div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;" hidden><h6>This message has been generated automatically by "TBS" for a user/client acomplish whit international rules of mailing services and tbs we are not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction..</h6><div><span></span><a href="http://tbsit.co">
-                    </div>
-                    </div>
-                    </div>
-                    </body>
-                    </html>`;
-                    const email = "tbs-it.info@tbs-it.net"
+        // revisa si ese email ya esta validado y renderiza
+        const validarEmail = await Tokens.findOne({Email:Email});
+        if (validarEmail == null) {// si no es null quiere decir que esta validado
+            res.render('partials/validadorStaffing', {Email,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal,ID});
+            // enviar mail para validar staffing
+            const contentHTML = `<!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="UTF-8">
+            <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
+            <div style="justify-content: center ; align-items: center;">
+            <a href="https://tbs-it.net/">
+                <img style="margin:auto;z-index:99999999999999999999999 !important; width:40%; height:7%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
+                "src="https://tbs-it.net/images/tbsLogo3.jpg"/>
+            </a>
+            </head>
+            <br>
+            <br>
+            <h2>
+                <strong>${Nombre}</strong>
+                <br>
+                Por favor vuelve a tu pagina web e ingresa el codigo alfanumerico que esta escrito abajo, para validar tus datos y en breve te estara llegando nuestra pre-cotizacion.
+            </h2>
+                <div style="text-align: center; justify-content: center; background:black; color:white;">
+                    <h1>
+                        ${token}
+                    </h1>
+                </div>
+            <div class="" style="text-align: left; align-items: left;">
+            <br>
+            <div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;" hidden><h6>This message has been generated automatically by "TBS" for a user/client acomplish whit international rules of mailing services and tbs we are not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction..</h6><div><span></span><a href="http://tbsit.co">
+            </div>
+            </div>
+            </div>
+            </body>
+            </html>`;
+            const email = "tbs-it.info@tbs-it.net"
                     const senderMail = email
-    // con EL MAIL DEL CLIENTE ADMINISTRADO POR Hostinger
-    const transporter = nodemailer.createTransport({
-        host: "smtp.hostinger.com",
-        port: 465,
-        secure: true, // use TLS
-        auth: {
-            user: "tbs-it.info@tbs-it.net",
-            pass: "Sebatbs@22",
-        },
-        tls: {
-            // do not fail on invalid certs
-            rejectUnauthorized: false,
-        },
-    });
-            let conAdjunto = {
-                from: senderMail, // sender address,
-                to: Email,
-                subject: "Hola"  + ' ' + Nombre  + ' ' + "Valida tu Email en TBS-IT company",
-                html: contentHTML,
-            };
-            transporter.sendMail(conAdjunto, (er,info)=>{
-                if(er){
-                console.log("error",er)
-                }else{
-                    console.log("info",info) 
-                }
-            });
+        // con EL MAIL DEL CLIENTE ADMINISTRADO POR Hostinger
+                const transporter = nodemailer.createTransport({
+                host: "smtp.hostinger.com",
+                port: 465,
+                secure: true, // use TLS
+                auth: {
+                    user: "tbs-it.info@tbs-it.net",
+                    pass: "Sebatbs@22",
+                },
+                tls: {
+                    // do not fail on invalid certs
+                    rejectUnauthorized: false,
+                },
+                });
+                    let conAdjunto = {
+                        from: senderMail, // sender address,
+                        to: Email,
+                        subject: "Hola"  + ' ' + Nombre  + ' ' + "Valida tu Email en TBS-IT company",
+                        html: contentHTML,
+                    };
+                    transporter.sendMail(conAdjunto, (er,info)=>{
+                        if(er){
+                        console.log("error",er)
+                        }else{
+                            console.log("info",info) 
+                        }
+                    });
         } else {
             res.render('partials/3agenda', {token,Email,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal,ID})
         }
@@ -2339,7 +2350,15 @@ router.post('/validarStaffing',[validador1],  async (req, res) => {
 
 //Ruta para calcular y enviar cotizacion Staffing por mail
 router.post('/EnviarCotizacion',[validador1], async (req, res) => {
-    const {ID,tipoCont,pesosArg,fechaContact,Obs, Email,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal} = req.body
+    const {ID,tipoCont,fechaContact,Obs, Email,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal} = req.body
+    const pesosArg1 = []
+    if (Moneda == "Pesos Argentinos") {  
+        pesosArg1.push(true)
+    }
+    else{
+        pesosArg1.push(false)
+    }
+    const pesosArg = pesosArg1[0]
     console.log("Se logro enviar coti staffing por mails",req.body)
     const data = await cotizaciones.findByIdAndUpdate({_id:ID},{tipoCont,fechaContact,Obs},{new:true})
     const Talent1 = data.talents
@@ -2369,9 +2388,6 @@ router.post('/EnviarCotizacion',[validador1], async (req, res) => {
     //console.log("que Se logro con splice",dataM2)
 
     // pasar a pantalla que muestra formalmente la cotizacion y aradecimiento
-      // Convertir el número a formato de pesos
-    
-    
   // Renderizar el número en formato de pesos
   if (Email) {
         res.render("partials/4verCoti",{Talent1,pesosArg,tipoCont,fechaContact,Obs, Email,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal})
