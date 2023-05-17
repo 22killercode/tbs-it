@@ -2394,81 +2394,137 @@ router.post('/EnviarCotizacion',[validador1], async (req, res) => {
     }
 
 // envia por mail la cotizacion
-const contentHTML = `<!DOCTYPE html>
+const contentHTML =`<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-<body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
+    <style>
+        body {
+            padding: 1rem;
+            margin: auto;
+            background: whitesmoke;
+            height: auto;
+            box-shadow: 0.2rem 0.4rem 0.7rem 0.7rem black;
+            width: 80%;
+            border-radius: 1.5rem;
+            color: black;
+            border-top: lightgray 0.2rem solid;
+            border-left: lightgray 0.2rem solid;
+            border-bottom: black 0.4rem solid;
+            border-right: black 0.4rem solid;
+            font-family: 'Times New Roman', Times, serif;
+            white-space: pre-line;
+            word-break: break-all;
+        }
 
-<a href="https://tbs-it.net/">
-    <img style="margin:auto;z-index:99999999999999999999999 !important; width:40%; height:7%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
-    "src="https://tbs-it.net/images/tbsLogo3.jpg"/>
-</a>
+        img {
+            display: block;
+            margin: auto;
+            width: 40%;
+            height: auto;
+            border-radius: 1.5rem;
+            border: lightgray 0.2rem solid;
+        }
+
+        div.center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 47%;
+            margin: auto;
+        }
+
+        th, td {
+            border: 2px solid black;
+            padding: 0.6rem;
+        }
+    </style>
 </head>
+<body>
+<a href="https://tbs-it.net/">
+    <img src="https://tbs-it.net/images/tbsLogo3.jpg" alt="TBS Logo">
+</a>
+
 <br>
 <br>
 
-<div style="justify-content: center ; align-items: center;">
-<p>
-<strong>${Nombre}</strong> es un privilegio, para nosotros, poder ser considerados candidatos como proveedores y ayudarlos a lograr sus objetivos.
-    <br>
-    TBS es una compañía dedicada a la creación de soluciones en el campo de tecnologías de la información. Contamos con talento de alto valor, con experiencia y constantemente actualizados sobre las últimas tecnologías con el fin de brindar el mejor servicio. 
-    <br>
-    Por tres meses o un año, por un solo recurso o un equipo completo, ofrecemos los mejores recursos con experiencia directa en su industria y con los sistemas y tecnologías que necesita, asi que nuevamente, gracias por elegirnos, como socio tecnológico, a la hora de abordar sus proyectos.
-</p>
+<div class="center">
+    <p>
+        <strong>${Nombre}</strong> es un privilegio, para nosotros, poder ser considerados candidatos como proveedores y ayudarlos a lograr sus objetivos.
+        <br>
+        TBS es una compañía dedicada a la creación de soluciones en el campo de tecnologías de la información. Contamos con talento de alto valor, con experiencia y constantemente actualizados sobre las últimas tecnologías con el fin de brindar el mejor servicio.
+        <br>
+        Por tres meses o un año, por un solo recurso o un equipo completo, ofrecemos los mejores recursos con experiencia directa en su industria y con los sistemas y tecnologías que necesita, así que nuevamente, gracias por elegirnos como socio tecnológico a la hora de abordar sus proyectos.
+    </p>
 </div>
-<div class="" style="text-align: left; align-items: left;">
-<h4>Datos:</h4>
-<p><strong>Nombre:</strong> ${Nombre}  <span></span><strong>Apellido:</strong> ${Apellido}</p> 
-<p><strong>Empresa:</strong> ${Empresa}  <span></span><strong>Email de contacto:</strong> ${Email}</p>
-<p><strong> Moneda de facturacion:</strong> ${Moneda}</p>
-Esta pre-cotizacion carece de responsabilidad contractual entre las partes. Todos los precios son tentativos, estan sujetos a una negociasion final y a la presentacion de una propuesta formal que incluye: NDA, SLA´s condiciones comerciales, garantias, seguros, forma de pagos y descuentos convenidos.
-</div>   
-<div style="">
+
+<div>
+    <h4>Datos:</h4>
+    <p><strong>Nombre:</strong> ${Nombre} <span></span><strong>Apellido:</strong> ${Apellido}</p>
+    <p><strong>Empresa:</strong> ${Empresa} <span></span><strong>Email de contacto:</strong> ${Email}</p>
+    <p><strong> Moneda de facturación:</strong> ${Moneda}</p>
+    Esta pre-cotización carece de responsabilidad contractual entre las partes. Todos los precios son tentativos, están sujetos a una negociación final y a la presentación de una propuesta formal que incluye: NDA, SLA's condiciones comerciales, garantías, seguros, forma de pagos y descuentos convenidos.
+</div>
+
+<div>
     <h3 style="padding: 0.3rem;">
-        Breve resumen de la pre-cotizacion solicitada en el dia de la fecha.
+        Breve resumen de la pre-cotización solicitada en el día de la fecha.
     </h3>
-    <table style="border-width: 2px; border-style: solid; border-color: black; margin:auto; width: 47%;">
-        <thead style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">
-            <tr style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;"">
-                <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Tecnologia</th>
-                <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Señority</th>
-                <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Tiempo</th>
-                <th style="whidt:max-content; padding:0.6rem; margin:0.2rem; border-width: 2px; border-style: solid; border-color: black;">Sub Total</th>
-            </tr>
+    <table>
+        <thead>
+        <tr>
+            <th>Tecnología</th>
+            <th>Seniority</th>
+            <th>Tiempo</th>
+            <th>Sub Total</th>
+        </tr>
         </thead>
-        <div > ${dataM2} </div>
+        <tbody>
+        ${dataM2}
+        </tbody>
     </table>
 
-
-    <h4 style="padding: 0.3rem; align-items: center">
-        Cantidad de talentos  ${cantTal} | Total de horas ${totalHoras}  |  Promedio por hora $ ${costoHoraPromedio} | Total Contrato $ ${costoFinal}
+    <h4 style="padding: 0.3rem; text-align: center;">
+        Cantidad de talentos ${cantTal} | Total de horas ${totalHoras} | Promedio por hora $ ${costoHoraPromedio} | Total Contrato $ ${costoFinal}
     </h4>
-    
 </div>
-    <div style="width: 110%; margin: 0.1rem auto; text-align: center;" class="center">
-        <p>*Consulta por importantes descuentos. </p>
-        <p>*Los precios no incluyen iva ni impuestos.</p>
-        <br>
-        *Nuesto Ejecutivo de Cuentas se pondrá en contacto con usted en la fecha y el horario que nos indico
-        <br>
-        <br>
-        <h4>
-        Fecha de contacto: ${fechaContact} de la ciudad de: ${Ciudad}  Tipo de contacto:  ${tipoCont}
+
+<div style="width: 110%; margin: 0.1rem auto; text-align: center;" class="center">
+    <p>*Consulta por importantes descuentos. </p>
+    <p>*Los precios no incluyen IVA ni impuestos.</p>
+    <br>
+    *Nuestro Ejecutivo de Cuentas se pondrá en contacto con usted en la fecha y el horario que nos indicó
+    <br>
+    <br>
+    <h4>
+        Fecha de contacto: ${fechaContact} de la ciudad de: ${Ciudad} Tipo de contacto: ${tipoCont}
         <br>
         Observaciones:
         <br>
         ${Obs}
         <br>
-        </h4>
-    </div>
-    <br>
-    <div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;" hidden><h6>This message has been generated automatically by "TBS" for a user/client acomplish whit international rules of mailing services and tbs we are not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction..</h6><div><span></span><a href="http://tbsit.co">
+    </h4>
 </div>
+<br>
+<div style="text-align: center; padding: 0.5rem; background: lightgray; border-radius: 1.5rem;" hidden>
+    <h6>
+        This message has been generated automatically by "TBS" for a user/client in compliance with international rules of mailing services, and TBS is not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction.
+    </h6>
 </div>
-</div>
+
 </body>
-                    </html>`;
+</html>
+`;
 // aviso al Ejecutivo cuentas
 const cotiEntro = `<!DOCTYPE html>
 <html>
