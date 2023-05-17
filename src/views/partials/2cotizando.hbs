@@ -220,17 +220,12 @@
 							<div style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
 								<h5 scope="col" style="padding:0.5rem;">Sub Total</h5>
 								<hr style="margin:0;">							
-{{#each talents}}
-    <h6 style="text-align:left">
-        {{#if ../pesosArg}}
-            Pesos
-        {{else}}
-            Dólares
-        {{/if}} 
-        {{this.Precio}}
-    </h6>
-    <hr style="margin: 0;">
-{{/each}}
+								{{#each talents}}
+									<h6 style="text-align:left">
+										{{#if ../pesosArg}}Pesos{{else}}Dólares{{/if}} {{this.Precio}}
+									</h6>
+									<hr style="margin: 0;">
+								{{/each}}
 							</div>
 							<div  style="background-color: black; margin: 0;" class="g-col-6 g-col-sm">
 								<img style="width:3rem; height:2.5rem; margin:1rem 1rem 0.5rem 1rem;" src="/images/minitrash.png" class="icon" >
