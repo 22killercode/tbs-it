@@ -220,7 +220,7 @@
 								<h5 scope="col" style="padding:0.5rem;">Sub Total</h5>
 								<hr style="margin:0;">							
 								{{#each talents}}
-									<h6  style="text-align: left; padding:0.5">{{#if pesosArg}}U$S{{else}}${{/if}}{{Precio}}</h6>
+									<h6  style="text-align: left; padding:0.5">{{#if pesosArg}}Pesos{{else}}Dólares{{/if}} {{Precio}}</h6>
 									<hr style="margin:0;">
 								{{/each}}
 							</div>
@@ -271,7 +271,6 @@
 						</div>
 						<div class="col-sm">
 							<p style="padding: 0.3rem;">Cantidad de talentos</p>
-							<br>
 							<span>{{cantTal}}</span>
 						</div>
 						<div class="col-sm">
@@ -279,15 +278,15 @@
 							<span>{{totalHoras}}</span>
 						</div>
 						<div class="col-sm">
-							<p style="padding: 0.3rem;" >Promedio por hora $
+							<p style="padding: 0.3rem;" >Promedio por hora pesos
 								<br>
-								$ {{costoHoraPromedio}}
+								{{costoHoraPromedio}}
 							</p>
 						</div>
 						<div class="col-sm">
-							<p style="padding: 0.3rem;">Total $ 
+							<p style="padding: 0.3rem;">Total pesos 
 								<br>
-								$ {{costoFinal}}
+								{{costoFinal}}
 							</p>
 						</div>
 						{{!-- Calcula la coti en pesos --}}
@@ -338,15 +337,15 @@
 							<span>{{totalHoras}}</span>
 						</div>
 						<div class="col-sm">
-							<p style="padding: 0.3rem;" >Promedio por hora U$S
+							<p style="padding: 0.3rem;" >Promedio: hora/dólares
 								<br>
-								U$S {{costoHoraPromedio}}
+								{{costoHoraPromedio}}
 							</p>
 						</div>
 						<div class="col-sm">
-							<p style="padding: 0.3rem;">Total U$S 
+							<p style="padding: 0.3rem;">Total dólares 
 								<br>
-								U$S {{costoFinal}}
+								{{costoFinal}}
 							</p>
 						</div>
 						{{!-- Calcula la coti en dolares --}}
@@ -401,10 +400,4 @@
 			</div>
 		</article>
 	</section>
-
-{{!-- <section class="home2 py-5">
-     <div class="text-center pb-4">
-        <h2 class="py-5"></h2>
-    </div>
-</section> --}}
 

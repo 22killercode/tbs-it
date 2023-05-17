@@ -16,8 +16,8 @@ const cotiStaffing = new Schema({
     Ciudad:   {type:String},
     PagWeb:   {type:String},
     fullStack1:   {type:String},
-    Precio:   {type:Number},
-    PrecioFinalHora:   {type:Number},
+    Precio:   {type:String},
+    PrecioFinalHora:   {type:String},
     cantTotalHoras:   {type:Number},
     date:     { type: Date, default: Date.now },
     user:     { type: String }

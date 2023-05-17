@@ -10,6 +10,7 @@ const server  = http.Server(express);
 //midlewears
 const {validador1,val2}        = require('../routes/Midlewares');
 const { isAuthenticated } = require('../helpers/auth');
+const formatoPesos = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
 
 //appis
 const nodemailer = require('nodemailer');
@@ -20,13 +21,13 @@ const Tokens        = require('../models/Tokens');
 const cotiStaffing  = require('../models/cotiStaffing');
 const cotizaciones  = require('../models/cotizaciones');
 const mensajes      = require('../models/messages');
-const talentos     = require('../models/talentos');
+const talentos      = require('../models/talentos');
 
 //middlewares
 const JSONTransport = require('nodemailer/lib/json-transport');
 const { Script } = require('vm');
 const { nextTick } = require('process');
-const PrecioDolar = 350
+const PrecioDolar = 380
 //Variables
 const HorasMes             = 160
 //precios TOP USS
@@ -202,10 +203,12 @@ router.post('/eliminarTalento', async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 3meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
             }else{
@@ -278,10 +281,12 @@ router.post('/eliminarTalento', async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 3meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
                 }
@@ -354,10 +359,12 @@ router.post('/eliminarTalento', async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 6 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
             }else{
@@ -430,10 +437,12 @@ router.post('/eliminarTalento', async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 6 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
                 }
@@ -506,10 +515,12 @@ router.post('/eliminarTalento', async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 9 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
             }else{
@@ -582,10 +593,12 @@ router.post('/eliminarTalento', async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 9 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
                 }
@@ -658,10 +671,12 @@ router.post('/eliminarTalento', async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 12 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
             }else{
@@ -734,10 +749,12 @@ router.post('/eliminarTalento', async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 12 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio  = Preci * PrecioDolar
+                    const Precio  = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
                 }
@@ -758,22 +775,26 @@ router.post('/eliminarTalento', async (req, res) => {
     await guardarToken.save();
     //revisa si es en dolares o pesos argentinos y renderiza
     if (Moneda == "Pesos Argentinos") {        
-        const costoFinal = costoF * PrecioDolar
+        const costoFinal2 = costoF * PrecioDolar
+        const costoFinal  = formatoPesos.format(costoFinal2);
         const pesosArg = true
         // suma las horas totales
         const totalHoras = (totalMeses*HorasMes)
         // promedia cosato por hora grl
         const costoHoraPromedio1 = (costoFinal/totalHoras)
-        const costoHoraPromedio = Math.round(costoHoraPromedio1)
+        const costoHoraPromedio2 = Math.round(costoHoraPromedio1)
+        const costoHoraPromedio  = formatoPesos.format(costoHoraPromedio2);
         console.log("que hay ", totalMeses, costoHoraPromedio,costoFinal,totalHoras)
         res.render('partials/2cotizando',{token,ID,fullStack1, pesosArg,costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
     } else {
         // promedia cosato por hora grl
-        const costoFinal = costoF
-        const totalHoras = (totalMeses * HorasMes)
+        const costoFinal2 = costoF
+        const costoFinal  = formatoPesos.format(costoFinal2);
+        const totalHoras  = (totalMeses * HorasMes)
         // promedia cosato por hora grl
         const costoHoraPromedio1 = (costoFinal/totalHoras)
-        const costoHoraPromedio = Math.round(costoHoraPromedio1)
+        const costoHoraPromedio2 = Math.round(costoHoraPromedio1)
+        const costoHoraPromedio  = formatoPesos.format(costoHoraPromedio2);
         //console.log("que hay ", totalMeses, costoHoraPromedio,costoFinal,totalHoras)
         res.render('partials/2cotizando',{token,ID,fullStack1, costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
 
@@ -784,7 +805,7 @@ router.post('/eliminarTalento', async (req, res) => {
 // Ruta para ir a cotizar staffing
 router.get('/cotizandoStaffing', async (req, res) => {
     //Genera Token de seguridad en BD
-    const token = shortid.generate()
+    const token        = shortid.generate()
     const guardarToken = new Tokens ({ token })
     await guardarToken.save();
     res.render('partials/1cotiStaffing',{token})
@@ -793,8 +814,8 @@ router.get('/cotizandoStaffing', async (req, res) => {
     //console.log("cuantos token encontro",cheqVencimiento )
     const cheqTime        = new Date()
     for (const a1 of cheqVencimiento) {
-        const tiempo       = a1.date
-        const difDtiempo   = (cheqTime - tiempo)
+        const tiempo        = a1.date
+        const difDtiempo    = (cheqTime - tiempo)
         const difTiempoMins = (parseInt(difDtiempo) / 1000 / 60 / 60 )
         //console.log("cuanta diferencia de tiempo hay",difTiempoMins )
         if (difTiempoMins >= setMinEraser) {
@@ -808,6 +829,7 @@ router.get('/cotizandoStaffing', async (req, res) => {
 router.get('/staffingData1', async (req, res) => {
     res.render('partials/2cotizando')
 });
+
 //Ruta para obtener los datos de staffing
 router.post('/staffingData', [val2, validador1],async (req, res) => {
     const {Nombre,Apellido,NumCel,Email,Empresa,Moneda,Ciudad,PagWeb} = req.body
@@ -829,7 +851,7 @@ router.post('/staffingData', [val2, validador1],async (req, res) => {
 //Ruta para cotizar los recursos
 router.post('/cotizandoIT',[validador1], async (req, res) => {
     //Genera Token de seguridad en BD
-    const token = shortid.generate()
+    const token        = shortid.generate()
     const guardarToken = new Tokens ({ token })
     await guardarToken.save();
 
@@ -919,16 +941,18 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                 const cantTotalHoras = parseInt(HorasMes)*3 //de cada talento elegido
                 console.log("cantTotalHoras",cantTotalHoras )
                 const presio1 = (parseInt(PrecioFinalHora)*parseInt(HorasMes)*3)
-                console.log("presio total del talento en 3 meses",presio1 )
+                console.log("precio total del talento en 3 meses",presio1 )
                 // lu subimos al array para que sume con los otros talentos elegidos
                 precioFinal3mese.push(presio1)
                 const Preci = presio1
                 console.log("cual es el precio final 3meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
             }else{
@@ -1001,10 +1025,12 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 //console.log("cual es el precio final 3meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
                 }
@@ -1077,10 +1103,12 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 6 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
             }else{
@@ -1153,13 +1181,15 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 6 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
-                }
+            }
         }
         if (meses == '9 meses') {
             totMeses.push(3)
@@ -1229,10 +1259,12 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 9 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
             }else{
@@ -1305,13 +1337,15 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 9 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
-                }
+            }
         }
         if (meses == '12 meses') {
             totMeses.push(3)
@@ -1381,10 +1415,12 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 12 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
             }else{
@@ -1457,17 +1493,19 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 12 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
-                }
+            }
         }
     };
 
-    const talents     = await cotiStaffing.find({Email:Email});
+    const talents    = await cotiStaffing.find({Email:Email});
     // suma los meses
     const totalMeses = totMeses.reduce((a, b) => a + b, 0);
     // precio final por mesde todo el squad
@@ -1478,25 +1516,27 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
 
     //revisa si es en dolares o pesos argentinos y renderiza
     if (Moneda == "Pesos Argentinos") {        
-        const costoFinal = costoF * PrecioDolar
-        const pesosArg = true
+        const costoFinal1 = costoF * PrecioDolar
+        const costoFinal  = formatoPesos.format(costoFinal1);
+        const pesosArg    = true
         // suma las horas totales
         const totalHoras = (totalMeses*HorasMes)
         // promedia cosato por hora grl
-        const costoHoraPromedio1 = (costoFinal/totalHoras)
-        const costoHoraPromedio = Math.round(costoHoraPromedio1)
-        //console.log("Calculo final ", totalMeses, costoHoraPromedio,costoFinal,totalHoras)
+        const costoHoraPromedio1 = (costoFinal1/totalHoras)
+        const costoHoraPromedio2 = Math.round(costoHoraPromedio1) 
+        const costoHoraPromedio  = formatoPesos.format(costoHoraPromedio2);
+        console.log("Calculo final cotizando IT",costoF,costoFinal1, costoHoraPromedio1,costoHoraPromedio2, costoHoraPromedio)
         res.render('partials/2cotizando',{token,ID,fullStack1, pesosArg,costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
     } else {
         // promedia cosato por hora grl
-        const costoFinal = costoF
+        const costoFinal = formatoPesos.format(costoF);
         const totalHoras = (totalMeses * HorasMes)
         // promedia cosato por hora grl
-        const costoHoraPromedio1 = (costoFinal/totalHoras)
-        const costoHoraPromedio = Math.round(costoHoraPromedio1)
-        //console.log("que hay ", totalMeses, costoHoraPromedio,costoFinal,totalHoras)
+        const costoHoraPromedio1 = (costoF/totalHoras)
+        const costoHoraPromedio2 = Math.round(costoHoraPromedio1)
+        const costoHoraPromedio  = formatoPesos.format(costoHoraPromedio2);
+        console.log("Calculo final cotizando IT",costoF, costoHoraPromedio1,costoHoraPromedio2, costoHoraPromedio)
         res.render('partials/2cotizando',{token,ID,fullStack1, costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
-
     }
 
 });
@@ -1598,10 +1638,12 @@ router.post('/volverIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 3meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
             }else{
@@ -1674,13 +1716,15 @@ router.post('/volverIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 //console.log("cual es el precio final 3meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
-                }
+            }
         }
         if (meses == '6 meses') {
             totMeses.push(3)
@@ -1750,10 +1794,12 @@ router.post('/volverIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 6 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
             }else{
@@ -1826,13 +1872,15 @@ router.post('/volverIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 6 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
-                }
+            }
         }
         if (meses == '9 meses') {
             totMeses.push(3)
@@ -1902,10 +1950,12 @@ router.post('/volverIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 9 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
             }else{
@@ -1978,13 +2028,15 @@ router.post('/volverIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 9 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
-                }
+            }
         }
         if (meses == '12 meses') {
             totMeses.push(3)
@@ -2054,10 +2106,12 @@ router.post('/volverIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 12 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
             }else{
@@ -2130,17 +2184,19 @@ router.post('/volverIT',[validador1], async (req, res) => {
                 const Preci = presio1
                 console.log("cual es el precio final 12 meses?",presio1 )
                 if (Moneda == "Pesos Argentinos") {
-                    const Precio = Preci * PrecioDolar
+                    const Presio = Preci * PrecioDolar
+                    const Precio = formatoPesos.format(Presio);
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }else{
-                    const Precio = Preci
+                    const Presio = Preci
+                    const Precio = formatoPesos.format(Presio);                    
                     await cotiStaffing.findByIdAndUpdate(ID,{Precio,PrecioFinalHora,cantTotalHoras})
                 }
-                }
+            }
         }
     };
 
-    const talents     = await cotiStaffing.find({Email:Email});
+    const talents    = await cotiStaffing.find({Email:Email});
     // suma los meses
     const totalMeses = totMeses.reduce((a, b) => a + b, 0);
     // precio final por mesde todo el squad
@@ -2151,25 +2207,27 @@ router.post('/volverIT',[validador1], async (req, res) => {
 
     //revisa si es en dolares o pesos argentinos y renderiza
     if (Moneda == "Pesos Argentinos") {        
-        const costoFinal = costoF * PrecioDolar
-        const pesosArg = true
+        const costoFinal1 = costoF * PrecioDolar
+        const costoFinal  = formatoPesos.format(costoFinal1);
+        const pesosArg    = true
         // suma las horas totales
         const totalHoras = (totalMeses*HorasMes)
         // promedia cosato por hora grl
-        const costoHoraPromedio1 = (costoFinal/totalHoras)
-        const costoHoraPromedio = Math.round(costoHoraPromedio1)
-        //console.log("Calculo final ", totalMeses, costoHoraPromedio,costoFinal,totalHoras)
+        const costoHoraPromedio1 = (costoFinal1/totalHoras)
+        const costoHoraPromedio2 = Math.round(costoHoraPromedio1) 
+        const costoHoraPromedio  = formatoPesos.format(costoHoraPromedio2);
+        console.log("Calculo final cotizando IT",costoF,costoFinal1, costoHoraPromedio1,costoHoraPromedio2, costoHoraPromedio)
         res.render('partials/2cotizando',{token,ID,fullStack1, pesosArg,costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
     } else {
         // promedia cosato por hora grl
-        const costoFinal = costoF
+        const costoFinal = formatoPesos.format(costoF);
         const totalHoras = (totalMeses * HorasMes)
         // promedia cosato por hora grl
-        const costoHoraPromedio1 = (costoFinal/totalHoras)
-        const costoHoraPromedio = Math.round(costoHoraPromedio1)
-        //console.log("que hay ", totalMeses, costoHoraPromedio,costoFinal,totalHoras)
+        const costoHoraPromedio1 = (costoF/totalHoras)
+        const costoHoraPromedio2 = Math.round(costoHoraPromedio1)
+        const costoHoraPromedio  = formatoPesos.format(costoHoraPromedio2);
+        console.log("Calculo final cotizando IT",costoF, costoHoraPromedio1,costoHoraPromedio2, costoHoraPromedio)
         res.render('partials/2cotizando',{token,ID,fullStack1, costoHoraPromedio,costoFinal,totalHoras,cantTal,talents,tecno,senority,Cantmeses,Idioma,Moneda,Nombre,Apellido,NumCel,Email,Empresa,Pais,Ciudad,PagWeb} )
-
     }
 });
 
@@ -2196,13 +2254,17 @@ router.post('/calculandoCotizacion', [validador1],  async (req, res) => {
                 if (validarEmail == null) {
                     res.render('partials/validadorStaffing', {Email,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal,ID});
                     // enviar mail para validar staffing
-                    const contentHTML = `<html>
+                    const contentHTML = `<!DOCTYPE html>
+                    <html>
+                    <head>
+                        <meta charset="UTF-8">
                     <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
                     <div style="justify-content: center ; align-items: center;">
                     <a href="https://tbs-it.net/">
                         <img style="margin:auto;z-index:99999999999999999999999 !important; width:40%; height:7%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
                         "src="https://tbs-it.net/images/tbsLogo3.jpg"/>
                     </a>
+                    </head>
                     <br>
                     <br>
                     <h2>
@@ -2225,15 +2287,6 @@ router.post('/calculandoCotizacion', [validador1],  async (req, res) => {
                     </html>`;
                     const email = "tbs-it.info@tbs-it.net"
                     const senderMail = email
-// google
-                    // const transporter = nodemailer.createTransport({
-                    //     service: 'gmail',
-                    //     auth: {
-                    //     user: email,
-                    //     pass: password,
-                    //     }
-                    // });
-                    
     // con EL MAIL DEL CLIENTE ADMINISTRADO POR Hostinger
     const transporter = nodemailer.createTransport({
         host: "smtp.hostinger.com",
@@ -2248,24 +2301,23 @@ router.post('/calculandoCotizacion', [validador1],  async (req, res) => {
             rejectUnauthorized: false,
         },
     });
-
-                    let conAdjunto = {
-                        from: senderMail, // sender address,
-                        to: Email,
-                        subject: "Hola"  + ' ' + Nombre  + ' ' + "Valida tu Email en TBS-IT company",
-                        html: contentHTML,
-                    };
-                    transporter.sendMail(conAdjunto, (er,info)=>{
-                        if(er){
-                        console.log("error",er)
-                        }else{
-                            console.log("info",info) 
-                        }
-                    });
-                } else {
-                    res.render('partials/3agenda', {token,Email,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal,ID})
+            let conAdjunto = {
+                from: senderMail, // sender address,
+                to: Email,
+                subject: "Hola"  + ' ' + Nombre  + ' ' + "Valida tu Email en TBS-IT company",
+                html: contentHTML,
+            };
+            transporter.sendMail(conAdjunto, (er,info)=>{
+                if(er){
+                console.log("error",er)
+                }else{
+                    console.log("info",info) 
                 }
-            }
+            });
+        } else {
+            res.render('partials/3agenda', {token,Email,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal,ID})
+        }
+    }
 });
 
 router.post('/validarStaffing',[validador1],  async (req, res) => {
@@ -2274,10 +2326,12 @@ router.post('/validarStaffing',[validador1],  async (req, res) => {
     const token = shortid.generate()
     const guardarToken = new Tokens ({ token })
     await guardarToken.save()
-    res.render('partials/3agenda', {token,Email,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal,ID})
-    // valida el email
+    if (token) {
+        res.render('partials/3agenda', {token,Email,pesosArg,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal,ID})
+    }
+        // valida el email
     const mailValidado = true
-    const validar = new Tokens({Email,mailValidado});
+    const validar      = new Tokens({Email,mailValidado});
     await validar.save()
 });
 
@@ -2313,16 +2367,26 @@ router.post('/EnviarCotizacion',[validador1], async (req, res) => {
     //console.log("que Se logro con splice",dataM2)
 
     // pasar a pantalla que muestra formalmente la cotizacion y aradecimiento
-res.render("partials/4verCoti",{Talent1,pesosArg,tipoCont,fechaContact,Obs, Email,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal})
+      // Convertir el número a formato de pesos
+    
+    
+  // Renderizar el número en formato de pesos
+  if (Email) {
+        res.render("partials/4verCoti",{Talent1,pesosArg,tipoCont,fechaContact,Obs, Email,Nombre,Apellido,Ciudad,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal})
+    }
 
 // envia por mail la cotizacion
-const contentHTML = `<html>
+const contentHTML = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 
 <a href="https://tbs-it.net/">
     <img style="margin:auto;z-index:99999999999999999999999 !important; width:40%; height:7%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
     "src="https://tbs-it.net/images/tbsLogo3.jpg"/>
 </a>
+</head>
 <br>
 <br>
 
@@ -2388,7 +2452,11 @@ Esta pre-cotizacion carece de responsabilidad contractual entre las partes. Todo
 </body>
                     </html>`;
 // aviso al Ejecutivo cuentas
-const cotiEntro = `<html>
+const cotiEntro = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 <div style="justify-content: center ; align-items: center;">
 <p>
@@ -2442,6 +2510,7 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
 </div>
 </div>
 </body>
+</head>
                     </html>`;
                     
     // // con EL MAIL DEL CLIENTE ADMINISTRADO POR GOOGLE

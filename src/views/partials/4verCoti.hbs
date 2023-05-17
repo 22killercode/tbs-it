@@ -44,11 +44,8 @@
 									<td  style=" padding:">{{senority}}</td>
 									<td  style=" padding:">{{Cantmeses}}</td>
 									<td  style=" padding:">{{Idioma}}</td>
-									<td  style=" padding:" hidden>{{Moneda}}</td>
 									<td  style=" padding:">{{Pais}}</td>
-									<td  style=" padding:">{{#if pesosArg}}U$S{{else}}${{/if}}{{Precio}}
-									<td  style=" padding:" hidden>{{#if pesosArg}}U$S{{else}}${{/if}}{{PrecioMes}}
-									</td>
+									<td  style=" padding:">{{#if pesosArg}}Pesos{{else}}Dólares{{/if}} {{Precio}}</td>
 									<td  style="">	</td>
 								</tr>
 							</tbody>
@@ -67,10 +64,10 @@
 								<p style="padding: 0.3rem;">Total de horas</p><span>{{totalHoras}}</span>
 							</div>
 							<div class="col-sm">
-								<p style="padding: 0.3rem;" >Promedio por hora ${{costoHoraPromedio}}</p>
+								<p style="padding: 0.3rem;" >Promedio: Hora/Pesos {{costoHoraPromedio}}</p>
 							</div>
 							<div class="col-sm">
-								<p style="padding: 0.3rem;">Total ${{costoFinal}}</p>
+								<p style="padding: 0.3rem;">Total Pesos {{costoFinal}}</p>
 							</div>
 						</div>
 						{{else}}
@@ -82,10 +79,10 @@
 								<p style="padding: 0.3rem;">Total de horas</p><span>{{totalHoras}}</span>
 							</div>
 							<div class="col-sm">
-								<p style="padding: 0.3rem;" >Promedio por hora U$S{{costoHoraPromedio}}</p>
+								<p style="padding: 0.3rem;" >Promedio: Hora/Dólares {{costoHoraPromedio}}</p>
 							</div>
 							<div class="col-sm">
-								<p style="padding: 0.3rem;">Total U$S{{costoFinal}}</p>
+								<p style="padding: 0.3rem;">Total Dólares {{costoFinal}}</p>
 							</div>
 						</div>
 						{{/if}}
