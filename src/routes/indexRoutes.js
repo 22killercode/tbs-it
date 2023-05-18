@@ -2707,6 +2707,22 @@ res.render("partials/5finCoti",{Nombre})
 
 //*******************COTIZACION DE SOFTWARE****************************************************** */
 
+router.post('/dataSoftwareCoti',[validador1],async (req, res) => {
+        //Genera Token de seguridad en BD
+        const token = shortid.generate()
+        const guardarToken = new Tokens ({ token })
+        await guardarToken.save();
+
+        const {NumCel,Email,Empresa,Moneda,Ciudad,PagWeb,fechaContact,tipoCont,Obs} = req.body
+        console.log(req.body)
+        // agenda la solicitud de entrevista para coti de soft
+        // renderiza la siguiente pantalla
+        // envia email al vendedor avisando de esta cotizacion
+        // evia  mail al cliente recordando su cita
+});
+
+
+
 //Ruta para cotizar software
 router.get('/cotizarSoftware',async (req, res) => {
         //Genera Token de seguridad en BD
