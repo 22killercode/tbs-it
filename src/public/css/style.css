@@ -308,7 +308,17 @@ li {
 	background-color:rgba(1, 0, 0, 0.596);
 	min-width:90%;
 }
-
+.carpetaBlanca{
+	min-height:70% !important;
+	font-size: 1rem !important;
+	margin: 2rem 0.5rem 1rem 0.5rem !important;
+	padding: 1rem 1rem 1rem 1rem !important;
+	border-radius: 2rem;
+	opacity: 0.90 !important;
+	background-color:rgb(255, 232, 225);
+	min-width:90%;
+	color:black !important;
+}
 /****************/
 /* DEV staff     */
 /****************/

@@ -63,17 +63,19 @@ const tracking1       = 7000
 const pasarelaPagos1  = 5000
 const Estadisticas1   = 5000
 
-
 //
 const setMinEraser = 1
+
+
+router.get('/probando', async (req, res) => {
+res.render('partials/probando')
+});
 
 
 //aqui programas el html inicial
 router.get('/dataQuote1', (req, res) => {
     res.render('partials/softFactory/2SF')
 });
-
-
 
 //aqui programas el html inicial
 router.get('/', (req, res) => {
