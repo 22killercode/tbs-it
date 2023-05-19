@@ -1,38 +1,75 @@
 <section class="home2 py-5" id="post">
     <div class="ex-basic-1 pt-5 pb-5">
         <div class="container py-5">
-            <div class="row">
-                <div class="col-xl-10 offset-xl-1">
-						<div class="card text-white text-center" style="border-radius: 1rem; background-color: rgb(38, 36, 36); opacity: 0.995;">
-						<div class="card-header">
-							<h2>Cotizacion de Staffing IT</h2>
-						</div>
-						<div class="card-body">
-                            <h4 class="card-title">
-				{{Nombre}} gracias por tu cotización, en breve te llegara un mail con un pre costo, (revisa en spam).
-				<br>
-                <br>
-				Nos pondremos en contacto en la fecha y horario que nos indicó para conversar y sumar algunos beneficios y descuentos extras.
-				<br> <br> 
-				¡Empezamos a trabajar hoy! <br>
-							</h4>
-							<br> <br> <br>
-                            <h5 class="card-text"></h5>
-                            <form  action="/" method="get">
-                                <div style="margin: -6rem 0 2.5rem 4rem;">
-                        {{!-- ocultos solo para traspaso y gurdar --}}
-                                </div>
-                            </form>
-                        </div>
-                            <div class="card-footer bg-transparent border-success">
-                                <form action="/" method="get">
-                                    <button  type="submit" class="alertaVerde" >Volver</button>
-                                </form>
-                                <br>
+            {{#if CotizacioSoft}}
+                <div class="row">
+                    <div class="col-xl-10 offset-xl-1">
+                            <div class="card text-white text-center" style="border-radius: 1rem; background-color: rgb(226, 203, 203); opacity: 0.995;">
+                            <div class="card-header">
+                                <h2>Cotización de Software.</h2>
                             </div>
-						</div>
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
+                            <div class="card-body">
+                                <h4 class="card-title">
+                    {{Nombre}} gracias por tu solicitud, en breve te llegara un mail con un recordatorio de la misma.
+                    <br>
+                    <br>
+                    Nos pondremos en contacto en la fecha y horario que nos indicó para conversar y sumar algunos beneficios y descuentos extras.
+                    <br> <br> 
+                    ¡Empezamos a trabajar hoy! <br>
+                                </h4>
+                                <br> <br> <br>
+                                <h5 class="card-text"></h5>
+                                <form  action="/" method="get">
+                                    <div style="margin: -6rem 0 2.5rem 4rem;">
+                            {{!-- ocultos solo para traspaso y gurdar --}}
+                                    </div>
+                                </form>
+                            </div>
+                                <div class="card-footer bg-transparent border-success">
+                                    <form action="/" method="get">
+                                        <button  type="submit" class="alertaVerde" >Volver</button>
+                                    </form>
+                                    <br>
+                                </div>
+                            </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+
+            {{else}}
+                <div class="row">
+                    <div class="col-xl-10 offset-xl-1">
+                            <div class="card text-white text-center" style="border-radius: 1rem; background-color: rgb(38, 36, 36); opacity: 0.995;">
+                            <div class="card-header">
+                                <h2>Cotizacion de Staffing IT</h2>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                    {{Nombre}} gracias por tu cotización, en breve te llegara un mail con un pre costo, (revisa en spam).
+                    <br>
+                    <br>
+                    Nos pondremos en contacto en la fecha y horario que nos indicó para conversar y sumar algunos beneficios y descuentos extras.
+                    <br> <br> 
+                    ¡Empezamos a trabajar hoy! <br>
+                                </h4>
+                                <br> <br> <br>
+                                <h5 class="card-text"></h5>
+                                <form  action="/" method="get">
+                                    <div style="margin: -6rem 0 2.5rem 4rem;">
+                            {{!-- ocultos solo para traspaso y gurdar --}}
+                                    </div>
+                                </form>
+                            </div>
+                                <div class="card-footer bg-transparent border-success">
+                                    <form action="/" method="get">
+                                        <button  type="submit" class="alertaVerde" >Volver</button>
+                                    </form>
+                                    <br>
+                                </div>
+                            </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            {{/if}}
+
         </div> <!-- end of container -->
     </div> <!-- end of ex-basic-1 -->
     <!-- end of basic -->

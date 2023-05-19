@@ -74,6 +74,7 @@ const cotisaciones = new Schema({
     clouding:                  {type:String},
     traking:                   {type:String},
     CiberSeg:                  {type:String},
+    CotizacioSoft:                       {type:Boolean},
     PW:                       {type:Boolean},
     pesosArg:                 {type:String},
     PrecioEstadisticas1:     {type:String},

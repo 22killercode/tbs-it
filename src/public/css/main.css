@@ -5641,6 +5641,29 @@ span
 	width: auto;
   }
   
+
+
+
+
+  .hovering {
+	color: white;
+}
+
+.hovering:hover {
+	transform: scale(1.21);
+	transition: color 1s;
+}
+
+.hovering:active {
+	transform: scale(0.9);
+	color: red !important;
+	transition: color 2s !important;
+}
+
+
+
+
+
   /*menuUser***********fin modal Generico y menuUser**********************************/
   .divInsEsp {
 	border-radius: 4rem 1.5rem 4rem 1.5rem;
