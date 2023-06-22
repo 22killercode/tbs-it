@@ -2725,102 +2725,58 @@ router.post('/dataSoftwareCoti',[validador1],async (req, res) => {
         res.render("partials/5finCoti",{CotizacioSoft, Nombre})
 
         // envia email al vendedor avisando de esta cotizacion
-        const contentHTML = `<html style="font-size: 1.9rem !important; background-color:grey;">
-        <head>
-            <style>
-                a img {
-                    display: block;
-                    margin: auto;
-                    width: 100%;
-                    height: auto;
-                    border-radius: 1.5rem;
-                    border: lightgray 0.2rem solid;
-                }
-                div.container {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-                div.content {
-                    text-align: left;
-                    align-items: left;
-                }
-                h4 {
-                    text-align: center;
-                }
-                div.center {
-                    width: 100%;
-                    margin: 0.1rem auto;
-                    text-align: center;
-                }
-                div.signature {
-                    text-align: center;
-                    padding: 0.5rem;
-                    background: lightgray;
-                    border-radius: 1.5rem;
-                    margin-top: 1rem;
-                }
-            </style>
-        </head>
-        <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
-        <div style="justify-content: center ; align-items: center;">
-            <div class="container">
-                <a href="https://tbs-it.net/">
-                    <img src="https://tbs-it.net/images/tbsLogo3.jpg" alt="TBS Logo">
-                </a>
-            </div>
-            <div class="container">
-                <div class="content">
-                    <p>
-                        <strong>${Nombre}</strong> es un privilegio para nosotros poder ser considerados candidatos como proveedores y ayudarlos a lograr sus objetivos.
-                        <br>
-                        TBS-IT, somos tu socio confiable en tecnología, ofrecemos soluciones integrales que impulsan tus proyectos y empresa hacia el éxito digital. Como software factory, creamos productos innovadores que destacan en el mercado.  
-                        <br>
-                        Además, nuestro servicio de Staffing Profesional te brinda el talento especializado que necesitas de forma rápida y eficiente.
-                        <br>
-                        Contamos con talento de alto valor, con experiencia y constantemente actualizados sobre las últimas tecnologías con el fin de brindar el mejor servicio.
-                        <br>
-                        Descubre el impulso digital que podemos proporcionarte hoy.
-                    </p>
-                </div>
-            </div>
-            <div class="container">
-                <div class="content">
-                    <h4>Datos:</h4>
-                    <p>
-                        <strong>Nombre: ${Nombre} <span></span> Apellido: ${Apellido}</strong>
-                        <br>
-                        <strong>Empresa:</strong> ${Empresa}
-                        <br>
-                        <strong>Email de contacto:</strong> ${Email}
-                        <br>
-                        <strong>Moneda de facturación:</strong> ${Moneda}
-                    </p>
-                    <div class="center">
-                        <br>
-                            Nuestro EECC se pondrá en contacto en la fecha y el horario que nos indicó.
-                        <br>
-                        <br>
-                            Fecha de contacto: ${fechaContact} de la ciudad de: ${Ciudad} Tipo de contacto: ${tipoCont}
-                        <br>
-                        Observaciones:
-                        <br>
-                            ${Obs}
-                        <br>
-                        <br>
-                        Consulte con su ejecutivo de cuentas asignado todas las cuestiones técnicas y dudas que tenga, así como bonificaciones.
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="signature">
-                    <h6>This message has been generated automatically by "TBS" for a user/client in compliance with international rules of mailing services. TBS is not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure, and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction.</h6>
-                </div>
-            </div>
-        </body>
-    </html>`;
+        const contentHTML = `<html>
+<body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 
-    const cotiEntro = `<html>
+<a href="https://tbs-it.net/">
+<img style="margin:auto;z-index:99999999999999999999999 !important; width:40%; height:7%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
+"src="https://tbs-it.net/images/tbsLogo3.jpg"/>
+</a>
+
+<div style="justify-content: center ; align-items: center;">
+    <p>
+    <strong>${Nombre}</strong> es un privilegio, para nosotros, poder ser considerados candidatos como proveedores y ayudarlos a lograr sus objetivos.
+        <br>
+        TBS es una compañía dedicada a la creación de soluciones en el campo de tecnologías de la información.
+        <br>
+        Contamos con talento de alto valor, con experiencia y constantemente actualizados sobre las últimas tecnologías con el fin de brindar el mejor servicio. 
+        <br>
+    </p>
+</div>
+<div class="" style="text-align: left; align-items: left;">
+    <h4>Datos:</h4>
+    <p style="margin-top:-3rem">
+        <strong>Nombre:</strong> ${Nombre}  <span></span><span></span><strong>Apellido:</strong> ${Apellido}
+        <br>
+        <strong>Empresa:</strong> ${Empresa}
+        <br>
+        <strong>Email de contacto:</strong> ${Email}
+        <br>
+        <strong> Moneda de facturacion:</strong> ${Moneda}
+    </p>
+    <div style="width: 110%; margin: 0.1rem auto; text-align: center;" class="center">
+        <br>
+        Nuestro EECC se pondra en contacto en la fecha y el horario que nos indico.
+        <br>
+        <br>
+        Fecha de contacto: ${fechaContact} de la ciudad de: ${Ciudad}  Tipo de contacto:  ${tipoCont}
+        <br>    
+        Observaciones:
+        <br>
+        ${Obs}
+        <br>
+    </div>
+    <br>
+    consulte con su Ejecutivo de cuentas asignado todas las cuestiones tecnicas y dudas que tenga asi como bonificasiones.
+</div>
+
+    <br>
+<div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;" hidden>
+    <h6>This message has been generated automatically by "TBS" for a user/client acomplish whit international rules of mailing services and tbs we are not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction..</h6>
+<div><span></span><a href="http://tbsit.co">
+</body>
+        </html>`;
+        const cotiEntro = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 <div style="justify-content: center ; align-items: center;">
 <p>
