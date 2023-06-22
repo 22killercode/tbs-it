@@ -2964,7 +2964,7 @@ router.post('/EnviarCotizacionPW',[validador1], async (req, res) => {
     const PW = true
     const guardarCoti = new cotizaciones ({PW,CustomSoft,appirestFull,IOT,Email,SD,pw,PWA,Estadisticas,pasarelaPagos,clouding,traking,CiberSeg,pesosArg,Nombre,Apellido,tipoCont,Obs,Ciudad,fechaContact,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal})
     await guardarCoti.save()
-    // envia por mail la cotizacion
+// envia por mail la cotizacion al EECC
 const contentHTML = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 
@@ -2972,9 +2972,6 @@ const contentHTML = `<html>
 <img style="margin:auto;z-index:99999999999999999999999 !important; width:40%; height:7%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
 "src="https://tbs-it.net/images/tbsLogo3.jpg"/>
 </a>
-
-
-
 <div style="justify-content: center ; align-items: center;">
     <p>
     <strong>${Nombre}</strong> es un privilegio, para nosotros, poder ser considerados candidatos como proveedores y ayudarlos a lograr sus objetivos.
@@ -3013,7 +3010,11 @@ const contentHTML = `<html>
     *Nuesto Ejecutivo de Cuentas se pondrá en contacto con usted en la fecha y el horario que nos indico
     <br>
     <br>
-    Fecha de contacto: ${fechaContact} de la ciudad de: ${Ciudad}  Tipo de contacto:  ${tipoCont}
+    Fecha de contacto: ${fechaContact}
+    <br>
+    En la ciudad de: ${Ciudad} 
+    <br>
+    Tipo de contacto:  ${tipoCont}
     <br>    
     Observaciones:
     <br>
@@ -3026,6 +3027,7 @@ const contentHTML = `<html>
 <div><span></span><a href="http://tbsit.co">
 </body>
 </html>`;
+//Se envia al cliente
 const cotiEntro = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 <div style="justify-content: center ; align-items: center;">
