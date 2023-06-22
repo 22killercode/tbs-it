@@ -2788,7 +2788,7 @@ router.post('/dataSoftwareCoti',[validador1],async (req, res) => {
                 <div class="content">
                     <h4>Datos:</h4>
                     <p>
-                        <strong>Nombre:</strong> ${Nombre}<span></span><span></span><strong>Apellido:</strong> ${Apellido}
+                        <strong>Nombre: ${Nombre} <span></span> Apellido: ${Apellido}</strong>
                         <br>
                         <strong>Empresa:</strong> ${Empresa}
                         <br>
@@ -2798,18 +2798,18 @@ router.post('/dataSoftwareCoti',[validador1],async (req, res) => {
                     </p>
                     <div class="center">
                         <br>
-                        Nuestro EECC se pondrá en contacto en la fecha y el horario que nos indicó.
+                            Nuestro EECC se pondrá en contacto en la fecha y el horario que nos indicó.
                         <br>
                         <br>
-                        Fecha de contacto: ${fechaContact} de la ciudad de: ${Ciudad} Tipo de contacto: ${tipoCont}
+                            Fecha de contacto: ${fechaContact} de la ciudad de: ${Ciudad} Tipo de contacto: ${tipoCont}
                         <br>
                         Observaciones:
                         <br>
-                        ${Obs}
+                            ${Obs}
                         <br>
+                        <br>
+                        Consulte con su ejecutivo de cuentas asignado todas las cuestiones técnicas y dudas que tenga, así como bonificaciones.
                     </div>
-                    <br>
-                    Consulte con su Ejecutivo de cuentas asignado todas las cuestiones técnicas y dudas que tenga, así como bonificaciones.
                 </div>
             </div>
             <div class="container">
@@ -2819,7 +2819,8 @@ router.post('/dataSoftwareCoti',[validador1],async (req, res) => {
             </div>
         </body>
     </html>`;
-        const cotiEntro = `<html>
+
+    const cotiEntro = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 <div style="justify-content: center ; align-items: center;">
 <p>
