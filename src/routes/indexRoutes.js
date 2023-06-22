@@ -3054,7 +3054,11 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
         *Deberas ponerte en contacto con el cliente en la fecha y el horario que nos indico.
         <br>
         <br>
-        Fecha de contacto: ${fechaContact} de la ciudad de: ${Ciudad}  Tipo de contacto:  ${tipoCont}
+        Fecha de contacto: ${fechaContact}
+        <br>
+        En la ciudad de: ${Ciudad}
+        <br>
+        Tipo de contacto: ${tipoCont}
         <br>    
         Observaciones:
         <br>
@@ -3983,17 +3987,14 @@ router.post('/contacto',async (req, res) => {
     req.flash('error', 'Gracias por tu mensaje te responderemos a la brevedad')
     res.redirect("/")
 
-    // envia mail
-const cotiEntro = `<html>
+    // envia email a cliente
+    const cotiEntro = `<html>
 <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 <div style="justify-content: center ; align-items: center;">
-
 <a href="https://tbs-it.net/">
 <img style="margin:auto;z-index:99999999999999999999999 !important; width:40%; height:7%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
 "src="https://tbs-it.net/images/tbsLogo3.jpg"/>
 </a>
-
-
 <br>
 <br>
     <p>
