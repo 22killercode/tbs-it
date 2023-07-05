@@ -2964,120 +2964,119 @@ router.post('/EnviarCotizacionPW',[validador1], async (req, res) => {
     const PW = true
     const guardarCoti = new cotizaciones ({PW,CustomSoft,appirestFull,IOT,Email,SD,pw,PWA,Estadisticas,pasarelaPagos,clouding,traking,CiberSeg,pesosArg,Nombre,Apellido,tipoCont,Obs,Ciudad,fechaContact,NumCel,Empresa,PagWeb,Moneda,costoHoraPromedio,costoFinal,totalHoras,cantTal})
     await guardarCoti.save()
-// envia por mail la cotizacion al EECC
-const contentHTML = `<html>
-<body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
+        // envia por mail la cotizacion al EECC
+        const contentHTML = `<html>
+        <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
 
-<a href="https://tbs-it.net/">
-<img style="margin:auto;z-index:99999999999999999999999 !important; width:40%; height:7%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
-"src="https://tbs-it.net/images/tbsLogo3.jpg"/>
-</a>
-<div style="justify-content: center ; align-items: center;">
-    <p>
-    <strong>${Nombre}</strong> es un privilegio, para nosotros, poder ser considerados candidatos como proveedores y ayudarlos a lograr sus objetivos.
-        <br>
-        TBS es una compañía dedicada a la creación de soluciones en el campo de tecnologías de la información. Contamos con talento de alto valor, con experiencia y constantemente actualizados sobre las últimas tecnologías con el fin de brindar el mejor servicio. 
-        <br>
-        Por tres meses o un año, por un solo recurso o un equipo completo, ofrecemos los mejores recursos con experiencia directa en su industria y con los sistemas y tecnologías que necesita, asi que nuevamente, gracias por elegirnos, como socio tecnológico, a la hora de abordar sus proyectos.
-    </p>
-</div>
-<div class="" style="text-align: left; align-items: left;">
-    <h4>Datos:</h4>
-    <p style="margin-top:-3rem">
-        <strong>Nombre:</strong> ${Nombre}  <span></span><span></span><strong>Apellido:</strong> ${Apellido}
-        <br>
-        <strong>Empresa:</strong> ${Empresa}
-        <br>
-        <strong>Email de contacto:</strong> ${Email}
-        <br>
-        <strong> Moneda de facturacion:</strong> ${Moneda}
-    </p>
-    Esta pre-cotizacion carece de responsabilidad contractual entre las partes. Todos los precios son tentativos, estan sujetos a una negociasion final y a la presentacion de una propuesta formal que incluye: NDA, SLA´s condiciones comerciales, garantias, seguros, forma de pagos y descuentos convenidos.
-    <br>
-    <br>
-    El precio puede variar desde un inicial de <strong> Valor ${Moneda}: $${suma} </strong> o mas, segun requerimientos del cliente.
-    <br>
-    <br>
-    Todos los precios son tentativos, estan sujetos a una negociasion final y a la presentacion de una propuesta formal que incluye: NDA, SLA´s condiciones comerciales, garantias, seguros, forma de pagos y descuentos convenidos.
-    <br>
-    consulte con su Ejecutivo de cuentas asignado todas las cuestiones tecnicas y dudas que tenga asi como bonificasiones.
-</div>
+        <a href="https://tbs-it.net/">
+        <img style="margin:auto;z-index:99999999999999999999999 !important; width:40%; height:7%; diplay:grid; place-items:center; border-radius:1.5rem; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:lightgray 0.4rem solid; border-right:lightgray 0.4rem solid;
+        "src="https://tbs-it.net/images/tbsLogo3.jpg"/>
+        </a>
+        <div style="justify-content: center ; align-items: center;">
+            <p>
+            <strong>${Nombre}</strong> es un privilegio, para nosotros, poder ser considerados candidatos como proveedores y ayudarlos a lograr sus objetivos.
+                <br>
+                TBS es una compañía dedicada a la creación de soluciones en el campo de tecnologías de la información. Contamos con talento de alto valor, con experiencia y constantemente actualizados sobre las últimas tecnologías con el fin de brindar el mejor servicio. 
+                <br>
+                Por tres meses o un año, por un solo recurso o un equipo completo, ofrecemos los mejores recursos con experiencia directa en su industria y con los sistemas y tecnologías que necesita, asi que nuevamente, gracias por elegirnos, como socio tecnológico, a la hora de abordar sus proyectos.
+            </p>
+        </div>
+        <div class="" style="text-align: left; align-items: left;">
+            <h4>Datos:</h4>
+            <p style="margin-top:-3rem">
+                <strong>Nombre:</strong> ${Nombre}  <span></span><span></span><strong>Apellido:</strong> ${Apellido}
+                <br>
+                <strong>Empresa:</strong> ${Empresa}
+                <br>
+                <strong>Email de contacto:</strong> ${Email}
+                <br>
+                <strong> Moneda de facturacion:</strong> ${Moneda}
+            </p>
+            Esta pre-cotizacion carece de responsabilidad contractual entre las partes. Todos los precios son tentativos, estan sujetos a una negociasion final y a la presentacion de una propuesta formal que incluye: NDA, SLA´s condiciones comerciales, garantias, seguros, forma de pagos y descuentos convenidos.
+            <br>
+            <br>
+            El precio puede variar desde un inicial de <strong> Valor ${Moneda}: $${suma} </strong> o mas, segun requerimientos del cliente.
+            <br>
+            <br>
+            Todos los precios son tentativos, estan sujetos a una negociasion final y a la presentacion de una propuesta formal que incluye: NDA, SLA´s condiciones comerciales, garantias, seguros, forma de pagos y descuentos convenidos.
+            <br>
+            consulte con su Ejecutivo de cuentas asignado todas las cuestiones tecnicas y dudas que tenga asi como bonificasiones.
+        </div>
 
-<div style="width: 110%; margin: 0.1rem auto; text-align: center;" class="center">
-    <p>*Consulta por importantes descuentos. </p>
-    <p>*Los precios no incluyen iva ni impuestos.</p>
-    <br>
-    *Nuesto Ejecutivo de Cuentas se pondrá en contacto con usted en la fecha y el horario que nos indico
-    <br>
-    <br>
-    Fecha de contacto: ${fechaContact}
-    <br>
-    En la ciudad de: ${Ciudad} 
-    <br>
-    Tipo de contacto:  ${tipoCont}
-    <br>    
-    Observaciones:
-    <br>
-    ${Obs}
-    <br>
-</div>
-    <br>
-<div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;" hidden>
-    <h6>This message has been generated automatically by "TBS" for a user/client acomplish whit international rules of mailing services and tbs we are not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction..</h6>
-<div><span></span><a href="http://tbsit.co">
-</body>
-</html>`;
-//Se envia al cliente
-const cotiEntro = `<html>
-<body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
-<div style="justify-content: center ; align-items: center;">
-<p>
-    Entro el siguiente pedido de cotizacion de: ${Empresa}
-</p>
-</div>
-<div class="" style="text-align: left; align-items: left;">
-<h4>Datos:</h4>
-<p><strong>Nombre:</strong> ${Nombre}  <span></span><strong>Apellido:</strong> ${Apellido}</p> 
-<p><strong>Empresa:</strong> ${Empresa}  <span></span><strong>Email de contacto:</strong> ${Email}</p>
-<p><strong> Moneda de facturacion:</strong> ${Moneda}</p>
-<br>
-El precio puede variar desde un inicial de <strong> Valor: ${suma} dolares </strong> hasta $2000 mi dolares, segun requerimientos del cliente.
-<br>
-Todos los precios son tentativos, estan sujetos a una negociasion final y a la presentacion de una propuesta formal que incluye: NDA, SLA´s condiciones comerciales, garantias, seguros, forma de pagos y descuentos convenidos.
-<br>
-consulte con su Ejecutivo de cuentas asignado todas las cuestiones tecnicas y dudas que tenga asi como bonificasiones.
-<br>
-Ponte en contacto con el cliente en el horario que el solicito y logra cerrar una propuesta formal averiguando sus nececidades descubriendo nuevas, sus puntos de dolor. Tambien ponte en contacto con tu lider y acuerden una estrategia y propuesta formal que se envia con copia a tu lider e incluye: NDA, SLA´s condiciones comerciales, garantias, seguros, forma de pagos y descuentos convenidos.
-</div>   
-    <div style="width: 110%; margin: 0.1rem auto; text-align: center;" class="center">
-        <p>*Consulta por importantes descuentos. </p>
-        <p>*Los precios no incluyen iva ni impuestos.</p>
+        <div style="width: 110%; margin: 0.1rem auto; text-align: center;" class="center">
+            <p>*Consulta por importantes descuentos. </p>
+            <p>*Los precios no incluyen iva ni impuestos.</p>
+            <br>
+            *Nuesto Ejecutivo de Cuentas se pondrá en contacto con usted en la fecha y el horario que nos indico
+            <br>
+            <br>
+            Fecha de contacto: ${fechaContact}
+            <br>
+            En la ciudad de: ${Ciudad} 
+            <br>
+            Tipo de contacto:  ${tipoCont}
+            <br>    
+            Observaciones:
+            <br>
+            ${Obs}
+            <br>
+        </div>
+            <br>
+        <div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;" hidden>
+            <h6>This message has been generated automatically by "TBS" for a user/client acomplish whit international rules of mailing services and tbs we are not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction..</h6>
+        <div><span></span><a href="http://tbsit.co">
+        </body>
+        </html>`;
+        //Se envia al cliente
+        const cotiEntro = `<html>
+        <body style="padding:1rem; margin:auto; background:whitesmoke; height:auto; box-shadow:0.2rem 0.4rem 0.7rem 0.7rem black; width:80%; border-radius:1.5rem; color:black; border-top:lightgray 0.2rem solid; border-left:lightgray 0.2rem solid; border-bottom:black 0.4rem solid; border-right:black 0.4rem solid; "font-family:'Times New Roman', Times, serif; white-space:pre-line; word-break:break-all;>
+        <div style="justify-content: center ; align-items: center;">
+        <p>
+            Entro el siguiente pedido de cotizacion de: ${Empresa}
+        </p>
+        </div>
+        <div class="" style="text-align: left; align-items: left;">
+        <h4>Datos:</h4>
+        <p><strong>Nombre:</strong> ${Nombre}  <span></span><strong>Apellido:</strong> ${Apellido}</p> 
+        <p><strong>Empresa:</strong> ${Empresa}  <span></span><strong>Email de contacto:</strong> ${Email}</p>
+        <p><strong> Moneda de facturacion:</strong> ${Moneda}</p>
         <br>
-        *Deberas ponerte en contacto con el cliente en la fecha y el horario que nos indico.
+        El precio puede variar desde un inicial de <strong> Valor: ${suma} dolares </strong> hasta $2000 mi dolares, segun requerimientos del cliente.
         <br>
+        Todos los precios son tentativos, estan sujetos a una negociasion final y a la presentacion de una propuesta formal que incluye: NDA, SLA´s condiciones comerciales, garantias, seguros, forma de pagos y descuentos convenidos.
         <br>
-        Fecha de contacto: ${fechaContact}
+        consulte con su Ejecutivo de cuentas asignado todas las cuestiones tecnicas y dudas que tenga asi como bonificasiones.
         <br>
-        En la ciudad de: ${Ciudad}
-        <br>
-        Tipo de contacto: ${tipoCont}
-        <br>    
-        Observaciones:
-        <br>
-        ${Obs}
-        <br>
-    </div>
-    <br>
-    <div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;" hidden><h6>This message has been generated automatically by "TBS" for a user/client acomplish whit international rules of mailing services and tbs we are not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction..</h6><div><span></span><a href="http://tbsit.co">
-</div>
-</div>
-</div>
-</body>
-</html>`;
+        Ponte en contacto con el cliente en el horario que el solicito y logra cerrar una propuesta formal averiguando sus nececidades descubriendo nuevas, sus puntos de dolor. Tambien ponte en contacto con tu lider y acuerden una estrategia y propuesta formal que se envia con copia a tu lider e incluye: NDA, SLA´s condiciones comerciales, garantias, seguros, forma de pagos y descuentos convenidos.
+        </div>   
+            <div style="width: 110%; margin: 0.1rem auto; text-align: center;" class="center">
+                <p>*Consulta por importantes descuentos. </p>
+                <p>*Los precios no incluyen iva ni impuestos.</p>
+                <br>
+                *Deberas ponerte en contacto con el cliente en la fecha y el horario que nos indico.
+                <br>
+                <br>
+                Fecha de contacto: ${fechaContact}
+                <br>
+                En la ciudad de: ${Ciudad}
+                <br>
+                Tipo de contacto: ${tipoCont}
+                <br>    
+                Observaciones:
+                <br>
+                ${Obs}
+                <br>
+            </div>
+            <br>
+            <div style="text-align: center; padding: 0.5rem; background:lightgray; border-radius: 1.5rem;" hidden><h6>This message has been generated automatically by "TBS" for a user/client acomplish whit international rules of mailing services and tbs we are not responsible under any type of exception for its content or intentions. This mail is intended exclusively for its recipient and may contain privileged or confidential information. If you are not the intended recipient, you are notified that unauthorized use, disclosure and/or copying is prohibited under current legislation. If you have received this message by mistake, we ask you to notify us immediately by this same means and proceed to its destruction..</h6><div><span></span><a href="http://tbsit.co">
+        </div>
+        </div>
+        </div>
+        </body>
+        </html>`;
         // con EL MAIL DEL CLIENTE ADMINISTRADO POR Hostinger
         const email = "tbs-it.info@tbs-it.net"
         const senderMail = email
-    
         const transporter = nodemailer.createTransport({
             host: "smtp.hostinger.com",
             port: 465,
@@ -3091,7 +3090,6 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
                 rejectUnauthorized: false,
             },
         });
-    
         const transporter1 = nodemailer.createTransport({
             host: "smtp.hostinger.com",
             port: 465,
@@ -3105,47 +3103,45 @@ Ponte en contacto con el cliente en el horario que el solicito y logra cerrar un
                 rejectUnauthorized: false,
             },
         });
-    
-
-    let conAdjunto = {
-        from: senderMail, // sender address,
-        to: Email,
-        subject: "Hola"  + ' ' + Nombre  + ' ' + "TBS IT te envío una pre cotizacion",
-        html:contentHTML ,
-        // attachments: [
-        //   {   // file on disk as an attachment
-        //       filename: nombreAdjunto,
-        //       path: datosAdjuntados[0]
-        //   },
-        // ]
-    };
-    let alaEmpresa = {
-        from: senderMail, // sender address,
-        to: senderMail,
-        cc:["sebastian.paysse@tbs-it.net","sebastian.paysse@gmail.com"],
-        subject: "Enhorabuena!!! entro una nueva cotizacion de" + ' ' + Empresa  + ' ' ,
-        html: cotiEntro,
-        // attachments: [
-        //   {   // file on disk as an attachment
-        //       filename: nombreAdjunto,
-        //       path: datosAdjuntados[0]
-        //   },
-        // ]
-    };
-    transporter.sendMail(conAdjunto, (er,info)=>{
-        if(er){
-        console.log("error",er)
-        }else{
-            console.log("info",info) 
-        }
-    })
-    transporter1.sendMail(alaEmpresa, (er,info)=>{
-        if(er){
-        console.log("error",er)
-        }else{
-            console.log("info",info) 
-        }
-    })
+        let conAdjunto = {
+            from: senderMail, // sender address,
+            to: Email,
+            subject: "Hola"  + ' ' + Nombre  + ' ' + "TBS IT te envío una pre cotizacion",
+            html:contentHTML ,
+            // attachments: [
+            //   {   // file on disk as an attachment
+            //       filename: nombreAdjunto,
+            //       path: datosAdjuntados[0]
+            //   },
+            // ]
+        };
+        let alaEmpresa = {
+            from: senderMail, // sender address,
+            to: senderMail,
+            cc:["sebastian.paysse@tbs-it.net","sebastian.paysse@gmail.com"],
+            subject: "Enhorabuena!!! entro una nueva cotizacion de" + ' ' + Empresa  + ' ' ,
+            html: cotiEntro,
+            // attachments: [
+            //   {   // file on disk as an attachment
+            //       filename: nombreAdjunto,
+            //       path: datosAdjuntados[0]
+            //   },
+            // ]
+        };
+        transporter.sendMail(conAdjunto, (er,info)=>{
+            if(er){
+            console.log("error",er)
+            }else{
+                console.log("info",info) 
+            }
+        })
+        transporter1.sendMail(alaEmpresa, (er,info)=>{
+            if(er){
+            console.log("error",er)
+            }else{
+                console.log("info",info) 
+            }
+        })
 });
 
 // Calculo de cotizacion aplicasion web y tambien IOT

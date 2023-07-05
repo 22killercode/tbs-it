@@ -1,98 +1,110 @@
-	<section style="margin-top:0rem; min-height: 100%;" id="post" class="home2 py-5" data-bg="">
-		<article style="margin-top: 0rem; height:max-content;" class="carpetaNegra">
+<style>
+@media (max-width: 767px) {
+  .fijoAbajo {
+    display: none;
+  }
+}
+</style>
+	<section style="margin:auto;padding: auto;" id="post" class="home2 py-5" data-bg="">
+		<article style="height:max-content;" class="carpetaNegra">
 			<div class="">
-				<div style="margin-bottom: -25rem; padding:1rem; z-index:2;" class="">				
-					<header style="5rem auto" class="center ">
+				<div style="padding:1rem; z-index:2;" class="">				
+					<header style="" class="center ">
 						<h3>Cotización de Staffing IT</h3>
 					</header>
 					<div style="text-align: center; margin:auto;">
 						<div style="margin:0.5rem; height: auto; width: auto; font-size: 1.5rem;">
+							<div class="text-success" style="text-align: justify;"></div>
 							<h4>{{Nombre}} vamos a formar tu Dream Team</h4>
-									<h6>Horas mensuales mínimas 160. 
-										<br>
-										De izquierda a derecha elegí la tecnología del talento que necesitas, Señority, idioma, etc presionas agregar y así formas el equipo que necesitas.
-										<br>
-										Abajo calcula automáticamente los costos iniciales cuando termines oprime "ver cotización" y la I.A. te envía la pre-coti. 
-									</h6>
-							<div style="color: aliceblue; margin:auto" >
-								<form style="margin:0;" action="/cotizandoIT" method="post">
-									<div style="margin:0" class="flex">
+							<h6>Horas mensuales mínimas 160. 
+								<br>
+								De izquierda a derecha elegí la tecnología del talento que necesitas, Señority, idioma, etc presionas agregar y así formas el equipo que necesitas.
+								<br>
+								Abajo calcula automáticamente los costos iniciales cuando termines oprime "ver cotización" y la I.A. te envía la pre-coti. 
+							</h6>
+									<form class="" action="/cotizandoIT" method="post">
+								<div class="row" style="color: aliceblue; margin:auto">
 										{{!-- Tecno --}}
-										<div class="form-floating">
-											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="tec12" type="text" class="form-control" id="floatingInput123" placeholder=" " name="tecno"  required>
-											<label for="floatingInput123">Tecnologías</label>
-											<datalist id="tec12">
-												<select name="">
-													<optgroup label="Backend">
-														<option value="Full Stack LAMP">Full Stack LAMP</option>
-														<option value="Full Stack MERN / MEAN">Full Stack MERN / MEAN</option>
-														<option value="Full Stack Grl.">Full Stack Grl.</option>
-														<option value='JAVA'>JAVA</option>
-														<option value="JS">JS</option>
-														<option value="NODE">NODE</option>
-														<option value="Django">Django</option>
-														<option value="Python">Python</option>
-														<option value="GO">GO</option>
-														<option value="PHP">PHP</option>
-														<option value="C#">C#</option>
-														<option value="C++">C++</option>
-														<option value=".Net">.Net/ Net core</option>
-														<option value="Kotlin">Kotlin</option>
-														<option value="Pearl">Pearl</option>
-														<option value="Apache">Apache</option>
-														<option value="Ruby">Ruby / Rubi on rails</option>
-														<option value="Cobol">Cobol</option>
-														<option value="QA Manual">QA Manual</option>
-														<option value="QA Automation">QA Automation</option>
-													</optgroup>
-													<p><strong>Frontend</strong></p>
-													<option value="React">React</option>
-													<option value="Maquetador HTML CSS">Maquetador HTML CSS</option>
-													<option value="React Native">React Native</option>
-													<option value="Angular">Angular</option>
-													<option value="HTML">HTML</option>
-													<option value="CSS + (Boostrap)">CSS + (Boostrap)</option>
-													<option value="VUE">VUE</option>
-													<option value="Type Script">Type Script</option>
-													<option value="JQuery">JQuery</option>
-													<option value="Flutter">Flutter</option>
-													<label><strong>Mobile</strong></p>
-													<option value="IOS / Swift">IOS / Swift</option>
-													<option value="Android">Android</option>
-													<p><strong>Full´s Stack´s</strong></p>
-													<option value="MERN">MERN</option>
-													<option value="MEAN">MEAN</option>
-													<option value="LAMP">LAMP</option>
-													<p><strong>O.S.</strong></p>
-													<option value="Linux">Linux</option>
-													<option value="Windows / Win Mobile">Windows / Win Mobile</option>
-													<option value="Android">Android</option>
-													<option value="IOS">IOS</option>
-													<p><strong>Bases de Datos</strong></p>
-													<option value="SQL">SQL</option>
-													<option value="Mongo DB">Mongo DB</option>
-													<p><strong>Agile</strong></p>
-													<option value="Scrumm">Scrumm</option>
-													<option value="Devop´s">Devop´s</option>
-													<option value="PM / PO">PM / PO</option>
-												</select>
-											</datalist>
+										<div class="col-sm">
+											<div class="form-floating">
+												<input autocomplete="off" style="background-color: black; color: aliceblue;" list="tec12" type="text" class="form-control" id="floatingInput123" placeholder=" " name="tecno"  required>
+												<label for="floatingInput123">Tecnologías</label>
+												<datalist id="tec12">
+													<select name="">
+														<optgroup label="Backend">
+															<option value="Full Stack LAMP">Full Stack LAMP</option>
+															<option value="Full Stack MERN / MEAN">Full Stack MERN / MEAN</option>
+															<option value="Full Stack Grl.">Full Stack Grl.</option>
+															<option value='JAVA'>JAVA</option>
+															<option value="JS">JS</option>
+															<option value="NODE">NODE</option>
+															<option value="Django">Django</option>
+															<option value="Python">Python</option>
+															<option value="GO">GO</option>
+															<option value="PHP">PHP</option>
+															<option value="C#">C#</option>
+															<option value="C++">C++</option>
+															<option value=".Net">.Net/ Net core</option>
+															<option value="Kotlin">Kotlin</option>
+															<option value="Pearl">Pearl</option>
+															<option value="Apache">Apache</option>
+															<option value="Ruby">Ruby / Rubi on rails</option>
+															<option value="Cobol">Cobol</option>
+															<option value="QA Manual">QA Manual</option>
+															<option value="QA Automation">QA Automation</option>
+														</optgroup>
+														<p><strong>Frontend</strong></p>
+														<option value="React">React</option>
+														<option value="Maquetador HTML CSS">Maquetador HTML CSS</option>
+														<option value="React Native">React Native</option>
+														<option value="Angular">Angular</option>
+														<option value="HTML">HTML</option>
+														<option value="CSS + (Boostrap)">CSS + (Boostrap)</option>
+														<option value="VUE">VUE</option>
+														<option value="Type Script">Type Script</option>
+														<option value="JQuery">JQuery</option>
+														<option value="Flutter">Flutter</option>
+														<label><strong>Mobile</strong></p>
+														<option value="IOS / Swift">IOS / Swift</option>
+														<option value="Android">Android</option>
+														<p><strong>Full´s Stack´s</strong></p>
+														<option value="MERN">MERN</option>
+														<option value="MEAN">MEAN</option>
+														<option value="LAMP">LAMP</option>
+														<p><strong>O.S.</strong></p>
+														<option value="Linux">Linux</option>
+														<option value="Windows / Win Mobile">Windows / Win Mobile</option>
+														<option value="Android">Android</option>
+														<option value="IOS">IOS</option>
+														<p><strong>Bases de Datos</strong></p>
+														<option value="SQL">SQL</option>
+														<option value="Mongo DB">Mongo DB</option>
+														<p><strong>Agile</strong></p>
+														<option value="Scrumm">Scrumm</option>
+														<option value="Devop´s">Devop´s</option>
+														<option value="PM / PO">PM / PO</option>
+													</select>
+												</datalist>
+											</div>
 										</div>
 										{{!-- Señority --}}
+										<div class="col-sm">
 										<div class="form-floating">
 											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="senority1" type="text" class="form-control" id="senority" placeholder=" " name="senority" required>
 											<label for="senority">Señority</label>
 											<datalist id="senority1">
 												<select>
 													<option value="Junior 1 año">Junior 1 año</option>
-													<option value="Junior Advance 2años">Junior Advance 2años</option>
+													<option value="Junior Ad. 2años">Junior Ad. 2años</option>
 													<option value="Semi Senior 4 años">Semi Senior 4 años</option>
 													<option value="Senior 6 años">Senior 6 años </option>
-													<option value="Technical Leader 8 años">Technical Leader 8 años</option>
+													<option value="T. L. 8 años">T. L. 8 años</option>
 												</select>
 											</datalist>
 										</div>
+										</div>
 										{{!-- Idioma --}}
+										<div class="col-sm">
 										<div class="form-floating">
 											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="idioma1" type="text" class="form-control" id="Idioma22" placeholder=" " name="Idioma" required>
 											<label for="Idioma22">Idioma</label>
@@ -106,8 +118,10 @@
 													<option value="Otro">Otro</option>
 												</select>
 											</datalist>
-										</div> 
+										</div>
+										</div>
 										{{!-- lugar trabajo  --}}
+										<div class="col-sm">
 										<div class="form-floating" >
 											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="pais1" type="text" class="form-control" id="Pais22" placeholder=" " name="Pais" required>
 											<label for="Pais22">Lugar Trabajo</label>
@@ -121,7 +135,9 @@
 												</select>
 											</datalist>
 										</div>
+										</div>
 										{{!-- Tiempo --}}
+										<div class="col-sm">
 										<div class="form-floating">
 											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="mes1" type="text" class="form-control" id="Cantmeses22" placeholder=" " name="Cantmeses" required>
 											<label for="Cantmeses22">Tiempo</label>
@@ -138,8 +154,10 @@
 												</select>
 											</datalist>
 										</div>
+										</div>
 										{{!-- boton --}}
-										<div class="form-floating" style="padding: 0.3rem ;">
+										<div class="col-sm">
+										<div class="col form-floating" style="padding: 0.3rem ;">
 											<div hidden>
 												<input value="{{fullStack1}}"name="fullStack1"hidden>
 												<input value="{{Email}}"     name="Email"     hidden>
@@ -156,19 +174,19 @@
 											</div>
 											<button id="boton222" class="btn btn-success" type="">Agregar</button>
 										</div>
-									</div>
-								</form>	
-							</div>
+										</div>																				
+								</div>
+									</form>	
 						</div>
 					</div>
 				</div>
 		{{!-- insertos --}}
 				<div style="height:max-content;width:100%;opacity:1; background-color: black;">
-					<div align="center" class="" style="height:max-content;width: 100%;opacity: 0.95; margin: 25rem auto ; color: white; font-size: 0.95rem;" id="">
+					<div align="center" class="" style="height:max-content;width: 100%;opacity: 0.95; margin: auto ; color: white; font-size:0.95rem;" id="">
 					{{#if ID}}
-						<h5 class="btn-danger" style="width:100%;">Equipo / team / Squadd</h5>
+						<h5 class="btn-danger" style="width:100%;">Talento & Equipo </h5>
 					{{/if}}
-						<div style="width:100%;" class="grid flex">
+						<div style="width:100%;  word-break: keep-all;" class="grid flex">
 							<div style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
 								<h5 scope="col" style="padding:0.5rem;" style="padding:0.5rem;">Tecnologia</h5>
 								<hr style="margin:0;">
@@ -177,7 +195,7 @@
 									<hr style="margin:0;">
 								{{/each}}
 							</div>
-							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+							<div  style="background-color: black; margin:0; padding: 1rem; word-break: keep-all;" class="g-col-6 g-col-sm">
 								<h5 scope="col" style="padding:0.5rem;">Señority</h5>
 								<hr style="margin:0;">
 								{{#each talents}}
@@ -257,7 +275,7 @@
 				</div>
 			</div>
 	{{!-- footer de calcular --}}
-			<div style="margin-top:-20rem; margin-bottom: -12rem; width:100%; border-radius:1rem; position:sticky;" align="center" class="btn btn-danger fijoAbajo">
+			<div style="margin:auto; width:100%; border-radius:1rem; position:sticky;" align="center" class="btn btn-danger ">
 				<div class="">
 					{{#if pesosArg}}
 					<div class="row">
@@ -384,7 +402,7 @@
 					<br>
 					<div class="center">
 						{{#if pesosArg}}
-								<div style="width: 100%; margin: -2.5rem 0rem; text-align: center;" class="center">
+								<div style="width: 100%; margin:auto; text-align: center;" class="center">
 									<p> <strong>* Consulta por importantes descuentos. </strong></p>
 									<p>* Oprime calcular y te llegara una pre-cotización detallada y luego nos pondremos en contacto. </p>
 									<p>* Los precios no incluyen iva ni impuestos y son expresados en pesos argentinos.</p>
