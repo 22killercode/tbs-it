@@ -27,7 +27,7 @@ const talentos      = require('../models/talentos');
 const JSONTransport = require('nodemailer/lib/json-transport');
 const { Script } = require('vm');
 const { nextTick } = require('process');
-const PrecioDolar = 380
+const PrecioDolar = 580
 //Variables
 const HorasMes             = 160
 //precios TOP USS
