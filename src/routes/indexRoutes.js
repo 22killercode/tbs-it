@@ -27,8 +27,6 @@ const talentos      = require('../models/talentos');
 const JSONTransport = require('nodemailer/lib/json-transport');
 const { Script } = require('vm');
 const { nextTick } = require('process');
-
-// PRECIOS datos de precios
 const PrecioDolar = 700
 //Variables
 const HorasMes             = 160
@@ -41,11 +39,12 @@ const precioLatam          = -10
 const precioUsaEur         = +5
 // descuentos por señority USS
 const precioTL             = +20
-const precioSemiSenior     = -10
-const precioJuniorAdnvance = -15
-const precioJunior         = -19
 const fullStack            = +10
 const QAuto                = +3.5
+const precioSenior         = 0
+const precioSemiSenior     = -15
+const precioJuniorAdnvance = -20
+const precioJunior         = -30
 //precios mobile
 const precioAndroid        = +10
 const precioIOS            = +12
@@ -920,7 +919,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioJunior)
                     console.log("Junior")
                 }
-                if (Senority == "Junior Advance 2años") {
+                if (Senority == "Junior Ad. 2años") {
                     sumandotodo.push(precioJuniorAdnvance)
                     console.log("Advance")
                 }
@@ -928,7 +927,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioSemiSenior)
                     console.log("Semi")
                 }
-                if (Senority == "Technical Leader 8 años") {
+                if (Senority == "T. L. 8 años") {
                     sumandotodo.push(precioTL)
                     console.log("Technical")
                 }
@@ -998,7 +997,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioJunior)
                     console.log("Junior")
                 }
-                if (Senority == "Junior Advance 2años") {
+                if (Senority == "Junior Ad. 2años") {
                     sumandotodo.push(precioJuniorAdnvance)
                     console.log("Advance")
                 }
@@ -1006,7 +1005,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioSemiSenior)
                     console.log("Semi")
                 }
-                if (Senority == "Technical Leader 8 años") {
+                if (Senority == "T. L. 8 años") {
                     sumandotodo.push(precioTL)
                     console.log("Technical")
                 }
@@ -1076,7 +1075,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioJunior)
                     console.log("Junior")
                 }
-                if (Senority == "Junior Advance 2años") {
+                if (Senority == "Junior Ad. 2años") {
                     sumandotodo.push(precioJuniorAdnvance)
                     console.log("Advance")
                 }
@@ -1084,7 +1083,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioSemiSenior)
                     console.log("Semi")
                 }
-                if (Senority == "Technical Leader 8 años") {
+                if (Senority == "T. L. 8 años") {
                     sumandotodo.push(precioTL)
                     console.log("Technical")
                 }
@@ -1154,7 +1153,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioJunior)
                     console.log("Junior")
                 }
-                if (Senority == "Junior Advance 2años") {
+                if (Senority == "Junior Ad. 2años") {
                     sumandotodo.push(precioJuniorAdnvance)
                     console.log("Advance")
                 }
@@ -1162,7 +1161,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioSemiSenior)
                     console.log("Semi")
                 }
-                if (Senority == "Technical Leader 8 años") {
+                if (Senority == "T. L. 8 años") {
                     sumandotodo.push(precioTL)
                     console.log("Technical")
                 }
@@ -1232,7 +1231,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioJunior)
                     console.log("Junior")
                 }
-                if (Senority == "Junior Advance 2años") {
+                if (Senority == "Junior Ad. 2años") {
                     sumandotodo.push(precioJuniorAdnvance)
                     console.log("Advance")
                 }
@@ -1240,7 +1239,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioSemiSenior)
                     console.log("Semi")
                 }
-                if (Senority == "Technical Leader 8 años") {
+                if (Senority == "T. L. 8 años") {
                     sumandotodo.push(precioTL)
                     console.log("Technical")
                 }
@@ -1310,7 +1309,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioJunior)
                     console.log("Junior")
                 }
-                if (Senority == "Junior Advance 2años") {
+                if (Senority == "Junior Ad. 2años") {
                     sumandotodo.push(precioJuniorAdnvance)
                     console.log("Advance")
                 }
@@ -1318,7 +1317,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioSemiSenior)
                     console.log("Semi")
                 }
-                if (Senority == "Technical Leader 8 años") {
+                if (Senority == "T. L. 8 años") {
                     sumandotodo.push(precioTL)
                     console.log("Technical")
                 }
@@ -1388,7 +1387,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioJunior)
                     console.log("Junior")
                 }
-                if (Senority == "Junior Advance 2años") {
+                if (Senority == "Junior Ad. 2años") {
                     sumandotodo.push(precioJuniorAdnvance)
                     console.log("Advance")
                 }
@@ -1396,7 +1395,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioSemiSenior)
                     console.log("Semi")
                 }
-                if (Senority == "Technical Leader 8 años") {
+                if (Senority == "T. L. 8 años") {
                     sumandotodo.push(precioTL)
                     console.log("Technical")
                 }
@@ -1466,7 +1465,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioJunior)
                     console.log("Junior")
                 }
-                if (Senority == "Junior Advance 2años") {
+                if (Senority == "Junior Ad. 2años") {
                     sumandotodo.push(precioJuniorAdnvance)
                     console.log("Advance")
                 }
@@ -1474,7 +1473,7 @@ router.post('/cotizandoIT',[validador1], async (req, res) => {
                     sumandotodo.push(precioSemiSenior)
                     console.log("Semi")
                 }
-                if (Senority == "Technical Leader 8 años") {
+                if (Senority == "T. L. 8 años") {
                     sumandotodo.push(precioTL)
                     console.log("Technical")
                 }
