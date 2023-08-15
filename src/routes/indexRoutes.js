@@ -27,6 +27,8 @@ const talentos      = require('../models/talentos');
 const JSONTransport = require('nodemailer/lib/json-transport');
 const { Script } = require('vm');
 const { nextTick } = require('process');
+
+// PRECIOS datos de precios
 const PrecioDolar = 700
 //Variables
 const HorasMes             = 160
@@ -34,8 +36,8 @@ const HorasMes             = 160
 const precioBackend        = 55
 const precioFrontend       = 50
 // descuentos por pais USS
-const precioArg            = -25
-const precioLatam          = -15
+const precioArg            = -15
+const precioLatam          = -10
 const precioUsaEur         = +5
 // descuentos por señority USS
 const precioTL             = +20
