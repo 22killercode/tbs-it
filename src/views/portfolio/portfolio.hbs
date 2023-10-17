@@ -1,0 +1,84 @@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        @media (orientation: landscape) {
+            .landscape-cols {
+                column-count: 4;
+            }
+        }
+
+        @media (orientation: portrait) {
+            .portrait-cols {
+                column-count: 2;
+            }
+        }
+
+            /* Estilos para los enlaces con ID "hover" al hacer hover */
+        a#hover {
+            position: relative; /* Para permitir el ajuste del z-index */
+            transition: transform 2s, color 2s, z-index 2s; /* Transición de 2 segundos */
+        }
+
+        a#hover:hover {
+            transform: scale(1.8); /* Aumenta el tamaño en un 10% */
+            color: orange; /* Cambia el color a anaranjado */
+            z-index: 1; /* Coloca el elemento en la parte superior */
+        }
+    </style>
+
+    <section class="soft py-5 d-flex align-items-center" >
+        <div class="container text-light" style="margin-top: -0.5rem; width: 95% !important;">
+            <div style="" class="carpetaNegra row d-flex align-items-center">
+                <div style="min-height:27rem;" class="col-lg-12" data-aos="fade-right">
+                    <div class="container">
+                        <header class="fijoArriba btn btn-success" style="z-index: 1; border-radius: 1rem;" >
+                            <br>
+                            <h3 style="color: black !important;" class="text-center">Portfolio de nuestros talentos & clientes</h3>
+                            <br>
+                            <p style="color: black !important;" class="text-center">Estos son ejemplos de algunos de los trabajos en paginas web, aplicaciones web y más de nuestros talentos & partners, para nuestros clientes.
+                            <br>
+                            Para ir a la pagina haz click en el marco azul.
+                            </p>
+                        </header>
+                        <br> <br>
+                        <!-- Contenido principal de tu página -->
+                        <div class="row landscape-cols">
+                            {{#each links2}}
+                            <div class="col-12 col-sm-6 col-lg-3" style="margin-top: 1rem; margin-bottom: 1rem;">
+                                <a href="{{.}}" class="btn btn-primary btn-block" id="hover">
+                                <iframe src="{{.}}" width="220" height="200"></iframe>
+                                </a>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>            
+    </section>
+    <!-- Agregar enlaces a los archivos de Bootstrap JS y jQuery aquí -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{{!-- <div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <a href="https://www.bullmarketbrokers.com" class="btn btn-primary btn-block" id="hover">
+                                    <iframe src="https://www.bullmarketbrokers.com"  width="220" height="200"></iframe>
+                                </a>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                    <a href="https://onlinebanking.bancogalicia.com.ar/login" class="btn btn-primary btn-block" id="hover">
+                                        <iframe src="https://onlinebanking.bancogalicia.com.ar/login" width="220" height="200">></iframe>
+                                    </a>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                    <a href="http://dovemailer.net/" class="btn btn-primary btn-block" id="hover">
+                                        <iframe src="http://dovemailer.net/" width="220" height="200"></iframe>
+                                    </a>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <a href="https://tbs-it.net/" class="btn btn-primary btn-block" id="hover">
+                                    <iframe src="https://tbs-it.net/" width="220" height="200">></iframe>
+                                </a>
+                            </div>
+</div> --}}

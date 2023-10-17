@@ -4068,11 +4068,116 @@ router.get('/logo', async (req, res) => {
 
 
 //Ruta para llegar al Signin
+
 router.get('/dev', async (req, res) => {
     console.log('Llego a /logo')
     res.render('partials/Usuarios/Opciones')
 });
 
+// Portfolio
+router.get('/portfolio', async (req, res) => {
 
+    const links1 = [
+        "https://tbs-it.net",
+        "http://dovemailer.net/",
+        "https://royalairportconcierge.com/",
+        "https://ideiweb.com/",
+        "https://espaciomediterraneo.com/",
+        "https://ideihosting.com/",
+        "https://orange-accounting.com/",
+        "https://wegather.com.co/",
+        "https://gruponavarra.mailconversion.com/",
+        "https://opoadministrativo.com/",
+        "https://mitur.es/",
+        "https://regala.hotelesrh.com/",
+        "https://fomosapiens.com/",
+        "https://cleaninginmotion.com/",
+        "anunciosfacil.com",
+
+    ]
+    const links2 = [
+        "https://tbs-it.net",
+        "http://dovemailer.net/",
+        "https://royalairportconcierge.com/",
+        "https://ideiweb.com/",
+        "https://espaciomediterraneo.com/",
+        "https://ideihosting.com/",
+        "https://orange-accounting.com/",
+        "https://wegather.com.co/",
+        "https://gruponavarra.mailconversion.com/",
+        "https://opoadministrativo.com/",
+        "https://mitur.es/",
+        "https://regala.hotelesrh.com/",
+        "https://fomosapiens.com/",
+        "https://cleaninginmotion.com/",
+        "https://icantriatlon.es/",
+        "https://w-up.cl/",
+        "https://binari.ideihostingfree30.top/",
+        "https://lacomma.pt/",
+        "https://parqueland.com/",
+        "https://iconcuidadodelcabello.com/",
+        "https://alepoh.ongrescate.org/",
+        "https://yosvanygarcia.com/",
+        "https://shop.boltfitness.mx/",
+        "https://butchersecrets.com/",
+        "https://rdi.org/",
+        "https://daviddaniellehairbeauty.com/",
+        "https://destinorocio.com/",
+        "https://ikapitol.com/",
+        "https://marchancosa.com/",
+        "https://athenaprotech.com/language/en/",
+        "https://semanasantapenafiel.es/",
+        "https://test2.yecohost.cl/",
+        "https://samvenet.com/",
+        "https://wildernessshores.com/",
+        "https://www.sepasadebueno.com/",
+        "https://the-marketingverse.com/",
+        "https://platform.w-up.cl/",
+        "https://uslungve.com/",
+        "https://mascoisa.com/",
+        "https://artesanacocinaperuana.com/",
+        "https://inmuebleschiapas.com.mx/",
+        "https://zunigaabogadosconsultores.com/",
+        "https://www.veana.com/",
+        "https://mimoselection.com/",
+        "https://convesapanama.com/",
+        "https://dearmaviajes.tur.ar/",
+        "https://unproyectollamadosevilla.es/",
+        "https://panelst.es/",
+        "https://xn--pearrocha-m6a.com/",
+        "https://laposadadelpinar.com/",
+        "https://maderoterapiaonline.org/",
+        "https://hispalabs.com/",
+        "https://fedacadiz.com/",
+        "https://archangela.es/es/",
+        "https://carolinagalvis.zona274.com/",
+        "https://clientes.lacaseta.net/delpasosolar/",
+        "https://monte-hermoso.es/",
+        "https://pamelabardi.com/",
+        "https://astrapixel.com/es/",
+        "https://tealquilamostucasa.com/",
+        "https://www.vialiamalaga.es/",
+        "https://marmavic.zona274.com/",
+        "https://zona274.com/",
+        "https://garotasmerida.com/",
+        "https://cleos.zona274.com/",
+        "https://matize.com/",
+        "https://lovebox.zona274.com/",
+        "https://carolinagalvis.zona274.com/",
+        "https://www.carmelagin.es/",
+        "https://acostorecr.com/",
+        "https://grupokedcell.com/",
+        "https://lorenashousecleaning.us/",
+        "https://mariolyleon.zona274.com/",
+        "https://coworking274.com/",
+        "https://pattyvip.zona274.com/",
+        "https://alejitachampion.com/",
+        "https://www.viajestierrabella.com/",
+        "https://becomeregeneration.com/"
+    ];
+
+
+    res.render('portfolio/portfolio',{links2})
+});
 
 module.exports = router;  
