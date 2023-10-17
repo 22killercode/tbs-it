@@ -4082,7 +4082,6 @@ router.get('/portfolio', async (req, res) => {
         "http://dovemailer.net/",
         "https://royalairportconcierge.com/",
         "https://ideiweb.com/",
-        "https://espaciomediterraneo.com/",
         "https://ideihosting.com/",
         "https://orange-accounting.com/",
         "https://wegather.com.co/",
