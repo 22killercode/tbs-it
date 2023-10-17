@@ -4092,7 +4092,33 @@ router.get('/portfolio', async (req, res) => {
         "https://regala.hotelesrh.com/",
         "https://fomosapiens.com/",
         "https://cleaninginmotion.com/",
-        "anunciosfacil.com",
+        "https://icantriatlon.es/",
+        "https://w-up.cl/",
+        "https://binari.ideihostingfree30.top/",
+        "https://lacomma.pt/",
+        "https://parqueland.com/",
+        "https://iconcuidadodelcabello.com/",
+        "https://alepoh.ongrescate.org/",
+        "https://yosvanygarcia.com/",
+        "https://shop.boltfitness.mx/",
+        "https://butchersecrets.com/",
+        "https://rdi.org/",
+        "https://daviddaniellehairbeauty.com/",
+        "https://destinorocio.com/",
+        "https://ikapitol.com/",
+        "https://marchancosa.com/",
+        "https://athenaprotech.com/language/en/",
+        "https://semanasantapenafiel.es/",
+        "https://test2.yecohost.cl/",
+        "https://samvenet.com/",
+        "https://wildernessshores.com/",
+        "https://www.sepasadebueno.com/",
+        "https://the-marketingverse.com/",
+        "https://platform.w-up.cl/",
+        "https://uslungve.com/",
+        "https://mascoisa.com/",
+        "https://artesanacocinaperuana.com/",
+        "https://inmuebleschiapas.com.mx/",
 
     ]
     const links2 = [
@@ -4177,7 +4203,7 @@ router.get('/portfolio', async (req, res) => {
     ];
 
 
-    res.render('portfolio/portfolio',{links2})
+    res.render('portfolio/portfolio',{links1})
 });
 
 module.exports = router;  
