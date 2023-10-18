@@ -29,28 +29,29 @@
         <div class="container text-light" style="margin-top: -0.5rem; width: 95% !important;">
             <div style="" class="carpetaNegra row d-flex align-items-center">
                 <div style="min-height:27rem;" class="col-lg-12" data-aos="fade-right">
-                    <div class="container">
-                        <header class="fijoArriba btn btn-success" style="z-index: 1; border-radius: 1rem;" >
-                            <br>
-                            <h3 style="color: black !important;" class="text-center">Portfolio de nuestros talentos & clientes</h3>
-                            <br>
-                            <p style="color: black !important;" class="text-center">Estos son ejemplos de algunos de los trabajos en paginas web, aplicaciones web y más de nuestros talentos & partners, para nuestros clientes.
-                            <br>
-                            Para ir a la pagina haz click en el marco azul.
-                            </p>
-                        </header>
-                        <br> <br>
-                        <!-- Contenido principal de tu página -->
-                        <div class="row landscape-cols">
-                            {{#each links1}}
-                            <div class="col-12 col-sm-6 col-lg-3" style="margin-top: 1rem; margin-bottom: 1rem;">
-                                <a href="{{.}}" class="btn btn-primary btn-block" id="hover">
-                                <iframe src="{{.}}" width="220" height="200"></iframe>
-                                </a>
-                            </div>
-                            {{/each}}
-                        </div>
-                    </div>
+<div class="container">
+    <header class="fijoArriba btn btn-success" style="z-index: 1; border-radius: 1rem;">
+        <br>
+        <h3 style="color: black !important;" class="text-center">Portfolio de nuestros talentos & clientes</h3>
+        <br>
+        <p style="color: black !important;" class="text-center">Estos son ejemplos de algunos de los trabajos en páginas web, aplicaciones web y más de nuestros talentos & partners, para nuestros clientes.
+        <br>
+        Para ir a la página haz click en el marco azul.
+        </p>
+    </header>
+    <br> <br>
+    <!-- Contenido principal de tu página -->
+    <div class="row landscape-cols">
+        {{#each links1}}
+        <div class="col-12 col-sm-6 col-lg-3" style="margin-top: 1rem; margin-bottom: 1rem;">
+            <a href="{{.}}" class="btn btn-primary btn-block" id="hover">
+                <iframe src="{{.}}" style="width: 100%; height: 100%; transform: scale(0.9);"></iframe>
+            </a>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
                 </div>
             </div>
         </div>            
