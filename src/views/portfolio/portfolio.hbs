@@ -2,13 +2,13 @@
     <style>
         @media (orientation: landscape) {
             .landscape-cols {
-                column-count: 4;
+                column-count: 2;
             }
         }
 
         @media (orientation: portrait) {
             .portrait-cols {
-                column-count: 2;
+                column-count: 1;
             }
         }
 
@@ -19,7 +19,7 @@
         }
 
         a#hover:hover {
-            transform: scale(1.8); /* Aumenta el tamaño en un 10% */
+            transform: scale(1.8); /* Disminuye el tamaño en un 80% */
             color: orange; /* Cambia el color a anaranjado */
             z-index: 1; /* Coloca el elemento en la parte superior */
         }
@@ -43,9 +43,9 @@
     <!-- Contenido principal de tu página -->
     <div class="row landscape-cols">
         {{#each links1}}
-        <div class="col-12 col-sm-6 col-lg-3" style="margin-top: 1rem; margin-bottom: 1rem;">
+        <div class="col-12 col-lg-6 col-lg-3" style="margin-top: 1rem; margin-bottom: 1rem;">
             <a href="{{.}}" class="btn btn-primary btn-block" id="hover">
-                <iframe src="{{.}}" style="width: 100%; height: 100%; transform: scale(0.9);"></iframe>
+                <iframe src="{{.}}" style="width: 100%; height: 150% !important; transform: scale(0.95);"></iframe>
             </a>
         </div>
         {{/each}}
