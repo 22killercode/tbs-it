@@ -4097,6 +4097,8 @@ router.get('/portfolio', async (req, res) => {
             link:"http://dovemailer.net/"},
             {src:'/images/portfolio/academia.jpg',
             link:"https://opoadministrativo.com/"},
+            {src:'/images/portfolio/peluqueria.jpg',
+            link:"https://iconcuidadodelcabello.com/"},
             {src:'/images/portfolio/comercial.jpg',
             link:"https://cleaninginmotion.com"},
             {src:'/images/portfolio/growth.jpg',
