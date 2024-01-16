@@ -4129,9 +4129,9 @@ const Ecommerce = [
     {src:'/images/portfolio/dovemailer.jpg',
     link:"http://dovemailer.net/"},
         {src:'/images/portfolio/ecommermerce1.jpg',
-        link:"https://igragalaxy.com/"},
-        {src:'/images/portfolio/ecommermerce2.jpg',
         link:"https://gamegalaxy.ch/"},
+        {src:'/images/portfolio/ecommermerce2.jpg',
+        link:"https://igragalaxy.com/"},
 ]
 
 
