@@ -4091,10 +4091,6 @@ router.get('/portfolio', async (req, res) => {
         console.log("que path encuentra", imagesFolder, imagePaths);
 
         const imageWeb =  [
-            {src:'/images/portfolio/the best staff.jpg',
-            link:"https://tbs-it.net/"},
-            {src:'/images/portfolio/dovemailer.jpg',
-            link:"http://dovemailer.net/"},
             {src:'/images/portfolio/academia.jpg',
             link:"https://opoadministrativo.com/"},
             {src:'/images/portfolio/peluqueria.jpg',
@@ -4123,10 +4119,24 @@ router.get('/portfolio', async (req, res) => {
             link:"https://test2.yecohost.cl/"},
             {src:'/images/portfolio/Transporte.jpg',
             link:"https://royalairportconcierge.com/"},
+
         ]
+        
+
+const Ecommerce = [
+    {src:'/images/portfolio/the best staff.jpg',
+    link:"https://tbs-it.net/"},
+    {src:'/images/portfolio/dovemailer.jpg',
+    link:"http://dovemailer.net/"},
+        {src:'/images/portfolio/ecommermerce1.jpg',
+        link:"https://igragalaxy.com/"},
+        {src:'/images/portfolio/ecommermerce2.jpg',
+        link:"https://gamegalaxy.ch/"},
+]
+
 
         // Pasa un objeto con la propiedad 'imagePaths' que contiene el array
-        res.render('portfolio/portfolio', { imageWeb });
+        res.render('portfolio/portfolio', {Ecommerce, imageWeb  });
     });
 });
 

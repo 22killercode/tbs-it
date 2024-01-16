@@ -37,12 +37,39 @@
                             <br>
                             <p style="color: black !important;" class="text-center">Estos son ejemplos de algunos de los trabajos en páginas web, aplicaciones web y más de nuestros talentos & partners, para nuestros clientes.
                             <br>
-                            Para ir a la página haz click en el marco azul.
+                            Para ir a la página haz click en la imagen.
                             </p>
                         </header>
                         <br> <br>
                         <!-- Contenido principal de tu página -->
 <div class="row landscape-cols" style="width: 100%; height: 250% !important">
+    <h3>Ecommerce </h3>
+    {{#each Ecommerce}}
+        <div class="col-12 col-lg-6 col-lg-3" style="margin-top: 1rem; margin-bottom: 1rem; height: 100% !important;">
+            <a href="{{link}}" class="btn btn-primary btn-block" id="hover">
+                <!-- Use dynamic path from the iteration -->
+                <style>
+    /* Estilo por defecto para dispositivos de escritorio */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block; /* Asegura que las imágenes no tengan espacios adicionales por debajo */
+      margin-bottom: 10px; /* Espacio entre las imágenes en dispositivos de escritorio */
+    }
+
+    /* Media query para dispositivos con un ancho máximo de 767px (pantallas de celular) */
+    @media (max-width: 767px) {
+      img {
+        width: 100%; /* Hace que las imágenes ocupen el ancho completo en dispositivos móviles */
+        margin-bottom: 20px; /* Espacio mayor entre las imágenes en dispositivos móviles */
+      }
+    }
+                </style>
+                <img src="{{src}}" alt="Portfolio Image">
+            </a>
+        </div>
+    {{/each}}
+        <h3>Páginas Web </h3>
     {{#each imageWeb}}
         <div class="col-12 col-lg-6 col-lg-3" style="margin-top: 1rem; margin-bottom: 1rem; height: 100% !important;">
             <a href="{{link}}" class="btn btn-primary btn-block" id="hover">
