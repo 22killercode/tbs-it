@@ -2,6 +2,8 @@ require('dotenv').config();
 const express   = require('express');
 const router    = express.Router(); 
 const passport  = require('passport');
+const fs = require('fs');
+const path = require('path');  // Asegúrate de agregar esta línea
 
 
 const http    = require('http');
@@ -4076,133 +4078,57 @@ router.get('/dev', async (req, res) => {
 
 // Portfolio
 router.get('/portfolio', async (req, res) => {
+    const imagesFolder = path.join(__dirname, '..', 'public', 'images', 'portfolio');
 
-    const links1 = [
-        "https://tbs-it.net",
-        "http://dovemailer.net/",
-        "https://royalairportconcierge.com/",
-        "https://ideiweb.com/",
-        "https://ideihosting.com/",
-        "https://orange-accounting.com/",
-        "https://wegather.com.co/",
-        "https://gruponavarra.mailconversion.com/",
-        "https://opoadministrativo.com/",
-        "https://mitur.es/",
-        "https://regala.hotelesrh.com/",
-        "https://fomosapiens.com/",
-        "https://cleaninginmotion.com/",
-        "https://icantriatlon.es/",
-        "https://w-up.cl/",
-        "https://binari.ideihostingfree30.top/",
-        "https://lacomma.pt/",
-        "https://parqueland.com/",
-        "https://iconcuidadodelcabello.com/",
-        "https://alepoh.ongrescate.org/",
-        "https://yosvanygarcia.com/",
-        "https://shop.boltfitness.mx/",
-        "https://butchersecrets.com/",
-        "https://rdi.org/",
-        "https://daviddaniellehairbeauty.com/",
-        "https://destinorocio.com/",
-        "https://ikapitol.com/",
-        "https://marchancosa.com/",
-        "https://athenaprotech.com/language/en/",
-        "https://semanasantapenafiel.es/",
-        "https://test2.yecohost.cl/",
-        "https://samvenet.com/",
-        "https://wildernessshores.com/",
-        "https://www.sepasadebueno.com/",
-        "https://the-marketingverse.com/",
-        "https://platform.w-up.cl/",
-        "https://uslungve.com/",
-        "https://mascoisa.com/",
-        "https://artesanacocinaperuana.com/",
-        "https://inmuebleschiapas.com.mx/",
+    fs.readdir(imagesFolder, (err, files) => {
+        if (err) {
+            return console.error('Error al leer la carpeta de imágenes:', err);
+        }
 
-    ]
-    const links2 = [
-        "https://tbs-it.net",
-        "http://dovemailer.net/",
-        "https://royalairportconcierge.com/",
-        "https://ideiweb.com/",
-        "https://espaciomediterraneo.com/",
-        "https://ideihosting.com/",
-        "https://orange-accounting.com/",
-        "https://wegather.com.co/",
-        "https://gruponavarra.mailconversion.com/",
-        "https://opoadministrativo.com/",
-        "https://mitur.es/",
-        "https://regala.hotelesrh.com/",
-        "https://fomosapiens.com/",
-        "https://cleaninginmotion.com/",
-        "https://icantriatlon.es/",
-        "https://w-up.cl/",
-        "https://binari.ideihostingfree30.top/",
-        "https://lacomma.pt/",
-        "https://parqueland.com/",
-        "https://iconcuidadodelcabello.com/",
-        "https://alepoh.ongrescate.org/",
-        "https://yosvanygarcia.com/",
-        "https://shop.boltfitness.mx/",
-        "https://butchersecrets.com/",
-        "https://rdi.org/",
-        "https://daviddaniellehairbeauty.com/",
-        "https://destinorocio.com/",
-        "https://ikapitol.com/",
-        "https://marchancosa.com/",
-        "https://athenaprotech.com/language/en/",
-        "https://semanasantapenafiel.es/",
-        "https://test2.yecohost.cl/",
-        "https://samvenet.com/",
-        "https://wildernessshores.com/",
-        "https://www.sepasadebueno.com/",
-        "https://the-marketingverse.com/",
-        "https://platform.w-up.cl/",
-        "https://uslungve.com/",
-        "https://mascoisa.com/",
-        "https://artesanacocinaperuana.com/",
-        "https://inmuebleschiapas.com.mx/",
-        "https://zunigaabogadosconsultores.com/",
-        "https://www.veana.com/",
-        "https://mimoselection.com/",
-        "https://convesapanama.com/",
-        "https://dearmaviajes.tur.ar/",
-        "https://unproyectollamadosevilla.es/",
-        "https://panelst.es/",
-        "https://xn--pearrocha-m6a.com/",
-        "https://laposadadelpinar.com/",
-        "https://maderoterapiaonline.org/",
-        "https://hispalabs.com/",
-        "https://fedacadiz.com/",
-        "https://archangela.es/es/",
-        "https://carolinagalvis.zona274.com/",
-        "https://clientes.lacaseta.net/delpasosolar/",
-        "https://monte-hermoso.es/",
-        "https://pamelabardi.com/",
-        "https://astrapixel.com/es/",
-        "https://tealquilamostucasa.com/",
-        "https://www.vialiamalaga.es/",
-        "https://marmavic.zona274.com/",
-        "https://zona274.com/",
-        "https://garotasmerida.com/",
-        "https://cleos.zona274.com/",
-        "https://matize.com/",
-        "https://lovebox.zona274.com/",
-        "https://carolinagalvis.zona274.com/",
-        "https://www.carmelagin.es/",
-        "https://acostorecr.com/",
-        "https://grupokedcell.com/",
-        "https://lorenashousecleaning.us/",
-        "https://mariolyleon.zona274.com/",
-        "https://coworking274.com/",
-        "https://pattyvip.zona274.com/",
-        "https://alejitachampion.com/",
-        "https://www.viajestierrabella.com/",
-        "https://becomeregeneration.com/"
-    ];
+        // Utiliza barras simples en el path
+        const imagePaths = files.map(file => `/images/portfolio/${file}`);
 
+        console.log("que path encuentra", imagesFolder, imagePaths);
 
-    res.render('portfolio/portfolio',{links1})
+        const imageWeb =  [
+            {src:'/images/portfolio/the best staff.jpg',
+            link:"https://tbs-it.net/"},
+            {src:'/images/portfolio/dovemailer.jpg',
+            link:"http://dovemailer.net/"},
+            {src:'/images/portfolio/academia.jpg',
+            link:"https://opoadministrativo.com/"},
+            {src:'/images/portfolio/comercial.jpg',
+            link:"https://cleaninginmotion.com"},
+            {src:'/images/portfolio/growth.jpg',
+            link:"https://orange-accounting.com/"},
+            {src:'/images/portfolio/hosting.jpg',
+            link:"https://ideihosting.com/"},
+            {src:'/images/portfolio/marketing.jpg',
+            link:"https://ideiweb.com/"},
+            {src:'/images/portfolio/miturturismo.jpg',
+            link:"https://mitur.es/"},
+            {src:'/images/portfolio/Music.jpg',
+            link:"https://fomosapiens.com/"},
+            {src:'/images/portfolio/navarra.jpg',
+            link:"https://gruponavarra.mailconversion.com/"},
+            {src:'/images/portfolio/Regalos.jpg',
+            link:"https://regala.hotelesrh.com/"},
+            {src:'/images/portfolio/scort.jpg',
+            link:"https://wegather.com.co/"},
+            {src:'/images/portfolio/Servicios.jpg',
+            link:"https://samvenet.com/"},
+            {src:'/images/portfolio/trabajos.jpg',
+            link:"https://test2.yecohost.cl/"},
+            {src:'/images/portfolio/Transporte.jpg',
+            link:"https://royalairportconcierge.com/"},
+        ]
+
+        // Pasa un objeto con la propiedad 'imagePaths' que contiene el array
+        res.render('portfolio/portfolio', { imageWeb });
+    });
 });
+
+
+
 
 module.exports = router;  
