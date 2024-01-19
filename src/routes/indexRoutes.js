@@ -4090,6 +4090,28 @@ router.get('/portfolio', async (req, res) => {
 
         console.log("que path encuentra", imagesFolder, imagePaths);
 
+
+        const array = [
+            "https://wallstreeteasy.com",
+            "https://espaciomediterraneo.com",
+            "https://stratuswestmichigan.com",
+            "https://ipvsolution.com",
+            "https://yosvanygarcia.com/",
+            "https://www.juegos.com/",
+            "https://www.veterinariaavellaneda.com/",
+            "https://vip.com.uy/"
+        ];
+        
+        const imageWeb2 = array.map((url, index) => ({
+            src: `/images/portfolio/imagen${index + 1}.jpg`,
+            link: url,
+        }));
+        
+        console.log(imageWeb2);
+        
+
+
+
         const imageWeb =  [
             {src:'/images/portfolio/academia.jpg',
             link:"https://opoadministrativo.com/"},
@@ -4123,20 +4145,20 @@ router.get('/portfolio', async (req, res) => {
         ]
         
 
-const Ecommerce = [
-    {src:'/images/portfolio/the best staff.jpg',
-    link:"https://tbs-it.net/"},
-    {src:'/images/portfolio/dovemailer.jpg',
-    link:"http://dovemailer.net/"},
-    {src:'/images/portfolio/ecommermerce3.jpg',
-    link:"https://gamecenterok.com/"},
-    {src:'/images/portfolio/ecommermerce2.jpg',
-    link:"https://igragalaxy.com/"},
-]
+        const Ecommerce = [
+            {src:'/images/portfolio/the best staff.jpg',
+            link:"https://tbs-it.net/"},
+            {src:'/images/portfolio/dovemailer.jpg',
+            link:"http://dovemailer.net/"},
+            {src:'/images/portfolio/ecommermerce3.jpg',
+            link:"https://gamecenterok.com/"},
+            {src:'/images/portfolio/ecommermerce2.jpg',
+            link:"https://igragalaxy.com/"},
+        ]
 
 
         // Pasa un objeto con la propiedad 'imagePaths' que contiene el array
-        res.render('portfolio/portfolio', {Ecommerce, imageWeb  });
+        res.render('portfolio/portfolio', {Ecommerce, imageWeb, imageWeb2  });
     });
 });
 
