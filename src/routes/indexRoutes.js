@@ -98,6 +98,9 @@ router.get('/SoftDev', async (req, res) => {
     res.render('partials/SoftDev')
 });
 
+
+
+//Ruta para llegar a Nosotros
 //Ruta para llegar a Nosotros
 router.get('/Nosotros', async (req, res) => {
     console.log('Llego a Staffing')
