@@ -4,7 +4,7 @@ const router    = express.Router();
 const passport  = require('passport');
 const fs = require('fs');
 const path = require('path');  // Asegúrate de agregar esta línea
-
+const nodemailer = require('nodemailer');
 
 const http    = require('http');
 const server  = http.Server(express);
@@ -75,7 +75,70 @@ res.render('partials/probando')
 });
 
 
-//aqui programas el html inicial
+// ruta para recibir la info de las paginas WEB y enviar los mails de contacto
+router.post('/mensajedecontactosdenuestrosclientes/:claveCliente', async (req, res) => {
+    console.log("Llego a mensajes de clentes en TBS-IT")
+    try {
+        // Obtener los datos del formulario
+        const { nombre, email, mensaje } = req.body;
+
+        // Identificar qué cliente es (usé un ejemplo con el nombre del cliente si no existe te saca y no envia el mensaje)
+        const claveCliente = req.params.claveCliente;
+        if (claveCliente == "holaTBS-IT") {
+            console.log("la clave del ciente NO se encontro")
+            // Responder con un código 404 si algo salió mal
+            res.status(404).json({ error: 'No eres un cliente de TBS-IT' });
+            return
+        }
+        // Buscar el email del destinatario y el email de salida (ejemplos, debes reemplazarlos con tu lógica)
+        const destinatarioEmail = 'destinatario@example.com';
+        const emailSalida = 'tucorreo@gmail.com';
+
+        // Configurar el transporter de nodemailer
+        const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: 'tucorreo@gmail.com',
+                pass: 'tupassword',
+            },
+        });
+
+        // Configurar el contenido del correo
+        const mailOptionsCliente = {
+            from: emailSalida,
+            to: destinatarioEmail,
+            subject: 'Tienes una nueva consulta/pedido',
+            text: `Hola soy ${nombre}, y este es mi mensaje para vos Mario ${mensaje}Gracias por tu tiempo`,
+        };
+
+        const mailOptionsConsultante = {
+            from: emailSalida,
+            to: email,
+            subject: 'Gracias por tu consulta',
+            text: `Hola ${nombre}, Agradecemos que te hayas puesto en contacto con nosotros. Tu consulta ha sido recibida y te responderemos pronto. Equipo de Soporte de radio TROPILUZ`,
+        };
+
+        // Enviar email al cliente sobre la consulta
+        await transporter.sendMail(mailOptionsCliente);
+
+        // Enviar email al consultante que a la brevedad le será respondido
+        await transporter.sendMail(mailOptionsConsultante);
+
+        // Responder con un código 200 si todo salió bien
+        res.status(200).json({ mensaje: 'Correo enviado exitosamente' });
+    } catch (error) {
+        // Responder con un código 404 si algo salió mal
+        res.status(404).json({ error: 'Error al enviar el correo' });
+    }
+});
+
+module.exports = router;
+
+    
+
+
+
+
 router.get('/dataQuote1', (req, res) => {
     res.render('partials/softFactory/2SF')
 });
