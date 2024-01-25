@@ -76,7 +76,7 @@ res.render('partials/probando')
 
 // ruta para recibir la info de las paginas WEB y enviar los mails de contacto
 router.post('/mensajedecontactosdenuestrosclientes/:claveCliente', async (req, res) => {
-    console.log("Llego a mensajes de clentes en TBS-IT")
+    console.log("Llego a mensajes de clentes en TBS-IT", req.body, req.params.claveCliente)
     try {
         // Obtener los datos del formulario
         const { nombre, email, mensaje, numCel, ciudad, } = req.body;
@@ -90,24 +90,41 @@ router.post('/mensajedecontactosdenuestrosclientes/:claveCliente', async (req, r
             return
         }
         // Buscar el email del destinatario y el email de salida (ejemplos, debes reemplazarlos con tu lógica)
-        const avisoDEmail = 'sebastianpaysse@gmail.com';
-        const emailSalida = 'sebastianpaysse@gmail.com';
+        const avisoDEmail = 'tbs-it.info@tbs-it.net';
+        const emailSalida = 'tbs-it.info@tbs-it.net';
 
         // Configurar el transporter de nodemailer
-        const transporter = nodemailer.createTransport({
+        const transporterCliente = nodemailer.createTransport({
             service: 'Gmail',
             auth: {
                 user: 'sebastianpaysse@gmail.com',
-                pass: 'Sebagmail22',
+                pass: 'SebaGmail22',
             },
         });
+
+
+        const transporter = nodemailer.createTransport({
+            host: "smtp.hostinger.com",
+            port: 465,
+            secure: true, // use TLS
+            auth: {
+                user: "tbs-it.info@tbs-it.net",
+                pass: "qtwcqebleraupety",
+            },
+            tls: {
+                // do not fail on invalid certs
+                rejectUnauthorized: false,
+            },
+        })
+
+
 
         // Configurar el contenido del correo
         const mailOptionsCliente = {
             from: emailSalida,
             to: avisoDEmail,
             subject: 'Tienes una nueva consulta/pedido',
-            text: `Hola soy ${nombre}, y este es mi mensaje para vos Mario ${mensaje} enviado desde el email ${emailSalida}, desde la ciudad de ${ciudad}, numero de calular ${numCel}. Gracias por tu tiempo`,
+            text: `Hola soy ${name}, y este es mi mensaje para vos Mario ${message} enviado desde el email ${emailSalida}, desde la ciudad de ${ciudad}, numero de calular ${numCel}. Gracias por tu tiempo`,
         };
 
         const mailOptionsConsultante = {
@@ -127,7 +144,7 @@ router.post('/mensajedecontactosdenuestrosclientes/:claveCliente', async (req, r
         res.status(200).json({ mensaje: 'Correo enviado exitosamente' });
     } catch (error) {
         // Responder con un código 404 si algo salió mal
-        res.status(404).json({ error: 'Error al enviar el correo' });
+        res.status(404).json({ error: 'Error al enviar el correo', error });
     }
 });
 
