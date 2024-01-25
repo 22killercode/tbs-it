@@ -39,8 +39,6 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
                 rejectUnauthorized: false,
             },
         });
-    
-
 
         // Configurar el contenido del correo
         const mailOptionsCliente = {
@@ -123,7 +121,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
                 </div>
             
                 <div style="background-color: #007bff; color: #fff; padding: 20px; text-align: center;">
-                    <p style="font-size: 14px;color: #fff">Este mensaje fue enviado desde el correo electrónico de ${emailSalida}.</p>
+                    <p style="font-size: 14px;color: #fff !important">Este mensaje fue enviado desde el correo electrónico de ${emailSalida}.</p>
                 </div>
             
             </body>
