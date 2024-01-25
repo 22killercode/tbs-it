@@ -15,7 +15,6 @@ const { isAuthenticated } = require('../helpers/auth');
 const formatoPesos = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
 
 //appis
-const nodemailer = require('nodemailer');
 const shortid = require('shortid');
 
 //models 
