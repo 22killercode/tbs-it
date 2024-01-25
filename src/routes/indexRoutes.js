@@ -80,7 +80,7 @@ router.post('/mensajedecontactosdenuestrosclientes/:claveCliente', async (req, r
     console.log("Llego a mensajes de clentes en TBS-IT")
     try {
         // Obtener los datos del formulario
-        const { nombre, email, mensaje } = req.body;
+        const { nombre, email, mensaje, numCel, ciudad, } = req.body;
 
         // Identificar qué cliente es (usé un ejemplo con el nombre del cliente si no existe te saca y no envia el mensaje)
         const claveCliente = req.params.claveCliente;
@@ -108,7 +108,7 @@ router.post('/mensajedecontactosdenuestrosclientes/:claveCliente', async (req, r
             from: emailSalida,
             to: avisoDEmail,
             subject: 'Tienes una nueva consulta/pedido',
-            text: `Hola soy ${nombre}, y este es mi mensaje para vos Mario ${mensaje} enviado desde el email ${emailSalida}. Gracias por tu tiempo`,
+            text: `Hola soy ${nombre}, y este es mi mensaje para vos Mario ${mensaje} enviado desde el email ${emailSalida}, desde la ciudad de ${ciudad}, numero de calular ${numCel}. Gracias por tu tiempo`,
         };
 
         const mailOptionsConsultante = {
