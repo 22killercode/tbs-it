@@ -1,18 +1,7 @@
 require('dotenv').config();
 const express   = require('express');
 const router    = express.Router(); 
-const passport  = require('passport');
-const fs = require('fs');
-const path = require('path');  // Asegúrate de agregar esta línea
 const nodemailer = require('nodemailer');
-
-const http    = require('http');
-const server  = http.Server(express);
-
-//midlewears
-const {validador1,val2}        = require('../routes/Midlewares');
-const { isAuthenticated } = require('../helpers/auth');
-const formatoPesos = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
 
 //appis
 const shortid = require('shortid');
@@ -36,16 +25,6 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
         // Buscar el email del destinatario y el email de salida (ejemplos, debes reemplazarlos con tu lógica)
         const avisoDEmail = 'tbs-it.info@tbs-it.net';
         const emailSalida = 'tbs-it.info@tbs-it.net';
-
-        // Configurar el transporter de nodemailer
-        const transporterCliente = nodemailer.createTransport({
-            service: 'Gmail',
-            auth: {
-                user: 'sebastianpaysse@gmail.com',
-                pass: 'SebaGmail22',
-            },
-        });
-
 
         const transporter = nodemailer.createTransport({
             host: "smtp.hostinger.com",
@@ -80,7 +59,8 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
 
     <div style="background-color: #ff6f61; color: #fff; padding: 20px; text-align: center;">
         <h1 style="margin-bottom: 10px;">¡Nueva Consulta Recibida!</h1>
-        <p style="font-size: 16px;">Se ha recibido una nueva consulta desde tu sitio web. A continuación, se detallan los datos:</p>
+        <p style="font-size: 16px;">Se ha recibido una nueva consulta desde tu sitio web. </p>
+        <p style="font-size: 16px;">A continuación, se detallan los datos:</p>
     </div>
 
     <div style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
@@ -101,7 +81,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
     </div>
 
     <div style="background-color: #ff6f61; color: #fff; padding: 20px; text-align: center;">
-        <p style="font-size: 14px;">Este mensaje fue enviado desde el correo electrónico de ${emailSalida}.</p>
+        <p style="font-size: 14px; color: #fff; ">Este mensaje fue enviado desde el correo electrónico de ${emailSalida}.</p>
     </div>
 
 </body>
@@ -125,7 +105,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
             
                 <div style="background-color: #007bff; color: #fff; padding: 20px; text-align: center;">
                     <h1 style="margin-bottom: 10px;">¡Hola ${nombre}!</h1>
-                    <p style="font-size: 16px;">Hemos recibido tu consulta y queremos agradecerte por ponerte en contacto con nosotros desde la ciduad de ${ciudad}.</p>
+                    <p style="font-size: 16px;">En ${cliente}, hemos recibido tu consulta y queremos agradecerte por ponerte en contacto con nosotros desde la ciduad de ${ciudad}.</p>
                 </div>
             
                 <div style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
@@ -143,7 +123,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
                 </div>
             
                 <div style="background-color: #007bff; color: #fff; padding: 20px; text-align: center;">
-                    <p style="font-size: 14px;">Este mensaje fue enviado desde el correo electrónico de ${emailSalida}.</p>
+                    <p style="font-size: 14px;color: #fff">Este mensaje fue enviado desde el correo electrónico de ${emailSalida}.</p>
                 </div>
             
             </body>
