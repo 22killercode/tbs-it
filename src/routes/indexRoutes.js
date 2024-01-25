@@ -91,24 +91,24 @@ router.post('/mensajedecontactosdenuestrosclientes/:claveCliente', async (req, r
             return
         }
         // Buscar el email del destinatario y el email de salida (ejemplos, debes reemplazarlos con tu lógica)
-        const destinatarioEmail = 'destinatario@example.com';
-        const emailSalida = 'tucorreo@gmail.com';
+        const avisoDEmail = 'sebastianpaysse@gmail.com';
+        const emailSalida = 'sebastianpaysse@gmail.com';
 
         // Configurar el transporter de nodemailer
         const transporter = nodemailer.createTransport({
             service: 'Gmail',
             auth: {
-                user: 'tucorreo@gmail.com',
-                pass: 'tupassword',
+                user: 'sebastianpaysse@gmail.com',
+                pass: 'Sebagmail22',
             },
         });
 
         // Configurar el contenido del correo
         const mailOptionsCliente = {
             from: emailSalida,
-            to: destinatarioEmail,
+            to: avisoDEmail,
             subject: 'Tienes una nueva consulta/pedido',
-            text: `Hola soy ${nombre}, y este es mi mensaje para vos Mario ${mensaje}Gracias por tu tiempo`,
+            text: `Hola soy ${nombre}, y este es mi mensaje para vos Mario ${mensaje} enviado desde el email ${emailSalida}. Gracias por tu tiempo`,
         };
 
         const mailOptionsConsultante = {
