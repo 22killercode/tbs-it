@@ -28,8 +28,6 @@ const server = http.Server(app);
 const io = socketIO(server);
 
 
-
-
 //Settings 
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'))
@@ -91,6 +89,7 @@ app.use((req, res, next) => {
 app.use(require('./routes/indexRoutes'));
 app.use(require('./routes/users'));
 app.use(require('./routes/RRHH'));
+app.use(require('./routes/consuSitiosWeb'));
 
 //Statics Files
 app.use(express.static(path.join(__dirname, 'public')));
