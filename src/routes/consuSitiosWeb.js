@@ -137,7 +137,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
         // Enviar email al consultante que a la brevedad le será respondido
         await transporter.sendMail(mailOptionsConsultante);
 
-        // Responder con un código 200 si todo salió bien
+
         //res.status(200).json({ mensaje: 'Correo enviado exitosamente' });
         console.log("https://22killercode.github.io/tropiluz/#mensajeEnvio",)
         res.redirect("https://22killercode.github.io/tropiluz/#mensajeEnvio");
