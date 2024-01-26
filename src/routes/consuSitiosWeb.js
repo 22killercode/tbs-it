@@ -138,7 +138,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
 
         //res.status(200).json({ mensaje: 'Correo enviado exitosamente' });
         console.log("https://22killercode.github.io/tropiluz/#mensajeEnvio",)
-        res.redirect("https://22killercode.github.io/tropiluz/#mensajeEnvio");
+        res.redirect("http://tropiluz.org/#mensajeEnvio");
     } catch (error) {
         // Responder con un código 404 si algo salió mal
         res.status(404).json({ error: 'Error al enviar el correo', error });
