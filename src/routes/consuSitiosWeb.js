@@ -27,7 +27,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
         const emailSalida = 'mario.pereyra@tropiluz.org';
 
         const transporter = nodemailer.createTransport({
-            host: "_mainaccount@tropiluz.org",
+            host: "mail.tropiluz.org",
             port: 465,
             secure: true, // use TLS
             auth: {
