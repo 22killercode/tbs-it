@@ -23,7 +23,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
             return
         }
         // Buscar el email del destinatario y el email de salida (ejemplos, debes reemplazarlos con tu lógica)
-        const avisoDEmail = 'mario.pereyra@tropiluz.org';
+        const avisoDEmail = ['mario.pereyra@tropiluz.org; info@@tropiluz.org'];
         const emailSalida = 'mario.pereyra@tropiluz.org';
 
         const transporter = nodemailer.createTransport({
