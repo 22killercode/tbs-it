@@ -23,16 +23,16 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
             return
         }
         // Buscar el email del destinatario y el email de salida (ejemplos, debes reemplazarlos con tu lógica)
-        const avisoDEmail = 'tbs-it.info@tbs-it.net';
-        const emailSalida = 'tbs-it.info@tbs-it.net';
+        const avisoDEmail = 'mario.pereyra@tropiluz.org';
+        const emailSalida = 'mario.pereyra@tropiluz.org';
 
         const transporter = nodemailer.createTransport({
-            host: "smtp.hostinger.com",
+            host: "smtp.orangehost.com",
             port: 465,
             secure: true, // use TLS
             auth: {
-                user: "tbs-it.info@tbs-it.net",
-                pass: "Sebatbs@22",
+                user: "mario.pereyra@tropiluz.org",
+                pass: "Marioorange22",
             },
             tls: {
                 // do not fail on invalid certs
