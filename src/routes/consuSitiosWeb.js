@@ -31,7 +31,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
             port: 465,
             secure: true, // use TLS
             auth: {
-                user: "mario.pereyra@tropiluz.org",
+                user: "info@tropiluz.org",
                 pass: "MarioOrange22",
             },
             tls: {
