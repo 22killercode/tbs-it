@@ -64,7 +64,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
     <div style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
         <p style="font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 20px;">
             <strong>Nombre:</strong> ${nombre} <br>
-            <strong>Email:</strong> ${emailSalida} <br>
+            <strong>Email:</strong> ${email} <br>
             <strong>Ciudad:</strong> ${ciudad} <br>
             <strong>Número de Celular:</strong> ${numCel}
         </p>
@@ -204,7 +204,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveCliente/puebloiruya', as
     <div style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
         <p style="font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 20px;">
             <strong>Nombre:</strong> ${nombre} <br>
-            <strong>Email:</strong> ${emailSalida} <br>
+            <strong>Email:</strong> ${email} <br>
             <strong>Ciudad:</strong> ${ciudad} <br>
             <strong>Número de Celular:</strong> ${numCel}
         </p>
