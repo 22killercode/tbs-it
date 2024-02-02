@@ -10,7 +10,7 @@ const shortid = require('shortid');
 // Ruta de los mensajes del cliente TROPILUZ.ORG radio de Marios Pereyra
 router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async (req, res) => {
     const cliente = "TROPILUZ radio"
-    console.log("Llego a mensajes de clentes en TBS-IT", req.body)
+    console.log("Llego a mensajes de clentes en tropiluz TBS-IT", req.body)
     try {
         // Obtener los datos del formulario
         const { nombre, email, mensaje, numCel, ciudad, tbstk } = req.body;
@@ -148,7 +148,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
 
 
 // Ruta de los mensajes del cliente PUEBLOIRUYA.COM de gustavo
-router.post('/mensajedecontactosdenuestrosclientes/claveCliente/puebloiruya', async (req, res) => {
+router.post('/mensajedecontactosdenuestrosclientes/claveCli/puebloiruya', async (req, res) => {
     const cliente = "puebloIruya.com & GustavoTour´s"
     console.log("Llego a mensajes de clentes en TBS-IT", req.body)
     try {
