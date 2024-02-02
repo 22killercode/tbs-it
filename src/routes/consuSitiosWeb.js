@@ -163,7 +163,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveCliente/puebloiruya', as
             return
         }
         // Buscar el email del destinatario y el email de salida (ejemplos, debes reemplazarlos con tu lógica)
-        const avisoDEmail = ['mario.pereyra@tropiluz.org; info@puebloiruya.com'];
+        const avisoDEmail = ['info@puebloiruya.com'];
         const emailSalida = 'info@puebloiruya.com';
 
         const transporter = nodemailer.createTransport({
