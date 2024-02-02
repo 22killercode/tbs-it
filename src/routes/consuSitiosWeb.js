@@ -148,7 +148,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
 
 
 // Ruta de los mensajes del cliente PUEBLOIRUYA.COM de gustavo
-router.post('https://tbs-it.net/mensajedecontactosdenuestrosclientes/claveCliente/puebloiruya', async (req, res) => {
+router.post('mensajedecontactosdenuestrosclientes/claveCliente/puebloiruya', async (req, res) => {
     const cliente = "puebloIruya.com & GustavoTour´s"
     console.log("Llego a mensajes de clentes en TBS-IT", req.body)
     try {
