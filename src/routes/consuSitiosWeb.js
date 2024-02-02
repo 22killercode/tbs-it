@@ -79,7 +79,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
     </div>
 
     <div style="background-color: #ff6f61; color: #fff; padding: 20px; text-align: center;">
-        <p style="font-size: 14px; color: #fff; ">Este mensaje fue enviado desde el correo electrónico de ${emailSalida}.</p>
+        <p style="font-size: 14px; color: #fff; ">Este mensaje fue enviado desde el correo electrónico de ${email}.</p>
     </div>
 
 </body>
@@ -219,7 +219,7 @@ router.post('/mensajedecontactosdenuestrosclientes/claveCliente/puebloiruya', as
     </div>
 
     <div style="background-color: #ff6f61; color: #fff; padding: 20px; text-align: center;">
-        <p style="font-size: 14px; color: #fff; ">Este mensaje fue enviado desde el correo electrónico de ${emailSalida}.</p>
+        <p style="font-size: 14px; color: #fff; ">Este mensaje fue enviado desde el correo electrónico de ${email}.</p>
     </div>
 
 </body>
