@@ -4112,7 +4112,14 @@ router.get('/portfolio', async (req, res) => {
         console.log(imageWeb2);
         
 
+        const imageWeb22 =  [
+            {src:'/images/tbs/tropi.jpg',
+            link:"https://tropiluz.org/"},
 
+            {src:'/images/tbs/iruya.jpg',
+            link:"https://puebloiruya.com/"},
+
+        ]
 
         const imageWeb =  [
             {src:'/images/portfolio/academia.jpg',
@@ -4160,7 +4167,7 @@ router.get('/portfolio', async (req, res) => {
 
 
         // Pasa un objeto con la propiedad 'imagePaths' que contiene el array
-        res.render('portfolio/portfolio', {Ecommerce, imageWeb, imageWeb2  });
+        res.render('portfolio/portfolio', {Ecommerce, imageWeb, imageWeb2, imageWeb22  });
     });
 });
 
