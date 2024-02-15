@@ -102,7 +102,8 @@ app.use(express.static(path.join(__dirname, 'partials')));
 app.use(express.static(path.join(__dirname, 'uploads')));
 // Configura una ruta estática para servir imágenes desde la carpeta 'uploads' para los blogs
 //app.use('/uploads', express.static('C:\\Users\\Coderian\\Desktop\\pruebaTBS\\src\\uploads'));
-app.use('/uploads', express.static('pruebaTBS\\src\\uploads'));
+//app.use('/uploads', express.static('pruebaTBS\\src\\uploads'));
+app.use('/uploads', express.static('https://tbs-it.net/uploads'));
 
 // app 4004
 // app.use((req, res, next) => {
