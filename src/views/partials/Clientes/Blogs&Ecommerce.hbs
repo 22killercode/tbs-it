@@ -1,0 +1,1037 @@
+<br><br>
+<style>
+    form {
+        background-color: auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 100% !important;
+        width: 100% !important;
+        transition: transform 0.3s ease;
+        color: black !important;
+        font-size: 1rem !important;
+    }
+
+    form:hover {
+        transform: scale(1.05);
+    }
+
+    h1, h2, h3, title {
+        color: #000 !important;
+    }
+
+    .eliminar {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+        color: black;
+        cursor: pointer;
+        z-index: 9999999999999 !important;
+    }
+
+    .card {
+        width: 50%;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .card-body, .container {
+        background-color: auto;
+        color: black !important;
+        padding: 20px;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: auto;
+        box-sizing: border-box;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    button {
+        display: block;
+        margin: 20px auto;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-size: 1rem !important;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        transition: border-color 0.3s ease;
+        color: black !important;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #007bff;
+    }
+
+    .file-upload {
+        position: relative;
+        overflow: hidden;
+        margin: 10px 0;
+    }
+
+    .file-upload input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .file-upload button {
+        background-color: #555;
+        color: #fff;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .file-upload button:hover {
+        background-color: #333;
+    }
+
+    .nav-tabs {
+        display: flex;
+        justify-content: flex-start;
+        background-color: white;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 1rem;
+    }
+
+    .nav-item {
+        margin-right: -4px;
+    }
+
+    .nav-link {
+        transition: font-size 0.3s ease-in-out, color 0.3s ease-in-out;
+        padding: 10px 15px;
+        margin-right: -4px;
+        font-size: 20px;
+    }
+
+    .nav-link.active {
+        color: #007bff;
+        font-size: 24px;
+    }
+
+    .content {
+        display: none;
+        padding: 20px;
+        background-color: white;
+        border: 1px solid #cccccc;
+        border-radius: 1rem;
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 20px auto;
+        box-sizing: border-box;
+        color: #000 !important;
+    }
+
+    .content.active {
+        display: block;
+    }
+
+    @media (max-width: 768px) {
+        .nav-tabs {
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            width: 100%;
+            text-align: center;
+        }
+
+        .zI {
+            z-index: 88888 !important;
+        }
+    }
+</style>
+
+
+
+<div style="max-width: 100% !important;width: 100% !important; align-items: center !important;justify-content: center !important;color: black !important; background-color: none !important; opacity: 1 !important;">
+        {{!-- menu archivero de opciones  --}}
+        <div class="container" style="" >
+
+            <div class="" style="">
+                {{!-- menu de opciones --}}
+                <ul class="nav nav-tabs" style="">
+                    <li class="nav-item">
+                        <a style="color: #007bff  !important;" class="nav-link active" href="#opcion1">New's</a>
+                    </li>
+                    {{#if Clave}}
+                        <li class="nav-item" id="">
+                            <a style="color: #007bff  !important;" class="nav-link " href="#opcion2">Agregar clientes</a>
+                        </li>
+                    {{/if}}
+                    {{#if blog}}
+                    <li class="nav-item">
+                        <a style="color: #007bff  !important;" class="nav-link "  href="#opcion3">Blog's</a>
+                    </li>
+                    {{/if}}
+                    {{#if Ecommerce}}
+                    <li class="nav-item">
+                        <a style="color: #007bff  !important;" class="nav-link" href="#opcion4">Productos</a>
+                    </li>
+                    {{/if}}
+                    <li class="nav-item">
+                        <a style="color: #007bff  !important;" class="nav-link" href="#opcion5">Agregar icono a tu pantalla</a>
+                    </li>
+                </ul> 
+                {{!-- menu de acciones --}}
+                <div class="" style="">
+                    {{!-- agregar NEW´s --}}
+                    <div id="">
+                        <div class="content active" id="opcion1" >
+                            {{!-- carrosel de beneficios --}}
+                            <div class="col-md panelControl" style="z-index: 888 !important ;margin:auto;border:1px solid #000; background-color:white;border-radius:1rem; max-width:90%;height:auto !important;">
+                                    <div style="color: black;" id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner" style="border-radius:1rem; color: black; height:41rem; margin-top:1rem; background-color: white;">
+                                            <div class="carousel-item active" data-bs-interval="2000" aligne="center">
+                                                <br>
+                                                <img src="img/dovelogo2.png" style="height:55%; width: 50%; margin:auto; display: flex;  align-items: center;justify-content: center;">
+                                            </div>
+                                            <div class="carousel-item" data-bs-interval="20000" aligne="center">
+                                                <a href="/membresias">
+                                                    <img src="img/menuMemb.jpg" style="width:80%; margin:auto; display: flex;  align-items: center;justify-content: center;">
+                                                </a>
+                                            </div>                                        
+                                            <div class="carousel-item" data-bs-interval="20000" style="color: black;">
+                                                <img src="img/dovelogo2.png" class="" alt="30%" width="30%">
+                                                <br>
+                                                <br>
+                                                <h2 style="text-align:center;">
+                                                    <strong>
+                                                        ¡Llegó el momento de hacer que tus correos electrónicos sean más efectivos!
+                                                    </strong>
+                                                </h2>
+                                                <div class="lefti">
+                                                    <h2>
+                                                        <br>
+                                                        Con la IA de Dovemailer, podrás enviar correos personalizados, crear campañas de marketing automatizadas, folloUp´s y obtener métricas detalladas sobre el rendimiento de tus correos.
+                                                        <br><br>
+                                                        ¡Aumenta la efectividad de tus correos con Dovemailer, inscribete y pruebalo de forma gratuita ahora!
+                                                    </h2>
+                                                </div>
+                                            </div>  
+                                            <div class="carousel-item" data-bs-interval="20000" style="color: black;">
+                                                <br>
+                                                <img src="img/dovelogo2.png" class="" alt="30%" width="30%">
+                                                <br>
+                                                <br>
+                                                <div class="">
+                                                    <h2>Nos diferenciamos de las demás plataformas de envió porque:</h2>
+                                                    <h4 style="text-align: left; margin: 1rem;">
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item">Creemos que no hay nada mas fuerte que la simpleza, somos simples.</li>
+                                                            <li class="list-group-item">Menúes intuitivos rápidos y confiables.</li>
+                                                            <li class="list-group-item">Maneja en pocos clicks tus campañas.</li>
+                                                            <li class="list-group-item">Rapidez, sencillez y eficiencia es nuestro lema.</li>
+                                                            <li class="list-group-item">Aumenta tu exposición y relacionamiento social.</li>
+                                                            <li class="list-group-item">Black & stop list.</li>       
+                                                        </ul>
+                                                    </h4>                                
+                                                </div>
+                                            </div>                        
+                                            <div class="carousel-item" data-bs-interval="10000" style="color: black;">
+                                                <br>
+                                                <img src="img/dovelogo2.png" class="" alt="30%" width="30%">
+                                                <br>
+                                                <br>
+                                                <div class="">
+                                                    <h2>El mejor sistema de envió masivo de comunicaciones electrónicas.</h2>
+                                                    <h4 style="text-align: left; margin: 1rem;">
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item">Puedes enviar miles de emails y próximamente, SMS, whatssaps.</li>
+                                                            <li class="list-group-item">Puedes enviar tus campañas desde varios mails distintos ideal equipos de ventas.</li>
+                                                            <li class="list-group-item">Crear todo tipo de campañas publicitarias y comerciales.</li>
+                                                            <li class="list-group-item">Llega masiva, rápida y profesionalmente a todos tus contactos para hacerte conocer.</li>
+                                                            <li class="list-group-item">Crea la mayor cantidad de leads y oportunidades comerciales.</li>
+                                                        </ul>
+                                                    </h4>                                
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item" data-bs-interval="20000" style="color: black;">
+                                                <br>
+                                                <img src="img/dovelogo2.png" class="" alt="30%" width="30%">
+                                                <br>
+                                                <br>
+                                                <h2 style="text-align:center;">
+                                                    <strong>
+                                                        ¿Te gustaría mejorar la comunicación con tus clientes y aumentar las ventas?
+                                                    </strong>
+                                                </h2>
+                                                <div class="lefti">
+                                                    <h2>
+                                                        <br>
+                                                            Dovemailer es la solución perfecta para ti. 
+                                                        <br>
+                                                            ¡No pierdas más tiempo con otros proveedores y aumenta la efectividad de tus correos Hoy!
+                                                        <br>
+                                                            Podrás crear correos personalizados y segmentados, automatizar tus campañas de marketing y hacer un seguimiento detallado del rendimiento de tus correos.
+                                                        <br>
+                                                        ¡Inscribete y pruebalo de forma gratuita ahora!
+                                                    </h2>
+                                                </div>
+                                            </div>  
+                                            <div class="carousel-item" data-bs-interval="10000">
+                                                <br>
+                                                <img src="img/dovelogo2.png" class="" alt="30%" width="30%">
+                                                <br>
+                                                <br>
+                                                <div class="">
+                                                    <h2>El mejor sistema de envió masivo de comunicaciones electrónicas.</h2>
+                                                    <h4 style="text-align: left; margin: 1rem;">
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item">Software amigable e intuitivo de rápida y sencilla configuración.</li>
+                                                            <li class="list-group-item">Sube tu base de datos con Excell y administrala en DoveMailer.</li>
+                                                            <li class="list-group-item">Filtro de Emails repetidos y no deseados.</li>
+                                                            <li class="list-group-item">Estado de envió y recepción.</li>
+                                                            <li class="list-group-item">Agrega tu firma personalizada.</li>
+                                                            <li class="list-group-item">Programa el envío de tu campaña y followUP´s /seguimientos.</li>                                        
+                                                        </ul>                                    
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item" data-bs-interval="10000">
+                                                <br>
+                                                <img src="img/dovelogo2.png" class="" alt="30%" width="30%">
+                                                <br>
+                                                <br>
+                                                <div class="">
+                                                    <h2>El mejor sistema de envió masivo de comunicaciones electrónicas.</h2>
+                                                    <h3 style="text-align: left; margin: 1rem;">
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item">Suma los adjuntos que desees.</li>
+                                                            <li class="list-group-item">Tus campañas se guardan para repetirlas cuando desees.</li>
+                                                            <li class="list-group-item">Envía tu campañas con tu propio dominio de correo o el nuestro.</li>
+                                                            <li class="list-group-item">Ilimitadas campañas.</li>
+                                                            <li class="list-group-item">Lo mejor de todo... lo puedes usar gratis.</li>                                        
+                                                        </ul>                                    
+                                                    </h3>
+                                                </div>
+                                            </div>                        
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" style="background-color: transparent; border:none; color: black;" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" style="background-color: transparent;border:none;color: black;"data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                    <script>
+                                        const labels = document.querySelectorAll('.form-control2 label')
+                                        labels.forEach(label => {
+                                        label.innerHTML = label.innerText
+                                            .split('')
+                                            .map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`)
+                                            .join('')
+                                        })
+                                    </script>
+                            </div>
+                        </div>
+                    </div>
+                    {{!-- Agregar clientes --}}
+                    {{#if Clave}}
+                        <div class="content" id="opcion2" style="">
+                            <div style="width: 100% !important;">
+                                <style>
+                                    /* Estilos específicos para el formulario dentro de la div con el identificador 'miFormulario' */
+                                    #miFormulario form {
+                                        background-color: #fff;
+                                        padding: 20px;
+                                        border-radius: 8px;
+                                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                        width: 100%;
+                                        max-width: 100%;
+                                        height: min-content;
+                                        transition: transform 0.3s ease;
+                                        color: #000 !important;
+                                    }
+
+                                    #miFormulario form:hover {
+                                        transform: scale(1.05);
+                                    }
+
+                                    #miFormulario label {
+                                        display: block;
+                                        margin-bottom: 8px;
+                                        font-weight: bold;
+                                        color: #000 !important;
+                                    }
+
+                                    #miFormulario input {
+                                        width: 100%;
+                                        padding: 8px;
+                                        margin-bottom: 16px;
+                                        border: 1px solid #ccc;
+                                        border-radius: 4px;
+                                        transition: border-color 0.3s ease;
+                                        color: #000 !important;
+                                    }
+
+                                    #miFormulario input:focus {
+                                        border-color: #007bff;
+                                    }
+
+                                    #miFormulario button {
+                                        background-color: #007bff;
+                                        color: #fff;
+                                        padding: 10px 15px;
+                                        border: none;
+                                        border-radius: 4px;
+                                        cursor: pointer;
+                                        transition: background-color 0.3s ease;
+                                    }
+
+                                    #miFormulario button:hover {
+                                        background-color: #0056b3;
+                                    }
+                                </style>
+                                <div id="miFormulario" style="width: 100% !important;">
+                                    <form action="/users/signUP/clientesyempleados" method="post">
+                                        <h3 style="color: #000 !important;">Formulario para agregar clientes</h3>
+                                        <label for="tipoCliente">Tipo de Cliente:</label>
+
+                                        <div class="d-flex justify-content-center" style="width: 90%; font-size: 0.8rem ; margin: 1rem !important; padding: 0 !important;">
+                                            <div class="form-check form-switch mx-4" >
+                                                <input class="form-check-input" type="checkbox" value="true" id="flexSwitchCheckAdminSeba" role="switch" name="Clave">
+                                                <label class="form-check-label" for="flexSwitchCheckAdminSeba">Admin</label>
+                                            </div>
+                                            <div class="form-check form-switch mx-4" style="">
+                                                <input class="form-check-input" type="checkbox" value="true" id="flexSwitchCheck" role="switch" name="blog">
+                                                <label class="form-check-label" for="flexSwitchCheck">Blog</label>
+                                            </div>
+                                            <div class="form-check form-switch mx-4" >
+                                                <input class="form-check-input" type="checkbox" value="true" id="flexSwitchCheckECommerce" role="switch" name="Ecommerce">
+                                                <label class="form-check-label" for="flexSwitchCheckECommerce">Ecomm</label>
+                                            </div>
+                                            <div class="form-check form-switch mx-4" >
+                                                <input class="form-check-input" type="checkbox" value="true" id="flexSwitchCheckStaffing" role="switch" name="staffing">
+                                                <label class="form-check-label" for="flexSwitchCheckStaffing">Staffing</label>
+                                            </div>
+                                        </div>
+
+                                        <label for="nombre">Nombre:</label>
+                                        <input type="text" id="nombre" name="nombre" required>
+
+                                        <label for="apellido">Apellido:</label>
+                                        <input type="text" id="apellido" name="apellido" required>
+
+                                        <label for="pais">País:</label>
+                                        <input type="text" id="pais" name="pais" required>
+
+                                        <label for="empresa">Empresa:</label>
+                                        <input type="text" id="empresa" name="empresa" required>
+
+                                        <label for="email">Email:</label>
+                                        <input type="email" id="email" name="email" required>
+
+                                        <label for="password">Contraseña:</label>
+                                        <input type="password" id="password" name="password" required>
+
+                                        <button type="submit">Enviar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
+                    {{!-- Blogs --}}
+
+                    {{#if blog}}
+                    <div class="container-xxl">
+                        <div class="content" id="opcion3">
+                            {{!-- agregar blogs --}}
+                            <div style="text-align: center; color: #000 !important;">
+
+                                <form id="blogForm" action="/recibiendoDatosdelBlog" method="post" enctype="multipart/form-data">
+                                    <h3 style="color: #000 !important;">Ingresa una nueva noticia a tu blog</h3>
+                                    <div class="product-image-container">
+                                        <div class="product-image-placeholder" style="color: #000 !important;">Agrega tu imagen</div>
+                                        <img id="productImage" alt="Vista previa de la imagen del producto/servicio">
+                                    </div>
+                                        <label for="titulo" style="color: #000 !important;">Título del Blog:</label>
+                                        <input type="text" id="titulo" name="titulo" required>
+                                        <label for="contenido" style="color: #000 !important;">Contenido del Blog:</label>
+                                        <textarea placeholder="Puedes copiar  pegar cualquier documento" 
+                                            id="contenido" name="mensaje" rows="6" required style="color: #000 !important;">
+                                        </textarea>
+                                        <div class="file-upload">
+                                            <input type="file" id="imagen" name="imagen" accept="image/*" >
+                                            <button type="button" class="btn btn-success">Seleccionar Imagen</button>
+                                        </div>
+                                        <button type="submit">Publicar Blog</button>
+                                </form>
+
+
+
+
+                                <script>
+                                    // Puedes agregar scripts de JavaScript aquí para manejar eventos o validaciones adicionales
+                                    document.querySelector('.file-upload input').addEventListener('change', function () {
+                                        // Verificar si se seleccionó una imagen
+                                        if (this.files.length > 0) {
+                                            // Verificar el tamaño de la imagen
+                                            if (this.files[0].size > 1024 * 1024) {
+                                                alert("La imagen debe ser menor a 1 MB.");
+                                                // Limpiar el input de archivo
+                                                this.value = '';
+                                                return; // Detener la ejecución si la imagen es demasiado grande
+                                            }
+                                            const fileName = this.files[0].name;
+                                            document.querySelector('.file-upload button').innerText = fileName;
+                                        } else {
+                                            // No se seleccionó ninguna imagen
+                                            alert("Por favor, selecciona una imagen.");
+                                        }
+                                    });
+                                </script>
+                            </div>
+                            {{!-- todos los blogs --}}
+                            <div style="text-align: center;">
+
+                                <br><br>
+                            {{#if dataBlogs}}
+                                <div>
+                                    <hr style="color: #000 !important;">
+                                    <hr style="color: #000 !important;">
+                                    <h2 style="color: #000 !important;"> Edita o elimina tus blogs escritos</h2>
+                                    <br>
+                                    <h3>Actualmente tienes {{dataBlogs.length}} publicados</h3>
+                                    <h4 style="color: #000 !important;">Tu limite es de 10 blogs</h4>
+                                </div>
+                            {{/if}}
+                            {{#each dataBlogs}}
+                                <div class="container card-outline-success" style="width: 80% !important;">
+                                    <form action="/editarBlog" method="post" enctype="multipart/form-data">
+                                    <span class="eliminar" onclick="eliminarBlog('{{_id}}')">X</span>
+                                        <br><br>
+                                        <input type="text" value="{{_id}}" name="id" hidden>
+                                        <div class="container">
+                                            <img src="{{rutaSimple}}" class="card-img-top" style="width: 70%;" alt="...">
+                                            <br>
+                                            <span class="btn btn-light" onclick="cambiarImagen('{{_id}}')">Cambiar Imagen</span>
+                                            <div class="card-body" >
+                                                <p style="color: black !important;">Titulo</p>
+                                                <input placeholder="{{titulo}}" name="titulo" value="{{titulo}}" class="card-title" style="color: black !important;"/>
+                                                <p style="color: black !important;">Mensaje</p>
+                                                <textarea class="card-text" style="background-color: black !important;" id="" placeholder="" name="mensaje">{{mensaje}}</textarea>
+                                            </div>
+                                        </div>
+                                        <button type="submit">Editar Blog</button>
+                                    </form>
+                                </div>
+                                <script>
+
+                                    async function cambiarImagen(id) {
+    if (confirm("¿Estás seguro de que quieres cambiar esta imagen?")) {
+        try {
+            // Crear un input de tipo file para permitir al usuario seleccionar una imagen
+            const inputElement = document.createElement('input');
+            inputElement.type = 'file';
+
+            // Manejar el evento change cuando el usuario selecciona una imagen
+            const nuevaImagenPromise = new Promise((resolve) => {
+                inputElement.addEventListener('change', () => {
+                    resolve(inputElement.files[0]);
+                });
+            });
+
+            // Disparar el clic en el input para que el usuario seleccione una imagen
+            inputElement.click();
+
+            // Obtener la imagen seleccionada por el usuario
+            const nuevaImagen = await nuevaImagenPromise;
+
+            // Verificar el tamaño de la imagen antes de enviarla al servidor
+            if (nuevaImagen && nuevaImagen.size <= 1024 * 1024) {
+                // Crear un objeto FormData y agregar la nueva imagen
+                const formData = new FormData();
+                formData.append('nuevaImagen', nuevaImagen);
+
+                // Utilizar fetch para hacer una solicitud HTTP y enviar la nueva imagen
+                const response = await fetch(`/cambiarnuevaImagen/${id}`, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                console.log(response.status); // Agrega esta línea para imprimir el estado de la respuesta en la consola
+
+                if (response.status === 200) {
+                    // La solicitud fue exitosa (código 200)
+                    confirm("El blog se actualizó correctamente");
+                    // Recarga la página
+                    window.location.reload();
+                } else if (response.status === 500) {
+                    // La solicitud fue exitosa pero hubo un error en el servidor (código 500)
+                    alert("El blog no pudo ser actualizado");
+                } else {
+                    // Otro código de estado no manejado
+                    console.error('Error inesperado al cambiar la imagen. Código de estado:', response.status);
+                    alert("Hubo un error inesperado al cambiar la imagen");
+                }
+            } else {
+                // La imagen es demasiado grande o no se seleccionó ninguna imagen
+                alert("La imagen debe ser menor a 1 MB o no se seleccionó ninguna imagen.");
+            }
+        } catch (error) {
+            // Error de red u otros errores
+            console.error("Error al cambiar la imagen:", error);
+            alert("Hubo un error al intentar cambiar la imagen");
+        }
+    }
+}
+
+                                
+                                    function eliminarBlog(id) {
+    if (confirm("¿Estás seguro de que quieres eliminar este contenido?")) {
+        // Utiliza fetch para hacer una solicitud HTTP
+        fetch(`/eliminarBlog/${id}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            // Verifica si la respuesta es exitosa (código 200) o un error del servidor (código 500)
+            if (response.status === 200) {
+                // Recarga la página
+                window.location.reload();
+                confirm("El blog se eliminó correctamente");
+            } else if (response.status === 500) {
+                // Recarga la página
+                window.location.reload();
+                confirm("Hubo un error al eliminar el blog");
+            } else {
+                // Otro código de estado no manejado
+                console.error('Error inesperado al eliminar el blog. Código de estado:', response.status);
+                // Recarga la página
+                window.location.reload();
+                confirm("Hubo un error inesperado al eliminar el blog");
+            }
+        })
+        .catch(error => {
+            console.error('Error al eliminar el blog:', error);
+            // Recarga la página
+            window.location.reload();
+            confirm("Hubo un error al eliminar el blog");
+        });
+    }
+}
+                                </script>
+                            {{else}}
+                                <h3 style="color: #000 !important;">No tiene blog publicados en su pagina web</h3>
+                            {{/each}}
+                            </div>        
+                        </div>
+                    </div>
+                    {{/if}}
+
+                    {{!-- Agregar productos --}}
+                    {{#if Ecommerce}}
+                        <div class="content" id="opcion4">
+                            <style>
+                                /* Reset or Normalize CSS can be added here if needed */
+
+                                /* General styling for the form */
+                                form {
+                                    background-color: #fff;
+                                    border-radius: 8px;
+                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                    padding: 20px;
+                                    max-width: 500px;
+                                    width: 100%;
+                                    transition: transform 0.3s ease;
+                                }
+
+                                form:hover {
+                                    transform: scale(1.05);
+                                }
+
+                                /* Label styling */
+                                label {
+                                    display: block;
+                                    margin-bottom: 8px;
+                                    font-weight: bold;
+                                    color: #000;
+                                }
+
+                                /* Input, textarea, select styling */
+                                input, textarea, select {
+                                    width: 100%;
+                                    padding: 8px;
+                                    margin-bottom: 16px;
+                                    border: 1px solid #ccc;
+                                    border-radius: 4px;
+                                    transition: border-color 0.3s ease;
+                                    color: #000;
+                                }
+
+                                input:focus, textarea:focus, select:focus {
+                                    border-color: #007bff;
+                                }
+
+                                /* Button styling */
+                                button {
+                                    background-color: #007bff;
+                                    color: #fff;
+                                    padding: 10px 15px;
+                                    border: none;
+                                    border-radius: 4px;
+                                    cursor: pointer;
+                                    transition: background-color 0.3s ease;
+                                }
+
+                                button:hover {
+                                    background-color: #0056b3;
+                                }
+
+                                /* File upload styling */
+                                .file-upload {
+                                    position: relative;
+                                    overflow: hidden;
+                                    margin: 10px 0;
+                                }
+
+                                .file-upload input {
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                    margin: 0;
+                                    opacity: 0;
+                                    cursor: pointer;
+                                }
+
+                                /* Quantity styling */
+                                .quantity {
+                                    display: flex;
+                                    align-items: center;
+                                }
+
+                                .quantity button {
+                                    background-color: #007bff;
+                                    color: #fff;
+                                    border: none;
+                                    border-radius: 4px;
+                                    cursor: pointer;
+                                    margin: 0 5px;
+                                    padding: 5px 10px;
+                                    transition: background-color 0.3s ease;
+                                }
+
+                                .quantity button:hover {
+                                    background-color: #0056b3;
+                                }
+
+                                /* Product image container styling */
+                                .product-image-container {
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    margin-top: 10px;
+                                }
+
+                                .product-image-container img {
+                                    max-width: 100%;
+                                    height: auto;
+                                    border-radius: 4px;
+                                    display: none;
+                                }
+
+                                /* Product image placeholder styling */
+                                .product-image-placeholder {
+                                    width: 100%;
+                                    height: 150px;
+                                    background-color: #eee;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border-radius: 4px;
+                                }
+                            </style>
+
+                            <h3>Formulario de Producto/Servicio</h3>
+                            <div class="product-image-container">
+                                <div class="product-image-placeholder">Agrega tu imagen</div>
+                                <img id="productImage" alt="Vista previa de la imagen del producto/servicio">
+                            </div>
+                            <form>
+                                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+                                <label for="descripcion">Descripción del Producto/Servicio:</label>
+                                <div class="quantity">
+                                    <label for="cantidad">Cantidad:</label>
+                                    <button type="button" id="decrementar">-</button>
+                                    <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
+                                    <button type="button" id="incrementar">+</button>
+                                </div>
+                                <label for="precio">Precio:</label>
+                                <input type="number" id="precio" name="precio" min="0.01" step="0.01" required>
+                                <label for="moneda">Moneda:</label>
+                                <select id="moneda" name="moneda" required>
+                                    <option value="pesos">Pesos</option>
+                                    <option value="dolares">Dólares</option>
+                                </select>
+                                <div class="file-upload">
+                                    <label for="imagen">Subir Imagen:</label>
+                                    <input type="file" id="imagen" name="imagen" accept="image/*" required>
+                                    <button type="button">Seleccionar Archivo</button>
+                                </div>
+                                <button type="submit">Agregar Producto/Servicio</button>
+                            </form>
+                            {{!-- listado de lo que ya se agrego --}}
+                            <div style="color: #000 !important};">
+                                {{#each list1 }}
+                                    <form>
+                                        <div class="product-image-container">
+                                            <div class="product-image-placeholder">Agrega tu imagen</div>
+                                            <img id="productImage" alt="Vista previa de la imagen del producto/servicio">
+                                        </div>
+                                        <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+                                        <label for="descripcion">Descripción del Producto/Servicio:</label>
+                                        <div class="quantity">
+                                            <label for="cantidad">Cantidad:</label>
+                                            <button type="button" id="decrementar">-</button>
+                                            <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
+                                            <button type="button" id="incrementar">+</button>
+                                        </div>
+                                        <label for="precio">Precio:</label>
+                                        <input type="number" id="precio" name="precio" min="0.01" step="0.01" required>
+                                        <label for="moneda">Moneda:</label>
+                                        <select id="moneda" name="moneda" required>
+                                            <option value="pesos">Pesos</option>
+                                            <option value="dolares">Dólares</option>
+                                        </select>
+                                        <div class="file-upload">
+                                            <label for="imagen">Subir Imagen:</label>
+                                            <input type="file" id="imagen" name="imagen" accept="image/*" required>
+                                            <button type="button">Seleccionar Archivo</button>
+                                        </div>
+                                        <button type="submit">Agregar Producto/Servicio</button>
+                                    </form>
+                                {{else}}
+                                    <h3 style="color: #000 !important;">No tiene productos/servicios publicados en su pagina web</h3>
+                                {{/each}}
+                            </div>
+                            <script>
+                                const decrementarBtn = document.getElementById('decrementar');
+                                const incrementarBtn = document.getElementById('incrementar');
+                                const cantidadInput = document.getElementById('cantidad');
+                                const imagenInput = document.getElementById('imagen');
+                                const productImage = document.getElementById('productImage');
+                                const imagePlaceholder = document.querySelector('.product-image-placeholder');
+
+                                decrementarBtn.addEventListener('click', () => {
+                                    cantidadInput.stepDown();
+                                });
+
+                                incrementarBtn.addEventListener('click', () => {
+                                    cantidadInput.stepUp();
+                                });
+
+                                imagenInput.addEventListener('change', (event) => {
+                                    const file = event.target.files[0];
+                                    if (file) {
+                                        const reader = new FileReader();
+                                        reader.onload = function(e) {
+                                            imagePlaceholder.style.display = 'none';
+                                            productImage.style.display = 'block';
+                                            productImage.src = e.target.result;
+                                        };
+                                        reader.readAsDataURL(file);
+                                    }
+                                });
+                            </script>
+                        </div>
+                    {{/if}}
+
+
+                    {{!-- icono --}}
+
+                    <div class="content" id="opcion5">
+                        <div class="card" style="margin: 0.5rem; padding:0.5rem 1.5rem;">
+                            <div class="card-header" style="width: 100%;">
+                                <h2>Agrega un icono de inicio rápido a tu pantalla</h2>
+                            </div>
+                            <div class="row card-body" style="padding: 0.5rem;">
+                                <h3>Elije el tipo de navegador y dispositivo en el que quieres agregar el icono.</h3>
+                                <br>
+                                <div class="col card-header" style="margin: 0.2rem;">
+                                        <h3>PC</h3>
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#Chrome">
+                                            <img src="/img/iconoChrome.jpg" alt="" width="50%">
+                                        </button>
+                                </div>
+                                <div class="col card-header" style="margin: 0.2rem;">
+                                        <h3>Android</h3>
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#Android">
+                                            <img src="/img/iconoAndroid.jpg" alt="" width="50%">
+                                        </button>
+                                </div>
+                                <div class="col card-header" style="margin: 0.2rem;">
+                                        <h3>IOS</h3>
+                                        <button class="btn" data-bs-toggle="modal" data-bs-target="#IOS">
+                                            <img src="/img/iconoIOS.jpg" alt="" width="50%">
+                                        </button>
+                                </div>
+                                <!-- Modal Chrome -->
+                                <div align="center" style="z-index:999999999999999999999;" class="modal fade" id="Chrome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <br><br>
+                                <div  class="modal-dialog">
+                                    <div class="modal-content" align="center" style="border-radius:2rem;">
+                                        <div class="modal-header" align="center">
+                                            <img style="margin:1rem; padding:auto; width:50%" src="/img/iconoChrome.jpg" >
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-header card text-left" align="center">
+                                            <h4>Agregar un icono en el escritorio de Windows de una aplicación web</h4>
+                                            <p>Para agregar un acceso directo a una aplicación web en el escritorio de Windows, sigue estos pasos:</p>
+                                            <ol>
+                                            <li>Abre tu navegador web en tu PC con Windows.</li>
+                                            <li>Dirígete a la aplicación web que deseas agregar.</li>
+                                            <li>Haz clic en el botón de menú en el navegador (generalmente representado por tres puntos verticales o un icono similar) para acceder a las opciones adicionales.</li>
+                                            <li>Busca y selecciona la opción "Crear acceso directo" o "Agregar a escritorio" en el menú desplegable.</li>
+                                            <li>Aparecerá una ventana emergente preguntando si deseas crear un acceso directo en el escritorio. Haz clic en "Aceptar" o "Crear" para confirmar.</li>
+                                            </ol>
+                                            <p>Una vez que hayas seguido estos pasos, se creará un acceso directo en el escritorio de tu PC con Windows que te llevará directamente a la aplicación web cuando lo selecciones.</p>
+                                            <p>Ten en cuenta que los nombres y las ubicaciones exactas de los botones y las opciones pueden variar según el navegador web que estés utilizando, pero en general, estos pasos deberían ayudarte a agregar un acceso directo de una aplicación web a tu escritorio de Windows.</p>
+                                            <br><br>
+                                            <h4>Agregar un icono en el escritorio de macOS de una aplicación web</h4>
+                                            <p>Para agregar un acceso directo a una aplicación web en el escritorio de macOS, sigue estos pasos:</p>
+                                            <ol>
+                                            <li>Abre tu navegador web en tu Mac con macOS.</li>
+                                            <li>Dirígete a la aplicación web que deseas agregar.</li>
+                                            <li>Haz clic y arrastra el icono situado a la izquierda de la URL (la dirección web) directamente al escritorio.</li>
+                                            </ol>
+                                            <p>Una vez que hayas seguido estos pasos, se creará un acceso directo en el escritorio de tu Mac con macOS que te llevará directamente a la aplicación web cuando lo selecciones.</p>
+                                            <p>Ten en cuenta que estos pasos pueden variar ligeramente según el navegador web que estés utilizando en tu Mac con macOS, pero en general, arrastrar el icono de la dirección web al escritorio debería crear un acceso directo de la aplicación web.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <!-- Modal Android -->
+                                <div align="center" style="z-index:999999999999999999999;" class="modal fade" id="Android" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <br><br>
+                                <div  class="modal-dialog">
+                                    <div class="modal-content" align="center" style="border-radius:2rem;">
+                                        <div class="modal-header" align="center">
+                                            <img style="margin:1rem; padding:auto; width:50%" src="/img/iconoAndroid.jpg" >
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-header card text-left" align="center">
+<h4>Agregar un icono en el escritorio de Android de una aplicación web</h4>
+<p>Para agregar un acceso directo a una aplicación web en tu escritorio de Android, sigue estos pasos:</p>
+<ol>
+<li>Abre el navegador web en tu dispositivo Android.</li>
+<li>Dirígete a la aplicación web que deseas agregar.</li>
+<li>Toca el botón de menú en el navegador (generalmente representado por tres puntos verticales o un icono similar) para acceder a las opciones adicionales.</li>
+<li>Busca y selecciona la opción "Agregar a pantalla de inicio" o "Añadir acceso directo" en el menú desplegable.</li>
+<li>Se te pedirá que personalices el nombre del acceso directo. Puedes cambiar el nombre si lo deseas o dejarlo tal como está.</li>
+<li>Toca el botón "Agregar" o "Aceptar" para confirmar la creación del acceso directo.</li>
+</ol>
+<p>Una vez que hayas seguido estos pasos, se creará un acceso directo en tu pantalla de inicio de Android que te llevará directamente a la aplicación web cuando lo selecciones.</p>
+<p>Cabe mencionar que los nombres y las ubicaciones exactas de los botones y las opciones pueden variar según la versión del navegador web y la interfaz de tu dispositivo Android, pero en general, estos pasos deberían ayudarte a agregar un acceso directo de una aplicación web a tu pantalla de inicio.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <!-- Modal IOS -->
+                                <div align="center" style="z-index:999999999999999999999;" class="modal fade" id="IOS" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <br><br>
+                                <div  class="modal-dialog">
+                                    <div class="modal-content" align="center" style="border-radius:2rem;">
+                                        <div class="modal-header" align="center">
+                                            <img style="margin:1rem; padding:auto; width:50%" src="/img/iconoIOS.jpg" >
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-header card text-left" align="center">
+                                            <h4>Agregar un icono en la pantalla de inicio de iOS de una aplicación web</h4>
+                                            <p>Para agregar un acceso directo a una aplicación web en la pantalla de inicio de iOS, sigue estos pasos:</p>
+                                            <ol>
+                                            <li>Abre el navegador web en tu dispositivo iOS.</li>
+                                            <li>Dirígete a la aplicación web que deseas agregar.</li>
+                                            <li>Toca el botón de "Compartir" en la parte inferior de la pantalla. Generalmente se representa con un ícono cuadrado con una flecha hacia arriba.</li>
+                                            <li>En el menú desplegable, busca y selecciona la opción "Agregar a pantalla de inicio".</li>
+                                            <li>Se te pedirá que personalices el nombre del acceso directo. Puedes cambiar el nombre si lo deseas o dejarlo tal como está.</li>
+                                            <li>Toca el botón "Agregar" o "Aceptar" para confirmar la creación del acceso directo.</li>
+                                            </ol>
+                                            <p>Una vez que hayas seguido estos pasos, se creará un acceso directo en la pantalla de inicio de tu dispositivo iOS que te llevará directamente a la aplicación web cuando lo selecciones.</p>
+                                            <p>Ten en cuenta que los nombres y las ubicaciones exactas de los botones y las opciones pueden variar según la versión del navegador web y la versión de iOS que estés utilizando, pero en general, estos pasos deberían ayudarte a agregar un acceso directo de una aplicación web a tu pantalla de inicio en iOS.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+                <script>
+                const navTabs = document.querySelector('.nav-tabs');
+                const navLinks = document.querySelectorAll('.nav-link');
+                const contents = document.querySelectorAll('.content');
+
+                navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = link.getAttribute('href').substring(1);
+                    contents.forEach(content => {
+                    if (content.id === target) {
+                        content.classList.add('active');
+                    } else {
+                        content.classList.remove('active');
+                    }
+                    });
+                    navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    });
+                    link.classList.add('active');
+                });
+                });
+
+                // Responsive adjustments
+                window.addEventListener('resize', () => {
+                if (window.innerWidth < 768) {
+                    navTabs.style.width = '100%';
+                } else {
+                    navTabs.style.width = '90%';
+                }
+                });
+
+                // Initial adjustment on page load
+                if (window.innerWidth < 768) {
+                navTabs.style.width = '100%';
+                }
+                </script>
+            </div>
+        </div>
+</div>

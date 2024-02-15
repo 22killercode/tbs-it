@@ -90,13 +90,19 @@ app.use(require('./routes/indexRoutes'));
 app.use(require('./routes/users'));
 app.use(require('./routes/RRHH'));
 app.use(require('./routes/consuSitiosWeb'));
+app.use(require('./routes/blogs'));
+
+
 
 //Statics Files
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static(path.join(__dirname, 'layouts')));
 app.use(express.static(path.join(__dirname, 'partials')));
-//app.use(express.static(path.join(__dirname, 'partials/cotiStaffing')));
+app.use(express.static(path.join(__dirname, 'uploads')));
+// Configura una ruta estática para servir imágenes desde la carpeta 'uploads' para los blogs
+app.use('/uploads', express.static('C:\\Users\\Coderian\\Desktop\\pruebaTBS\\src\\uploads'));
+
 
 // app 4004
 // app.use((req, res, next) => {
