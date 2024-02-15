@@ -194,21 +194,7 @@ router.post('/cambiarnuevaImagen/:id', isAuthenticated, async (req, res) => {
     }
 });
 
-// carga exterior
-// router.post('/buscandoPostdeBlogs', async (req, res) => {
-//     const formData = req.body;
-//     console.log("llega la petición", formData)
-
-//     if (!formData === '147852369'){
-//         return
-//     }
-
-//     const dataBlogs = await Blogs.find({ email: "sebastianpaysse@gmail.com" }).sort({ date: -1 });
-
-
-//     res.status(200).json({ success: false, message: dataBlogs });
-// });
-
+// solicitando datos desde la pagina web
 router.post('/buscandoPostdeBlogs', async (req, res) => {
     try {
         const formData = req.body;
