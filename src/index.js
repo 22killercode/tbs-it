@@ -102,7 +102,7 @@ app.use(express.static(path.join(__dirname, 'partials')));
 //app.use(express.static(path.join(__dirname, 'uploads')));
 app.use('/uploads', express.static('uploads'));
 
-//app.use('/uploads', express.static('C:\\Users\\Coderian\\Desktop\\pruebaTBS\\src\\uploads'));
+app.use('/uploads', express.static('C:\\Users\\Coderian\\Desktop\\pruebaTBS\\src\\uploads'));
 //app.use('/uploads', express.static('pruebaTBS\\src\\uploads'));
 
 

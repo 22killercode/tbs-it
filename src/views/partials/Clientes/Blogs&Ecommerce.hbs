@@ -13,7 +13,13 @@
     }
 
     form:hover {
-        transform: scale(1.05);
+        transform: scale(1.005) !important;
+    }
+
+    input:hover {
+        transform: scale(1.005) !important;
+        border-color: #007bff !important;
+
     }
 
     h1, h2, h3, title {
@@ -88,7 +94,7 @@
     }
 
     input:focus, textarea:focus {
-        border-color: #007bff;
+        border-color: #007bff !important;
     }
 
     .file-upload {
@@ -476,45 +482,53 @@
                         <div class="content" id="opcion3">
                             {{!-- agregar blogs --}}
                             <div style="text-align: center; color: #000 !important;">
-
-                                <form id="blogForm" action="/recibiendoDatosdelBlog" method="post" enctype="multipart/form-data">
+                                <form id="blogForm" action="/crearCarpetayGurdarBlog" method="post" enctype="multipart/form-data">
+                                <input type="text" name="id" value="{{user.id}}" hidden>
                                     <h3 style="color: #000 !important;">Ingresa una nueva noticia a tu blog</h3>
+                                    
                                     <div class="product-image-container">
                                         <div class="product-image-placeholder" style="color: #000 !important;">Agrega tu imagen</div>
-                                        <img id="productImage" alt="Vista previa de la imagen del producto/servicio">
+                                        <img id="productImage" alt="Vista previa de la imagen del producto/servicio" style="max-width: 100%;">
                                     </div>
+                                    <!-- Contenedor del tamaño de la imagen -->
+                                    <div id="cont" align="center" >
+                                        <p id="tamanoLabel" style="color: #000 !important;">Agrega el tamaño de tu imagen en %</p>
+                                        <div id="inputContainer">
+                                            <input type="number" id="tamanoInput" name="tamanoImg" style="max-width: 10%;background-color: white !important;color: #000 !important;"> <p id="porcentajeLabel" style="color: #000 !important;">%</p>
+                                        </div>
+                                    </div>
+                                    <div class="file-upload" style="color: #000 !important;">
+                                        <input type="file" id="imagen" name="imagen" style="width: {{tamanoImg}}% !important;" accept="image/*">
+                                        <button type="button" class="btn btn-success">Seleccionar Imagen</button>
+                                    </div>
+                                    <div style="border-color;: black !important">
                                         <label for="titulo" style="color: #000 !important;">Título del Blog:</label>
                                         <input type="text" id="titulo" name="titulo" required>
+                                        
                                         <label for="contenido" style="color: #000 !important;">Contenido del Blog:</label>
-                                        <textarea placeholder="Puedes copiar  pegar cualquier documento" 
-                                            id="contenido" name="mensaje" rows="6" required style="color: #000 !important;">
+                                        <textarea placeholder="Puedes copiar y pegar cualquier documento" 
+                                            id="contenido" name="mensaje" rows="6" style="color: #000 !important; width: 100%;" required>
                                         </textarea>
-                                        <div class="file-upload">
-                                            <input type="file" id="imagen" name="imagen" accept="image/*" >
-                                            <button type="button" class="btn btn-success">Seleccionar Imagen</button>
-                                        </div>
-                                        <button type="submit">Publicar Blog</button>
+                                    </div>
+                                    <button type="submit">Publicar Blog</button>
                                 </form>
-
-
-
-
                                 <script>
-                                    // Puedes agregar scripts de JavaScript aquí para manejar eventos o validaciones adicionales
                                     document.querySelector('.file-upload input').addEventListener('change', function () {
-                                        // Verificar si se seleccionó una imagen
                                         if (this.files.length > 0) {
-                                            // Verificar el tamaño de la imagen
                                             if (this.files[0].size > 1024 * 1024) {
                                                 alert("La imagen debe ser menor a 1 MB.");
-                                                // Limpiar el input de archivo
                                                 this.value = '';
-                                                return; // Detener la ejecución si la imagen es demasiado grande
+                                                return;
+                                            }else{
+                                                const fileName = this.files[0].name;
+                                                document.querySelector('.file-upload button').innerText = fileName;
+                                                // Renderizar la imagen con el tamaño seleccionado
+                                                const tamanoImg = document.getElementById('tamanoInput').value;
+                                                const productImage = document.getElementById('productImage');
+                                                productImage.style.width = tamanoImg ? `${tamanoImg}%` : '100%';
+                                                productImage.src = URL.createObjectURL(this.files[0]);
                                             }
-                                            const fileName = this.files[0].name;
-                                            document.querySelector('.file-upload button').innerText = fileName;
                                         } else {
-                                            // No se seleccionó ninguna imagen
                                             alert("Por favor, selecciona una imagen.");
                                         }
                                     });
@@ -537,11 +551,12 @@
                             {{#each dataBlogs}}
                                 <div class="container card-outline-success" style="width: 80% !important;">
                                     <form action="/editarBlog" method="post" enctype="multipart/form-data">
-                                    <span class="eliminar" onclick="eliminarBlog('{{_id}}')">X</span>
+                                        {{!-- boton para elimnar el blog --}}
+                                        <span class="eliminar" onclick="eliminarBlog('{{_id}}')">X</span>
                                         <br><br>
                                         <input type="text" value="{{_id}}" name="id" hidden>
                                         <div class="container">
-                                            <img src="{{rutaSimple}}" class="card-img-top" style="width: 70%;" alt="...">
+                                            <img src="{{rutaSimple2}}" class="card-img-top" style="width:{{tamanoImg}}% !important;" alt="...">
                                             <br>
                                             <span class="btn btn-light" onclick="cambiarImagen('{{_id}}')">Cambiar Imagen</span>
                                             <div class="card-body" >
@@ -555,7 +570,6 @@
                                     </form>
                                 </div>
                                 <script>
-
                                     async function cambiarImagen(id) {
     if (confirm("¿Estás seguro de que quieres cambiar esta imagen?")) {
         try {
@@ -592,7 +606,7 @@
 
                 if (response.status === 200) {
                     // La solicitud fue exitosa (código 200)
-                    confirm("El blog se actualizó correctamente");
+                    alert("El blog se actualizó correctamente");
                     // Recarga la página
                     window.location.reload();
                 } else if (response.status === 500) {
@@ -614,8 +628,6 @@
         }
     }
 }
-
-                                
                                     function eliminarBlog(id) {
     if (confirm("¿Estás seguro de que quieres eliminar este contenido?")) {
         // Utiliza fetch para hacer una solicitud HTTP
@@ -627,17 +639,17 @@
             if (response.status === 200) {
                 // Recarga la página
                 window.location.reload();
-                confirm("El blog se eliminó correctamente");
+                alert("El blog se eliminó correctamente");
             } else if (response.status === 500) {
                 // Recarga la página
                 window.location.reload();
-                confirm("Hubo un error al eliminar el blog");
+                alert("Hubo un error al eliminar el blog");
             } else {
                 // Otro código de estado no manejado
                 console.error('Error inesperado al eliminar el blog. Código de estado:', response.status);
                 // Recarga la página
                 window.location.reload();
-                confirm("Hubo un error inesperado al eliminar el blog");
+                alert("Hubo un error inesperado al eliminar el blog");
             }
         })
         .catch(error => {

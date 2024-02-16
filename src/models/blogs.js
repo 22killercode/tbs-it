@@ -5,6 +5,8 @@ const blogs = new Schema({
     //direccion
     pathImg: { type: String },
     rutaSimple: { type: String },
+    rutaSimple2: { type: String },
+    tamanoImg: { type: Number },
     titulo: { type: String },
     mensaje: { type: String },
     idCliente: { type: String },

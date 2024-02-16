@@ -2,9 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const fs = require('fs');
+const fs1 = require('fs');
+const fs = require('fs-extra');
+const scp2 = require('scp2');
+const { exec } = require('child_process');
 const path = require('path');
 const shortid = require('shortid');
+const Client = require('ssh2').Client; // Agregamos la importación de ssh2
+const axios = require('axios');
 
 //models
 const User = require('../models/User');
@@ -18,12 +23,12 @@ router.use(bodyParser.text());
 
 
 // para armar NUEVOS blogs
-router.post('/recibiendoDatosdelBlog', isAuthenticated, async (req, res) => {
-    //console.log("000 que hay en req.body", req.body);
+router.post('/crearCarpetayGurdarBlog', isAuthenticated, async (req, res) => {
+    console.log("000 recibiendoDatosdelBlog que hay en req.body", req.body);
     // revisar que llega toda la info dle frontend
     //console.log("00 que empresa encontro", req.files);
     const { imagen } = req.files;
-    const {titulo, mensaje} = req.body
+    const {titulo, mensaje, tamanoImg, id} = req.body
 
     try {
         // busca la informacion del cliente que quiere emitir un nuevo blog
@@ -35,60 +40,64 @@ router.post('/recibiendoDatosdelBlog', isAuthenticated, async (req, res) => {
             //res.redirect("/cofiguratiosBolgsProductsEildamais")
         }
 
-        //console.log("0 que empresa encontro", empresa);
+        console.log("0 que empresa encontro", empresa);
 
-        // Función para crear una carpeta
-        const crearCarpeta = (nombreCarpeta) => {
-            // Verificar si la carpeta ya existe
-            if (!fs.existsSync(nombreCarpeta)) {
-                // Crear la carpeta
-                const createCarpeta = path.join(__dirname, `../uploads/${nombreCarpeta}`);
-                //console.log("que path es? ", createCarpeta)
-                fs.mkdirSync(createCarpeta, { recursive: true });
-                console.log('Carpeta creada exitosamente.');
-            } else {
-                console.log('La carpeta ya existe.');
+        
+        // Enviar solicitud a Dovemailer Cloud Archivos
+        
+
+        const axios = require('axios');
+
+        async function enviarDatosAServidorB(data) {
+          const urlServidorB = 'http://localhost:3010/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
+            console.log("Entro a AXIOS");
+
+            try {
+            const response = await axios.post(urlServidorB, data);
+            console.log('Respuesta del servidor B:', response.data);
+            return response.data; // Puedes manejar la respuesta según tus necesidades
+
+            } catch (error) {
+            console.error('Error al enviar datos al servidor B:', error.message);
+            throw error; // Puedes manejar el error según tus necesidades
             }
-        };
-        const nombreCarpeta = empresa;
-        crearCarpeta(nombreCarpeta);
-
-        // mover imagen a la carpeta
-        const rutaCompleta = path.join(__dirname, `../uploads/${nombreCarpeta}/${imagen.name}`);
-        const rutaSimple = `/${nombreCarpeta}/${imagen.name}`;
-
-        // mueve la foto a la carpeta
-        imagen.mv(rutaCompleta, async function(err){
-            if (err){
-                console.log('hay un error en la subida de la imagen a la carpeta',err);
-            }
-            else {
-            console.log("la carpeta ha sido creada exitosamente")
-            }
-        });
-
-        try {
-            // guardar info en la BD
-            const pathImg = rutaCompleta
-            const idCliente = req.user.id
-            const newBlog = new Blogs({titulo, mensaje, pathImg, idCliente, rutaSimple});
-            const idBlog = newBlog.id
-            await newBlog.save();
-            console.log(" el  blog se cargo exitosamente")
-            // Actualizar el usuario para agregar el nuevo idBlog al array
-            const usuarioActualizado = await User.findByIdAndUpdate(
-                idCliente,
-                // Utilizar $push para agregar el nuevo idBlog al array
-                { $push: { Blogs: idBlog } },
-                { new: true } // Devolver el documento actualizado
-            );
-            console.log(" el  usuarioActualizado se cargo exitosamente", usuarioActualizado)
-
-        } catch (error) {
-            console.log(" el  blog NO se cargo exitosamente en la BD", error)
         }
-        //res.status(200).json({ success: true, message: "salio ok" });
-        res.redirect("/cofiguratiosBolgsProductsEildamais")
+        
+            // Ejemplo de uso:
+            const nombreCarpeta   = empresa;
+            const datosParaEnviar = {imagen, nombreCarpeta, id };
+            
+            const cheq = await enviarDatosAServidorB(datosParaEnviar)
+
+            console.log("QUE CARAJOS TIENE CHEQ", cheq)
+            // guardar info en la BD
+            const idCliente = req.user.id
+            if (cheq.datos.id === idCliente) {
+                console.log("Entro a carga el blog a la BD")
+                const {rutaSimple, rutaSimple2, rutaCompleta} = cheq.datos
+                try {
+                const pathImg = rutaCompleta
+                const newBlog = new Blogs({titulo, mensaje, pathImg, rutaSimple, rutaSimple2, idCliente, tamanoImg});
+                const idBlog = newBlog.id
+                await newBlog.save();
+                console.log(" el  blog se cargo exitosamente")
+                // Actualizar el usuario para agregar el nuevo idBlog al array
+                const usuarioActualizado = await User.findByIdAndUpdate(
+                    idCliente,
+                    // Utilizar $push para agregar el nuevo idBlog al array
+                    { $push: { Blogs: idBlog } },
+                    { new: true } // Devolver el documento actualizado
+                );
+                console.log(" el  usuarioActualizado se cargo exitosamente", usuarioActualizado)
+                //res.status(200).json({ success: true, message: "salio ok" });
+                res.redirect("/cofiguratiosBolgsProductsEildamais")
+                } catch (error) {
+                    console.log(" El  blog NO se guardo en la BD",error )
+                }
+            }else{
+                console.log(" El  blog NO se guardo en la BD")
+                res.redirect("/cofiguratiosBolgsProductsEildamais")
+            }
 
     } catch (error) {
         console.error("Error al procesar la solicitud:", error);
@@ -96,6 +105,95 @@ router.post('/recibiendoDatosdelBlog', isAuthenticated, async (req, res) => {
     }
 
 });
+
+//llega info de Dovemailer para guardar enla BD
+router.post('/guardarenlaBD', async (req, res) => {
+
+    // autentificar usuario
+
+    // revisar si llega y que llega
+    console.log("que llega esde Dovemaler body", req.body)
+    console.log("que llega esde Dovemaler files", req.files)
+    console.log("que llega esde Dovemaler params", req.params)
+
+    res.redirect("/")
+});
+
+// router.post('/recibiendoDatosdelBlog2', isAuthenticated, async (req, res) => {
+//     console.log("000 recibiendoDatosdelBlog que hay en req.body", req.body);
+
+//     const { imagen } = req.files;
+//     console.log("como es el archivo de la imagen",imagen)
+
+//     const { titulo, mensaje, tamanoImg } = req.body;
+//     // busca la informacion del cliente que quiere emitir un nuevo blog
+//     const usuario = await User.findById(req.user.id);
+//     //const empresa = usuario ? usuario.empresa : null;
+//     const empresa = "mia"
+
+//         if (!imagen) {
+//             return res.status(400).send('No se proporcionó ninguna imagen.');
+//         }
+
+//         const nombreCarpeta = empresa;
+//         const dir = "root@tbsitserver:~/TBSCloud/images#"; // Ajusta la ruta según tu configuración
+//         const direccion = "191.101.0.204";
+//         const password = "Seba@hostinger22";
+//         const direccioCarpeta = "~/TBSCloud/images";
+
+//     // anda perfecto
+    
+//     try {
+//         // conecta y crea la carpeta de la empresa
+//         const conn = new Client();
+//         await new Promise((resolve, reject) => {
+//             conn.on('ready', () => {
+//                 conn.exec(`mkdir -p ${direccioCarpeta}/${nombreCarpeta}`, (err, stream) => {
+//                     if (err) reject(err);
+//                     stream.on('close', (code, signal) => {
+//                         conn.end();
+//                     })
+//                 });
+//             }).connect({
+//                 host: direccion,
+//                 port: 22, // puerto SSH
+//                 username: 'root', // Reemplaza con tu usuario SSH
+//                 password: password,
+//             });
+//         });
+    
+//     } catch (err) {
+//         console.error('Error al crear la carpeta:', err);
+//         throw err;
+//     }
+    
+
+    
+//     //funcion para guardar los datos en la BD
+//     try {
+//         const pathImg = rutaCompleta; // Asegúrate de que esta variable esté definida en el alcance adecuado
+//         const idCliente = req.user.id;
+//         const newBlog = new Blogs({ titulo, mensaje, pathImg, idCliente, rutaSimple, rutaSimple2, tamanoImg });
+//         const idBlog = newBlog.id;
+//         await newBlog.save();
+//         console.log(" el  blog se cargo exitosamente");
+
+//         const usuarioActualizado = await User.findByIdAndUpdate(
+//             idCliente,
+//             { $push: { Blogs: idBlog } },
+//             { new: true }
+//         );
+//         console.log(" el  usuarioActualizado se cargo exitosamente", usuarioActualizado);
+
+//         res.redirect("/cofiguratiosBolgsProductsEildamais");
+//     } catch (error) {
+//         console.log(" el  blog NO se cargo exitosamente en la BD", error);
+//     }
+// });
+
+
+
+
 
 // para eliminar blogs
 router.delete('/eliminarBlog/:id', isAuthenticated, async (req, res) => {
@@ -145,6 +243,7 @@ router.post('/editarBlog', isAuthenticated, async (req, res) => {
 //cambiar imagen
 router.post('/cambiarnuevaImagen/:id', isAuthenticated, async (req, res) => {
     const imagen = req.files
+    const tamanoImg = req.body
     try {
         // obtener datos del usuario
             const Usuario = await User.findById(req.user.id);
@@ -170,7 +269,7 @@ router.post('/cambiarnuevaImagen/:id', isAuthenticated, async (req, res) => {
         // tengo que cambiar los path de la fotos en la bd
             const pathImg = path.join(__dirname, `../uploads/${empresa}/${imagen.name}`);
             const rutaSimple = `/${empresa}/${imagen.name}`;
-            await Blogs.findByIdAndUpdate(req.params.id, {pathImg, rutaSimple});
+            await Blogs.findByIdAndUpdate(req.params.id, {pathImg, rutaSimple, tamanoImg});
             console.log("llego a cambiar imagen que trae el params", req.params.id, req.files )
         
         // mueve la foto a la carpeta
