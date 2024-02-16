@@ -49,7 +49,8 @@ router.post('/crearCarpetayGurdarBlog', isAuthenticated, async (req, res) => {
         const axios = require('axios');
 
         async function enviarDatosAServidorB(data) {
-          const urlServidorB = 'http://localhost:3010/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
+          // const urlServidorB = 'http://localhost:3010/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
+          const urlServidorB = 'http://dovemailer.net/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
             console.log("Entro a AXIOS");
 
             try {
