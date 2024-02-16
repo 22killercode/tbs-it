@@ -89,8 +89,8 @@ router.post('/crearCarpetayGurdarBlog', isAuthenticated, async (req, res) => {
                     { $push: { Blogs: idBlog } },
                     { new: true } // Devolver el documento actualizado
                 );
-                console.log(" el  usuarioActualizado se cargo exitosamente", usuarioActualizado)
-                res.status(200).json({ success: true, message: "salio ok" });
+                console.log("El  Blog se cargo exitosamente", usuarioActualizado)
+                res.status(200).json({ success: true, message: "El  Blog se cargo exitosamente" });
                 //res.redirect("/cofiguratiosBolgsProductsEildamais")
                 } catch (error) {
                     console.log(" El  blog NO se guardo en la BD",error )

@@ -483,7 +483,7 @@
                             {{!-- agregar blogs --}}
                             <div style="text-align: center; color: #000 !important;">
                                 <form id="blogForm" action="/crearCarpetayGurdarBlog" method="post" enctype="multipart/form-data">
-                                <input type="text" name="id" value="{{user.id}}" hidden>
+                                    <input type="text" name="id" value="{{user.id}}" hidden>
                                     <h3 style="color: #000 !important;">Ingresa una nueva noticia a tu blog</h3>
                                     
                                     <div class="product-image-container">
@@ -512,6 +512,36 @@
                                     </div>
                                     <button type="submit">Publicar Blog</button>
                                 </form>
+
+
+
+<script>
+    document.getElementById("blogForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Evitar el comportamiento por defecto del formulario
+
+        fetch('/crearCarpetayGurdarBlog', {
+            method: 'POST',
+            body: new FormData(this),
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Error en la solicitud');
+            }
+        })
+        .then(data => {
+            alert(data.message); // Muestra el mensaje de éxito
+            window.location.reload(); // Recarga la página
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+
+
+
+
+
                                 <script>
                                     document.querySelector('.file-upload input').addEventListener('change', function () {
                                         if (this.files.length > 0) {
