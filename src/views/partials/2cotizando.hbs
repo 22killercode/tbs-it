@@ -1,0 +1,427 @@
+<style>
+@media (max-width: 767px) {
+  .fijoAbajo {
+    display: none;
+  }
+}
+</style>
+	<section style="margin:auto;padding: auto;" id="post" class="home2 py-5" data-bg="">
+		<article style="height:max-content;" class="carpetaNegra">
+			<div class="">
+				<div style="padding:1rem; z-index:2;" class="">				
+					<header style="" class="center ">
+						<h3>Cotización de Staffing IT</h3>
+					</header>
+					<div style="text-align: center; margin:auto;">
+						<div style="margin:0.5rem; height: auto; width: auto; font-size: 1.5rem;">
+							<div class="text-success" style="text-align: justify;"></div>
+							<h4>{{Nombre}} vamos a formar tu Dream Team</h4>
+							<h6>Horas mensuales mínimas 160. 
+								<br>
+								De izquierda a derecha elegí la tecnología del talento que necesitas, Señority, idioma, etc presionas agregar y así formas el equipo que necesitas.
+								<br>
+								Abajo calcula automáticamente los costos iniciales cuando termines oprime "ver cotización" y la I.A. te envía la pre-coti. 
+							</h6>
+									<form class="" action="/cotizandoIT" method="post">
+								<div class="row" style="color: aliceblue; margin:auto">
+										{{!-- Tecno --}}
+										<div class="col-sm">
+											<div class="form-floating">
+												<input autocomplete="off" style="background-color: black; color: aliceblue;" list="tec12" type="text" class="form-control" id="floatingInput123" placeholder=" " name="tecno"  required>
+												<label for="floatingInput123">Tecnologías</label>
+												<datalist id="tec12">
+													<select name="">
+														<optgroup label="Backend">
+															<option value="Full Stack LAMP">Full Stack LAMP</option>
+															<option value="Full Stack MERN / MEAN">Full Stack MERN / MEAN</option>
+															<option value="Full Stack Grl.">Full Stack Grl.</option>
+															<option value='JAVA'>JAVA</option>
+															<option value="JS">JS</option>
+															<option value="NODE">NODE</option>
+															<option value="Django">Django</option>
+															<option value="Python">Python</option>
+															<option value="GO">GO</option>
+															<option value="PHP">PHP</option>
+															<option value="C#">C#</option>
+															<option value="C++">C++</option>
+															<option value=".Net">.Net/ Net core</option>
+															<option value="Kotlin">Kotlin</option>
+															<option value="Pearl">Pearl</option>
+															<option value="Apache">Apache</option>
+															<option value="Ruby">Ruby / Rubi on rails</option>
+															<option value="Cobol">Cobol</option>
+															<option value="QA Manual">QA Manual</option>
+															<option value="QA Automation">QA Automation</option>
+														</optgroup>
+														<p><strong>Frontend</strong></p>
+														<option value="React">React</option>
+														<option value="Maquetador HTML CSS">Maquetador HTML CSS</option>
+														<option value="React Native">React Native</option>
+														<option value="Angular">Angular</option>
+														<option value="HTML">HTML</option>
+														<option value="CSS + (Boostrap)">CSS + (Boostrap)</option>
+														<option value="VUE">VUE</option>
+														<option value="Type Script">Type Script</option>
+														<option value="JQuery">JQuery</option>
+														<option value="Flutter">Flutter</option>
+														<label><strong>Mobile</strong></p>
+														<option value="IOS / Swift">IOS / Swift</option>
+														<option value="Android">Android</option>
+														<p><strong>Full´s Stack´s</strong></p>
+														<option value="MERN">MERN</option>
+														<option value="MEAN">MEAN</option>
+														<option value="LAMP">LAMP</option>
+														<p><strong>O.S.</strong></p>
+														<option value="Linux">Linux</option>
+														<option value="Windows / Win Mobile">Windows / Win Mobile</option>
+														<option value="Android">Android</option>
+														<option value="IOS">IOS</option>
+														<p><strong>Bases de Datos</strong></p>
+														<option value="SQL">SQL</option>
+														<option value="Mongo DB">Mongo DB</option>
+														<p><strong>Agile</strong></p>
+														<option value="Scrumm">Scrumm</option>
+														<option value="Devop´s">Devop´s</option>
+														<option value="PM / PO">PM / PO</option>
+													</select>
+												</datalist>
+											</div>
+										</div>
+										{{!-- Señority --}}
+										<div class="col-sm">
+										<div class="form-floating">
+											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="senority1" type="text" class="form-control" id="senority" placeholder=" " name="senority" required>
+											<label for="senority">Señority</label>
+											<datalist id="senority1">
+												<select>
+													<option value="Junior 1 año">Junior 1 año</option>
+													<option value="Junior Ad. 2años">Junior Ad. 2años</option>
+													<option value="Semi Senior 4 años">Semi Senior 4 años</option>
+													<option value="Senior 6 años">Senior 6 años </option>
+													<option value="T. L. 8 años">T. L. 8 años</option>
+												</select>
+											</datalist>
+										</div>
+										</div>
+										{{!-- Idioma --}}
+										<div class="col-sm">
+										<div class="form-floating">
+											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="idioma1" type="text" class="form-control" id="Idioma22" placeholder=" " name="Idioma" required>
+											<label for="Idioma22">Idioma</label>
+											<datalist id="idioma1">
+												<select name="" >
+													<option value="Español">Español</option>
+													<option value="Ingles">Ingles</option>
+													<option value="Frances">Frances</option>
+													<option value="Chino">Chino</option>
+													<option value="Aleman">Aleman</option>
+													<option value="Otro">Otro</option>
+												</select>
+											</datalist>
+										</div>
+										</div>
+										{{!-- lugar trabajo  --}}
+										<div class="col-sm">
+										<div class="form-floating" >
+											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="pais1" type="text" class="form-control" id="Pais22" placeholder=" " name="Pais" required>
+											<label for="Pais22">Lugar Trabajo</label>
+											<datalist id="pais1">
+												<select name="" >
+													<option value="Argentina">Argentina</option>
+													<option value="Latam sin Arg.">Latam sin Arg.</option>
+													<option value="Europa">Europa</option>
+													<option value="USA">USA</option>
+													<option value="Otro">Otro</option>
+												</select>
+											</datalist>
+										</div>
+										</div>
+										{{!-- Tiempo --}}
+										<div class="col-sm">
+										<div class="form-floating">
+											<input autocomplete="off" style="background-color: black; color: aliceblue;" list="mes1" type="text" class="form-control" id="Cantmeses22" placeholder=" " name="Cantmeses" required>
+											<label for="Cantmeses22">Tiempo</label>
+											<datalist id="mes1">
+												<select name="" >
+													{{#if pesosArg}}
+													<option value="3 meses">3 meses<option>														
+													{{else}}
+													<option value="3 meses">3 meses</option>
+													<option value="6 meses">6 meses</option>
+													<option value="9 meses">9 meses</option>
+													<option value="12 meses">12 meses</option>
+													{{/if}}
+												</select>
+											</datalist>
+										</div>
+										</div>
+										{{!-- boton --}}
+										<div class="col-sm">
+										<div class="col form-floating" style="padding: 0.3rem ;">
+											<div hidden>
+												<input value="{{fullStack1}}"name="fullStack1"hidden>
+												<input value="{{Email}}"     name="Email"     hidden>
+												<input value="{{Nombre}}"    name="Nombre"    hidden>
+												<input value="{{Apellido}}"  name="Apellido"  hidden>
+												<input value="{{Ciudad}}"    name="Ciudad"    hidden>
+												<input value="{{NumCel}}"    name="NumCel"    hidden>
+												<input value="{{Empresa}}"   name="Empresa"   hidden>
+												<input value="{{PagWeb}}"    name="PagWeb"    hidden>
+												<input value="{{Moneda}}"    name="Moneda"    hidden>
+												<input value="{{ID}}"        name="ID"        hidden>
+												<input value="{{pesosArg}}"  name="pesosArg"  hidden>
+												<input type="text" name="token" value="{{token}}" hidden>
+											</div>
+											<button id="boton222" class="btn btn-success" type="">Agregar</button>
+										</div>
+										</div>																				
+								</div>
+									</form>	
+						</div>
+					</div>
+				</div>
+		{{!-- insertos --}}
+				<div style="height:max-content;width:100%;opacity:1; background-color: black;">
+					<div align="center" class="" style="height:max-content;width: 100%;opacity: 0.95; margin: auto ; color: white; font-size:0.95rem;" id="">
+					{{#if ID}}
+						<h5 class="btn-danger" style="width:100%;">Talento & Equipo </h5>
+					{{/if}}
+						<div style="width:100%;  word-break: keep-all;" class="grid flex">
+							<div style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" style="padding:0.5rem;" style="padding:0.5rem;">Tecnologia</h5>
+								<hr style="margin:0;">
+								{{#each talents}}
+									<h6 style="text-align: left; align-items: baseline; padding:0.5">{{tecno}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div  style="background-color: black; margin:0; padding: 1rem; word-break: keep-all;" class="g-col-6 g-col-sm">
+								<h5 scope="col" style="padding:0.5rem;">Señority</h5>
+								<hr style="margin:0;">
+								{{#each talents}}
+									<h6  style="text-align: left;padding:0.5">{{senority}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" style="padding:0.5rem;">Idioma</h5>
+								<hr style="margin:0;">	
+								{{#each talents}}
+									<h6  style="text-align: left; padding:0.5">{{Idioma}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" style="padding:0.5rem;">Moneda</h5>
+								<hr style="margin:0;">
+								{{#each talents}}
+									<h6  style="text-align: left; padding:0.5">{{Moneda}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" style="padding:0.5rem;">Lugar Trabajo</h5>
+								<hr style="margin:0;">
+								{{#each talents}}
+									<h6  style="text-align: left; padding:0.5">{{Pais}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div  style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" style="padding:0.5rem;">Tiempo</h5>
+								<hr style="margin:0;">
+								{{#each talents}}
+									<h6  style="text-align: left; padding:0.5">{{Cantmeses}}</h6>
+									<hr style="margin:0;">
+								{{/each}}
+							</div>
+							<div style="background-color: black; margin:0; padding: 1rem;" class="g-col-6 g-col-sm">
+								<h5 scope="col" style="padding:0.5rem;">Sub Total</h5>
+								<hr style="margin:0;">							
+								{{#each talents}}
+									<h6 style="text-align:left">
+										{{#if ../pesosArg}}Pesos{{else}}Dólares{{/if}} {{this.Precio}}
+									</h6>
+									<hr style="margin: 0;">
+								{{/each}}
+							</div>
+							<div  style="background-color: black; margin: 0;" class="g-col-6 g-col-sm">
+								<img style="width:3rem; height:2.5rem; margin:1rem 1rem 0.5rem 1rem;" src="/images/minitrash.png" class="icon" >
+								<hr style="margin:0;">
+								{{#each talents}}
+								{{!-- eliminarTalento --}}
+										<form style="margin: 0;" action="/eliminarTalento" method="post">
+											<div>
+												<input value="{{_id}}"      name="_id"       hidden>
+												<input value="{{Email}}"    name="Email"    hidden>
+												<input value="{{Nombre}}"   name="Nombre"   hidden>
+												<input value="{{Apellido}}" name="Apellido" hidden>
+												<input value="{{Ciudad}}"   name="Ciudad"   hidden>
+												<input value="{{NumCel}}"   name="NumCel"   hidden>
+												<input value="{{Empresa}}"  name="Empresa"  hidden>
+												<input value="{{PagWeb}}"   name="PagWeb"   hidden>
+												<input value="{{Moneda}}"   name="Moneda"   hidden>
+												<input value="{{ID}}"       name="ID"       hidden>
+												<input value="{{fullStack1}}"name="fullStack1"hidden>
+												<input value="{{pesosArg}}"  name="pesosArg"  hidden>
+											</div>
+											<button type="submit" class="none" style="color:white;" >X</button>
+										</form>
+										<hr style="margin:0;">
+								{{/each}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	{{!-- footer de calcular --}}
+			<div style="margin:auto; width:100%; border-radius:1rem; position:sticky;" align="center" class="btn btn-danger ">
+				<div class="">
+					{{#if pesosArg}}
+					<div class="row">
+						{{!-- Para borrar todo y volver a empezar --}}
+						<div class="col-sm">
+							<form action="/reset" method="post">
+								<div>
+									<input value="{{Email}}"    type="email"name="Email"    hidden>
+									<input value="{{ID}}"       type="text" name="ID"       hidden>
+									<input value="{{pesosArg}}"          name="pesosArg"          hidden>
+									<input type="text" name="token" value="{{token}}" hidden>
+								</div>
+								<input type="email" value="{{Email}}" name="Email" hidden>
+								<button style="" class="alertaVerde" >Borrar todo</button>
+							</form>
+						</div>
+						<div class="col-sm">
+							<p style="padding: 0.3rem;">Cantidad de talentos</p>
+							<span>{{cantTal}}</span>
+						</div>
+						<div class="col-sm">
+							<p style="padding: 0.3rem;">Total de horas</p>
+							<span>{{totalHoras}}</span>
+						</div>
+						<div class="col-sm">
+							<p style="padding: 0.3rem;" >Promedio: Hora/Pesos
+								<br>
+								{{costoHoraPromedio}}
+							</p>
+						</div>
+						<div class="col-sm">
+							<p style="padding: 0.3rem;">Total pesos 
+								<br>
+								{{costoFinal}}
+							</p>
+						</div>
+						{{!-- Calcula la coti en pesos --}}
+						<div class="col-sm">
+							<form  action="/calculandoCotizacion" method="post">
+								<div>
+									<input value="{{fullStack1}}"        name="fullStack1"        hidden>
+									<input value="{{Email}}"             name="Email"             hidden>
+									<input value="{{Nombre}}"            name="Nombre"            hidden>
+									<input value="{{Apellido}}"          name="Apellido"          hidden>
+									<input value="{{Ciudad}}"            name="Ciudad"            hidden>
+									<input value="{{NumCel}}"            name="NumCel"            hidden>
+									<input value="{{Empresa}}"           name="Empresa"           hidden>
+									<input value="{{PagWeb}}"            name="PagWeb"            hidden>
+									<input value="{{Moneda}}"            name="Moneda"            hidden>
+									<input value="{{_id}}"               name="ID"                hidden>
+									<input value="{{costoHoraPromedio}}" name="costoHoraPromedio" hidden>
+									<input value="{{costoFinal}}"        name="costoFinal"        hidden>
+									<input value="{{totalHoras}}"        name="totalHoras"        hidden>
+									<input value="{{cantTal}}"           name="cantTal"           hidden>
+									<input value="{{talents}}"           name="talents"           hidden>
+												<input value="{{pesosArg}}" type="boolean"  name="pesosArg"  hidden>
+									<input type="text" name="token" value="{{token}}" hidden>
+								</div>
+								<button type="submit" class="alertaVerde" >Calcular</button>
+							</form>
+						</div>
+					</div>
+					{{else}}
+					<div style="font-weight:bold;" class="row">
+						{{!-- Para borrar todo y volver a empezar --}}
+						<div class="col-sm">
+							<form action="/reset" method="post">
+								<div>
+									<input value="{{Email}}"    type="email"name="Email"    hidden>
+									<input value="{{ID}}"       type="text" name="ID"       hidden>
+									<input type="text" name="token" value="{{token}}" hidden>
+									<input value="{{pesosArg}}"          name="pesosArg"          hidden>				
+								</div>
+								<input type="email" value="{{Email}}" name="Email" hidden>
+								<button class="alertaVerde" >Borrar todo</button>
+							</form>
+						</div>
+						<div class="col-sm">
+							<p style="padding: 0.3rem;">Cantidad de talentos</p><span>{{cantTal}}</span>
+						</div>
+						<div class="col-sm">
+							<p style="padding: 0.3rem;">Total de horas</p>
+							<span>{{totalHoras}}</span>
+						</div>
+						<div class="col-sm">
+							<p style="padding: 0.3rem;" >Promedio: hora/dólares
+								<br>
+								{{costoHoraPromedio}}
+							</p>
+						</div>
+						<div class="col-sm">
+							<p style="padding: 0.3rem;">Total dólares 
+								<br>
+								{{costoFinal}}
+							</p>
+						</div>
+						{{!-- Calcula la coti en dolares --}}
+						<div class="col-sm">
+							<form action="/calculandoCotizacion" method="post">
+								<div>
+									<input value="{{fullStack1}}"        name="fullStack1"        hidden>
+									<input value="{{Email}}"             name="Email"             hidden>
+									<input value="{{Nombre}}"            name="Nombre"            hidden>
+									<input value="{{Apellido}}"          name="Apellido"          hidden>
+									<input value="{{Ciudad}}"            name="Ciudad"            hidden>
+									<input value="{{NumCel}}"            name="NumCel"            hidden>
+									<input value="{{Empresa}}"           name="Empresa"           hidden>
+									<input value="{{PagWeb}}"            name="PagWeb"            hidden>
+									<input value="{{Moneda}}"            name="Moneda"            hidden>
+									<input value="{{_id}}"               name="ID"                hidden>
+									<input value="{{costoHoraPromedio}}" name="costoHoraPromedio" hidden>
+									<input value="{{costoFinal}}"        name="costoFinal"        hidden>
+									<input value="{{totalHoras}}"        name="totalHoras"        hidden>
+									<input value="{{cantTal}}"           name="cantTal"           hidden>
+									<input value="{{talents}}"           name="talents"           hidden>
+									<input value="{{pesosArg}}"          name="pesosArg"          hidden>
+									<input type="text" name="token" value="{{token}}" hidden>
+								</div>
+								<button type="submit" class="alertaVerde" >Ver cotización</button>
+							</form>
+						</div>
+					</div>
+					{{/if}}
+					<br>
+					<div class="center">
+						{{#if pesosArg}}
+								<div style="width: 100%; margin:auto; text-align: center;" class="center">
+									<p> <strong>* Consulta por importantes descuentos. </strong></p>
+									<p>* Oprime calcular y te llegara una pre-cotización detallada y luego nos pondremos en contacto. </p>
+									<p>* Los precios no incluyen iva ni impuestos y son expresados en pesos argentinos.</p>
+									<p>* Consulte por periodos superiores a tres meses.</p>
+									<br>
+									<br>
+								</div>
+						{{else}}
+								<div style="width: 100%; margin: -2.5rem 0rem; text-align: center;" class="center">
+									<p> <strong>* Consulta por importantes descuentos. </strong></p>
+									<p>* Oprime calcular y te llegara una cotización detallada y luego nos pondremos en contacto. </p>
+									<p>Los precios no incluyen iva ni impuestos y son expresados en dólares americanos</p>
+									<br>
+									<br>
+								</div>
+						{{/if}}
+					</div>
+				</div>
+			</div>
+		</article>
+	</section>
+

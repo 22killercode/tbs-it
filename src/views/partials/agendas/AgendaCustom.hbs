@@ -1,0 +1,70 @@
+<section class="home2 py-5 d-flex align-items-center">
+  <div class="container  py-5 text-light" >
+    <div align="center" class="card py-4" style="border-radius: 1rem; background-color: rgb(38, 36, 36); opacity: 0.995;" >
+      <div class="card-body">
+        <div class="card-title text-center">
+          <h4>Cotización de Software Custom</h4>
+          <p>{{Nombre}}, responde esta consulta y te enviaremos tu cotización.</p>
+          <br>
+          <p>	
+            ¿Cuando nuestro ejecutivo de cuentas puede ponerse en contacto?.
+          </p>
+        </div>
+      <br>
+      <form action="/EnviarCotizacion/CustomSoft" method="post" style="">
+      <div class="row g-2">
+        <div class="col-md">
+            <div class="form-floating">
+              <input name="fechaContact" style="color: black; background-color: gray;" type="datetime-local" class="form-control" id="floatingInput77" placeholder=" " required>
+            </div>
+        </div>
+				{{!-- zoom & google meet --}}
+          <div class="col-md">
+                <div class="form-floating">
+                  <input autocomplete="off" style="color: black; background-color: gray;" list="idioma1" type="text" class="form-control" id="Idioma22" placeholder=" " name="tipoCont" required>
+                  <label for="Idioma22">Tipo de contacto</label>
+                  <datalist id="idioma1">
+                    <select name="" >
+                      <option value="Zoom">Zoom</option>
+                      <option value="GoogleMeet">GoogleMeet</option>
+                    </select>
+                  </datalist>
+                </div>
+          </div>
+          <textarea style=" background-color: gray" placeholder="Observaciones" name="Obs" id="" cols="10" rows="5"></textarea>
+          <p >Completa todos los campos</p>
+      </div>
+      <div>
+									<input value="{{data.fullStack1}}"        name="fullStack1"        hidden>
+									<input value="{{data.Email}}"             name="Email"             hidden>
+									<input value="{{data.Nombre}}"            name="Nombre"            hidden>
+									<input value="{{data.Apellido}}"          name="Apellido"          hidden>
+									<input value="{{data.Ciudad}}"            name="Ciudad"            hidden>
+									<input value="{{data.NumCel}}"            name="NumCel"            hidden>
+									<input value="{{data.Empresa}}"           name="Empresa"           hidden>
+									<input value="{{data.PagWeb}}"            name="PagWeb"            hidden>
+									<input value="{{data.Moneda}}"            name="Moneda"            hidden>
+									<input value="{{data.ID}}"                name="ID"                hidden>
+									<input value="true"                       name="custom"            hidden>
+									<input value="{{data.sofObjetivo}}"       name="sofObjetivo"       hidden>
+									<input value="{{data.RubroEmp}}"          name="RubroEmp"          hidden>
+									<input value="{{data.tecnoBackend}}"      name="tecnoBackend"      hidden>
+									<input value="{{data.tecnoFrontend}}"     name="tecnoFrontend"     hidden>
+									<input name="PWA"                    value="{{data.PWA}}"           hidden>
+									<input name="Estadisticas"           value="{{data.Estadisticas}}"  hidden>
+									<input name="pasarelaPagos"          value="{{data.pasarelaPagos}}" hidden>
+									<input name="traking"                value="{{data.traking}}"       hidden>
+									<input name="clouding"               value="{{data.clouding}}"      hidden>
+									<input name="CiberSeg"               value="{{data.CiberSeg}}"      hidden>
+                  <input type="text" name="token" value="{{token}}" hidden>
+      </div>
+        <button style="" type="submit" class="alertaVerde" >Ver Cotización</button>
+      </form>
+        <form action="/cotizarSoftware" method="get" hidden>
+          <button  class="alerta label" type="submit">Volver</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,205 @@
+
+.box1{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    min-width: 300px;
+    /* overflow: hidden; */
+    margin: -2rem auto;
+    padding: auto;
+    word-wrap: break-word;
+}
+
+.box2{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    min-width: 300px;
+    /* overflow: hidden; */
+    margin: -2rem auto;
+    padding: auto;
+    word-wrap: break-word;
+}
+
+.Img{
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    min-width: 300px;
+    /* overflow: hidden; */
+    margin: auto;
+    padding: auto;
+    border-radius: 1rem;
+}
+
+
+/******** Responsive Web Desing ******/
+
+
+.contenedor{
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 2500px;
+    min-width: 300px;
+    overflow: hidden;
+    margin: -3rem 0 0 0; 
+    padding: auto;
+    word-wrap: break-word;
+}
+
+@media only screen and (orientation: portrait){
+    #portrait{
+        orientation: portrait;
+    }
+}
+/* Medidas de las pantallas */
+@media screen and (max-width: 1680px) {
+    body{
+        width: 100% !important;
+    }
+    .contenedor{
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 80% !important;
+    }
+    .id1{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+        margin: 0 !important;
+    }
+    .id2{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+        margin: 0 20% -10% 0 !important;
+    }
+    .id3{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+        margin: 0 20rem 0 0 !important;
+    }
+    .Img{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+    }
+    .box1{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+    }
+    .box2{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+    }
+}
+@media screen and (max-width: 1344px) {
+    body{
+        width: 100% !important;
+        overflow-x: hidden !important;
+        /* importante! overflow <- sin la x hace que la pagina quede estatica y el escroll del mause
+        no pueda moverse, esto en dispositivos moviles */
+    }
+        .contenedor{
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 80% !important;
+        }
+        .id1{
+            width: 100%;
+            max-width: 100em;
+            min-width: 80em;
+            margin: 0 !important;
+        }
+        .id2{
+            width: 100%;
+            max-width: 100em;
+            min-width: 80em;
+            margin: 0 20% -10% 0 !important;
+        }
+        .id3{
+            width: 100%;
+            max-width: 100em;
+            min-width: 80em;
+            margin: 0 20% 0 -20%  !important;
+        }
+        .Img{
+            width: 100%;
+            max-width: 100em;
+            min-width: 80em;
+            height:100% !important;
+        }
+
+}
+@media screen and (max-width: 980px) {
+    .contenedor{
+        width: 100%;
+        max-width: 80em;
+        min-width: 60em;
+    }
+    .Img{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+    }
+    .box1{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+    }
+    .box2{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+    }
+}
+@media screen and (max-width: 736px) {
+    .contenedor{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+    }
+    .Img{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+    }
+    .box1{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+    }
+    .box2{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+    }
+}
+@media screen and (max-width: 480px) {
+    .contenedor{
+        width: 80%;
+        max-width: 80em;
+        min-width: 60em;
+    }
+    .Img{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+    }
+    .box1{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+    }
+    .box2{
+        width: 100%;
+        max-width: 100em;
+        min-width: 80em;
+    }
+}

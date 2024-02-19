@@ -1,0 +1,154 @@
+<section class="develops1 py-5 d-flex align-items-center">
+    <div class="container text-light" >
+        <div style="" class="carpetaNegra">
+            <div class="row d-flex align-items-center" style="min-height:28rem">
+                <div class="col-lg-12" data-aos="fade-right">
+                    <div style="margin-bottom: -2rem;" class="text-center pb-4">
+                        <h2 class="py-2">Cotizacion de Software</h2>
+                    </div>
+                    <div style="margin-top:-1rem;" id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <form action="/dataSoftwareCoti" method="post">
+                                <div class="carousel-item active" data-bs-interval="20000">
+                                    <div class="container-fluid text-light">
+                                        <div class="row">
+                                            <div class="col-lg-12 d-flex justify-content-center justify-content-lg-center align-items-center px-lg-5" data-aos="fade-down">
+                                                <div style="width:90%">
+                                                    <div class="text-center text-lg-center pt-lg-0">
+                                                        <h5> Sabemos que la fabricasion de software es un tema delicado por eso te proponemos juntarnos para conocerte y conocer sobre tu proyecto.
+                                                        <br>
+                                                        Por favor completa estos datos y nos vemos en un rato.
+                                                        </h5>
+                                                    </div>
+                                                    <div>
+                                                        <div class="row" >
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group py-2 input-group-lg">
+                                                                    <input name="Nombre" type="text" style="color: aliceblue; background-color: gray;" class="form-control form-control-input" id="exampleFormControlInput1" placeholder="Nombre">
+                                                                </div>                                
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group py-2 input-group-lg">
+                                                                    <input name="Apellido"  type="text" style="color: aliceblue; background-color: gray;" class="form-control form-control-input" id="exampleFormControlInput1" placeholder="Apellido" required>
+                                                                </div>                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" >
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group py-2 input-group-lg">
+                                                                    <input name="NumCel" type="text" style="color: aliceblue; background-color: gray;" class="form-control form-control-input" id="exampleFormControlInput1" placeholder="Numero Cel. Ejemplo +54 11 8888">
+                                                                </div>                                
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group py-2 input-group-lg">
+                                                                    <input name="Email" type="text" style="color: aliceblue; background-color: gray;" class="form-control form-control-input" id="exampleFormControlInput2" placeholder="Email, Sera validado">
+                                                                </div>                                 
+                                                            </div>
+                                                        </div> 
+                                                        <br>
+                                                        <p class="text-center">Completa los campos</p>                         
+                                                    </div>
+                                                </div> <!-- end of div -->
+                                            </div> <!-- end of col -->
+                                        </div> <!-- end of row -->
+                                    </div> <!-- end of container -->
+                                    
+                                    <div class="carousel-caption d-md-block">
+                                    </div>
+                                </div>
+                                <div style="margin-bottom:2rem;"  class="carousel-item" data-bs-interval="20000">
+                                    <div class="container-fluid text-light">
+                                        <div  style=""  class="row">
+                                            <div class="col-lg-12 d-flex justify-content-center justify-content-lg-center align-items-center px-lg-5" data-aos="fade-down">
+                                                <div style="width:90%" >
+                                                    <div class="text-center text-lg-center py-4 pt-lg-0">
+                                                        <h4 class="py-2">Completa esta información</h4>
+                                                    </div>
+                                                    <div>
+                                                        <div class="row" >
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group py-2 input-group-lg">
+                                                                    <input name="Empresa" type="text" style="color: aliceblue; background-color: gray;"  class="form-control form-control-input" id="exampleFormControlInput1" placeholder="Empresa">
+                                                                </div>                                
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group py-2 input-group-lg">
+                                                                    <input autocomplete="off" type="text" style="color: aliceblue; background-color: gray;" class="form-control form-control-lg" list="pais1"  id="Pais22" name="Moneda" placeholder="Quiero pagar en">
+                                                                    <datalist id="pais1">
+                                                                        <select name="" >
+                                                                            <option value="Dolar">Dolar</option>
+                                                                            <option value="Pesos Argentinos">Pesos Argentinos
+                                                                            </option>                
+                                                                        </select>
+                                                                    </datalist>
+                                                                </div>                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" >
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group py-2 input-group-lg">
+                                                                    <input name="Ciudad" type="text" style="color: aliceblue; background-color: gray;" class="form-control form-control-input" id="exampleFormControlInput1" placeholder="Ciudad">
+                                                                </div>                                
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group py-2 input-group-lg">
+                                                                    <input name="PagWeb" type="text" style="color: aliceblue; background-color: gray;" class="form-control form-control-input" id="exampleFormControlInput2" placeholder="Pagina web">
+                                                                </div>  
+                                                                <input type="text" name="token" value="{{token}}" hidden>
+                                                            </div>
+                                                        </div> 
+                                                        <span></span><p class="text-center">Completa los campos</p>                         
+                                                    </div>
+                                                </div> <!-- end of div -->
+                                            </div> <!-- end of col -->
+                                        </div> <!-- end of row -->
+                                    </div> <!-- end of container -->
+                                </div>
+                                <div style="margin-bottom:2rem;"  class="carousel-item" data-bs-interval="20000">
+                                    <div class="container-fluid text-light">
+                                        <div class="row">
+                                            <div class="col-md form-floating">
+                                                <input name="fechaContact" style="color: black; background-color: gray;" type="datetime-local" class="form-control" id="floatingInput77" placeholder=" " required>
+                                            </div>
+                                            <div class="col-md form-floating">
+                                                <input autocomplete="off" style="color: black; background-color: gray;" list="idioma1" type="text" class="form-control" id="Idioma22" placeholder=" " name="tipoCont" required>
+                                                <label for="Idioma22">Tipo de contacto</label>
+                                                <datalist id="idioma1">
+                                                    <select name="" >
+                                                        <option value="Zoom">Zoom</option>
+                                                        <option value="GoogleMeet">GoogleMeet</option>
+                                                    </select>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <textarea style=" background-color: gray" placeholder="Observaciones" name="Obs" id="" cols="10" rows="5"></textarea>
+                                        <p style="color:aliceblue;" align="center">Completa todos los campos</p>
+                                    </div>
+                                    <div style="margin-top: 2rem; opacity: 0.99 !important;" class="d-flex justify-content-center">
+                                        <button style="font-size: 1rem; padding: 1.2rem; height: min-content; opacity: 0.99 !important;" class="alertaVerde" type="submit" >Enviar</button>                               
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{!-- botones --}}
+        <div class="position-relative m-4">
+        <ul style="margin-top: -1rem;"  class="action flexlado">
+        <li style="margin-right: 5rem";>
+        <button style="padding: 1rem; height: min-content;" class="alertaVerde" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        Anterior
+        </button>
+        </li>
+        <li style="margin-left: -7rem"; class="position-absolute top-0 start-100">
+        <button style="padding: 1rem; height: min-content;" class="alertaVerde" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        Siguiente
+        </button>
+        </li>
+        </ul>
+        </div>
+    </div>
+</section>

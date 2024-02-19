@@ -1,0 +1,102 @@
+<section class="cotiappi py-5 d-flex align-items-center">
+  <div class="container text-light" >
+		<div class="text-center pb-4">
+        <h2 class="py-5"></h2>
+    </div>
+	 <div class="text-center pb-4">
+				<div style="margin-bottom: 0; padding: 2%; width: 100%; background-color: rgb(38, 36, 36); opacity: 0.9;" class="fijoArriba ">				
+							<header style="5rem auto" class="center ">
+								<h2>Pre-Cotización custom Software Factory</h2> 
+							</header>
+							<div align="left" style="justify-content: left ; color: aliceblue ; align-items: center;">
+								<p>
+									<strong>{{data.Nombre}}</strong> queremos expresarte nuestro agradecimiento por dejarnos participar en esta importante oportunidad. Es un privilegio, para nosotros, poder ser considerados candidatos como proveedores para ayudarlos a lograr sus objetivos.
+									<br>
+									TBS-IT es una compañía dedicada a la creación de soluciones en el campo de tecnologías de la información. Contamos con talento de alto valor, con experiencia y constantemente actualizados sobre las últimas tecnologías con el fin de brindar el mejor servicio. 
+									<br>
+									Por tres meses o un año, por un solo recurso o un equipo completo, ofrecemos los mejores recursos con experiencia directa en su industria y con los sistemas y tecnologías que necesita, asi que nuevamente, gracias por elegirnos, como socio tecnológico, a la hora de abordar sus proyectos.
+								</p>
+							</div>
+							<div class="container card" style="text-align: left; background-color: black; color: aliceblue ; align-items: left;">
+								<h4><strong>Datos:</strong></h4>
+								<p><strong>Nombre:</strong> {{data.Nombre}} <span></span><strong>Apellido:</strong> {{data.Apellido}}</p> 
+								<p><strong>Empresa:</strong> {{data.Empresa}}<span></span><strong>Email:</strong> {{data.Email}}</p>
+								<p><strong> Moneda de facturación:</strong> {{data.Moneda}}</p>
+								<p><strong>Tipo de desarrollo:</strong> Custom Software Factory	</p>
+								<div class="flexlado">
+									<p> <strong>Tecnologías elegidas:</strong>
+										<br>
+										Backend: {{data.tecnoBackend}}
+										<br>
+										Frontend: {{data.tecnoFrontend}}
+										<br>
+									</p>
+										<br>
+										Uso destinado del software: {{data.sofObjetivo}}
+										<br>
+										Rubro de la empresa: {{data.RubroEmp}}
+										<br>
+									</p>
+								</div>
+								<p> <strong>Módulos elegidos:</strong> <br><br />
+								{{#if data.siMod}}
+									{{#if data.PWA}}
+										Modulo PWA.
+									{{/if}} 
+									<br>
+									{{#if data.Estadisticas}}
+										Modulo Estadísticas & consulta BD.
+									{{/if}} 
+									<br>
+									{{#if data.pasarelaPagos}}
+										Módulos Pasarelas de Pagos.
+									{{/if}} 
+									<br>
+									{{#if data.clouding}}
+										Modulo Cloudign.
+									{{/if}} 
+									<br>
+									{{#if data.traking}}
+										Modulo tracking.
+									{{/if}} 
+									<br>
+									{{#if data.ciberSeg}}
+										Modulo ciber seguridad.
+									{{/if}} 
+								{{else}}
+									<p style="margin-top:-1rem;" > No se eligieron módulos extras</p>
+								{{/if}} 
+								</p>
+								<div class="">
+									<p> <strong> Propuesta Comercial </strong>
+									<br>
+									Te proponemos juntarnos personalmente o en una meet para conocernos y saber mas de usted/es y su proyecto.
+									<br>
+									de esta forma podremos acercar las partes a una propuesta superadora que nos conforme a ambos.
+									<br>
+									Nos encontramos en la fecha y horario convenido.
+									</p>
+								</div>
+								<div style="width: 100%; margin: 0.1rem auto; text-align: center;" class="center">
+									*Nuestro Ejecutivo de Cuentas se pondrá en contacto con usted en la fecha y el horario que nos indico
+									<br>
+									Fecha de contacto: {{data.fechaContact}} de la ciudad de {{data.Ciudad}}.
+									<br>
+									Tipo de contacto:  ${{data.tipoCont}}
+									<br>    
+									Observaciones:
+									<br>
+									{{data.Obs}}
+									<br>
+								</div>
+							</div>
+							<form action="/cotizarSoftware" method="get">
+								<button style="font-size: 1rem; padding: 0.5rem;" class="alerta label" type="submit">Volver</button>
+							</form>
+				</div>
+			
+		
+	</div>
+</div>
+
+</section>

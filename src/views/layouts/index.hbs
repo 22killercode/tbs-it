@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    {{!-- config --}}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width, shrink-to-fit=no">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="The Best Staff TBS-IT">
+    <meta name="Desarrollado por Sebastián Payssé Senior fullstack MERN" content="TBS-IT">
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on Facebook, Twitter, LinkedIn -->
+	<meta property="og:site_name" content="" /> <!-- website name -->
+	<meta property="og:site" content="" /> <!-- website link -->
+	<meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+	<meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+	<meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+	<meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+	<meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
+    <!-- Webpage Title -->
+    <title>The Best Staff TBS-IT</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/main.css" /> 
+    <link rel="stylesheet" href="/css/rwd.css" /> 
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/css/aos.min.css" rel="stylesheet">
+    <link href="/css/swiper.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="180x180"    href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+<!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/opk7hw6nwx90yicns8zxwelxl2e4qtxo94lo4tpzuhf6v1s6/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+tinymce.init({
+  selector: 'textarea',
+  plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+  toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+  content_style: 'body { color: black !important; background-color: white; }',  // Personaliza el estilo del contenido
+  //skin: 'oxide',  // Selecciona el tema (puedes probar otros temas como 'oxide-dark' para cambiar el aspecto general)
+  //skin_url: '/path/to/skins',  // Ruta al directorio de temas (ajusta la ruta según tus necesidades)
+});
+
+</script>
+
+
+    {{!-- TinyMCE script es el formato de scritura de los textarea
+    <script src="https://cdn.tiny.cloud/1/opk7hw6nwx90yicns8zxwelxl2e4qtxo94lo4tpzuhf6v1s6/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script> --}}
+</head>
+    <body>
+        {{!-- menu Grl rojo --}}
+        <header>
+            <nav align="center" style="display:inline-flex; margin:auto;padding:auto; z-index:6; width:auto;" id="navbar" class="fixed-top bg-danger"  aria-label="Main navigation">
+                <div style="margin:auto" class="col-lg">
+                    <a style="margin:0rem;" class="navbar-brand" href="/"><strong>Home</strong></a>
+                    <button style="margin:0rem;" class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+                    </button>
+                </div>
+                {{!-- gif tecnos animado --}}
+                <div class="col-lg" style="margin:auto;">
+                    <img src="/images/tec-firma.gif" alt="" style="margin:auto;min-width:6rem;max-width:90%; height:2.1rem;padding: 0; border-radius:1rem;">
+                </div>
+                <div class="col-lg" style="margin:0 0.5rem 0 0;">
+                    <a style="margin:auto;" class="btn btn-danger" type="button"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling21" aria-controls="offcanvasScrolling">
+                        <i class="bi bi-list" style="font-size: 1.5rem;"></i>
+                    </a>
+                    {{!-- contenido menu --}}
+                    <div align="left" class="offcanvas offcanvas-end" style="margin:0;background-color:rgb(224, 55, 55) !important;" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasScrolling21" aria-labelledby="offcanvasScrollingLabel">
+                        <div class="offcanvas-header">
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="links">
+                                <li class="">
+                                    <a class="" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal"><strong>Cotizar</strong></a>
+                                        <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" href="/Staffing"><strong>Staffing</strong></a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" href="/SoftDev"><strong>Software Factory</strong></a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" href="/portfolio"><strong>Portfolio & clientes</strong></a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"><strong>Unite a nosotros / Sé un Partner</strong> </a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" href="http://dovemailer.net/"><strong>Nuestro SaaS</strong></a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>                        
+                                <li class="">
+                                    <a class="" href="/Nosotros">Nosotros</a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" href="/#paises">Países donde tenemos presencia</a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <li class="">
+                                    <a class="" href="#contacto1">Contacto</a>
+                                    <li><hr class="dropdown-divider"></li>
+                                </li>
+                                <br>
+                                <li>
+                                    <img src="/images/tec-firma.gif" alt="" style="width:100%; border-radius:1rem;">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main  style="">
+            {{>messages}}
+            {{>errors}}
+            {{{body}}}
+        </main>
+        
+        <!-- Contact -->
+        <footer  style="background-color: rgb(235, 30, 30);" id="footer">
+            <style>
+                
+                textarea{
+                    background-color: none !important;
+                    color: black !important;
+                }
+                .tox-collection__item-label {
+                    color: black !important;
+                }
+                .tox-collection__group {
+                    color: black !important;
+                }
+
+                .conten{
+                    margin: 0 !important;
+                    padding: 2rem !important;
+                    color: black !important;
+                    text-align: center;
+                }
+            </style>
+            <div class="conten">
+                <h2>Contacto</h2>
+                <form action="/contacto" method="post">
+                    <div class="field half first">
+                        <label for="name">Nombre</label>
+                        <input name="names" id="name" type="text" placeholder="Name" required>
+                    </div>
+                    <div class="field half ">
+                        <label for="apellido">Apellido</label>
+                        <input name="apellido" id="apellido" type="text" placeholder="Apellido" required>
+                    </div>
+                    <div class="field half first">
+                        <label for="email">Email</label>
+                        <input name="email" id="email" type="email" placeholder="Email" required>
+                    </div>
+                    <div class="field half">
+                        <label for="pais">Pais/Ciudad</label>
+                        <input name="pais" id="pais" type="text" placeholder="Pais/Ciudad" required>
+                    </div>                        
+                    <div class="field">
+                        <label for="message">Mensaje</label>
+                        <textarea style="background-color: red !important; color:black !important" name="message" id="message" rows="6" placeholder="Mensaje"></textarea>
+                    </div>
+                    <ul class="actions">
+                        <button value="Send Message" class="btn btn-outline-light" type="submit">Enviar</button>
+                    </ul>
+                </form>
+                <button style="margin-right: -70rem;" type="button" class="btn btn-outline-info" hidden>				
+                    <a href="/"><span class="">Volver</span></a>
+                </button>
+                {{!-- //Instagram --}}
+                <ul class="icons" style="text-align: center !important;">
+                    <li><a href="https://www.instagram.com/p/C2Bo0g_tO8L/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" class="icon round fa-instagram"><span class="label">Instagram</span></a></li>
+                </ul>
+                <p align="center" >Cel: Uruguay +598 92 107 773 Cel: Arg: +549 11 6140 9440</p>
+                {{!-- iconos de redes sociales --}}
+                <ul class="icons" hidden>
+                    <li><a href="#" class="icon round fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon round fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon round fa-instagram"><span class="label">Instagram</span></a></li>
+                </ul>
+            </div>
+            <footer style="margin:auto; color:red; font: size 0.1em; text-align: center;">
+            <p>The Best Staff is a Trade Mark || All right reserved to Sebastian Payssé </p>
+            </footer>
+        </footer>
+        <!-- Back To Top Button -->
+        <button onclick="topFunction()" id="myBtn">
+            <img src="./images/up-arrow.png" alt="alternative">
+        </button>
+        <!-- end of back to top button -->
+    </body>
+<!-- MODALES  -->
+<div>
+    <!-- Cotizar -->
+    <div style="position:absolute; z-index:9999999;margin: 1% 0 0 0;" class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div align="center" style="background-image: url(/images/tecladoluz.jpg);" class="modal-content panelControl align-center">
+                <div style="margin:auto;color: white;" class="align-center">
+                    <div>
+                        <h5 class="modal-title" id="exampleModalLabel">¿Qué desea cotizar?</h5>
+                    </div>
+                    <br>
+                    <div>
+                        <p>Unos rápidos clicks y nuestra IA te enviará una pre-cotización.</p>
+                        <br>
+                        <h4>¡Probame!</h4>
+                    </div>
+                </div>
+                <div class="modal-body align-left">
+                    <br>
+                    <a href="/cotizandoStaffing" role="button" class="btn btn-success popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Staffing IT / Talentos IT </a>
+                    <hr>
+                    <a href="/cotizarSoftware" role="button" class="btn btn-primary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Software project / Proyecto IT</a>
+                    <hr>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Volver</button>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <!-- modal de partener/talento -->
+    <div style="position:absolute; z-index:9999999; margin: 1% 0 0 0;" class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div style="background-image: url(/images/tecladoluz.jpg);" class="modal-content panelControl">
+            <div class="modal-header">
+                <h5 style="color: white;" class="modal-title" id="exampleModalLabel">¡TBS-IT te esta buscando!</h5>
+            </div>
+            <div class="modal-body">
+                <br>
+                <a href="/quieroserunpartner" role="button" class="btn btn-success popover-test" title="Popover title" data-bs-content="">Quiero ser un partner</a>
+                <hr>
+                <a href="/quierotrabajarentbs" role="button" class="btn btn-primary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Soy programador.</a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Volver</button>
+            </div> 
+        </div>
+        </div>
+    </div>
+    <!-- Modal SignIn -->
+    <div style="position:absolute; z-index:9999999; margin: 1% 0 0 0;" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" id="signin1">
+        <div class="modal-dialog">
+            <div class="modal-content text-light modalo" >
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Solo para clientes y empleados</h5>
+                    <button type="button" class="btn-close btn-success" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Bienvenid@s</h4>
+                    <form action="/users/signIN/clientesyempleados" method="post">
+                    {{!-- <form action="https://tbs-it.net/users/signIN/clientesyempleados" method="post"> --}}
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Email</label>
+                            <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput2" class="form-label">Contraseña</label>
+                            <input name="password" type="password" class="form-control" id="exampleFormControlInput2" placeholder="*****">
+                        </div>
+                        <button type="submit" class="alertaVerde">Entrar</button>
+                    </form>
+                    <br><br>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary text-light" data-bs-dismiss="modal">Volver</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+        var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+        return new bootstrap.Dropdown(dropdownToggleEl)
+        })
+        const labels = document.querySelectorAll('.form-control label')
+        labels.forEach(label => {
+        label.innerHTML = label.innerText
+        .split('')
+        .map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`)
+        .join('')
+        });
+    </script>
+   
+ <!-- Scripts -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+    <script src="/js/main.js"></script>
+    
+    <!-- Scripts -->
+    <script src="/js/bootstrap.min.js"></script><!-- Bootstrap framework -->
+    <script src="/js/purecounter.min.js"></script> <!-- Purecounter counter for statistics numbers -->
+    <script src="/js/swiper.min.js"></script><!-- Swiper for image and text sliders -->
+    <script src="/js/aos.js"></script><!-- AOS on Animation Scroll -->
+    <script src="/js/script.js"></script>  <!-- Custom scripts -->
+
+
+{{!-- bootstrapp & popper --}}
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+      <br>
+
+   </html>

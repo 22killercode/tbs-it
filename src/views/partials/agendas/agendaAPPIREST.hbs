@@ -1,0 +1,64 @@
+<section class="home2 py-5 d-flex align-items-center">
+  <div class="container  py-5 text-light" >
+    <div align="center" class="card py-2" style="background-color: rgb(38, 36, 36); border-radius: 1rem; opacity: 0.99;" >
+      <div class="card-body">
+        <div class="card-title text-center">
+          <h3>Cotización de Aplicación Web</h3>
+          <p>{{Nombre}} responde esta consulta y te enviaremos tu cotización</p>
+          <br>
+          <p>	
+            ¿Cuando nuestro ejecutivo de cuentas puede ponerse en contacto?.
+          </p>
+        </div>
+        <br>
+        <form action="/EnviarCotizacionAPPIREST" method="post" style="">
+          <div class="row g-2">
+          <div class="col-md">
+            <div class="form-floating">
+            <input name="fechaContact" style="color: black; background-color: gray;" type="datetime-local" class="form-control" id="floatingInput77" placeholder=" " required>
+            </div>
+          </div>
+          {{!-- zoom & google meet --}}
+          <div class="col-md">
+            <div class="form-floating">
+              <input autocomplete="off" style="color: black; background-color: gray;" list="idioma1" type="text" class="form-control" id="Idioma22" placeholder=" " name="tipoCont" required>
+              <label for="Idioma22">Tipo de contacto</label>
+              <datalist id="idioma1">
+                <select name="" >
+                  <option value="Zoom">Zoom</option>
+                  <option value="GoogleMeet">GoogleMeet</option>
+                </select>
+              </datalist>
+            </div>
+          </div>
+          <textarea style=" background-color: gray" placeholder="Observaciones" name="Obs" id="" cols="10" rows="5"></textarea>
+                  <p>Completa todos los campos</p>
+          </div>
+          <div>
+            <input name="fullStack1"    value="{{data.fullStack1}}"    hidden>
+            <input name="Email"         value="{{data.Email}}"         hidden>
+            <input name="Nombre"        value="{{data.Nombre}}"        hidden>
+            <input name="Apellido"      value="{{data.Apellido}}"      hidden>
+            <input name="Ciudad"        value="{{data.Ciudad}}"        hidden>
+            <input name="NumCel"        value="{{data.NumCel}}"        hidden>
+            <input name="Empresa"       value="{{data.Empresa}}"       hidden>
+            <input name="PagWeb"        value="{{data.PagWeb}}"        hidden>
+            <input name="Moneda"        value="{{data.Moneda}}"        hidden>
+            <input name="ID"            value="{{data.ID}}"            hidden>
+            <input name="_id"           value="{{data._id}}"           hidden>
+            <input name="PWA"           value="{{data.PWA}}"           hidden>
+            <input name="Estadisticas"  value="{{data.Estadisticas}}"  hidden>
+            <input name="pasarelaPagos" value="{{data.pasarelaPagos}}" hidden>
+            <input name="traking"       value="{{data.traking}}"       hidden>
+            <input name="clouding"      value="{{data.clouding}}"      hidden>
+            <input name="token"         value="{{token}}"              hidden>
+            <button style="" type="submit" class="alertaVerde" >Ver Cotización</button>
+          </div>
+        </form>
+        <form action="/cotizarSoftware" method="get" hidden>
+          <button  class="alerta label" type="submit">Volver</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

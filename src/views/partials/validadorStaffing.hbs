@@ -1,0 +1,51 @@
+<section style="font-size:1.5rem !important;" aligne="left" class="validador py-5" id="post">
+    <div class="ex-basic-1 pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <div class="card text-white text-center carpetaNegra" style="">
+                        <br>
+                        <div class="card-header">
+                            <h2>TBS-IT Validador</h2>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <strong>{{Nombre}}</strong> Gracias por confiar en nosotros.
+                                <br>
+                                Te enviamos un email para validar por unica vez tu correo electronico.
+                                <br>
+                                Por favor ingresa al mismo, busca en tu casilla de recibidos y/o spam y coloca abajo
+                                </h4>
+                            <h5 class="card-text">Codigo:</h5>
+                        <form action="/validarStaffing" method="post">
+                                <input placeholder="            Copia y pega aqui el codigo" style="border-color: red;" type="text" style="text-align:center ;" name="token" id="" required>
+                                    <input value="{{fullStack1}}"        name="fullStack1"        hidden>
+                                    <input value="{{Email}}"             name="Email"             hidden>
+                                    <input value="{{Nombre}}"            name="Nombre"            hidden>
+                                    <input value="{{Apellido}}"          name="Apellido"          hidden>
+                                    <input value="{{Ciudad}}"            name="Ciudad"            hidden>
+                                    <input value="{{NumCel}}"            name="NumCel"            hidden>
+                                    <input value="{{Empresa}}"           name="Empresa"           hidden>
+                                    <input value="{{PagWeb}}"            name="PagWeb"            hidden>
+                                    <input value="{{Moneda}}"            name="Moneda"            hidden>
+                                    <input value="{{ID}}"                name="ID"                hidden>
+                                    <input value="{{costoHoraPromedio}}" name="costoHoraPromedio" hidden>
+                                    <input value="{{costoFinal}}"        name="costoFinal"        hidden>
+                                    <input value="{{totalHoras}}"        name="totalHoras"        hidden>
+                                    <input value="{{cantTal}}"           name="cantTal"           hidden>
+                                    <input value="{{talents}}"           name="talents"           hidden>
+                                    <input value="{{pesosArg}}"          name="pesosArg"          hidden>
+                                    <input value="{{_id}}"               name="_id"               hidden>
+<br>
+                                <button style="margin: 3rem 0 -10rem 0; font-size: 2rem ;" type="submit" class="alertaVerde" >Enviar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic-1 -->
+    <!-- end of basic -->
+</section>
+

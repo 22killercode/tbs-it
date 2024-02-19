@@ -1,0 +1,14 @@
+{{#if success_msg}}
+<div align="center" style="position: absolute; width: auto; height: auto; margin-top:4rem; border-radius:4rem; padding: 2rem ; margin-top: 10%; color: rgb(50, 188, 66);" class=" mess alert alert-success alert-dismissible fade show" role="alert">
+    <div class="">
+        <h4>*Buen Trabajo*</h4>
+        <button slot="color:black" type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h5>
+            {{success_msg}}
+        </h5>
+        <br>
+    </div>
+</div>
+{{/if}}

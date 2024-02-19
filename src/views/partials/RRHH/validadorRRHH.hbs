@@ -1,0 +1,36 @@
+<section  class="validador py-5" id="post">
+    <div  class="ex-basic-1 pt-5 pb-5">
+        <div  class="container ">
+            <div style="margin-top:1rem" class="row">
+                <div class="col-xl-10 offset-xl-1">
+					<div class="card text-white text-center" style="border-radius: 2rem; background-color: rgb(38, 36, 36); opacity: 0.9;">
+                        <br>
+                        <div class="card-header">
+                            <h2>Validador</h2>
+                        </div>
+                        <div align="left" class="card-body">
+                            <h4 class="card-title">
+								<strong>{{Nombre}}</strong> Gracias por confiar en nosotros.
+								<br>
+								Te enviamos un email a tu casilla de emails. Por favor ingresa al mismo, busca en tu casilla de recibidos y/o spam y coloca abajo el código alfanumérico que te hemos enviado.
+							</h4>
+                            <br>
+                            <div align="center">
+                                <h5 class="card-text">Codigo:</h5>
+                                <br>
+                                <form action="/validarRRHH" method="post">
+                                    <input placeholder="       Copia y pega aqui el codigo" style="border-color: red;" type="text" name="token" id="" required>
+                                    <input name="Email" value="{{Email}}" hidden>
+                                    <br>
+                                    <button style="" type="submit" class="alertaVerde" >Enviar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic-1 -->
+    <!-- end of basic -->
+</section>
+

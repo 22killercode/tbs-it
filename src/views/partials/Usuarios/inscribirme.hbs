@@ -1,0 +1,154 @@
+<div align="center" class="fondoNegro" style="color:black !important; width:80% ; background-image: src="../images/TBS-IT1.jpg"; ">
+    <script>
+        var url = 'http://localhost:3009/users/signup'
+        {{!-- var url = (window.location.hostname.includes('localhost'))
+        ? 'http://localhost:3009/users/signup'
+        : 'http://localhost:3009/users/signup' --}}
+
+        function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        const ID = ('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        const name = ('Name: ' + profile.getName());
+        const img = ('Image URL: ' + profile.getImageUrl());
+        const email = ('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log('ESTE ES EL id_token',id_token)
+        const data = {id_token,ID,name,img,email };
+        // envia los datos del token al backend y recive la respuesta
+            fetch(url, {
+                method:'post',
+                headers:{'Content-Type':'application/json'},
+                body :JSON.stringify(data)
+            })
+            .then(resp => resp.json())
+            .then(data => console.log('Nuestro Server Responde',data))
+            .catch((error)=>{console.log('entro enun error',error)})
+        }
+    </script>
+    <div style="" class="">
+        <input style=" height: 50%;; padding: 0rem 2.5rem 0.5rem 3rem; background-color: none;" class="" id="" type="image" src="../images/TBS-IT1.jpg" >
+    </div>
+    <br>
+    <div style="color:black !important; width:100% ;" class="">
+        <h3><strong>Completa los datos para inscribir a alguien</strong></h3>
+        <br>
+                <form class="" action="/signup" method="POST">
+                    <div class="flexlado" >
+                        <div class="form-control1 ">
+                            <input style="color:white ;" name="name" value="{{name}}" type="text" required>
+                            <label>Nombre</label>
+                        </div> 
+                        <div class="form-control1">
+                            <input style="color:white ;" name="apellido" value="{{apellido}}" type="text" required >
+                            <label>Apellido</label>
+                        </div> 
+                    </div>
+                    <div class="flexlado" >
+                        <div class="form-control1">
+                            <input style="color:white ;" name="numCel"type="text" required>
+                            <label>Numero Celular</label>
+                        </div>
+                        <div class="form-control1">
+                            <input style="color:white ;" name="email" type="email" required>
+                            <label>Email</label>
+                        </div>
+                    </div>
+                        <div class="form-control1">
+                            <input style="color:white ;" list="catego1" name="catego" type="text" required>
+                            <label>Categoria</label>
+                            <datalist id="catego1" >
+                                <option value="CEO">CEO</option>
+                                <option value="EECC">EECC</option>
+                                <option value="RRHH">RRHH</option>
+                                <option value="Tech">Tech</option>
+                            </datalist>
+                        </div>                        
+                        <br> 
+                        <h4>Tu password debe contener 8 caracteres alfanuméricos</h5>
+                    <div class="flexlado" >
+                        <div class="form-control1">
+                            <input style="background-color:black;" name="password" value="{{password}}" type="" >
+                            <label>Password</label>
+                        </div>
+                        <div class="form-control1">
+                            <input style="background-color:black;" name="confirm_password"  value="{{confirm_password}}" type="" required>
+                            <label>Confirmar Password</label>
+                        </div>
+                    </div>                                                
+                        <br>
+                    <fieldset class="">
+                            <div class="">
+                                <input id="tyc" type="checkbox" name="tyc" placeholder="Term & Cond" />
+                                <label for="tyc"><h4>Acepto Términos y Condiciones</h6></label>
+                            </div>
+                            <a href="/terminosycondiciones"><h5>Leer Term. & Cond.</h6></a>
+                    </fieldset>
+                        <br>
+                        <div id="html_element"></div>
+                        <br>
+                        <button style="padding: 1.5rem;font-size: 2rem;" type="submit" value="Enviar" class="alertaVerde"> <h3> Enviar </h3></button>
+                </form>
+                        <script>
+                            const labels = document.querySelectorAll('.form-control1 label')
+                            labels.forEach(label => {
+                                label.innerHTML = label.innerText
+                                    .split('0.5')
+                                    .map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`)
+                                    .join('')
+                            })
+                        </script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
+        </script>
+
+                        <br>
+                    <div>
+                        <form action="/" method="GET">
+                            <button type="submit" class="alerta" data-toggle="modal" data-target="#spinner">
+                                Volver al Inicio
+                            </button>
+                        </form>
+                    </div>
+                    <br>
+    </div>
+</div>
+<script>
+  document.getElementById('subscribeForm').addEventListener('submit', e => {
+    e.preventDefault();
+
+    //   const name = document.querySelector('#name').value;
+    //   const email = document.querySelector('#email').value;
+    const captcha = document.querySelector('#g-recaptcha-response').value;
+
+    return fetch('/subscribe', {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify({ captcha })
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        alert(data.msg);
+        if (data.success) return location.reload();
+      });
+  });
+                <script>
+                  document.getElementById('subscribeForm').addEventListener('submit', e => {
+                    e.preventDefault();
+
+                    //   const name = document.querySelector('#name').value;
+                    //   const email = document.querySelector('#email').value;
+                    const captcha = document.querySelector('#g-recaptcha-response').value;
+
+                    return fetch('/subscribe', {
+                      method: 'POST',
+                      headers: { 'Content-type': 'application/json' },
+                      body: JSON.stringify({ captcha })
+                    })
+                      .then(res => res.json())
+                      .then(data => {
+                        console.log(data);
+                        alert(data.msg);
+                        if (data.success) return location.reload();
+                      });
+                  });
+</script>

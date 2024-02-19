@@ -1,0 +1,94 @@
+<section class="home2 py-5 d-flex align-items-center">
+	<div align="center" class="container py-5 text-light" >
+		<div class="card py-2" style="height:max-content; background-color: rgb(38, 36, 36); opacity: 1; border-radius: 2rem !important;margin:-1rem  0 -4rem 0; padding:1rem;" >
+      <div class="container-md">
+        <div class="row g-2">
+              <div style="margin:0;" align="center">
+                <br>
+                <h2> Cotización de Staffing IT {{pesosArg}}</h2>
+                <br>
+                <h2>Responde esta consulta y te enviaremos tu cotización</h2>
+                <h4>	
+                  ¿Cuando nuestro ejecutivo de cuentas puede ponerse en contacto?
+                </h4>
+              </div>
+                <br>
+          <div class="col-md">
+            <form action="/EnviarCotizacion" method="post" style="">
+            <div class="form-floating">
+              <input name="fechaContact" style="color: black; background-color: gray;" type="datetime-local" class="form-control" id="floatingInput77" placeholder=" " required>
+            </div>
+          </div>
+          {{!-- zoom & google meet --}}
+          <div class="col-md">
+            <div class="form-floating">
+              <input autocomplete="off" style="color: black; background-color: gray;" list="idioma1" type="text" class="form-control" id="Idioma22" placeholder=" " name="tipoCont" required>
+              <label for="Idioma22">Tipo de contacto</label>
+              <datalist id="idioma1">
+                <select name="" >
+                  <option value="Zoom">Zoom</option>
+                  <option value="GoogleMeet">GoogleMeet</option>
+                </select>
+              </datalist>
+            </div>
+          </div>
+          <textarea style=" background-color: gray" placeholder="Observaciones" name="Obs" id="" cols="10" rows="5"></textarea>
+            <p style="color:aliceblue;">Completa todos los campos</p>
+            <div>
+                  <input value="{{fullStack1}}"        name="fullStack1"        hidden>
+                  <input value="{{Email}}"             name="Email"             hidden>
+                  <input value="{{Nombre}}"            name="Nombre"            hidden>
+                  <input value="{{Apellido}}"          name="Apellido"          hidden>
+                  <input value="{{Ciudad}}"            name="Ciudad"            hidden>
+                  <input value="{{NumCel}}"            name="NumCel"            hidden>
+                  <input value="{{Empresa}}"           name="Empresa"           hidden>
+                  <input value="{{PagWeb}}"            name="PagWeb"            hidden>
+                  <input value="{{Moneda}}"            name="Moneda"            hidden>
+                  <input value="{{ID}}"                name="ID"                hidden>
+                  <input value="{{costoHoraPromedio}}" name="costoHoraPromedio" hidden>
+                  <input value="{{costoFinal}}"        name="costoFinal"        hidden>
+                  <input value="{{totalHoras}}"        name="totalHoras"        hidden>
+                  <input value="{{cantTal}}"           name="cantTal"           hidden>
+                  <input value="{{talents}}"           name="talents"           hidden>
+                  <input value="{{pesosArg}}"          name="pesosArg"          hidden>
+                  <input value="{{_id}}"               name="_id"               hidden>
+                  <input type="text" name="token" value="{{token}}" hidden>
+                  <button style="" type="submit" class="alertaVerde" >Ver Cotización</button>
+            </div>      
+              </form>
+              <div align="center" style="" >
+                    {{!-- Vuelve a cotizando con los mismos datos --}}
+                    <form action="/volverIT" method="post">
+                          <div>
+                            <input value="{{fullStack1}}"        name="fullStack1"        hidden>
+                            <input value="{{Email}}"             name="Email"             hidden>
+                            <input value="{{Nombre}}"            name="Nombre"            hidden>
+                            <input value="{{Apellido}}"          name="Apellido"          hidden>
+                            <input value="{{Ciudad}}"            name="Ciudad"            hidden>
+                            <input value="{{NumCel}}"            name="NumCel"            hidden>
+                            <input value="{{Empresa}}"           name="Empresa"           hidden>
+                            <input value="{{PagWeb}}"            name="PagWeb"            hidden>
+                            <input value="{{Moneda}}"            name="Moneda"            hidden>
+                            <input value="{{ID}}"                name="ID"                hidden>
+                            <input value="{{costoHoraPromedio}}" name="costoHoraPromedio" hidden>
+                            <input value="{{costoFinal}}"        name="costoFinal"        hidden>
+                            <input value="{{totalHoras}}"        name="totalHoras"        hidden>
+                            <input value="{{cantTal}}"           name="cantTal"           hidden>
+                            <input value="{{talents}}"           name="talents"           hidden>
+                            <input value="{{pesosArg}}"          name="pesosArg"          hidden>
+                            <input type="text" name="token" value="{{token}}" hidden>
+                            <input value="true"name="volver"  hidden> 
+                          </div>
+                          <button style="" class="alerta label" type="submit">Volver</button>
+                    </form>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{!-- <section class="home2 py-5">
+    <div class="text-center pb-4">
+        <h2 class="py-5"></h2>
+    </div>
+</section> --}}

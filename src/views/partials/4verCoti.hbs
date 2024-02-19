@@ -1,0 +1,128 @@
+<section class="home2 py-5 d-flex align-items-center">
+	<div class="container py-5 text-light" >
+		<div class="card py-2" style="height:max-content; background-color: rgb(38, 36, 36); opacity: 0.995; border-radius: 1rem !important;margin-bottom:-4rem;" >
+			<br>
+			<div class="card-title text-center">
+				<h4>Cotización de Staffing IT</h4>
+			</div>
+			<div class="card-body">
+					<p>
+						<strong>{{Nombre}}</strong> queremos expresarte nuestro agradecimiento por dejarnos participar como oferentes de servicios en esta oportunidad. Es un privilegio, para nosotros, poder ser considerados candidatos como proveedores para ayudarlos a lograr sus objetivos.</p>
+						
+						<p>TBS-IT nos dedicamos a la creación de soluciones escalables y solidas en el campo de tecnologías de la información. Contamos con talento de alto valor, con experiencia y constantemente actualizados sobre las últimas tecnologías con el fin de brindar el mejor servicio y relaciones a largo plazo. 
+						
+						Por tres meses o un año, por un solo recurso o un equipo completo, ofrecemos los mejores recursos con experiencia directa en su industria y con los sistemas y tecnologías que necesita, asi que nuevamente, gracias por elegirnos, como socio tecnológico, a la hora de abordar sus proyectos.
+					</p>
+					<br>
+					<h4>Datos:</h4>
+					<p><strong>Nombre:</strong> {{Nombre}} <span> </span><strong>Apellido:</strong> {{Apellido}}</p> 
+					<p><strong>Empresa:</strong> {{Empresa}}<span> </span><strong>Email:</strong> {{Email}}</p>
+					<p><strong> Moneda de facturación:</strong> {{Moneda}}</p>
+					<p>
+						ATENCION:
+						<br>
+						Todos los precios son tentativos, están sujetos a una negociación final y a la presentación de una propuesta formal que incluye: NDA, SLA´s condiciones comerciales, garantías, seguros, forma de pagos y descuentos convenidos.
+					</p>
+					<div class="table-responsive">
+						<table style="" class="table table-dark table-hover">
+							<thead >
+								<tr style="font-size:;">
+								<th scope="col">Tecnología</th>
+								<th scope="col">Señority</th>
+								<th scope="col">Tiempo</th>
+								<th scope="col">Idioma</th>
+								<th scope="col">País Trabaja</th>
+								<th scope="col">Sub Total</th>
+								<th scope="col" hidden>Sub Total Mes</th>
+								</tr>
+							</thead>
+							{{#each Talent1}}
+							<tbody style="font-size: ;color: aliceblue;">
+								<tr style="padding:0">
+									<td  style="">{{tecno}}</td>
+									<td  style="">{{senority}}</td>
+									<td  style="">{{Cantmeses}}</td>
+									<td  style="">{{Idioma}}</td>
+									<td  style="">{{Pais}}</td>
+									<td  style="">{{#if ../pesosArg}}Pesos{{else}}Dólares{{/if}} {{Precio}}</td>
+									<td  style="">	</td>
+								</tr>
+							</tbody>
+							{{/each}}
+						</table>
+					</div>
+				{{!-- resumen de calcular --}}
+				<div style="margin: auto; width:100%; border-radius:1rem; position:relative;" align="center" class="btn btn-danger fijoAbajo">
+					<div class="">
+						{{#if pesosArg}}
+						<div class="row">
+							<div class="col-sm">
+								<p style="padding: 0.3rem;">Cantidad de talentos</p><span>{{cantTal}}</span>
+							</div>
+							<div class="col-sm">
+								<p style="padding: 0.3rem;">Total de horas</p><span>{{totalHoras}}</span>
+							</div>
+							<div class="col-sm">
+								<p style="padding: 0.3rem;" >Promedio: Hora/Pesos {{costoHoraPromedio}}</p>
+							</div>
+							<div class="col-sm">
+								<p style="padding: 0.3rem;">Total Pesos {{costoFinal}}</p>
+							</div>
+						</div>
+						{{else}}
+						<div style="font-weight:bold;" class="row">
+							<div class="col-sm">
+								<p style="padding: 0.3rem;">Cantidad de talentos</p><span>{{cantTal}}</span>
+							</div>
+							<div class="col-sm">
+								<p style="padding: 0.3rem;">Total de horas</p><span>{{totalHoras}}</span>
+							</div>
+							<div class="col-sm">
+								<p style="padding: 0.3rem;" >Promedio: Hora/Dólares <br> {{costoHoraPromedio}}</p>
+							</div>
+							<div class="col-sm">
+								<p style="padding: 0.3rem;">Total Dólares <br> {{costoFinal}}</p>
+							</div>
+						</div>
+						{{/if}}
+						<br>
+						<div class="center">
+							{{#if pesosArg}}
+									<div style="width: 100%; margin: -2.5rem 0rem; text-align: center;" class="center">
+										<br>
+										<p>*Consulta por importantes descuentos.</p>
+										<p>Los precios no incluyen iva ni impuestos y son expresados en pesos argentinos.</p>
+										<p>Consulte por periodos superiores a tres meses.</p>
+										<br>
+										<br>
+									</div>
+							{{else}}
+									<div style="width: 100%; margin: -2.5rem 0rem; text-align: center;" class="center">
+										<br>
+										<p>*Consulta por importantes descuentos </p>
+										<p>Los precios no incluyen iva ni impuestos y son expresados en dólares americanos</p>
+										<br>
+										<br>
+									</div>
+							{{/if}}
+						</div>
+						<form  action="/finalCoti" method="post">
+							<div style="margin:auto">
+								{{!-- ocultos solo para traspaso y gurdar --}}
+								<div>											
+									<input value="{{Nombre}}" name="Nombre" hidden>
+								</div>
+								<button type="submit" class="alertaVerde" >Terminar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{{!-- <section class="home2 py-5">
+	<div class="text-center pb-4">
+        <h2 class="py-5"></h2>
+    </div>
+</section> --}}
