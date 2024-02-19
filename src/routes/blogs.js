@@ -75,20 +75,11 @@ router.post('/users/signUP/clientesyempleados', isAuthenticated, async (req, res
 
 
 // para armar NUEVOS blogs
-router.post('/123crearCarpetayGurdarBlog',  async (req, res) => {
-    console.log("000 /crearCarpetayGurdarBlog recibiendoDatosdelBlog que hay en req.body", req.body);
-
-    res.redirect("/")
-})
-
-
-
 router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
     console.log("000 /crearCarpetayGurdarBlog recibiendoDatosdelBlog que hay en req.body", req.body);
     // revisar que llega toda la info dle frontend
     const {titulo, mensaje, tamanoImg, id} = req.body
     console.log("02 que empresa encontro", req.files, titulo, mensaje, tamanoImg, id);
-
     try {
         // busca la informacion del cliente que quiere emitir un nuevo blog
         const usuario = await User.findById(id);
@@ -96,8 +87,12 @@ router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
         const cheqCantidadBlogs = usuario.Blogs.length
         // revisa si ya tiene los 10 blogs maximos permitidos
         if (cheqCantidadBlogs >= 10) {
-            console.log("Ya tienes 10 o mas blogs cargados edita o elimina algunos",cheqCantidadBlogs);
-            req.flash('error', 'Ya tienes 10 o mas blogs cargados edita o elimina algunos');
+            const errorMessage = "Ya tienes 10 o más blogs cargados. Edita o elimina algunos";
+            console.error(errorMessage);
+            // Enviar un código de estado 400 (Bad Request) y el mensaje de error al frontend
+            return res.status(400).json({ error: errorMessage });
+            //req.flash('error', 'Ya tienes 10 o mas blogs cargados edita o elimina algunos');
+            //res.status(500).json({ error: 'Ya tienes 10 o mas blogs cargados edita o elimina algunos' });
             //res.redirect("/cofiguratiosBolgsProductsEildamais")
         }
         console.log("0 que empresa encontro", empresa);
@@ -124,16 +119,11 @@ router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
                 // 3. Enviar la imagen y los objetos al servidor B
                 const urlServidorB = 'http://localhost:3009/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
                 const respuesta = await axios.post(urlServidorB, datosAEnviar);
-                
                 // 4. Manejar la respuesta del servidor B
                 console.log('Respuesta del servidor B:', respuesta.data);
-                // 3. Enviar una respuesta 200 al servidor A indicando éxito
-                    //res.status(200).json({ mensaje: 'Imagen recibida y guardada correctamente en el servidor B.' });
                     return respuesta.data
                 } catch (error) {
                 console.error('Error al procesar la solicitud:', error.message);
-                // 4. Enviar una respuesta 500 al servidor A indicando un error interno del servidor B
-                //res.status(500).json({ error: 'Error interno del servidor B al procesar la imagen.' });
                 }
             }
 
@@ -144,7 +134,7 @@ router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
 
             // guardar info en la BD
             const idCliente = id
-            if (cheq && cheq.datos.id === idCliente) {
+            if (cheq.datos.ok && cheq.datos.id === idCliente) {
                 console.log("Entro a carga el blog a la BD")
                 try {
                     const {rutaSimple, rutaSimple2, rutaCompleta} = cheq.datos
@@ -165,18 +155,19 @@ router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
                         { new: true } // Devolver el documento actualizado
                     );
                     console.log("El  Blog se cargo exitosamente", usuarioActualizado)
-                    res.status(200).json({ success: true, message: "El  Blog se cargo exitosamente" });
+                    return res.status(200).json({ message: "El  Blog se cargo exitosamente" });
                     //res.redirect("/cofiguratiosBolgsProductsEildamais")
                 } catch (error) {
                     console.log(" El  blog NO se guardo en la BD",error )
                 }
             }else{
-                console.log(" El  blog NO se guardo en la BD")
+                console.error("El blog NO se guardo en el server Dovemailer ni la BD", error);
+                console.log("El  blog NO se guardo en el server Dovemailer ni la BD")
             }
-
     } catch (error) {
         console.error("Error al procesar la solicitud a final de todo:", error);
         res.status(500).json({ success: false, message: error });
+        //res.redirect("/")
     }
 
 });
@@ -284,7 +275,7 @@ router.post('/buscandoPostdeBlogs', async (req, res) => {
     try {
         // accesos de seguridad
         const formData = req.body;
-        console.log("llega la petición", formData);
+        console.log("llega la petición /buscandoPostdeBlogs", formData);
 
         if (formData === '147852369') {
             console.log("NO paso el filtro de seguridad");
@@ -294,7 +285,7 @@ router.post('/buscandoPostdeBlogs', async (req, res) => {
         // busca los datos de la BD de los blogs // CARGA EL EMAIL DEL CLIENTE DE LOS BLOGS
         const dataBlogs = await Blogs.find({ email: "sebastianpaysse@gmail.com" }).sort({ date: -1 });
 
-        console.log('Desde TBSIT dataSend recibidas:', dataBlogs);
+        //console.log('Desde TBSIT dataSend recibidas:', dataBlogs);
 
         res.status(200).json({ success: true, data: dataBlogs });
     } catch (error) {

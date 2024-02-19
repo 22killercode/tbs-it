@@ -475,81 +475,100 @@
                     {{#if blog}}
                     <div class="container-xxl">
                         <div class="content" id="opcion3">
-                            {{!-- agregar blogs --}}
-                            <div style="text-align: center; color: #000 !important;">
-                                <form id="blogForm" action="/crearCarpetayGurdarBlog" method="post" enctype="multipart/form-data">
-                                    <input type="text" name="id" value="{{user.id}}" hidden>
-                                    <h3 style="color: #000 !important;">Ingresa una nueva noticia a tu blog</h3>
-                                    <div class="product-image-container">
-                                        <div class="product-image-placeholder" style="color: #000 !important;">Agrega tu imagen</div>
-                                        <img id="productImage" alt="Vista previa de la imagen del producto/servicio" style="max-width: 100%;">
-                                    </div>
-                                    <!-- Contenedor del tamaño de la imagen -->
-                                    <div id="cont" align="center" >
-                                        <div id="inputContainer">
-                                            <p id="tamanoLabel" style="color: #000 !important;">Agrega el tamaño de tu imagen en %</p>
-                                            <input type="number" id="tamanoInput" name="tamanoImg" style="max-width: 10%;background-color: white !important;color: #000 !important;"> 
-                                        </div>
-                                    </div>
-                                    <div class="file-upload" style="color: #000 !important;">
-                                        <input type="file" id="imagen" name="imagen" style="width: {{tamanoImg}}% !important;" accept="image/*">
-                                        <button type="button" class="btn btn-success">Seleccionar Imagen</button>
-                                    </div>
-                                    <div style="border-color;: black !important">
-                                        <label for="titulo" style="color: #000 !important;">Título del Blog:</label>
-                                        <input type="text" id="titulo" name="titulo" required>
-                                        <label for="contenido" style="color: #000 !important;">Contenido del Blog:</label>
-                                        <textarea placeholder="Puedes copiar y pegar cualquier documento" id="contenido" name="mensaje" rows="6"required>
-                                        </textarea>
-                                    </div>
-                                    <button type="submit">Publicar Blog</button>
-                                </form>
-                                <script>
-                                    document.getElementById('blogForm').addEventListener('submit', async function (event) {
-                                            event.preventDefault();
-                                            // Realiza la solicitud al servidor con el formulario
-                                            const formData = new FormData(this);
-                                            const response = await fetch('/crearCarpetayGurdarBlog', {
-                                                method: 'POST',
-                                                body: formData
-                                                headers: {
-                                                    // Asegúrate de incluir este encabezado para indicar que estás enviando un formulario con datos de archivo
-                                                    'Content-Type': 'multipart/form-data',
-                                                },
-                                            });
-                                            if (response.ok) {
-                                                // Si la respuesta del servidor es exitosa, muestra un mensaje de alerta
-                                                alert('Blog cargado correctamente');
-                                                // Recarga la página
-                                                window.location.reload();
-                                            } else {
-                                                // Si la respuesta del servidor no es exitosa, muestra un mensaje de alerta
-                                                alert('Error al cargar el blog. Por favor, inténtalo de nuevo más tarde.');
-                                                window.location.reload();
-                                            }
-                                        });
+<div style="text-align: center; color: #000 !important;">
+    <form id="blogForm" action="/crearCarpetayGurdarBlog" method="post" name="form" enctype="multipart/form-data">
+        <input type="text" name="id" value="{{user.id}}" hidden>
+        <h3 style="color: #000 !important;">Ingresa una nueva noticia a tu blog</h3>
+        <div class="product-image-container">
+            <div class="product-image-placeholder" style="color: #000 !important;">Agrega tu imagen</div>
+            <img id="productImage" alt="Vista previa de la imagen del producto/servicio" style="max-width: 100%;">
+        </div>
+        <!-- Contenedor del tamaño de la imagen -->
+        <div id="cont" align="center">
+            <div id="inputContainer">
+                <p id="tamanoLabel" style="color: #000 !important;">Agrega el tamaño de tu imagen en %</p>
+                <input type="number" id="tamanoInput" name="tamanoImg" style="max-width: 10%;background-color: white !important;color: #000 !important;">
+            </div>
+        </div>
+        <div class="file-upload" style="color: #000 !important;">
+            <input type="file" id="imagen" name="imagen" style="width: {{tamanoImg}}% !important;" accept="image/*">
+            <button type="button" class="btn btn-success">Seleccionar Imagen</button>
+        </div>
+        <div style="border-color: black !important">
+            <label for="titulo" style="color: #000 !important;">Título del Blog:</label>
+            <input type="text" id="titulo" name="titulo" required>
 
-                                    document.querySelector('.file-upload input').addEventListener('change', function () {
-                                        if (this.files.length > 0) {
-                                            if (this.files[0].size > 1024 * 1024) {
-                                                alert("La imagen debe ser menor a 1 MB.");
-                                                this.value = '';
-                                                return;
-                                            }else{
-                                                const fileName = this.files[0].name;
-                                                document.querySelector('.file-upload button').innerText = fileName;
-                                                // Renderizar la imagen con el tamaño seleccionado
-                                                const tamanoImg = document.getElementById('tamanoInput').value;
-                                                const productImage = document.getElementById('productImage');
-                                                productImage.style.width = tamanoImg ? `${tamanoImg}%` : '100%';
-                                                productImage.src = URL.createObjectURL(this.files[0]);
-                                            }
-                                        } else {
-                                            alert("Por favor, selecciona una imagen.");
-                                        }
-                                    });
-                                </script>
-                            </div>
+            <label for="contenido" style="color: #000 !important;">Contenido del Blog:</label>
+            <textarea placeholder="Puedes copiar y pegar cualquier documento"
+                id="contenido" name="mensaje" rows="6" style="color: #000 !important; width: 100%;" required>
+            </textarea>
+        </div>
+        <button type="submit">Publicar Blog</button>
+    </form>
+
+<script>
+    document.getElementById("blogForm").addEventListener("submit", async function(event) {
+        try {
+            // Realiza la solicitud al backend
+            var response = await fetch('/crearCarpetayGurdarBlog', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            // Verifica el estado de la respuesta
+            console.log("que respuesta envia el backend",response)
+            if (response.ok) {
+                // Obtiene la respuesta del backend en formato JSON
+                jsonResponse = await response.json();
+                // Muestra el mensaje en el alert
+                //alert(jsonResponse.message || jsonResponse.error.errorMessage);
+                alert("Tu blog fue cargado exitosamente");
+                // Recarga la página después de mostrar la alerta
+                location.reload();
+            } else {
+                // Si la respuesta no es exitosa, muestra un mensaje de error
+                console.error("Error en la solicitud al backend:", response.statusText);
+                //alert("Error en la solicitud al backend");
+                jsonResponse = await response.json();
+                alert("Tienes mas de 10 Blogs elimina alguno o sino intenta mas tarde.");
+                location.reload();
+            }
+
+        } catch (error) {
+            console.error("Error en la solicitud al backend:", error);
+            // Muestra un mensaje de error genérico al usuario
+            //alert("Error en la solicitud al backend");
+            //alert(error);
+        }
+    });
+</script>
+
+        
+<script>
+    // reduce la foto y la imputa en el campo imagen
+    document.querySelector('.file-upload input').addEventListener('change', function () {
+        if (this.files.length > 0) {
+            if (this.files[0].size > 1024 * 1024) {
+                alert("La imagen debe ser menor a 1 MB.");
+                this.value = '';
+                return;
+            } else {
+                const fileName = this.files[0].name;
+                document.querySelector('.file-upload button').innerText = fileName;
+                // Renderizar la imagen con el tamaño seleccionado
+                const tamanoImg = document.getElementById('tamanoInput').value;
+                const productImage = document.getElementById('productImage');
+                productImage.style.width = tamanoImg ? `${tamanoImg}%` : '100%';
+                productImage.src = URL.createObjectURL(this.files[0]);
+            }
+        } else {
+            alert("Por favor, selecciona una imagen.");
+        }
+    });
+</script>
+</div>
+
                             {{!-- todos los blogs --}}
                             <div style="text-align: center;">
                                 <br><br>
