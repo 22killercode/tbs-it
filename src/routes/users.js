@@ -2,7 +2,6 @@ require('dotenv').config();
 const { Router } = require('express');
 const router     = Router();
 const nodemailer = require('nodemailer');
-const passport   = require('passport');
 const path       = require('path')//no sacar
 
 require('dotenv').config();
@@ -15,20 +14,25 @@ const talentos     = require('../models/talentos');
 
 //midlewears
 const {validador1,val2,cheqpass} = require('../routes/Midlewares');
-const { isAuthenticated }        = require('../helpers/auth');
 const shortid                    = require('shortid');
 
 // // ruta para ingresar
-router.post('/users/signin', passport.authenticate('local',
-    {
-        successRedirect: '/entraraOpciones',//notes
-        failureRedirect: '/users/noestasRegistrado',
-        failureFlash: true
-    }
-));
+// router.post('/users/signin22', passport.authenticate('local',
+//     {
+//         successRedirect: '/entraraOpciones',//notes
+//         failureRedirect: '/users/noestasRegistrado',
+//         failureFlash: true
+//     }
+// ));
+
+router.post('/users/signin', (req, res) => {
+
+res.redirect("/entraraOpciones")
+});
+
 
 // ruta que te envia a opciones de los usuarios 
-router.get('/entraraOpciones',  [isAuthenticated], async (req, res) => {
+router.get('/entraraOpciones',  [], async (req, res) => {
     
     // buscar quien es y asignarle un status y enviarlo
     const id    = req.user.id

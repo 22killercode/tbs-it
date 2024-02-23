@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express   = require('express');
 const router    = express.Router(); 
-const passport  = require('passport');
 const fs = require('fs');
 const path = require('path');  // Asegúrate de agregar esta línea
 const nodemailer = require('nodemailer');
@@ -15,7 +14,6 @@ const Blogs = require('../models/blogs');
 
 //helpers
 const {validador1,val2}   = require('../routes/Midlewares');
-const { isAuthenticated } = require('../helpers/auth');
 const formatoPesos = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
 
 //appis
@@ -4179,7 +4177,7 @@ router.get('/portfolio', async (req, res) => {
 
 
 // ruta para inscribir cientes y empleados
-router.post('/users/signUP/clientesyempleados', isAuthenticated, async (req, res) => {
+router.post('/users/signUP/clientesyempleados',  async (req, res) => {
     const {email, password, nombre, apellido, empresa, Clave, blog, staffing, Ecommerce} = req.body
     //console.log("QUE HAY EN REQ.BODY???",req.body)
     try {

@@ -6506,15 +6506,39 @@ span
   }
   
   
+
   .mess {
+	word-break: break-all;
+	top: 40%;
+	left: 40%;
 	position: absolute !important;
-	color: black !important;
-	background-color: greenyellow;
-	margin: 9rem 2.5rem 2rem 2rem !important;
 	padding: 1rem;
-	border-radius: 5rem;
-	font-size: 3.5rem;
-	width: 28rem;
+	color: White;
+	background-color: green;
+	border-radius: 1.5rem;
+	font-size: 1.5rem;
+	width: fit-content;
+	height: max-content;
+	box-shadow: 0.5em 0.5em 0.5em 0.5em black;
+	border-top: white 0.1em solid;
+	border-left: white 0.1em solid;
+	border-bottom: darkgray 0.1em solid;
+	border-right: grey 0.1em solid;
+	z-index: 99999999999999999999999999999999999999!important;
+  }
+  
+.messError {
+	word-break: break-all;
+	top: 40%;
+	left: 40%;
+	position: absolute !important;
+	color: White;
+	background-color: red;
+	margin: auto;
+	padding: 1rem;
+	border-radius: 1.5rem;
+	font-size: 1.5rem;
+	width: max-content;
 	height: max-content;
 	box-shadow: 0.5em 0.5em 0.5em 0.5em black;
 	border-top: white 0.1em solid;
@@ -6522,26 +6546,9 @@ span
 	border-bottom: darkgray 0.1em solid;
 	border-right: grey 0.1em solid;
 	z-index: 9999999999999999999999999999999999999999999999!important;
-  }
+}
   
-  .messError {
-	position: absolute !important;
-	color: black !important;
-	background-color: red;
-	margin: 9rem 2rem 2rem 2rem !important;
-	padding: 1rem !important;
-	border-radius: 1.5rem !important;
-	font-size: 3.5rem !important;
-	width: 25rem !important;
-	height: max-content !important;
-	box-shadow: 0.5em 0.5em 0.5em 0.5em black !important;
-	border-top: white 0.1em solid !important;
-	border-left: white 0.1em solid !important;
-	border-bottom: darkgray 0.1em solid !important;
-	border-right: grey 0.1em solid !important;
-	z-index: 9999999999999999999999999999999999999999999999!important;
-  }
-  
+
   /****************************calificasiones*********************************************/
   .calificaciones {
 	margin: 0.7rem 0.7rem 0.2rem 0.7rem;
@@ -7004,7 +7011,7 @@ span
   .cardNinguna:hover,
   .cardNinguna:active,
   .cardNinguna:target {
-	transform: scale(1.003);
+	transform: scale(1.03);
 	box-shadow: 0.2rem 0.2rem 0.4rem 0.4rem silver;
 	transition: 0.5s;
   }

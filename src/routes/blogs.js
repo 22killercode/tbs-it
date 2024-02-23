@@ -5,61 +5,72 @@ const passport  = require('passport');
 const fs = require('fs');
 const path = require('path');  // Asegúrate de agregar esta línea
 const axios = require("axios")
+const mongoose = require('mongoose');
 
 //models
 const User = require('../models/User');
 const Blogs = require('../models/blogs');
 
-//helpers
-const { isAuthenticated } = require('../helpers/auth');
+
+// ruta para ingresar cientes y emplpeados
+// router.post('/users/signIN/clientesyempleados222222222222', passport.authenticate('local',
+//     {
+//         successRedirect: '/cofigurasionesBolgsProductsEildamais',
+//         failureRedirect: '/',
+//         failureFlash: true
+//     })
+// );
 
 
 // ruta para ingresar cientes y emplpeados
-router.post('/users/signIN/clientesyempleados', passport.authenticate('local',
-    {
-        successRedirect: '/cofiguratiosBolgsProductsEildamais',
-        failureRedirect: '/',
-        failureFlash: true
-    })
-);
+router.post('/users/signIN/clientesyempleados', (req, res) => {
+    const {email} = req.body
+    res.redirect(`/configuracionesBlogsProductsEildamais?email=${encodeURIComponent(email)}`);
+});
 
 
 // ruta para ingresar al menu de blogs y Ecommerce
-router.get('/cofiguratiosBolgsProductsEildamais', isAuthenticated, async (req, res) => {
-
-    console.log("01 ingreso al menu principal Que llega ruta para ingresar al menu de blogs")
+router.get('/configuracionesBlogsProductsEildamais', async (req, res) => {
 
     //identificar si el usauario tiene permisos de administrador
     try {
-        const {id} = req.user
-        const dataUser = await User.findById(id)
-        const {Clave, Ecommerce, blog, staffing} = dataUser
-        //console.log("que encontro en dataUser", dataUser)
-        const dataBlogs = await Blogs.find({ idCliente: id }).sort({ date: -1 });
+        const  email  =  req.query.email;
+        const dataUser = await User.findOne({email:email})
+        console.log("que encontro en dataUser", dataUser)
+        const {Clave, Ecommerce, blog, staffing, _id} = dataUser
+        const userId = _id
+        const dataBlogs = await Blogs.find({ idCliente:_id }).sort({ date: -1 });
 
         if (Clave) {
-            //console.log("Administrador",Clave, Ecommerce, blog, staffing)
-            res.render('partials/Clientes/Blogs&Ecommerce', {Clave, Ecommerce, blog, staffing, dataBlogs})
+            console.log("Administrador",Clave, Ecommerce, blog, staffing)
+            res.render('partials/Clientes/Blogs&Ecommerce', {Clave, Ecommerce, blog, staffing, dataBlogs, userId})
         }
         else{
             const Clave = false
-            //console.log("NO Administrador")
-            res.render('partials/Clientes/Blogs&Ecommerce', {Clave, Ecommerce, blog, staffing, dataBlogs})
+            console.log("NO Administrador")
+            res.render('partials/Clientes/Blogs&Ecommerce', {Clave, Ecommerce, blog, staffing, dataBlogs, userId})
         }
             
     } catch (error) {
         console.log("****Solo agrega clientes", error)
         res.redirect('/')
-        // cebador
-        //  const clave = true
-        //  res.render('partials/Clientes/Blogs&Ecommerce', {clave})
     }
+    // // cebador
+    // const Clave = true
+    // res.render('partials/Clientes/Blogs&Ecommerce', {Clave})
+    // console.log("01 ingreso al menu principal Que llega ruta para ingresar al menu de blogs")
 });
 
+
+router.post('/users/signUP/clientesyempleados', async (req, res) => {
+    console.log("QUE HAY EN REQ.BODY? de SIGNUP??",req.body)    
+})
+
+
 // ruta para inscribir cientes y empleados
-router.post('/users/signUP/clientesyempleados', isAuthenticated, async (req, res) => {
+router.post('/users/signUP/clientesyempleados22', async (req, res) => {
+    console.log("QUE HAY EN REQ.BODY? de SIGNUP??",req.body)
     const {email, password, nombre, apellido, empresa, Clave, blog, staffing, Ecommerce} = req.body
-    //console.log("QUE HAY EN REQ.BODY???",req.body)
     try {
         const newUser    = new User({email, password, nombre, apellido, empresa, Clave, blog, staffing, Ecommerce});
         newUser.password = await newUser.encryptPassword(password);
@@ -74,11 +85,12 @@ router.post('/users/signUP/clientesyempleados', isAuthenticated, async (req, res
 });
 
 
-// para armar NUEVOS blogs
+// para armar NUEVOS blogs con AXIOS
 router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
     console.log("000 /crearCarpetayGurdarBlog recibiendoDatosdelBlog que hay en req.body", req.body);
     // revisar que llega toda la info dle frontend
     const {titulo, mensaje, tamanoImg, id} = req.body
+    const idCliente = id
     console.log("02 que empresa encontro", req.files, titulo, mensaje, tamanoImg, id);
     try {
         // busca la informacion del cliente que quiere emitir un nuevo blog
@@ -86,17 +98,15 @@ router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
         const empresa = usuario ? usuario.empresa : null;
         const cheqCantidadBlogs = usuario.Blogs.length
         // revisa si ya tiene los 10 blogs maximos permitidos
+        console.log("Cuantos blogs tiene cargados.", cheqCantidadBlogs);
         if (cheqCantidadBlogs >= 10) {
-            const errorMessage = "Ya tienes 10 o más blogs cargados. Edita o elimina algunos";
-            console.error(errorMessage);
-            // Enviar un código de estado 400 (Bad Request) y el mensaje de error al frontend
-            return res.status(400).json({ error: errorMessage });
-            //req.flash('error', 'Ya tienes 10 o mas blogs cargados edita o elimina algunos');
-            //res.status(500).json({ error: 'Ya tienes 10 o mas blogs cargados edita o elimina algunos' });
-            //res.redirect("/cofiguratiosBolgsProductsEildamais")
+            const idUser = idCliente
+            console.log("Tienes mas de 10 blogs cargados elimina algunos por favor.");
+            req.flash("error","Tienes mas de 10 blogs cargados elimina algunos por favor.")
+            res.redirect(`/volviendoleruleru?id=${idUser}`)
+            return
         }
         console.log("0 que empresa encontro", empresa);
-
         // Enviar solicitud a Dovemailer Cloud Archivos usando AXIOS
         async function enviarImagenAServidorB(imagen, ob1, ob2) {
             try {
@@ -121,19 +131,15 @@ router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
                 const respuesta = await axios.post(urlServidorB, datosAEnviar);
                 // 4. Manejar la respuesta del servidor B
                 console.log('Respuesta del servidor B:', respuesta.data);
-                    return respuesta.data
+                return respuesta.data
                 } catch (error) {
                 console.error('Error al procesar la solicitud:', error.message);
                 }
             }
-
               // Llamada a la función con los datos necesarios
             const cheq = await enviarImagenAServidorB(req.files.imagen, empresa, id);        
-
             console.log("QUE CARAJOS TIENE CHEQ", cheq)
-
             // guardar info en la BD
-            const idCliente = id
             if (cheq.datos.ok && cheq.datos.id === idCliente) {
                 console.log("Entro a carga el blog a la BD")
                 try {
@@ -155,120 +161,105 @@ router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
                         { new: true } // Devolver el documento actualizado
                     );
                     console.log("El  Blog se cargo exitosamente", usuarioActualizado)
-                    return res.status(200).json({ message: "El  Blog se cargo exitosamente" });
-                    //res.redirect("/cofiguratiosBolgsProductsEildamais")
-                } catch (error) {
+                    //return res.status(200).json({ message: "El  Blog se cargo exitosamente" });
+                    req.flash("success_msg","El blog se cargo correctamente.")
+                    const idUser = idCliente
+                    res.redirect(`/volviendoleruleru?id=${idUser}`)
+                    } catch (error) {
                     console.log(" El  blog NO se guardo en la BD",error )
                 }
             }else{
                 console.error("El blog NO se guardo en el server Dovemailer ni la BD", error);
-                console.log("El  blog NO se guardo en el server Dovemailer ni la BD")
-            }
+                req.flash("error","El blog NO se cargo correctamente, intente mas tarde")
+                const idUser = idCliente
+                res.redirect(`/volviendoleruleru?id=${idUser}`)
+                    }
     } catch (error) {
         console.error("Error al procesar la solicitud a final de todo:", error);
-        res.status(500).json({ success: false, message: error });
-        //res.redirect("/")
+        req.flash("error","El blog NO se cargo correctamente, intente mas tarde")
+        const idUser = idCliente
+        res.redirect(`/volviendoleruleru?id=${idUser}`)
     }
-
 });
 
 // para eliminar blogs
-router.delete('/eliminarBlog/:id', isAuthenticated, async (req, res) => {
+// Enviar solicitud a Dovemailer Cloud Archivos usando AXIOS
+router.post('/eliminarBlog',  async (req, res) => {
+    console.log("Desde server TBS ingreso a borrar blog",req.body)
     try {
-        // Eliminar el blog por su ID
-        const dataBlog = await Blogs.findByIdAndDelete(req.params.id, {new: true});
 
-        // Actualizar el array de Blogs del usuario, removiendo el blog eliminado
-        await User.findByIdAndUpdate(req.user.id, { $pull: { Blogs: req.params.id } });
-
-        // Tengo que eliminar la foto del archivo
-        const pathBorrar = dataBlog.pathImg;
-
-        // Utiliza fs.unlink para eliminar el archivo
-        fs.unlink(pathBorrar, (error) => {
-            if (error) {
-                console.error("Error al eliminar la foto:", error);
-                res.status(500).json({ success: false, message: "Hubo un error al eliminar la foto." });
-            } else {
-                console.log("La foto fue eliminada correctamente.");
-                res.status(200).json({ success: true, message: "El blog y la foto fueron eliminados correctamente." });
+        const id = req.body.id
+        const dataBlog = await Blogs.findById(id);
+        dataBlog.date = "null"
+        console.log("TBS ingreso cual blog econtro",dataBlog)
+        const idCliente = dataBlog.idCliente
+        const dataUser = await User.findById(idCliente)
+        console.log("TBS ingreso cual dataUSer econtro",dataUser)
+        // hace una llamada al server Dovemailer para elminar la imagen
+        async function enviarImagenAServidorB(dataBlog) {
+            console.log("Entro a la fucion de AXIOS para enviar al server de Dovemailer, enviarImagenAServidorB");
+            try {
+                // 3. Enviar la imagen y los objetos al servidor B
+                const urlServidorB = 'http://localhost:3009/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu servidor B
+                const respuesta = await axios.post(urlServidorB, dataBlog);
+                // 4. Manejar la respuesta del servidor B
+                console.log('Respuesta del servidor B:', respuesta.data);
+                return respuesta.data
+            } catch (error) {
+                console.error('Axios entro en error al procesar la solicitud:', error.message);
+                return false
             }
-        });
-
-        console.log("El blog ha sido borrado");
+        }
+        const response = await enviarImagenAServidorB(dataBlog) 
+        if (response) {
+            // Eliminar el blog por su ID
+            await Blogs.findByIdAndDelete(id);
+            // Actualizar el array de Blogs del usuario, removiendo el blog eliminado de la BD User
+            await User.findByIdAndUpdate({_id:idCliente}, { $pull: { Blogs: id } })
+            // enviar estatus OK
+            const idUser = dataUser._id
+            req.flash("success_msg","El blog se elimino correctamente.")
+            res.redirect(`/volviendoleruleru?id=${idUser}`);
+            console.log("El blog ha sido borrado");
+            return
+        } else {
+            return res.status(400).send("Error: El server de Dovemailer no respondio la eliminacion"); // o algún otro mensaje de error
+        }
     } catch (error) {
+        const idUser = dataUser._id
         console.log("Ocurrió un error al borrar el blog", error);
-        res.status(500).json({ success: false, message: "Hubo un error al borrar el blog." });
+        req.flash("error","Hubo un error al borrar el blog., intentelo de nuevo mas tarde.")
+        res.redirect(`/volviendoleruleru?id=${idUser}`)
+        // res.status(500).json({ success: false, message: "Hubo un error al borrar el blog." });
     }
 });
 
-// para editar los inputs del blogs
-router.post('/editarBlog', isAuthenticated, async (req, res) => {
-    const {titulo, mensaje, id} = req.body
-    console.log("Llego a actualizar",{titulo, mensaje, id});
+
+// ruta apra renderiza la pagina de menu servicios al cliente 
+router.get('/volviendoleruleru', async (req, res) => {
+    const { id } = req.query; // Extraer el valor de la propiedad id del objeto
+    console.log("Entro a leru leru", id);
     try {
-        await Blogs.findByIdAndUpdate(id, {titulo, mensaje});
-        console.log("El blog ha sido actualizado");
-        res.redirect("/cofiguratiosBolgsProductsEildamais#opcion3");
+        const dataUser = await User.findOne({ _id: mongoose.Types.ObjectId(id) }) || await Blogs.findOne({ idCliente: id });
+        const dataBlogs = await Blogs.find({ idCliente: id }).sort({ date: -1 });
+        console.log("Entro a leru leru y que usuario encontro", id, dataUser);
+        const userId = dataUser._id
+        const { Clave, Ecommerce, blog, staffing } = dataUser;
+        res.render('partials/Clientes/Blogs&Ecommerce', { Clave, Ecommerce, blog, staffing, dataBlogs, userId });
     } catch (error) {
-        console.log("Ocurrió un error al actualizar el blog", error);
-        res.redirect("/cofiguratiosBolgsProductsEildamais#opcion3");
-    }
-
-});
-
-//cambiar imagen
-router.post('/cambiarnuevaImagen/:id', isAuthenticated, async (req, res) => {
-    const imagen = req.files
-    const tamanoImg = req.body
-    try {
-        // obtener datos del usuario
-            const Usuario = await User.findById(req.user.id);
-            const empresa = Usuario ? Usuario.empresa : null;
-
-        // tengo que eliminar la foto dle archivo
-            const dataBlog = await Blogs.findById(req.params.id);
-            const pathBorrar = dataBlog.pathImg
-            // Utiliza fs.unlink para eliminar el archivo
-            fs.unlink(pathBorrar, (error) => {
-                if (error) {
-                    console.error("Error al eliminar la foto:", error);
-                    // Puedes enviar una respuesta al cliente indicando el error
-                    res.status(500).json({ success: false, message: "Hubo un error al eliminar la foto." });
-                } else {
-                    console.log("La foto fue eliminada correctamente.");
-                    // Puedes enviar una respuesta al cliente indicando el éxito
-                    res.status(200).json({ success: false, message: "La foto fue eliminada correctamente." });
-                    // res.json({ success: true, message: "La foto fue eliminada correctamente." });
-                }
-            });
-
-        // tengo que cambiar los path de la fotos en la bd
-            const pathImg = path.join(__dirname, `../uploads/${empresa}/${imagen.name}`);
-            const rutaSimple = `/${empresa}/${imagen.name}`;
-            await Blogs.findByIdAndUpdate(req.params.id, {pathImg, rutaSimple, tamanoImg});
-            console.log("llego a cambiar imagen que trae el params", req.params.id, req.files )
-        
-        // mueve la foto a la carpeta
-            imagen.nuevaImagen.mv(pathImg, async function(err){
-                if (err){
-                    console.log('hay un error en la subida de la imagen a la carpeta',err);
-                }
-                else {
-                console.log("la carpeta ha sido creada exitosamente")
-                }
-            });
-    }
-    catch (error) {
-        console.error("Error al procesar la solicitud de cambio de imagen:", error);
-        res.status(500).send("Error interno del servidor");
-    }
-
-    finally{
-        res.status(200).send("La imagen fue cambiada exitosamente");    
-        // res.redirect("/cofiguratiosBolgsProductsEildamais#opcion3");
+        console.log("Entro a un error buscando la BD en leru leru ", error);
+        res.redirect("/");
     }
 });
+
+
+
+
+
+
+
+
+
 
 // solicitando datos desde la pagina web
 router.post('/buscandoPostdeBlogs', async (req, res) => {
