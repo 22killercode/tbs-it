@@ -12,6 +12,7 @@
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.3",
     "axios": "^1.6.7",
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.26.3",
     "connect-flash": "^0.1.1",
