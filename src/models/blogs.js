@@ -10,6 +10,7 @@ const blogs = new Schema({
     titulo: { type: String },
     mensaje: { type: String },
     idCliente: { type: String },
+    rutaURL: { type: String },
 
     date: { type: Date, default: Date.now },
 });

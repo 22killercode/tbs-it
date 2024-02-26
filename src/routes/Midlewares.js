@@ -1,14 +1,12 @@
 require('dotenv').config();
 const express   = require('express');
 const router    = express.Router(); 
-const passport  = require('passport');
 
 
 const http   = require('http');
 const server = http.Server(express);
 
 //helpers
-const { isAuthenticated } = require('../helpers/auth');
 const nodemailer = require('nodemailer');
 
 //models

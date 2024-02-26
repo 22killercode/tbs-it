@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express   = require('express');
 const router    = express.Router(); 
-const passport  = require('passport');
 const fs = require('fs');
 const path = require('path');  // Asegúrate de agregar esta línea
 const nodemailer = require('nodemailer');
@@ -15,7 +14,6 @@ const Blogs = require('../models/blogs');
 
 //helpers
 const {validador1,val2}   = require('../routes/Midlewares');
-const { isAuthenticated } = require('../helpers/auth');
 const formatoPesos = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
 
 //appis
@@ -4177,67 +4175,6 @@ router.get('/portfolio', async (req, res) => {
 });
 
 
-
-
-
-
-
-// ruta para ingresar cientes y emplpeados
-router.post('/users/signIN/clientesyempleados', passport.authenticate('local',
-    {
-        successRedirect: '/cofiguratiosBolgsProductsEildamais',
-        failureRedirect: '/',
-        failureFlash: true
-    })
-);
-
-// ruta para ingresar al menu de blogs y Ecommerce
-router.get('/cofiguratiosBolgsProductsEildamais', isAuthenticated, async (req, res) => {
-    console.log("que llega ruta para ingresar al menu de blogs y Ecommerce")
-
-    //identificar si el usauario tiene permisos de administrador
-    try {
-        const {id} = req.user
-        const dataUser = await User.findById(id)
-        const {Clave, Ecommerce, blog, staffing} = dataUser
-        //console.log("que encontro en dataUser", dataUser)
-        const dataBlogs = await Blogs.find({ idCliente: id }).sort({ date: -1 });
-
-        if (Clave) {
-            //console.log("Administrador",Clave, Ecommerce, blog, staffing)
-            res.render('partials/Clientes/Blogs&Ecommerce', {Clave, Ecommerce, blog, staffing, dataBlogs})
-        }
-        else{
-            const Clave = false
-            //console.log("NO Administrador")
-            res.render('partials/Clientes/Blogs&Ecommerce', {Clave, Ecommerce, blog, staffing, dataBlogs})
-        }
-            
-    } catch (error) {
-//        const clave = true
-        console.log("****Solo agrega clientes", error)
-        // cebador
-//        res.render('partials/Clientes/Blogs&Ecommerce', {clave})
-        res.redirect('/')
-    }
-});
-
-// ruta para inscribir cientes y empleados
-router.post('/users/signUP/clientesyempleados', isAuthenticated, async (req, res) => {
-    const {email, password, nombre, apellido, empresa, Clave, blog, staffing, Ecommerce} = req.body
-    //console.log("QUE HAY EN REQ.BODY???",req.body)
-    try {
-        const newUser    = new User({email, password, nombre, apellido, empresa, Clave, blog, staffing, Ecommerce});
-        newUser.password = await newUser.encryptPassword(password);
-        await newUser.save();
-        console.log("El usuario se cargo bien")
-    } catch (error) {
-        console.log("No se puedo cargar correctamente el usuario",error)
-    }
-    // aqui hay que avisar si se cargo bien o no el usuario y salir a la pagina principal
-
-    res.redirect("/")
-});
 
 
 

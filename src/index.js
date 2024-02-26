@@ -4,15 +4,12 @@ const cors           = require('cors')
 const path           = require('path');
 const exphbs         = require('express-handlebars');
 const methodOverride = require('method-override');
-const session        = require('express-session');
 const flash          = require('connect-flash');
-const passport       = require('passport');
 const http           = require('http');
-const socketIO       = require('socket.io');
 const Handlebars     = require('handlebars');
-const dotEnv         = require("dotenv").config();
 const fileUpload     = require('express-fileupload');
 const favicon        = require('serve-favicon')
+const session = require('express-session');
 
 
 // parche de handlebars
@@ -21,12 +18,8 @@ const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-ac
 
 //inicializations
 const app = express();
-require('dotenv').config();
 require('./database');
-require('./config/passport');
 const server = http.Server(app);
-const io = socketIO(server);
-
 
 //Settings 
 app.set('view engine', 'handlebars');
@@ -47,32 +40,24 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
-const MemoryStore = require('memorystore')(session)
-app.use(session({
-    secret: 'aniseba22',
-    resave: true,
-    saveUninitialized: true,
-    cookie: { maxAge: 86400000 },
-    store: new MemoryStore({
-      checkPeriod: 86400000 // prune expired entries every 24h
-    }),
-    resave: false,
-    secret: 'keyboard cat'
-}));
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+
+// Configurar express-session
+app.use(session({
+    secret: 'tu_secreto_aqui', // Cambia esto con una cadena secreta más segura
+    resave: true,
+    saveUninitialized: true
+  }));
+  
+  // Configurar connect-flash
+  app.use(flash());
+
 app.use(fileUpload({
     useTempFiles : true,
     tempFileDir : '/tmp/',
     limits: { fileSize: 50 * 1024 * 1024 }
 }));
 
-//app.use(store.initialize())
-
-// sockets
-require('./sockets')(io);
 
 //Global Variables
 app.use((req, res, next) => {
@@ -99,23 +84,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static(path.join(__dirname, 'layouts')));
 app.use(express.static(path.join(__dirname, 'partials')));
-//app.use(express.static(path.join(__dirname, 'uploads')));
 app.use('/uploads', express.static('uploads'));
-
 app.use('/uploads', express.static('C:\\Users\\Coderian\\Desktop\\pruebaTBS\\src\\uploads'));
-//app.use('/uploads', express.static('pruebaTBS\\src\\uploads'));
 
 
-// app 4004
-// app.use((req, res, next) => {
-// //    res.status(404).send('404 Not Found');
-// //    res.status(404).render('/')
-//     res.status(404).redirect('/error404')
-// });
+
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 //server
-const port = process.env.PORT || 3009;
+const port = process.env.PORT || 3019;
 server.listen(port, (err) => {
     console.log(`The Best Staff en desarrollo desde el Servidor con el puerto, ${port}`);
     if (err) {

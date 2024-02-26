@@ -29,14 +29,14 @@ const mongoose = require('mongoose');
                 
             } catch (error) {
                 try {
-                    mongoose.connect('mongodb://localhost/tbs',{
-                        //         useCreateIndex:true,
-                        //         useNewUrlParser:true,
-                        //         useUnifiedTopology:true,
-                        // //        useFindAndModify:false
+                        mongoose.connect('mongodb://localhost/tbs',{
+                            //         useCreateIndex:true,
+                            //         useNewUrlParser:true,
+                            //         useUnifiedTopology:true,
+                            // //        useFindAndModify:false
                         })
-                
                         .then(db => console.log('DB esta correctamente conectada'))
+                        mongoose.set('strictQuery', false);
                         
                     } catch (error) {
                     console.error(error);
