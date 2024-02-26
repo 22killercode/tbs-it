@@ -6,11 +6,11 @@ const blogs = new Schema({
     pathImg: { type: String },
     rutaSimple: { type: String },
     rutaSimple2: { type: String },
+    rutaURL: { type: String },
     tamanoImg: { type: Number },
     titulo: { type: String },
     mensaje: { type: String },
     idCliente: { type: String },
-    rutaURL: { type: String },
 
     date: { type: Date, default: Date.now },
 });

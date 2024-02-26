@@ -127,10 +127,6 @@ router.get('/configuracionesBlogsProductsEildamais',  verificarToken, async (req
 
 
 
-
-// desde aqui
-
-
 // ruta para inscribir cientes y empleados OK
 router.post('/users/signUP/clientesyempleados', verificarToken,  async (req, res) => {
     console.log("QUE HAY EN REQ.BODY? de SIGNUP??",req.body)
@@ -164,6 +160,7 @@ router.post('/users/signUP/clientesyempleados', verificarToken,  async (req, res
         res.redirect("/")
     }
 });
+
 
 
 // para armar NUEVOS blogs con AXIOS

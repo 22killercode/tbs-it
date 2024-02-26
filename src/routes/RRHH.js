@@ -1,9 +1,7 @@
 require('dotenv').config();
 const express           = require('express');
 const router            = express.Router(); 
-const passport          = require('passport');
 const mimeTypes        = require('mime-types')
-const multer           = require('multer')
 const path             = require('path')//no sacar
 const fs               = require('fs').promises
 
