@@ -4176,23 +4176,6 @@ router.get('/portfolio', async (req, res) => {
 
 
 
-// ruta para inscribir cientes y empleados
-router.post('/users/signUP/clientesyempleados',  async (req, res) => {
-    const {email, password, nombre, apellido, empresa, Clave, blog, staffing, Ecommerce} = req.body
-    //console.log("QUE HAY EN REQ.BODY???",req.body)
-    try {
-        const newUser    = new User({email, password, nombre, apellido, empresa, Clave, blog, staffing, Ecommerce});
-        newUser.password = await newUser.encryptPassword(password);
-        await newUser.save();
-        console.log("El usuario se cargo bien")
-    } catch (error) {
-        console.log("No se puedo cargar correctamente el usuario",error)
-    }
-    // aqui hay que avisar si se cargo bien o no el usuario y salir a la pagina principal
-
-    res.redirect("/")
-});
-
 
 
 

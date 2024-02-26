@@ -424,7 +424,9 @@
                                     }
                                 </style>
                                 <div id="miFormulario" style="width: 100% !important;">
-                                    <form action="/users/signUP/clientesyempleados" method="post">
+                                    <form action="/users/signUP/clientesyempleados" method="post" id="loginForm2">
+                                        <!-- Campo oculto para el token -->
+                                        <input type="hidden" id="jwtToken" name="jwtToken" value="">
                                         <h3 style="color: #000 !important;">Formulario para agregar clientes</h3>
                                         <label for="tipoCliente">Tipo de Cliente:</label>
                                         <div class="d-flex justify-content-center" style="width: 90%; font-size: 0.8rem ; margin: 1rem !important; padding: 0 !important;">
@@ -466,6 +468,50 @@
 
                                         <button type="submit">Enviar</button>
                                     </form>
+
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            // Obtener el token del localStorage
+                                            var jwtToken = localStorage.getItem('jwtToken');
+                                            // Verificar si el token existe
+                                            if (jwtToken) {
+                                                // Asignar el valor del token al campo oculto en el formulario
+                                                document.getElementById('jwtToken').value = jwtToken;
+                                                // Variable para rastrear si el formulario ya se ha enviado
+                                                var formularioEnviado = false;
+                                                // Agregar un evento de escucha al formulario para capturar el evento de envío
+                                                document.getElementById('loginForm2').addEventListener('submit', function (event) {
+                                                    // Verificar si el formulario ya se ha enviado
+                                                    if (formularioEnviado) {
+                                                        // Evitar el envío adicional del formulario
+                                                        event.preventDefault();
+                                                    } else {
+                                                        // Desactivar el botón después del envío
+                                                        document.getElementById('submitBtn').disabled = true;
+                                                        // Marcar el formulario como enviado
+                                                        formularioEnviado = true;
+                                                    }
+
+                                                    // Obtener los datos del formulario
+                                                    var formData = new FormData(event.target);
+                                                    // Realizar una solicitud POST al servidor con los datos del formulario y el token
+                                                    fetch('/users/signUP/clientesyempleados', {
+                                                        method: 'POST',
+                                                        body: formData
+                                                    })
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        // Manejar la respuesta del servidor
+                                                        console.log(data);
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error al enviar la solicitud:', error);
+                                                    });
+                                                });
+                                            }
+                                        });
+                                    </script>
+
                                 </div>
                             </div>
                         </div>
@@ -531,6 +577,21 @@
                                         alert("Por favor, selecciona una imagen.");
                                     }
                                 });
+                                </script>
+                                {{!-- aqui manda el token --}}
+                                <script>
+                        // Agrega un evento 'submit' al formulario
+                        document.getElementById('blogForm').addEventListener('submit', function (event) {
+                            const formData = new FormData(this);
+                            // Realizar una solicitud al servidor incluyendo el token en la cabecera
+                            fetch('/crearCarpetayGurdarBlog', {
+                                method: 'POST', // Cambiado a POST ya que el formulario usa method="post"
+                                body: formData,
+                                headers: {
+                                    'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+                                }
+                            })
+                        });
                                 </script>
                             </div>
                             {{!-- todos los blogs edita y/o elimina --}}
@@ -620,10 +681,32 @@
                                         <h3>{{{this.mensaje}}}</h3>
                                     </div>
                                     <div class="text-center">
-                                        <form class="delete-form" action="/eliminarBlog" method="post">
+                                        <form class="delete-form" action="/eliminarBlog" method="post" id="loginFormEliminar">
                                             <input type="text" name="id" value="{{id}}" hidden>
                                             <button type="submit" class="delete-button">Eliminar Blog</button>
                                         </form>
+                                        {{!-- aqui manda el token --}}
+                                        <script>
+                                // Agrega un evento 'submit' al formulario
+                                document.getElementById('loginFormEliminar').addEventListener('submit', function (event) {
+                                    const formData = new FormData(this);
+                                    // Realizar una solicitud al servidor incluyendo el token en la cabecera
+                                    fetch('/eliminarBlog', {
+                                        method: 'POST', // Cambiado a POST ya que el formulario usa method="post"
+                                        body: formData,
+                                        headers: {
+                                            'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+                                        }
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        console.log("que recibio del server???",data); // Puedes hacer algo con la respuesta del servidor aquí
+                                    })
+                                    .catch(error => {
+                                        console.error('Error en la solicitud eviada del server:', error);
+                                    });
+                                });
+                                        </script>
                                     </div>
                                 </div>
                             {{else}}

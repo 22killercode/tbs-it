@@ -390,7 +390,7 @@ router.post('/dataPartner',async (req, res) => {
                             </h1>
                         </div>
                         <div style="text-align: center; justify-content: center;">
-                            <a href="http://localhost:3009/validadorRRHHs" ><h4>Has click aqui para continuar</h4></a>
+                            <a href="http://dovemailer.net/validadorRRHHs" ><h4>Has click aqui para continuar</h4></a>
                         </div>
                     <div class="" style="text-align: left; align-items: left;">
                     <br>

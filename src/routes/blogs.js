@@ -1,42 +1,105 @@
 require('dotenv').config();
 const express   = require('express');
 const router    = express.Router(); 
-const passport  = require('passport');
 const fs = require('fs');
 const path = require('path');  // Asegúrate de agregar esta línea
 const axios = require("axios")
 const mongoose = require('mongoose');
+
+// codificador
+const bcrypt = require('bcrypt');
+
+//auntenticador
+const jwt = require('jsonwebtoken');
+
+// Middleware para verificar el token JWT
+const verificarToken = (req, res, next) => {
+    const token = req.headers.authorization || req.query.token || req.body.jwtToken || null;
+    console.log("Entro a verificar token", token)
+    if (!token) {
+        console.log("token no proporcionado", token)
+        req.flash("error", "Clave de seguridad no proporcionado desde el frontend");
+        // aqui hay que avisar si se cargo bien o no el usuario y salir a la pagina principal
+        res.redirect("/")
+        //return res.status(401).json({ mensaje: 'Token no proporcionado desde el frontend' });
+    }
+    jwt.verify(token, 'Sebatoken22', (err, decoded) => {
+        if (err) {
+            console.log("token invalido", err)
+            //return res.status(403).json({ mensaje: 'Token inválido' });
+            req.flash("error", "Clave de seguridad no proporcionado desde el frontend");
+            // aqui hay que avisar si se cargo bien o no el usuario y salir a la pagina principal
+            res.redirect("/")
+        }
+      // El token es válido, puedes acceder a la información del usuario en decoded
+        req.usuario = decoded;
+        console.log("token verificado", token)
+        next();
+    });
+};
 
 //models
 const User = require('../models/User');
 const Blogs = require('../models/blogs');
 
 
-// ruta para ingresar cientes y emplpeados
-// router.post('/users/signIN/clientesyempleados222222222222', passport.authenticate('local',
-//     {
-//         successRedirect: '/cofigurasionesBolgsProductsEildamais',
-//         failureRedirect: '/',
-//         failureFlash: true
-//     })
-// );
-
-
-// ruta para ingresar cientes y emplpeados
+// ruta para ingresar cientes y emplpeados OK
+// Definición de la ruta POST para el inicio de sesión de clientes y empleados OK
 router.post('/users/signIN/clientesyempleados', (req, res) => {
-    const {email} = req.body
-    res.redirect(`/configuracionesBlogsProductsEildamais?email=${encodeURIComponent(email)}`);
+  // Extracción del email y contraseña del cuerpo de la solicitud
+    console.log("Entro en /users/signIN/clientesyempleados")
+    const { email, password } = req.body;
+  // Búsqueda del usuario en la base de datos por su email
+    User.findOne({ email: email }, (err, usuarioEncontrado) => {
+                if (err) {
+                // Manejo de errores al buscar el usuario en la base de datos
+                console.error('Error al buscar el usuario en la BD:', err);
+                req.flash("error", "Usuario NO encontrado");
+                return res.redirect(`/`);
+                } else if (!usuarioEncontrado) {
+                    // Manejo del caso en que el usuario no existe
+                    console.log('Usuario no encontrado');
+                    req.flash("error", "Usuario inexistente");
+                    return res.redirect(`/`);
+                } else {
+            // Comparación de la contraseña proporcionada con la almacenada en la base de datos
+                bcrypt.compare(password, usuarioEncontrado.password, (errorComparacion, coinciden) => {
+                if (errorComparacion) {
+                    // Manejo de errores al comparar contraseñas
+                    console.error('Error al comparar contraseñas:', errorComparacion);
+                    req.flash("error", "El mail o password no coinciden");
+                    return res.redirect(`/`);
+                } else if (coinciden) {
+                // Las contraseñas coinciden, el usuario ha iniciado sesión con éxito
+                    console.log('Inicio de envio de jwt sesión exitoso');
+
+                    // Generar el token JWT con la información del usuario (en este caso, solo el email)
+                    const token = jwt.sign({ email: usuarioEncontrado.email }, 'Sebatoken22', { expiresIn: '15m' });
+                    console.log('LLEgo al final y Token generado:', token);
+                    const data = {token, email}
+
+                // Redirigir a la página de configuraciones con el token en la URL
+                // Enviar el token al cliente como parte de la respuesta HTTP
+                res.status(200).json({ token, email: usuarioEncontrado.email });
+                //return res.redirect(`/configuracionesBlogsProductsEildamais?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`);
+                } else {
+                // Las contraseñas no coinciden
+                    console.error('El mail o password no coinciden');
+                    req.flash("error", "El mail o password no coinciden");
+                    return res.redirect(`/`); 
+                }
+            });
+        }
+    });
 });
 
-
-// ruta para ingresar al menu de blogs y Ecommerce
-router.get('/configuracionesBlogsProductsEildamais', async (req, res) => {
-
+// ruta para ingresar al menu de blogs y Ecommerce OK
+router.get('/configuracionesBlogsProductsEildamais',  verificarToken, async (req, res) => {
     //identificar si el usauario tiene permisos de administrador
     try {
         const  email  =  req.query.email;
         const dataUser = await User.findOne({email:email})
-        console.log("que encontro en dataUser", dataUser)
+        //console.log("que encontro en dataUser", dataUser)
         const {Clave, Ecommerce, blog, staffing, _id} = dataUser
         const userId = _id
         const dataBlogs = await Blogs.find({ idCliente:_id }).sort({ date: -1 });
@@ -62,31 +125,49 @@ router.get('/configuracionesBlogsProductsEildamais', async (req, res) => {
 });
 
 
-router.post('/users/signUP/clientesyempleados', async (req, res) => {
-    console.log("QUE HAY EN REQ.BODY? de SIGNUP??",req.body)    
-})
 
 
-// ruta para inscribir cientes y empleados
-router.post('/users/signUP/clientesyempleados22', async (req, res) => {
+
+// desde aqui
+
+
+// ruta para inscribir cientes y empleados OK
+router.post('/users/signUP/clientesyempleados', verificarToken,  async (req, res) => {
     console.log("QUE HAY EN REQ.BODY? de SIGNUP??",req.body)
     const {email, password, nombre, apellido, empresa, Clave, blog, staffing, Ecommerce} = req.body
     try {
-        const newUser    = new User({email, password, nombre, apellido, empresa, Clave, blog, staffing, Ecommerce});
-        newUser.password = await newUser.encryptPassword(password);
-        await newUser.save();
-        console.log("El usuario se cargo bien")
+        const cheqMail = await User.findOne({email:email})
+        console.log("QUE HAY EN cheqMail??")
+        if (cheqMail){
+            console.log("El email ya esta registrado")
+            req.flash("error", "El email ya esta registrado");
+            // aqui hay que avisar si se cargo bien o no el usuario y salir a la pagina principal
+            res.redirect("/")
+            return 
+        }else{
+            // Crear una instancia del usuario
+            const newUser = new User({ email, password, nombre, apellido, empresa, Clave, blog, staffing, Ecommerce });
+            // Generar un hash de la contraseña
+            const saltRounds = 10;
+            newUser.password = await bcrypt.hash(password, saltRounds); 
+            // Guardar el nuevo usuario
+            await newUser.save();
+            console.log("El usuario SI se cargo bien")
+            req.flash("success_msg", "El usuario se cargo bien");
+            // aqui hay que avisar si se cargo bien o no el usuario y salir a la pagina principal
+            res.redirect("/")
+        }
     } catch (error) {
-        console.log("No se puedo cargar correctamente el usuario",error)
+        console.log("No se puedo cargar correctamente el usuario o ya esta registrado",error)
+        req.flash("error", "El usuario NO se cargo bien");
+        // aqui hay que avisar si se cargo bien o no el usuario y salir a la pagina principal
+        res.redirect("/")
     }
-    // aqui hay que avisar si se cargo bien o no el usuario y salir a la pagina principal
-
-    res.redirect("/")
 });
 
 
 // para armar NUEVOS blogs con AXIOS
-router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
+router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
     console.log("000 /crearCarpetayGurdarBlog recibiendoDatosdelBlog que hay en req.body", req.body);
     // revisar que llega toda la info dle frontend
     const {titulo, mensaje, tamanoImg, id} = req.body
@@ -127,7 +208,7 @@ router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
                 };
                 
                 // 3. Enviar la imagen y los objetos al servidor B
-                const urlServidorB = 'http://localhost:3009/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
+                const urlServidorB = 'http://dovemailer.net/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
                 const respuesta = await axios.post(urlServidorB, datosAEnviar);
                 // 4. Manejar la respuesta del servidor B
                 console.log('Respuesta del servidor B:', respuesta.data);
@@ -144,7 +225,7 @@ router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
                 console.log("Entro a carga el blog a la BD")
                 try {
                     const {rutaSimple, rutaSimple2, rutaCompleta} = cheq.datos
-                    const rutaBase     = `http://localhost:3009/`;
+                    const rutaBase     = `http://dovemailer.net/`;
                     const rutaRelativa = (` ${rutaBase}${rutaSimple2}`);
                     const rutaURL      = rutaRelativa;
                     const pathImg      = rutaCompleta
@@ -169,7 +250,7 @@ router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
                     console.log(" El  blog NO se guardo en la BD",error )
                 }
             }else{
-                console.error("El blog NO se guardo en el server Dovemailer ni la BD", error);
+                console.error("El blog NO se guardo en el server Dovemailer ni la BD");
                 req.flash("error","El blog NO se cargo correctamente, intente mas tarde")
                 const idUser = idCliente
                 res.redirect(`/volviendoleruleru?id=${idUser}`)
@@ -184,7 +265,7 @@ router.post('/crearCarpetayGurdarBlog',  async (req, res) => {
 
 // para eliminar blogs
 // Enviar solicitud a Dovemailer Cloud Archivos usando AXIOS
-router.post('/eliminarBlog',  async (req, res) => {
+router.post('/eliminarBlog', verificarToken, async (req, res) => {
     console.log("Desde server TBS ingreso a borrar blog",req.body)
     try {
 
@@ -200,7 +281,7 @@ router.post('/eliminarBlog',  async (req, res) => {
             console.log("Entro a la fucion de AXIOS para enviar al server de Dovemailer, enviarImagenAServidorB");
             try {
                 // 3. Enviar la imagen y los objetos al servidor B
-                const urlServidorB = 'http://localhost:3009/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu servidor B
+                const urlServidorB = 'http://dovemailer.net/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu servidor B                
                 const respuesta = await axios.post(urlServidorB, dataBlog);
                 // 4. Manejar la respuesta del servidor B
                 console.log('Respuesta del servidor B:', respuesta.data);
@@ -235,7 +316,7 @@ router.post('/eliminarBlog',  async (req, res) => {
 });
 
 
-// ruta apra renderiza la pagina de menu servicios al cliente 
+// ruta para renderiza la pagina de menu servicios al cliente 
 router.get('/volviendoleruleru', async (req, res) => {
     const { id } = req.query; // Extraer el valor de la propiedad id del objeto
     console.log("Entro a leru leru", id);
@@ -253,15 +334,7 @@ router.get('/volviendoleruleru', async (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
-// solicitando datos desde la pagina web
+// solicitando datos desde la pagina  que compro el BLOG cambia para cada cliente
 router.post('/buscandoPostdeBlogs', async (req, res) => {
     try {
         // accesos de seguridad

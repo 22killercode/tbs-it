@@ -275,18 +275,59 @@ tinymce.init({
                 </div>
                 <div class="modal-body">
                     <h4>Bienvenid@s</h4>
-                    <form action="/users/signIN/clientesyempleados" method="post">
-                    {{!-- <form action="https://tbs-it.net/users/signIN/clientesyempleados" method="post"> --}}
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Email</label>
-                            <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput2" class="form-label">Contraseña</label>
-                            <input name="password" type="password" class="form-control" id="exampleFormControlInput2" placeholder="*****">
-                        </div>
-                        <button type="submit" class="alertaVerde">Entrar</button>
-                    </form>
+ <form action="/users/signIN/clientesyempleados" method="post" id="loginForm">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email</label>
+        <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput2" class="form-label">Contraseña</label>
+        <input name="password" type="password" class="form-control" id="exampleFormControlInput2" placeholder="*****">
+    </div>
+    <button type="submit" class="alertaVerde">Entrar</button>
+</form>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        fetch('/users/signIN/clientesyempleados', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+                console.log("Token respoonde el server OOK");
+            } else {
+                return response.json().then(errorData => {
+                    console.log("Token respoonde el server NO OK")
+                    throw new Error(`Error: ${errorData.message}`);
+                });
+            }
+        })
+        .then(data => {
+            // Guarda el token en el localStorage
+            localStorage.setItem('jwtToken', data.token);
+            console.log("Token guardado en el localStorage");
+            // Redirige a la nueva ruta con la información requerida
+            const email = encodeURIComponent(data.email);
+            const token = encodeURIComponent(data.token);
+            window.location.href = `/configuracionesBlogsProductsEildamais?email=${email}&token=${token}`;
+            console.log(`Redireccionando a: /configuracionesBlogsProductsEildamais?email=${email}&token=${token}`);
+        })
+        .catch(error => {
+            console.error('Error en la solicitud enviada al servidor:', error);
+            alert(error.message);
+            window.location.href = '/';
+        });
+    });
+</script>
+
+
                     <br><br>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary text-light" data-bs-dismiss="modal">Volver</button>
