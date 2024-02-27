@@ -218,9 +218,11 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
                 console.error('Error al procesar la solicitud:', error.message);
                 }
             }
-              // Llamada a la función con los datos necesarios
+            
+            // Llamada a la función para enviar las imagenes al server de Dovemailer con los datos necesarios
             const cheq = await enviarImagenAServidorB(req.files.imagen, empresa, id);        
             console.log("QUE CARAJOS TIENE CHEQ", cheq)
+
             // guardar info en la BD
             if (cheq) {
                 console.log("Entro a carga el blog a la BD")
@@ -228,7 +230,7 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
                     const {rutaSimple, rutaSimple2, rutaCompleta} = cheq.datos
                     const rutaBase     = `http://dovemailer.net/`;
                     //const rutaBase     = `http://localhost:3009/`
-                    const rutaRelativa = (` ${rutaBase}${rutaSimple2}`);
+                    const rutaRelativa = (` ${rutaBase}/img/${rutaSimple2}`);
                     const rutaURL      = rutaRelativa;
                     const pathImg      = rutaCompleta
                     console.log("Que ruta URL fabrico",rutaURL);
