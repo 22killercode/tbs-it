@@ -230,7 +230,7 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
                     const {rutaSimple, rutaSimple2, rutaCompleta} = cheq.datos
                     const rutaBase     = `http://dovemailer.net/`;
                     //const rutaBase     = `http://localhost:3009/`
-                    const rutaRelativa = (` ${rutaBase}/img/${rutaSimple2}`);
+                    const rutaRelativa = (` ${rutaBase}img/${rutaSimple2}`);
                     const rutaURL      = rutaRelativa;
                     const pathImg      = rutaCompleta
                     console.log("Que ruta URL fabrico",rutaURL);
