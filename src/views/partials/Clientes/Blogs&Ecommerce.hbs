@@ -584,7 +584,7 @@
                                     document.addEventListener('DOMContentLoaded', function () {
                                         // Obtener el token JWT desde el localStorage
                                         var jwtToken = localStorage.getItem('jwtToken');
-                                        console.log("Token encontrado en el frontend:", jwtToken)
+                                        console.log("Token encontrado en el frontend desde nuevo blog:", jwtToken)
 
                                         // Verificar si el token existe
                                         if (jwtToken) {
@@ -725,7 +725,7 @@
                                     document.addEventListener('DOMContentLoaded', function () {
                                         // Obtener el token JWT desde el localStorage
                                         var jwtToken = localStorage.getItem('jwtToken');
-                                        console.log("Token encontrado en el frontend:", jwtToken)
+                                        console.log("Token encontrado en el frontend desde eliminar:", jwtToken)
 
                                         // Verificar si el token existe
                                         if (jwtToken) {
@@ -776,7 +776,6 @@
                         </div>
                     </div>
                     {{/if}}
-
                     {{!-- Agregar productos --}}
                     {{#if Ecommerce}}
                         <div class="content" id="opcion4">
@@ -993,7 +992,6 @@
                             </script>
                         </div>
                     {{/if}}
-
                     {{!-- icono --}}
                     <div class="content" id="opcion5">
                         <div class="card" style="margin: 0.5rem; padding:0.5rem 1.5rem;">
@@ -1113,6 +1111,7 @@
                         </div>
                     </div>                    
                 </div>
+                {{!-- scripts del menu --}}
                 <script>
                 const navTabs = document.querySelector('.nav-tabs');
                 const navLinks = document.querySelectorAll('.nav-link');

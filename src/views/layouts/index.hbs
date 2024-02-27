@@ -286,7 +286,7 @@ tinymce.init({
     </div>
     <button type="submit" class="alertaVerde">Entrar</button>
 </form>
-
+{{!-- guarda el token el el ls --}}
 <script>
     document.getElementById('loginForm').addEventListener('submit', function (event) {
         event.preventDefault();
@@ -301,7 +301,7 @@ tinymce.init({
         .then(response => {
             if (response.ok) {
                 return response.json();
-                console.log("Token respoonde el server OOK");
+                console.log("Token respoonde el server desde index OK");
             } else {
                 return response.json().then(errorData => {
                     console.log("Token respoonde el server NO OK")

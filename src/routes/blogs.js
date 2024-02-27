@@ -204,8 +204,8 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
                 };
                 
                 // 3. Enviar la imagen y los objetos al servidor B
-                const urlServidorB = 'http://dovemailer.net/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
-                //const urlServidorB = 'http://localhost:3009/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
+                //const urlServidorB = 'http://dovemailer.net/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
+                const urlServidorB = 'http://localhost:3009/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
                 const respuesta = await axios.post(urlServidorB, datosAEnviar);
                 // 4. Manejar la respuesta del servidor B
                 console.log('Respuesta del servidor B:', respuesta.data);
@@ -222,8 +222,8 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
                 console.log("Entro a carga el blog a la BD")
                 try {
                     const {rutaSimple, rutaSimple2, rutaCompleta} = cheq.datos
-                    const rutaBase     = `http://dovemailer.net/`;
-                    //const rutaBase     = `http://localhost:3009/`
+                    //const rutaBase     = `http://dovemailer.net/`;
+                    const rutaBase     = `http://localhost:3009/`
                     const rutaRelativa = (` ${rutaBase}${rutaSimple2}`);
                     const rutaURL      = rutaRelativa;
                     const pathImg      = rutaCompleta
@@ -279,8 +279,8 @@ router.post('/eliminarBlog', verificarToken, async (req, res) => {
             console.log("Entro a la fucion de AXIOS para enviar al server de Dovemailer, enviarImagenAServidorB");
             try {
                 // 3. Enviar la imagen y los objetos al servidor B
-                const urlServidorB = 'http://dovemailer.net/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu servidoB
-                //const urlServidorB = 'http://localhost:3009/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu 
+                //const urlServidorB = 'http://dovemailer.net/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu servidoB
+                const urlServidorB = 'http://localhost:3009/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu 
                 const respuesta = await axios.post(urlServidorB, dataBlog);
                 // 4. Manejar la respuesta del servidor B
                 console.log('Respuesta del servidor B:', respuesta.data);
