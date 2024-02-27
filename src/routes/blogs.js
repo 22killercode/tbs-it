@@ -24,8 +24,8 @@ const verificarToken = (req, res, next) => {
         console.log("token no proporcionado", token)
         req.flash("error", "Clave de seguridad no proporcionado desde el frontend");
         // aqui hay que avisar si se cargo bien o no el usuario y salir a la pagina principal
-        return res.redirect("/")
-        //return res.status(401).json({ mensaje: 'Token no proporcionado desde el frontend' });
+        //return res.redirect("/")
+        return res.status(401).json({ mensaje: 'Token no proporcionado desde el frontend' });
     }
     jwt.verify(token, 'Sebatoken22', (err, decoded) => {
         console.log("Verificando el token")
