@@ -81,7 +81,7 @@ router.post('/users/signIN/clientesyempleados', verificarToken, (req, res) => {
 
                 // Redirigir a la página de configuraciones con el token en la URL
                 // Enviar el token al cliente como parte de la respuesta HTTP
-                res.status(200).json({ token, email: usuarioEncontrado.email });
+                res.status(200).json({ token });
                 //return res.redirect(`/configuracionesBlogsProductsEildamais?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`);
                 } else {
                 // Las contraseñas no coinciden
