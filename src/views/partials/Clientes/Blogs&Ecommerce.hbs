@@ -214,7 +214,7 @@
                 {{!-- menu de acciones --}}
                 <div class="" style="">
                     {{!-- agregar NEW´s --}}
-                    <div id="">
+                    <div id="opcion1">
                         <div class="content active" id="opcion1" >
                             {{!-- carrosel de beneficios --}}
                             <div class="col-md panelControl" style="z-index: 888 !important ;margin:auto;border:1px solid #000; background-color:white;border-radius:1rem; max-width:90%;height:auto !important;">
@@ -222,7 +222,7 @@
                                         <div class="carousel-inner" style="border-radius:1rem; color: black; height:41rem; margin-top:1rem; background-color: white;">
                                             <div class="carousel-item active" data-bs-interval="2000" aligne="center">
                                                 <br>
-                                                <img src="images/100.jpg" style="height:55%; width: 50%; margin:auto; display: flex;  align-items: center;justify-content: center;">
+                                                <img src="images/dovemailer.jpg" style="height:55%; width: 50%; margin:auto; display: flex;  align-items: center;justify-content: center;">
                                             </div>
                                             <div class="carousel-item" data-bs-interval="20000" aligne="center">
                                                 <a href="/membresias">
@@ -447,16 +447,22 @@
                                                 <label class="form-check-label" for="flexSwitchCheckStaffing">Staffing</label>
                                             </div>
                                         </div>
+
                                         <label for="nombre">Nombre:</label>
                                         <input type="text" id="nombre" name="nombre" required>
+
                                         <label for="apellido">Apellido:</label>
                                         <input type="text" id="apellido" name="apellido" required>
+
                                         <label for="pais">País:</label>
                                         <input type="text" id="pais" name="pais" required>
+
                                         <label for="empresa">Empresa:</label>
                                         <input type="text" id="empresa" name="empresa" required>
+
                                         <label for="email">Email:</label>
                                         <input type="email" id="email" name="email" required>
+
                                         <label for="password">Contraseña:</label>
                                         <input type="password" id="password" name="password" required>
 
@@ -510,268 +516,272 @@
                             </div>
                         </div>
                     {{/if}}
+
                     {{!-- Blogs --}}
                     {{#if blog}}
-                    <div class="container-xxl">
-                        <div class="" id="opcion3">
-                            {{!-- escribi un nuevo blog --}}
-                            <div style="text-align: center; color: #000 !important;">
-                                <form id="blogForm" action="/crearCarpetayGurdarBlog" method="post" name="form" enctype="multipart/form-data">
-                                    <input type="hidden" id="jwtToken2" name="jwtToken2" value="">
-                                    <input type="text" name="id" value="{{userId}}" hidden>
-                                    <h3 style="color: #000 !important;">Ingresa una nueva noticia a tu blog</h3>
-                                    <div class="cardNinguna">
-                                        <div class="product-image-container">
-                                            <div class="product-image-placeholder" style="color: #000 !important;">
-                                                <h3>Agrega tu imagen</h3>
+                        <div class="content" id="opcion3" style="">
+                            <div class="container-xxl" >
+                                <div class="" id="opcion3">
+                                    {{!-- escribi un nuevo blog --}}
+                                    <div style="text-align: center; color: #000 !important;">
+                                        <form id="blogForm" action="/crearCarpetayGurdarBlog" method="post" name="form" enctype="multipart/form-data">
+                                            <input type="hidden" id="jwtToken2" name="jwtToken2" value="">
+                                            <input type="text" name="id" value="{{userId}}" hidden>
+                                            <h3 style="color: #000 !important;">Ingresa una nueva noticia a tu blog</h3>
+                                            <div class="cardNinguna">
+                                                <div class="product-image-container">
+                                                    <div class="product-image-placeholder" style="color: #000 !important;">
+                                                        <h3>Agrega tu imagen</h3>
+                                                    </div>
+                                                    <img id="productImage" alt="Vista previa de la imagen del producto/servicio" style="max-width: 100%;">
+                                                </div>
+                                                <!-- Contenedor del tamaño de la imagen -->
+                                                <div id="cont" align="center">
+                                                    <div id="inputContainer">
+                                                        <p id="tamanoLabel" style="color: #000 !important;">Agrega el tamaño de tu imagen en %</p>
+                                                        <input type="number" id="tamanoInput" name="tamanoImg" style="max-width: 10%;background-color: white !important;color: #000 !important;">
+                                                    </div>
+                                                </div>
+                                                <div class="file-upload" style="color: #000 !important;">
+                                                    <input type="file" id="imagen" name="imagen" style="width: {{tamanoImg}}% !important;" accept="image/*">
+                                                    <button type="button" class="btn btn-success">Seleccionar Imagen</button>
+                                                </div>
                                             </div>
-                                            <img id="productImage" alt="Vista previa de la imagen del producto/servicio" style="max-width: 100%;">
-                                        </div>
-                                        <!-- Contenedor del tamaño de la imagen -->
-                                        <div id="cont" align="center">
-                                            <div id="inputContainer">
-                                                <p id="tamanoLabel" style="color: #000 !important;">Agrega el tamaño de tu imagen en %</p>
-                                                <input type="number" id="tamanoInput" name="tamanoImg" style="max-width: 10%;background-color: white !important;color: #000 !important;">
+                                            <div style="border-color: black !important">
+                                                <label for="titulo" style="color: #000 !important;">Título del Blog:</label>
+                                                <input type="text" id="titulo" name="titulo" required>
+                                                <label for="contenido" style="color: #000 !important;">Contenido del Blog:</label>
+                                                <textarea placeholder="Puedes copiar y pegar cualquier documento"
+                                                    id="contenido" name="mensaje" rows="6" style="color: #000 !important; width: 100%;" required>
+                                                </textarea>
                                             </div>
-                                        </div>
-                                        <div class="file-upload" style="color: #000 !important;">
-                                            <input type="file" id="imagen" name="imagen" style="width: {{tamanoImg}}% !important;" accept="image/*">
-                                            <button type="button" class="btn btn-success">Seleccionar Imagen</button>
-                                        </div>
-                                    </div>
-                                    <div style="border-color: black !important">
-                                        <label for="titulo" style="color: #000 !important;">Título del Blog:</label>
-                                        <input type="text" id="titulo" name="titulo" required>
-
-                                        <label for="contenido" style="color: #000 !important;">Contenido del Blog:</label>
-                                        <textarea placeholder="Puedes copiar y pegar cualquier documento"
-                                            id="contenido" name="mensaje" rows="6" style="color: #000 !important; width: 100%;" required>
-                                        </textarea>
-                                    </div>
-                                    <button type="submit">Publicar Blog</button>
-                                </form>
-                                {{!-- // reduce la foto y la imputa en el campo imagen --}}
-                                <script>
-                                    document.querySelector('.file-upload input').addEventListener('change', function () {
-                                        if (this.files.length > 0) {
-                                            if (this.files[0].size > 1024 * 1024) {
-                                                alert("La imagen debe ser menor a 1 MB.");
-                                                this.value = '';
-                                                return;
-                                            } else {
-                                                const fileName = this.files[0].name;
-                                                document.querySelector('.file-upload button').innerText = fileName;
-                                                // Renderizar la imagen con el tamaño seleccionado
-                                                const tamanoImg = document.getElementById('tamanoInput').value;
-                                                const productImage = document.getElementById('productImage');
-                                                productImage.style.width = tamanoImg ? `${tamanoImg}%` : '100%';
-                                                productImage.src = URL.createObjectURL(this.files[0]);
-                                            }
-                                        } else {
-                                            alert("Por favor, selecciona una imagen.");
-                                        }
-                                    });
-                                </script>
-                                {{!-- aqui manda el token --}}
-                                <!-- Enviar el formulario con el token al backend -->
-                                <script>
-                                    document.addEventListener('DOMContentLoaded', function () {
-                                        // Obtener el token JWT desde el localStorage
-                                        var jwtToken = localStorage.getItem('jwtToken');
-                                        console.log("Token encontrado en el frontend desde nuevo blog:", jwtToken)
-
-                                        // Verificar si el token existe
-                                        if (jwtToken) {
-                                            // Asignar el valor del token al campo oculto en el formulario
-                                            document.getElementById('jwtToken2').value = jwtToken;
-
-                                            // Variable para rastrear si el formulario ya se ha enviado
-                                            var formularioEnviado = false;
-
-                                            // Agregar un evento de escucha de envío al formulario para capturar el evento de envío
-                                            document.getElementById('blogForm').addEventListener('submit', function (event) {
-                                                // Verificar si el formulario ya se ha enviado
-                                                if (formularioEnviado) {
-                                                    // Evitar el envío adicional del formulario
-                                                    event.preventDefault();
-                                                } else {
-                                                    // Desactivar el botón después del envío
-                                                    document.getElementById('submitBtn').disabled = true;
-                                                    // Marcar el formulario como enviado
-                                                    formularioEnviado = true;
-                                                }
-                                                
-                                                // Obtener los datos del formulario
-                                                var formData = new FormData(event.target);
-
-                                                // Realizar una solicitud POST al servidor con los datos del formulario y el token
-                                                fetch('/crearCarpetayGurdarBlog', {
-                                                    method: 'POST',
-                                                    body: formData
-                                                })
-                                                .then(response => response.json())
-                                                .then(data => {
-                                                    // Manejar la respuesta del servidor
-                                                    console.log(data);
-                                                })
-                                                .catch(error => {
-                                                    console.error('Error al enviar la solicitud:', error);
-                                                });
-                                            });
-                                        }
-                                    });
-                                </script>      
-                            </div>
-                            {{!-- todos los blogs edita y/o elimina --}}
-                            <div style="text-align: center;">
-                                <br><br>
-                            {{#if dataBlogs}}
-                                <fieldset>
-                                    <hr style="color: #000 !important;">
-                                    <hr style="color: #000 !important;">
-                                    <h2 style="color: #000 !important;"> Si deseas elimina tus blogs escritos</h2>
-                                    <br>
-                                    <h3>Actualmente tienes {{dataBlogs.length}} publicados</h3>
-                                    <h4 style="color: #000 !important;">Tu limite es de 10 blogs</h4>
-                                </fieldset>
-                            {{/if}}
-                            {{#each dataBlogs}}
-                                <style>
-                                .panelControler {
-                                    width: 90% !important;
-                                    color: #000 !important;
-                                    margin: auto;
-                                    padding: 20px;
-                                    border: 1px solid #ddd;
-                                    border-radius: 10px;
-                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                                }
-                                .panelControler:hover,
-                                .panelControler:active,
-                                .panelControler:target {
-                                    transform: scale(1.03);
-                                    box-shadow: 0.2rem 0.2rem 0.4rem 0.4rem silver;
-                                    transition: 0.5s;
-                                }
-                                .panelControl img {
-                                    width: 100%;
-                                    display: block;
-                                    margin: auto;
-                                    border-radius: 5px;
-                                }
-
-                                .card-title {
-                                    color: black !important;
-                                    text-align: center;
-                                    padding-bottom: 10px;
-                                }
-
-                                .card-title h4 {
-                                    color: black !important;
-                                    margin: 0;
-                                }
-
-                                .card-content {
-                                    text-align: center;
-                                    padding: 20px 0;
-                                }
-
-                                .card-content h4 {
-                                    color: black !important;
-                                    margin-bottom: 10px;
-                                }
-
-                                .card-content p {
-                                    color: #000 !important;
-                                    font-size: 16px;
-                                    line-height: 1.5;
-                                }
-
-                                .delete-button {
-                                    background-color: #dc3545;
-                                    color: #fff;
-                                    padding: 10px 20px;
-                                    border: none;
-                                    border-radius: 5px;
-                                    cursor: pointer;
-                                    display: inline-block;
-                                    margin-top: 20px;
-                                }
-                                </style>
-                                <br>
-                                <div class="panelControler card-body">
-                                    <div class="card-title">
-                                        <h4>{{titulo}}</h4>
-                                    </div>
-                                    <img src="{{rutaURL}}"
-                                    {{!-- <img src="http://dovemailer.net/img/uploads/tbs-it/promoBlog-7jHlNgAAr.jpg" --}}
-                                        class="card-img-top" style="width:{{tamanoImg}}% !important;">
-                                    <div class="card-content">
-                                        <h3>Mensaje</h3>
-                                        <h3>{{{this.mensaje}}}</h3>
-                                    </div>
-                                    <div class="text-center">
-                                        <form class="delete-form" action="/eliminarBlog" method="post" id="loginFormEliminar">
-                                            <input type="text" name="id" value="{{id}}" hidden>
-                                            <input type="hidden" id="jwtToken3" name="jwtToken3" value="">
-                                            <button type="submit" class="delete-button">Eliminar Blog</button>
+                                            <button type="submit">Publicar Blog</button>
                                         </form>
-                                        {{!-- aqui manda el token --}}
-                                <script>
-                                    document.addEventListener('DOMContentLoaded', function () {
-                                        // Obtener el token JWT desde el localStorage
-                                        var jwtToken = localStorage.getItem('jwtToken');
-                                        console.log("Token encontrado en el frontend desde eliminar:", jwtToken)
-
-                                        // Verificar si el token existe
-                                        if (jwtToken) {
-                                            // Asignar el valor del token al campo oculto en el formulario
-                                            document.getElementById('jwtToken3').value = jwtToken;
-
-                                            // Variable para rastrear si el formulario ya se ha enviado
-                                            var formularioEnviado = false;
-
-                                            // Agregar un evento de escucha de envío al formulario para capturar el evento de envío
-                                            document.getElementById('loginFormEliminar').addEventListener('submit', function (event) {
-                                                // Verificar si el formulario ya se ha enviado
-                                                if (formularioEnviado) {
-                                                    // Evitar el envío adicional del formulario
-                                                    event.preventDefault();
+                                        {{!-- // reduce la foto y la imputa en el campo imagen --}}
+                                        <script>
+                                            document.querySelector('.file-upload input').addEventListener('change', function () {
+                                                if (this.files.length > 0) {
+                                                    if (this.files[0].size > 1024 * 1024) {
+                                                        alert("La imagen debe ser menor a 1 MB.");
+                                                        this.value = '';
+                                                        return;
+                                                    } else {
+                                                        const fileName = this.files[0].name;
+                                                        document.querySelector('.file-upload button').innerText = fileName;
+                                                        // Renderizar la imagen con el tamaño seleccionado
+                                                        const tamanoImg = document.getElementById('tamanoInput').value;
+                                                        const productImage = document.getElementById('productImage');
+                                                        productImage.style.width = tamanoImg ? `${tamanoImg}%` : '100%';
+                                                        productImage.src = URL.createObjectURL(this.files[0]);
+                                                    }
                                                 } else {
-                                                    // Desactivar el botón después del envío
-                                                    document.getElementById('submitBtn').disabled = true;
-                                                    // Marcar el formulario como enviado
-                                                    formularioEnviado = true;
+                                                    alert("Por favor, selecciona una imagen.");
                                                 }
-                                                
-                                                // Obtener los datos del formulario
-                                                var formData = new FormData(event.target);
-
-                                                // Realizar una solicitud POST al servidor con los datos del formulario y el token
-                                                fetch('/eliminarBlog', {
-                                                    method: 'POST',
-                                                    body: formData
-                                                })
-                                                .then(response => response.json())
-                                                .then(data => {
-                                                    // Manejar la respuesta del servidor
-                                                    console.log(data);
-                                                })
-                                                .catch(error => {
-                                                    console.error('Error al enviar la solicitud:', error);
-                                                });
                                             });
-                                        }
-                                    });
-                                </script>                                    </div>
+                                        </script>
+                                        {{!-- aqui manda el token --}}
+                                        <!-- Enviar el formulario con el token al backend -->
+                                        <script>
+                                            document.addEventListener('DOMContentLoaded', function () {
+                                                // Obtener el token JWT desde el localStorage
+                                                var jwtToken = localStorage.getItem('jwtToken');
+                                                console.log("Token encontrado en el frontend desde nuevo blog:", jwtToken)
+
+                                                // Verificar si el token existe
+                                                if (jwtToken) {
+                                                    // Asignar el valor del token al campo oculto en el formulario
+                                                    document.getElementById('jwtToken2').value = jwtToken;
+
+                                                    // Variable para rastrear si el formulario ya se ha enviado
+                                                    var formularioEnviado = false;
+
+                                                    // Agregar un evento de escucha de envío al formulario para capturar el evento de envío
+                                                    document.getElementById('blogForm').addEventListener('submit', function (event) {
+                                                        // Verificar si el formulario ya se ha enviado
+                                                        if (formularioEnviado) {
+                                                            // Evitar el envío adicional del formulario
+                                                            event.preventDefault();
+                                                        } else {
+                                                            // Desactivar el botón después del envío
+                                                            document.getElementById('submitBtn').disabled = true;
+                                                            // Marcar el formulario como enviado
+                                                            formularioEnviado = true;
+                                                        }
+                                                        
+                                                        // Obtener los datos del formulario
+                                                        var formData = new FormData(event.target);
+
+                                                        // Realizar una solicitud POST al servidor con los datos del formulario y el token
+                                                        fetch('/crearCarpetayGurdarBlog', {
+                                                            method: 'POST',
+                                                            body: formData
+                                                        })
+                                                        .then(response => response.json())
+                                                        .then(data => {
+                                                            // Manejar la respuesta del servidor
+                                                            console.log(data);
+                                                        })
+                                                        .catch(error => {
+                                                            console.error('Error al enviar la solicitud:', error);
+                                                        });
+                                                    });
+                                                }
+                                            });
+                                        </script>      
+                                    </div>
+                                    {{!-- todos los blogs edita y/o elimina --}}
+                                    <div style="text-align: center;">
+                                        <br><br>
+                                        {{#if dataBlogs}}
+                                            <fieldset>
+                                                <hr style="color: #000 !important;">
+                                                <hr style="color: #000 !important;">
+                                                <h2 style="color: #000 !important;"> Si deseas elimina tus blogs escritos</h2>
+                                                <br>
+                                                <h3>Actualmente tienes {{dataBlogs.length}} publicados</h3>
+                                                <h4 style="color: #000 !important;">Tu limite es de 10 blogs</h4>
+                                            </fieldset>
+                                        {{/if}}
+                                        {{#each dataBlogs}}
+                                            <div>
+                                                <style>
+                                                .panelControler {
+                                                    width: 90% !important;
+                                                    color: #000 !important;
+                                                    margin: auto;
+                                                    padding: 20px;
+                                                    border: 1px solid #ddd;
+                                                    border-radius: 10px;
+                                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                                }
+                                                .panelControler:hover,
+                                                .panelControler:active,
+                                                .panelControler:target {
+                                                    transform: scale(1.03);
+                                                    box-shadow: 0.2rem 0.2rem 0.4rem 0.4rem silver;
+                                                    transition: 0.5s;
+                                                }
+                                                .panelControl img {
+                                                    width: 100%;
+                                                    display: block;
+                                                    margin: auto;
+                                                    border-radius: 5px;
+                                                }
+
+                                                .card-title {
+                                                    color: black !important;
+                                                    text-align: center;
+                                                    padding-bottom: 10px;
+                                                }
+
+                                                .card-title h4 {
+                                                    color: black !important;
+                                                    margin: 0;
+                                                }
+
+                                                .card-content {
+                                                    text-align: center;
+                                                    padding: 20px 0;
+                                                }
+
+                                                .card-content h4 {
+                                                    color: black !important;
+                                                    margin-bottom: 10px;
+                                                }
+
+                                                .card-content p {
+                                                    color: #000 !important;
+                                                    font-size: 16px;
+                                                    line-height: 1.5;
+                                                }
+
+                                                .delete-button {
+                                                    background-color: #dc3545;
+                                                    color: #fff;
+                                                    padding: 10px 20px;
+                                                    border: none;
+                                                    border-radius: 5px;
+                                                    cursor: pointer;
+                                                    display: inline-block;
+                                                    margin-top: 20px;
+                                                }
+                                                </style>
+                                                <br>
+                                                <div class="panelControler card-body">
+                                                    <div class="card-title">
+                                                        <h4>{{titulo}}</h4>
+                                                    </div>
+                                                    <img src="{{rutaURL}}" class="card-img-top" style="width:{{tamanoImg}}% !important;">
+                                                    <div class="card-content">
+                                                        <h3>Mensaje</h3>
+                                                        <h3>{{{this.mensaje}}}</h3>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <form class="delete-form" action="/eliminarBlog" method="post"id="loginFormEliminar">
+                                                            <input type="text" name="id" value="{{id}}" hidden>
+                                                            <input type="hidden" id="jwtToken3" name="jwtToken3" value="">
+                                                            <button type="submit" class="delete-button">Eliminar Blog</button>
+                                                        </form>
+                                                        {{!-- aqui manda el token --}}
+                                                        <script>
+                                                            document.addEventListener('DOMContentLoaded', function () {
+                                                                // Obtener el token JWT desde el localStorage
+                                                                var jwtToken = localStorage.getItem('jwtToken');
+                                                                console.log("Token encontrado en el frontend desde eliminar:", jwtToken)
+
+                                                                // Verificar si el token existe
+                                                                if (jwtToken) {
+                                                                    // Asignar el valor del token al campo oculto en el formulario
+                                                                    document.getElementById('jwtToken3').value = jwtToken;
+
+                                                                    // Variable para rastrear si el formulario ya se ha enviado
+                                                                    var formularioEnviado = false;
+
+                                                                    // Agregar un evento de escucha de envío al formulario para capturar el evento de envío
+                                                                    document.getElementById('loginFormEliminar').addEventListener('submit', function (event) {
+                                                                        // Verificar si el formulario ya se ha enviado
+                                                                        if (formularioEnviado) {
+                                                                            // Evitar el envío adicional del formulario
+                                                                            event.preventDefault();
+                                                                        } else {
+                                                                            // Desactivar el botón después del envío
+                                                                            document.getElementById('submitBtn').disabled = true;
+                                                                            // Marcar el formulario como enviado
+                                                                            formularioEnviado = true;
+                                                                        }
+                                                                        
+                                                                        // Obtener los datos del formulario
+                                                                        var formData = new FormData(event.target);
+
+                                                                        // Realizar una solicitud POST al servidor con los datos del formulario y el token
+                                                                        fetch('/eliminarBlog', {
+                                                                            method: 'POST',
+                                                                            body: formData
+                                                                        })
+                                                                        .then(response => response.json())
+                                                                        .then(data => {
+                                                                            // Manejar la respuesta del servidor
+                                                                            console.log(data);
+                                                                        })
+                                                                        .catch(error => {
+                                                                            console.error('Error al enviar la solicitud:', error);
+                                                                        });
+                                                                    });
+                                                                }
+                                                            });
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>        
+                                        {{else}}
+                                            <h3 style="color: #000 !important;">No tiene blog publicados en su pagina web</h3>
+                                        {{/each}}
+                                    </div>
                                 </div>
-                            {{else}}
-                                <h3 style="color: #000 !important;">No tiene blog publicados en su pagina web</h3>
-                            {{/each}}
-                            </div>        
+                            </div>
                         </div>
-                    </div>
                     {{/if}}
+
                     {{!-- Agregar productos --}}
                     {{#if Ecommerce}}
                         <div class="content" id="opcion4">
@@ -988,6 +998,7 @@
                             </script>
                         </div>
                     {{/if}}
+
                     {{!-- icono --}}
                     <div class="content" id="opcion5">
                         <div class="card" style="margin: 0.5rem; padding:0.5rem 1.5rem;">
@@ -1107,7 +1118,6 @@
                         </div>
                     </div>                    
                 </div>
-                {{!-- scripts del menu --}}
                 <script>
                 const navTabs = document.querySelector('.nav-tabs');
                 const navLinks = document.querySelectorAll('.nav-link');
