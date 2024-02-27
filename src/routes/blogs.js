@@ -207,7 +207,10 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
                 // 3. Enviar la imagen y los objetos al servidor B
                 const urlServidorB = 'http://dovemailer.net/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
                 //const urlServidorB = 'http://localhost:3009/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
-                const respuesta = await axios.post(urlServidorB, datosAEnviar);
+                const respuesta = await axios.post(urlServidorB, datosAEnviar, {
+                    withCredentials: true, // Importante para incluir las cookies o credenciales
+                });
+
                 // 4. Manejar la respuesta del servidor B
                 console.log('Respuesta del servidor B:', respuesta.data);
                 return respuesta.data
@@ -281,7 +284,9 @@ router.post('/eliminarBlog', verificarToken, async (req, res) => {
                 // 3. Enviar la imagen y los objetos al servidor B
                 const urlServidorB = 'http://dovemailer.net/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu servidoB
                 //const urlServidorB = 'http://localhost:3009/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu 
-                const respuesta = await axios.post(urlServidorB, dataBlog);
+                const respuesta = await axios.post(urlServidorB, dataBlog, {
+                    withCredentials: true, // Importante para incluir las cookies o credenciales
+                });
                 // 4. Manejar la respuesta del servidor B
                 console.log('Respuesta del servidor B:', respuesta.data);
                 return respuesta.data
