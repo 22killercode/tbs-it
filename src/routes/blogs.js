@@ -12,7 +12,7 @@ const bcrypt = require('bcrypt');
 //auntenticador
 const jwt = require('jsonwebtoken');
 
-//models 
+//models
 const User = require('../models/User');
 const Blogs = require('../models/blogs');
 
@@ -81,6 +81,8 @@ router.post('/users/signIN/clientesyempleados', verificarToken, (req, res) => {
 
                 // Redirigir a la página de configuraciones con el token en la URL
                 // Enviar el token al cliente como parte de la respuesta HTTP
+                // Antes de enviar la respuesta en el servidor
+                console.log('Respuesta del servidor:', data);
                 res.status(200).json(data);
                 //return res.redirect(`/configuracionesBlogsProductsEildamais?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`);
                 } else {

@@ -295,6 +295,7 @@
             headers: headers
         })
         .then(response => {
+            console.log('Respuesta del servidor:', response);
             if (response.ok) {
                 console.log("Token respondido por el servidor desde index OK");
                 return response.json();
