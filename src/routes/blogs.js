@@ -4,6 +4,7 @@ const router    = express.Router();
 const fs        = require('fs');
 const path      = require('path');  // Asegúrate de agregar esta línea
 const axios     = require("axios")
+const request = require('request');
 const mongoose  = require('mongoose');
 
 // codificador
@@ -101,12 +102,32 @@ router.get('/configuracionesBlogsProductsEildamais',  verificarToken, async (req
     //identificar si el usauario tiene permisos de administrador
     console.log("Entro en /configuracionesBlogsProductsEildamais")
     try {
-        const  email  =  req.query.email;
+        const  email   =  req.query.email;
         const dataUser = await User.findOne({email:email})
         //console.log("que encontro en dataUser", dataUser)
         const {Clave, Ecommerce, blog, staffing, _id} = dataUser
-        const userId = _id
+        const userId    = _id
         const dataBlogs = await Blogs.find({ idCliente:_id }).sort({ date: -1 });
+
+        for (const a1 of dataBlogs) {
+            // necesito ver todas las rutasURL y cambiarlas a estas nuevas rutas
+            const imageUrl = a1.rutaURL
+            async function rutImg(imageUrl) {
+                // Realizar una solicitud al servidor HTTP para obtener la imagen
+                const imageRequest = await request.get(imageUrl);
+                // Manejar eventos de error en la solicitud de la imagen
+                imageRequest.on('error', (error) => {
+                    console.error('Error al obtener la imagen:', error);
+                    res.status(500).send('Error al obtener la imagen');
+                });
+                // Transmitir la respuesta al objeto de respuesta del servidor Express
+                return imageRequest.pipe(res);
+            }
+            const rutasNuevas = await rutImg(imageUrl)
+            //console.log("Que rutas nuevas encontro para ver las imagenes", rutasNuevas)
+            a1.rutaURL = rutasNuevas
+        }
+        console.log("Se modifico algo  en dataBlogs:", dataBlogs)
 
         if (Clave) {
             console.log("Administrador",Clave, Ecommerce, blog, staffing)
@@ -270,23 +291,23 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
 
 
 
-const request = require('request');
-
-
 router.get('/proxyImage', (req, res) => {
-    const imageUrl = 'http://dovemailer.net/img/uploads/tbs-it/promoBlog-8SsdogmDT.jpg';
+//    const imageUrl = 'http://dovemailer.net/img/uploads/tbs-it/promoBlog-8SsdogmDT.jpg';
 
-    // Realizar una solicitud al servidor HTTP para obtener la imagen
-    const imageRequest = request.get(imageUrl);
+const imageUrl = 'http://dovemailer.net/img/uploads/tbs-it/promoBlog-8SsdogmDT.jpg';
 
-    // Manejar eventos de error en la solicitud de la imagen
-    imageRequest.on('error', (error) => {
-        console.error('Error al obtener la imagen:', error);
-        res.status(500).send('Error al obtener la imagen');
-    });
+// Realizar una solicitud al servidor HTTP para obtener la imagen
+const imageRequest = request.get(imageUrl);
 
-    // Transmitir la respuesta al objeto de respuesta del servidor Express
-    imageRequest.pipe(res);
+// Manejar eventos de error en la solicitud de la imagen
+imageRequest.on('error', (error) => {
+    console.error('Error al obtener la imagen:', error);
+    res.status(500).send('Error al obtener la imagen');
+});
+
+// Transmitir la respuesta al objeto de respuesta del servidor Express
+imageRequest.pipe(res);
+
 });
 
 
