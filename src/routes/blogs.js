@@ -267,6 +267,33 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
     }
 });
 
+
+
+
+const request = require('request');
+
+
+router.get('/proxyImage', (req, res) => {
+    const imageUrl = 'http://dovemailer.net/img/uploads/tbs-it/promoBlog-8SsdogmDT.jpg';
+
+    // Realizar una solicitud al servidor HTTP para obtener la imagen
+    const imageRequest = request.get(imageUrl);
+
+    // Manejar eventos de error en la solicitud de la imagen
+    imageRequest.on('error', (error) => {
+        console.error('Error al obtener la imagen:', error);
+        res.status(500).send('Error al obtener la imagen');
+    });
+
+    // Transmitir la respuesta al objeto de respuesta del servidor Express
+    imageRequest.pipe(res);
+});
+
+
+
+
+
+
 // para eliminar blogs
 // Enviar solicitud a Dovemailer Cloud Archivos usando AXIOS
 router.post('/eliminarBlog', verificarToken, async (req, res) => {
