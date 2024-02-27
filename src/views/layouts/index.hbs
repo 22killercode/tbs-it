@@ -278,6 +278,8 @@
 <script>
     document.getElementById('loginForm').addEventListener('submit', function (event) {
         event.preventDefault();
+        
+        console.log('Token en el localStorage:', localStorage.getItem('jwtToken'));
 
         // Obtiene los datos del formulario
         const formData = new FormData(this);

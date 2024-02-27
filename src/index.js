@@ -37,6 +37,15 @@ app.set('view engine', 'hbs');
 
 //Middlewares
 app.use(cors())
+
+// Configurar CORS
+app.use(cors({
+    origin: 'http://dovemailer.net/',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+}));
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
