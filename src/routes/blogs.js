@@ -1,10 +1,10 @@
 require('dotenv').config();
 const express   = require('express');
 const router    = express.Router(); 
-const fs = require('fs');
-const path = require('path');  // Asegúrate de agregar esta línea
-const axios = require("axios")
-const mongoose = require('mongoose');
+const fs        = require('fs');
+const path      = require('path');  // Asegúrate de agregar esta línea
+const axios     = require("axios")
+const mongoose  = require('mongoose');
 
 // codificador
 const bcrypt = require('bcrypt');
@@ -12,35 +12,38 @@ const bcrypt = require('bcrypt');
 //auntenticador
 const jwt = require('jsonwebtoken');
 
+
+//models
+const User = require('../models/User');
+const Blogs = require('../models/blogs');
+
+
 // Middleware para verificar el token JWT
 const verificarToken = (req, res, next) => {
-    const token = req.headers.authorization || req.query.token || req.body.jwtToken || null;
-    console.log("Entro a verificar token", token)
+    const token = req.headers.authorization || req.query.token || req.body.jwtToken || req.body.jwtToken2 || req.body.jwtToken3 || null;
+    console.log("Entro a verificar token", token, req.headers)
     if (!token) {
         console.log("token no proporcionado", token)
         req.flash("error", "Clave de seguridad no proporcionado desde el frontend");
         // aqui hay que avisar si se cargo bien o no el usuario y salir a la pagina principal
-        res.redirect("/")
+        return res.redirect("/")
         //return res.status(401).json({ mensaje: 'Token no proporcionado desde el frontend' });
     }
     jwt.verify(token, 'Sebatoken22', (err, decoded) => {
+        console.log("Verificando el token")
         if (err) {
             console.log("token invalido", err)
             //return res.status(403).json({ mensaje: 'Token inválido' });
             req.flash("error", "Clave de seguridad no proporcionado desde el frontend");
             // aqui hay que avisar si se cargo bien o no el usuario y salir a la pagina principal
-            res.redirect("/")
-        }
+            return res.redirect("/")
+        } 
       // El token es válido, puedes acceder a la información del usuario en decoded
         req.usuario = decoded;
         console.log("token verificado", token)
         next();
     });
 };
-
-//models
-const User = require('../models/User');
-const Blogs = require('../models/blogs');
 
 
 // ruta para ingresar cientes y emplpeados OK
@@ -124,9 +127,6 @@ router.get('/configuracionesBlogsProductsEildamais',  verificarToken, async (req
     // console.log("01 ingreso al menu principal Que llega ruta para ingresar al menu de blogs")
 });
 
-
-
-
 // ruta para inscribir cientes y empleados OK
 router.post('/users/signUP/clientesyempleados', verificarToken,  async (req, res) => {
     console.log("QUE HAY EN REQ.BODY? de SIGNUP??",req.body)
@@ -162,8 +162,7 @@ router.post('/users/signUP/clientesyempleados', verificarToken,  async (req, res
 });
 
 
-
-// para armar NUEVOS blogs con AXIOS
+// para armar NUEVOS blogs con AXIOS OK
 router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
     console.log("000 /crearCarpetayGurdarBlog recibiendoDatosdelBlog que hay en req.body", req.body);
     // revisar que llega toda la info dle frontend
@@ -206,6 +205,7 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
                 
                 // 3. Enviar la imagen y los objetos al servidor B
                 const urlServidorB = 'http://dovemailer.net/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
+                //const urlServidorB = 'http://localhost:3009/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
                 const respuesta = await axios.post(urlServidorB, datosAEnviar);
                 // 4. Manejar la respuesta del servidor B
                 console.log('Respuesta del servidor B:', respuesta.data);
@@ -223,6 +223,7 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
                 try {
                     const {rutaSimple, rutaSimple2, rutaCompleta} = cheq.datos
                     const rutaBase     = `http://dovemailer.net/`;
+                    //const rutaBase     = `http://localhost:3009/`
                     const rutaRelativa = (` ${rutaBase}${rutaSimple2}`);
                     const rutaURL      = rutaRelativa;
                     const pathImg      = rutaCompleta
@@ -278,7 +279,8 @@ router.post('/eliminarBlog', verificarToken, async (req, res) => {
             console.log("Entro a la fucion de AXIOS para enviar al server de Dovemailer, enviarImagenAServidorB");
             try {
                 // 3. Enviar la imagen y los objetos al servidor B
-                const urlServidorB = 'http://dovemailer.net/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu servidor B                
+                const urlServidorB = 'http://dovemailer.net/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu servidoB
+                //const urlServidorB = 'http://localhost:3009/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu 
                 const respuesta = await axios.post(urlServidorB, dataBlog);
                 // 4. Manejar la respuesta del servidor B
                 console.log('Respuesta del servidor B:', respuesta.data);

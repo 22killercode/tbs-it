@@ -222,7 +222,7 @@
                                         <div class="carousel-inner" style="border-radius:1rem; color: black; height:41rem; margin-top:1rem; background-color: white;">
                                             <div class="carousel-item active" data-bs-interval="2000" aligne="center">
                                                 <br>
-                                                <img src="images/dovemailer.jpg" style="height:55%; width: 50%; margin:auto; display: flex;  align-items: center;justify-content: center;">
+                                                <img src="images/100.jpg" style="height:55%; width: 50%; margin:auto; display: flex;  align-items: center;justify-content: center;">
                                             </div>
                                             <div class="carousel-item" data-bs-interval="20000" aligne="center">
                                                 <a href="/membresias">
@@ -516,7 +516,6 @@
                             </div>
                         </div>
                     {{/if}}
-
                     {{!-- Blogs --}}
                     {{#if blog}}
                     <div class="container-xxl">
@@ -524,6 +523,7 @@
                             {{!-- escribi un nuevo blog --}}
                             <div style="text-align: center; color: #000 !important;">
                                 <form id="blogForm" action="/crearCarpetayGurdarBlog" method="post" name="form" enctype="multipart/form-data">
+                                    <input type="hidden" id="jwtToken2" name="jwtToken2" value="">
                                     <input type="text" name="id" value="{{userId}}" hidden>
                                     <h3 style="color: #000 !important;">Ingresa una nueva noticia a tu blog</h3>
                                     <div class="cardNinguna">
@@ -556,43 +556,77 @@
                                     </div>
                                     <button type="submit">Publicar Blog</button>
                                 </form>
+                                {{!-- // reduce la foto y la imputa en el campo imagen --}}
                                 <script>
-                                // reduce la foto y la imputa en el campo imagen
-                                document.querySelector('.file-upload input').addEventListener('change', function () {
-                                    if (this.files.length > 0) {
-                                        if (this.files[0].size > 1024 * 1024) {
-                                            alert("La imagen debe ser menor a 1 MB.");
-                                            this.value = '';
-                                            return;
+                                    document.querySelector('.file-upload input').addEventListener('change', function () {
+                                        if (this.files.length > 0) {
+                                            if (this.files[0].size > 1024 * 1024) {
+                                                alert("La imagen debe ser menor a 1 MB.");
+                                                this.value = '';
+                                                return;
+                                            } else {
+                                                const fileName = this.files[0].name;
+                                                document.querySelector('.file-upload button').innerText = fileName;
+                                                // Renderizar la imagen con el tamaño seleccionado
+                                                const tamanoImg = document.getElementById('tamanoInput').value;
+                                                const productImage = document.getElementById('productImage');
+                                                productImage.style.width = tamanoImg ? `${tamanoImg}%` : '100%';
+                                                productImage.src = URL.createObjectURL(this.files[0]);
+                                            }
                                         } else {
-                                            const fileName = this.files[0].name;
-                                            document.querySelector('.file-upload button').innerText = fileName;
-                                            // Renderizar la imagen con el tamaño seleccionado
-                                            const tamanoImg = document.getElementById('tamanoInput').value;
-                                            const productImage = document.getElementById('productImage');
-                                            productImage.style.width = tamanoImg ? `${tamanoImg}%` : '100%';
-                                            productImage.src = URL.createObjectURL(this.files[0]);
+                                            alert("Por favor, selecciona una imagen.");
                                         }
-                                    } else {
-                                        alert("Por favor, selecciona una imagen.");
-                                    }
-                                });
+                                    });
                                 </script>
                                 {{!-- aqui manda el token --}}
+                                <!-- Enviar el formulario con el token al backend -->
                                 <script>
-                        // Agrega un evento 'submit' al formulario
-                        document.getElementById('blogForm').addEventListener('submit', function (event) {
-                            const formData = new FormData(this);
-                            // Realizar una solicitud al servidor incluyendo el token en la cabecera
-                            fetch('/crearCarpetayGurdarBlog', {
-                                method: 'POST', // Cambiado a POST ya que el formulario usa method="post"
-                                body: formData,
-                                headers: {
-                                    'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
-                                }
-                            })
-                        });
-                                </script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        // Obtener el token JWT desde el localStorage
+                                        var jwtToken = localStorage.getItem('jwtToken');
+                                        console.log("Token encontrado en el frontend:", jwtToken)
+
+                                        // Verificar si el token existe
+                                        if (jwtToken) {
+                                            // Asignar el valor del token al campo oculto en el formulario
+                                            document.getElementById('jwtToken2').value = jwtToken;
+
+                                            // Variable para rastrear si el formulario ya se ha enviado
+                                            var formularioEnviado = false;
+
+                                            // Agregar un evento de escucha de envío al formulario para capturar el evento de envío
+                                            document.getElementById('blogForm').addEventListener('submit', function (event) {
+                                                // Verificar si el formulario ya se ha enviado
+                                                if (formularioEnviado) {
+                                                    // Evitar el envío adicional del formulario
+                                                    event.preventDefault();
+                                                } else {
+                                                    // Desactivar el botón después del envío
+                                                    document.getElementById('submitBtn').disabled = true;
+                                                    // Marcar el formulario como enviado
+                                                    formularioEnviado = true;
+                                                }
+                                                
+                                                // Obtener los datos del formulario
+                                                var formData = new FormData(event.target);
+
+                                                // Realizar una solicitud POST al servidor con los datos del formulario y el token
+                                                fetch('/crearCarpetayGurdarBlog', {
+                                                    method: 'POST',
+                                                    body: formData
+                                                })
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    // Manejar la respuesta del servidor
+                                                    console.log(data);
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error al enviar la solicitud:', error);
+                                                });
+                                            });
+                                        }
+                                    });
+                                </script>      
                             </div>
                             {{!-- todos los blogs edita y/o elimina --}}
                             <div style="text-align: center;">
@@ -683,31 +717,57 @@
                                     <div class="text-center">
                                         <form class="delete-form" action="/eliminarBlog" method="post" id="loginFormEliminar">
                                             <input type="text" name="id" value="{{id}}" hidden>
+                                            <input type="hidden" id="jwtToken3" name="jwtToken3" value="">
                                             <button type="submit" class="delete-button">Eliminar Blog</button>
                                         </form>
                                         {{!-- aqui manda el token --}}
-                                        <script>
-                                // Agrega un evento 'submit' al formulario
-                                document.getElementById('loginFormEliminar').addEventListener('submit', function (event) {
-                                    const formData = new FormData(this);
-                                    // Realizar una solicitud al servidor incluyendo el token en la cabecera
-                                    fetch('/eliminarBlog', {
-                                        method: 'POST', // Cambiado a POST ya que el formulario usa method="post"
-                                        body: formData,
-                                        headers: {
-                                            'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        // Obtener el token JWT desde el localStorage
+                                        var jwtToken = localStorage.getItem('jwtToken');
+                                        console.log("Token encontrado en el frontend:", jwtToken)
+
+                                        // Verificar si el token existe
+                                        if (jwtToken) {
+                                            // Asignar el valor del token al campo oculto en el formulario
+                                            document.getElementById('jwtToken3').value = jwtToken;
+
+                                            // Variable para rastrear si el formulario ya se ha enviado
+                                            var formularioEnviado = false;
+
+                                            // Agregar un evento de escucha de envío al formulario para capturar el evento de envío
+                                            document.getElementById('loginFormEliminar').addEventListener('submit', function (event) {
+                                                // Verificar si el formulario ya se ha enviado
+                                                if (formularioEnviado) {
+                                                    // Evitar el envío adicional del formulario
+                                                    event.preventDefault();
+                                                } else {
+                                                    // Desactivar el botón después del envío
+                                                    document.getElementById('submitBtn').disabled = true;
+                                                    // Marcar el formulario como enviado
+                                                    formularioEnviado = true;
+                                                }
+                                                
+                                                // Obtener los datos del formulario
+                                                var formData = new FormData(event.target);
+
+                                                // Realizar una solicitud POST al servidor con los datos del formulario y el token
+                                                fetch('/eliminarBlog', {
+                                                    method: 'POST',
+                                                    body: formData
+                                                })
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    // Manejar la respuesta del servidor
+                                                    console.log(data);
+                                                })
+                                                .catch(error => {
+                                                    console.error('Error al enviar la solicitud:', error);
+                                                });
+                                            });
                                         }
-                                    })
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        console.log("que recibio del server???",data); // Puedes hacer algo con la respuesta del servidor aquí
-                                    })
-                                    .catch(error => {
-                                        console.error('Error en la solicitud eviada del server:', error);
                                     });
-                                });
-                                        </script>
-                                    </div>
+                                </script>                                    </div>
                                 </div>
                             {{else}}
                                 <h3 style="color: #000 !important;">No tiene blog publicados en su pagina web</h3>
