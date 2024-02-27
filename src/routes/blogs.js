@@ -46,7 +46,7 @@ const verificarToken = (req, res, next) => {
 
 // ruta para ingresar cientes y emplpeados OK
 // Definición de la ruta POST para el inicio de sesión de clientes y empleados OK
-router.post('/users/signIN/clientesyempleados', verificarToken, (req, res) => {
+router.post('/users/signIN/clientesyempleados',  (req, res) => {
   // Extracción del email y contraseña del cuerpo de la solicitud
   const { email, password } = req.body;
     console.log("Entro en /users/signIN/clientesyempleados que hay en req.body",req.body)
@@ -182,9 +182,9 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
             res.redirect(`/volviendoleruleru?id=${idUser}`)
             return
         }
-        console.log("0 que empresa encontro", empresa);
+        console.log("0 que empresa encontro", empresa, id);
         // Enviar solicitud a Dovemailer Cloud Archivos usando AXIOS
-        async function enviarImagenAServidorB(imagen, ob1, ob2) {
+            async function enviarImagenAServidorB(imagen, ob1, ob2) {
             try {
                 // 1. Leer la imagen en formato base64
                 const data = fs.readFileSync(imagen.tempFilePath, { encoding: 'base64' });
@@ -217,7 +217,7 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
             const cheq = await enviarImagenAServidorB(req.files.imagen, empresa, id);        
             console.log("QUE CARAJOS TIENE CHEQ", cheq)
             // guardar info en la BD
-            if (cheq.datos.ok && cheq.datos.id === idCliente) {
+            if (cheq) {
                 console.log("Entro a carga el blog a la BD")
                 try {
                     const {rutaSimple, rutaSimple2, rutaCompleta} = cheq.datos
