@@ -274,46 +274,56 @@
         <button type="submit" class="alertaVerde">Entrar</button>
     </form>
     {{!-- guarda el token el el ls --}}
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const formData = new FormData(this);
-            fetch('/users/signIN/clientesyempleados', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Authorization': `${localStorage.getItem('jwtToken')}`
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log("Token respoonde el server desde index OK");
-                    return response.json();
-                } else {
-                    return response.json().then(errorData => {
-                        console.log("Token respoonde el server NO OK")
-                        throw new Error(`Error: ${errorData.message}`);
-                    });
-                }
-            })
-            .then(data => {
-                // Guarda el token en el localStorage
-                localStorage.setItem('jwtToken', data.token);
-                console.log("Token guardado en el localStorage");
-                
-                // Redirige a la nueva ruta con la información enviada desde el server
-                const email = encodeURIComponent(data.email);
-                const token = encodeURIComponent(data.token);
-                console.log(`Redireccionando a: /configuracionesBlogsProductsEildamais?email=${email}&token=${token}`);
-                window.location.href = `/configuracionesBlogsProductsEildamais?email=${email}&token=${token}`;
-            })
-            .catch(error => {
-                console.error('Error en la solicitud enviada al servidor:', error);
-                alert(error.message);
-                window.location.href = '/';
-            });
+<!-- Verifica si ya hay un token en el localStorage -->
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Obtiene los datos del formulario
+        const formData = new FormData(this);
+
+        // Verifica si hay un token en el localStorage
+        const storedToken = localStorage.getItem('jwtToken');
+
+        // Si hay un token, lo incluye en los headers de la solicitud
+        const headers = storedToken ? { 'Authorization': storedToken } : {};
+
+        // Realiza la solicitud al servidor para iniciar sesión
+        fetch('/users/signIN/clientesyempleados', {
+            method: 'POST',
+            body: formData,
+            headers: headers
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("Token respondido por el servidor desde index OK");
+                return response.json();
+            } else {
+                return response.json().then(errorData => {
+                    console.log("Token respondido por el servidor NO OK")
+                    throw new Error(`Error: ${errorData.message}`);
+                });
+            }
+        })
+        .then(data => {
+            // Guarda el token en el localStorage
+            localStorage.setItem('jwtToken', data.token);
+            console.log("Token guardado en el localStorage");
+            
+            // Redirige a la nueva ruta con la información enviada desde el servidor
+            const email = encodeURIComponent(data.email);
+            const token = encodeURIComponent(data.token);
+            console.log(`Redireccionando a: /configuracionesBlogsProductsEildamais?email=${email}&token=${token}`);
+            window.location.href = `/configuracionesBlogsProductsEildamais?email=${email}&token=${token}`;
+        })
+        .catch(error => {
+            console.error('Error en la solicitud enviada al servidor:', error);
+            alert(error.message);
+            window.location.href = '/';
         });
-    </script>
+    });
+</script>
+
 
 
                         <br><br>
