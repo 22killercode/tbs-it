@@ -38,6 +38,7 @@
     "nodemailer": "^6.6.0",
     "npm": "^8.5.1",
     "npm-check-updates": "^16.0.5",
+    "request": "^2.88.2",
     "serve-favicon": "^2.5.0",
     "shortid": "^2.2.8"
   },
