@@ -46,7 +46,7 @@ const verificarToken = (req, res, next) => {
 
 // ruta para ingresar cientes y emplpeados OK
 // Definición de la ruta POST para el inicio de sesión de clientes y empleados OK
-router.post('/users/signIN/clientesyempleados', verificarToken, (req, res) => {
+router.post('/users/signIN/clientesyempleados',  (req, res) => {
   // Extracción del email y contraseña del cuerpo de la solicitud
     const { email, password } = req.body;
     console.log("Entro en /users/signIN/clientesyempleados que hay en req.body",req.body)
