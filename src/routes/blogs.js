@@ -77,11 +77,11 @@ router.post('/users/signIN/clientesyempleados', verificarToken, (req, res) => {
                     // Generar el token JWT con la información del usuario (en este caso, solo el email)
                     const token = jwt.sign({ email: usuarioEncontrado.email }, 'Sebatoken22', { expiresIn: '15m' });
                     console.log('LLEgo al final de inicio de sesion y Token generado:', token);
-                    const data = {token, email}
+                    const data = { token, email: usuarioEncontrado.email }
 
                 // Redirigir a la página de configuraciones con el token en la URL
                 // Enviar el token al cliente como parte de la respuesta HTTP
-                res.status(200).json({ token });
+                res.status(200).json(data);
                 //return res.redirect(`/configuracionesBlogsProductsEildamais?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`);
                 } else {
                 // Las contraseñas no coinciden
@@ -97,6 +97,7 @@ router.post('/users/signIN/clientesyempleados', verificarToken, (req, res) => {
 // ruta para ingresar al menu de blogs y Ecommerce OK
 router.get('/configuracionesBlogsProductsEildamais',  verificarToken, async (req, res) => {
     //identificar si el usauario tiene permisos de administrador
+    console.log("Entro en /configuracionesBlogsProductsEildamais")
     try {
         const  email  =  req.query.email;
         const dataUser = await User.findOne({email:email})

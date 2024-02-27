@@ -300,8 +300,8 @@ tinymce.init({
         })
         .then(response => {
             if (response.ok) {
-                return response.json();
                 console.log("Token respoonde el server desde index OK");
+                return response.json();
             } else {
                 return response.json().then(errorData => {
                     console.log("Token respoonde el server NO OK")
