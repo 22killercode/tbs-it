@@ -408,8 +408,8 @@ router.post('/buscandoPostdeBlogs', async (req, res) => {
         const formData = req.body;
         console.log("Datos del formulario:", formData);
 
-        // Verificación de seguridad
-        if (formData.securityId !== '147852369') {
+        // Verificación de seguridad   
+        if (formData !== '147852369') {
             console.log("No pasa el filtro de seguridad");
             return res.status(400).json({ success: false, message: 'Acceso no autorizado' });
         }
