@@ -402,6 +402,7 @@ router.get('/volviendoleruleru', async (req, res) => {
 
 // solicitando datos desde la pagina  que compro el BLOG cambia para cada cliente
 router.post('/buscandoPostdeBlogs', async (req, res) => {
+    console.log("que enciuentra desd el apgina web")
     try {
         // accesos de seguridad
         const formData = req.body;
@@ -414,7 +415,7 @@ router.post('/buscandoPostdeBlogs', async (req, res) => {
         // busca los datos de la BD de los blogs // CARGA EL EMAIL DEL CLIENTE DE LOS BLOGS
         const dataBlogs = await Blogs.find({ emailCliente: "sebastianpaysse@gmail.com" }).sort({ date: -1 });
 
-        //console.log('Desde TBSIT dataSend recibidas:', dataBlogs);
+        console.log('Desde TBSIT dataSend recibidas:', dataBlogs);
 
         res.status(200).json({ success: true, data: dataBlogs });
     } catch (error) {
