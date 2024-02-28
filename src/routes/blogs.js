@@ -412,7 +412,7 @@ router.post('/buscandoPostdeBlogs', async (req, res) => {
         }
 
         // busca los datos de la BD de los blogs // CARGA EL EMAIL DEL CLIENTE DE LOS BLOGS
-        const dataBlogs = await Blogs.find({ email: "sebastianpaysse@gmail.com" }).sort({ date: -1 });
+        const dataBlogs = await Blogs.find({ emailCliente: "sebastianpaysse@gmail.com" }).sort({ date: -1 });
 
         //console.log('Desde TBSIT dataSend recibidas:', dataBlogs);
 
@@ -422,6 +422,9 @@ router.post('/buscandoPostdeBlogs', async (req, res) => {
         res.status(500).json({ success: false, message: 'Internal server error' });
     }
 });
+
+
+
 
 
 module.exports = router;

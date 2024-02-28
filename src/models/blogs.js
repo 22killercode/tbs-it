@@ -7,6 +7,7 @@ const blogs = new Schema({
     rutaSimple: { type: String },
     rutaSimple2: { type: String },
     rutaURL: { type: String },
+    emailCliente: { type: String },
     tamanoImg: { type: Number },
     titulo: { type: String },
     mensaje: { type: String },
