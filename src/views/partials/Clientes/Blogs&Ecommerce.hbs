@@ -714,46 +714,10 @@
                                                     </div>
                                                     <img src="{{rutaURL}}" class="card-img-top" style="width:{{tamanoImg}}% 
                                                     !important;">
-<div id="resultadoImagen"></div>
                                                     <div class="card-content">
                                                         <h3>Mensaje</h3>
                                                         <h3>{{{this.mensaje}}}</h3>
                                                     </div>
-
-
-<script>
-  (async function () {
-    try {
-      // Cambia la dirección del backend según tu configuración
-      const backendURL = '/proxyImage';
-
-      // Dirección web del servidor HTTP sin SSL
-      const direccionWeb = '{{this.rutaURL}}'; // Accedemos a la ruta dentro del objeto
-
-      // Realizamos una solicitud POST al backend
-      const response = await axios.post(backendURL, { direccionWeb });
-
-      // Obtenemos la dirección de la imagen del resultado
-      const imagenEncontrada = response.config.data.direccionWeb;
-      console.log("¿Qué imagen encontró?",  response.config.data);
-
-      // Mostramos la imagen en el frontend
-      document.getElementById('resultadoImagen').innerHTML += `<img src="${imagenEncontrada}" alt="Imagen encontrada" style="width:{{tamanoImg}}%">`;
-
-    } catch (error) {
-      console.error('Error al buscar la imagen:', error);
-    }
-  })();
-</script>
-
-
-
-
-
-
-
-
-
                                                     <div class="text-center">
                                                         <form class="delete-form" action="/eliminarBlog" method="post"id="loginFormEliminar">
                                                             <input type="text" name="id" value="{{id}}" hidden>
