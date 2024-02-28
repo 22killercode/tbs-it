@@ -287,12 +287,12 @@ router.post('/proxyImage', async (req, res) => {
         });
 
     //    // Configuramos los encabezados de la respuesta para la imagen
-    //    res.setHeader('Content-Type', 'image/jpeg'); // Ajusta el tipo de contenido según el tipo de imagen
+        res.setHeader('Content-Type', 'url'); // Ajusta el tipo de contenido según el tipo de imagen
 
         // Transmitir la respuesta al objeto de respuesta del servidor Express
         // Devolver la URL de la imagen como respuesta
-        res.json({ imagenURL: url });
-        //imageRequest.pipe(res);
+        //res.json({ imagenURL: url });
+        imageRequest.pipe(res);
 
     } catch (error) {
         console.error('Error general al procesar la solicitud:', error);

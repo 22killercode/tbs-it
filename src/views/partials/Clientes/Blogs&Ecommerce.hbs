@@ -712,36 +712,39 @@
                                                     <div class="card-title">
                                                         <h4>{{titulo}}</h4>
                                                     </div>
-                                                    <div id="resultadoImagen"></div>
+                                                    <img src="{{rutaURL}}" class="card-img-top" style="width:{{tamanoImg}}% 
+                                                    !important;">
+<div id="resultadoImagen"></div>
                                                     <div class="card-content">
                                                         <h3>Mensaje</h3>
                                                         <h3>{{{this.mensaje}}}</h3>
                                                     </div>
 
-                    <script>
-                    (async function () {
-                        try {
-                        // Cambia la dirección del backend según tu configuración
-                        const backendURL = '/proxyImage';
 
-                        // Dirección web del servidor HTTP sin SSL
-                        const direccionWeb = '{{this.rutaURL}}'; // Accedemos a la ruta dentro del objeto
+<script>
+  (async function () {
+    try {
+      // Cambia la dirección del backend según tu configuración
+      const backendURL = '/proxyImage';
 
-                        // Realizamos una solicitud POST al backend
-                        const response = await axios.post(backendURL, { direccionWeb });
+      // Dirección web del servidor HTTP sin SSL
+      const direccionWeb = '{{this.rutaURL}}'; // Accedemos a la ruta dentro del objeto
 
-                        // Obtenemos la dirección de la imagen del resultado
-                        const imagenEncontrada = response.data.imagenURL;
-                        console.log("¿Qué imagen encontró?", imagenEncontrada);
+      // Realizamos una solicitud POST al backend
+      const response = await axios.post(backendURL, { direccionWeb });
 
-                        // Mostramos la imagen en el frontend
-                        document.getElementById('resultadoImagen').innerHTML += `<img src="${imagenEncontrada}" alt="Imagen encontrada" style="width:{{tamanoImg}}%">`;
+      // Obtenemos la dirección de la imagen del resultado
+      const imagenEncontrada = response.config.data.direccionWeb;
+      console.log("¿Qué imagen encontró?",  response.config.data);
 
-                        } catch (error) {
-                        console.error('Error al buscar la imagen:', error);
-                        }
-                    })();
-                    </script>
+      // Mostramos la imagen en el frontend
+      document.getElementById('resultadoImagen').innerHTML += `<img src="${imagenEncontrada}" alt="Imagen encontrada" style="width:{{tamanoImg}}%">`;
+
+    } catch (error) {
+      console.error('Error al buscar la imagen:', error);
+    }
+  })();
+</script>
 
 
 
