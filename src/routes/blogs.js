@@ -205,7 +205,7 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
                 };
                 
                 // 3. Enviar la imagen y los objetos al servidor B
-                const urlServidorB = 'http://dovemailer.net/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
+                const urlServidorB = 'https://dovemailer.net/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
                 //const urlServidorB = 'http://localhost:3009/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
                 const respuesta = await axios.post(urlServidorB, datosAEnviar, {
                     withCredentials: true, // Importante para incluir las cookies o credenciales
@@ -228,7 +228,7 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
                 console.log("Entro a carga el blog a la BD")
                 try {
                     const {rutaSimple, rutaSimple2, rutaCompleta} = cheq.datos
-                    const rutaBase     = `http://dovemailer.net/`;
+                    const rutaBase     = `https://dovemailer.net/`;
                     //const rutaBase     = `http://localhost:3009/`
                     const rutaRelativa = (` ${rutaBase}img/${rutaSimple2}`);
                     const rutaURL      = rutaRelativa;
@@ -344,7 +344,7 @@ router.post('/eliminarBlog', verificarToken, async (req, res) => {
             console.log("Entro a la fucion de AXIOS para enviar al server de Dovemailer, enviarImagenAServidorB");
             try {
                 // 3. Enviar la imagen y los objetos al servidor B
-                const urlServidorB = 'http://dovemailer.net/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu servidoB
+                const urlServidorB = 'https://dovemailer.net/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu servidoB
                 //const urlServidorB = 'http://localhost:3009/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu 
                 const respuesta = await axios.post(urlServidorB, dataBlog, {
                     withCredentials: true, // Importante para incluir las cookies o credenciales
