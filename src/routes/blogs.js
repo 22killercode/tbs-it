@@ -400,7 +400,7 @@ router.get('/volviendoleruleru', async (req, res) => {
 });
 
 
-router.post('/buscandoPostdeBlogs', async (req, res) => {
+router.post('/buscandoPostdeBlogs', async (req, res, next) => {
     console.log("Petición recibida en /buscandoPostdeBlogs");
 
     try {
@@ -409,7 +409,9 @@ router.post('/buscandoPostdeBlogs', async (req, res) => {
         console.log("Datos del formulario:", formData);
 
         // Verificación de seguridad   
-        if (formData !== '147852369') {
+        if (formData == '147852369') {
+            next()
+        }else{
             console.log("No pasa el filtro de seguridad");
             return res.status(400).json({ success: false, message: 'Acceso no autorizado' });
         }
