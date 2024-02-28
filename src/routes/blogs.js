@@ -400,35 +400,32 @@ router.get('/volviendoleruleru', async (req, res) => {
 });
 
 
-router.post('/buscandoPostdeBlogs', async (req, res, next) => {
-    console.log("Petición recibida en /buscandoPostdeBlogs");
-
+// solicitando datos desde la pagina  que compro el BLOG cambia para cada cliente
+router.post('/buscandoPostdeBlogs', async (req, res) => {
+    console.log("que enciuentra desd el apgina web")
     try {
-        // Accesos de seguridad
+        // accesos de seguridad
         const formData = req.body;
-        console.log("Datos del formulario:", formData);
+        console.log("llega la petición /buscandoPostdeBlogs", formData);
 
-        // Verificación de seguridad   
-        if (formData == '147852369') {
-            next()
-        }else{
-            console.log("No pasa el filtro de seguridad");
-            return res.status(400).json({ success: false, message: 'Acceso no autorizado' });
-        }
+        // if (formData === '147852369') {
+        //     console.log("NO paso el filtro de seguridad");
+        //     return res.status(400).json({ success: false, message: 'No tienes el ID de seguridad' });
+        // }
 
-        // Filtrar la consulta dinámicamente según los datos del formulario
-        const dataBlogs = await Blogs.find({ emailCliente: formData.clientEmail }).sort({ date: -1 });
+        // busca los datos de la BD de los blogs // CARGA EL EMAIL DEL CLIENTE DE LOS BLOGS
+        const dataBlogs = await Blogs.find({ emailCliente: "sebastianpaysse@gmail.com" }).sort({ date: -1 });
 
-        console.log('Datos de los blogs encontrados:', dataBlogs);
+        console.log('Desde TBSIT dataSend recibidas:', dataBlogs);
 
         res.status(200).json({ success: true, data: dataBlogs });
-    } catch (error) {
-        console.error('Error al manejar la solicitud:', error);
 
-        // En producción, podrías enviar un mensaje más genérico al cliente
-        res.status(500).json({ success: false, message: 'Error interno del servidor' });
+    } catch (error) {
+        console.error('Error handling the request:', error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
     }
 });
+
 
 
 
