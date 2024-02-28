@@ -83,7 +83,7 @@ router.post('/users/signIN/clientesyempleados',  (req, res) => {
                 // Redirigir a la página de configuraciones con el token en la URL
                 // Enviar el token al cliente como parte de la respuesta HTTP
                 // Antes de enviar la respuesta en el servidor
-                console.log('Respuesta del servidor:', data);
+                console.log('Respuesta del servidor:', data); 
                 res.status(200).json(data);
                 //return res.redirect(`/configuracionesBlogsProductsEildamais?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`);
                 } else {
@@ -269,8 +269,41 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
 
 
 
+router.post('/proxyImage', async (req, res) => {
+    try {
+        // Obtenemos la dirección web del cuerpo de la solicitud
+        const direccionWeb = req.body.direccionWeb;
 
-router.get('/proxyImage', (req, res) => {
+        // Realizar una solicitud al servidor HTTP para obtener la imagen
+        const url = `${direccionWeb}`;
+        console.log("URL para solicitar la imagen desde el frontend con axios:", url);
+
+        const imageRequest = request.get(url);
+
+        // Manejar eventos de error en la solicitud de la imagen
+        imageRequest.on('error', (error) => {
+            console.error('Error al obtener la imagen:', error);
+            res.status(500).json({ error: 'Error al obtener la imagen' });
+        });
+
+    //    // Configuramos los encabezados de la respuesta para la imagen
+    //    res.setHeader('Content-Type', 'image/jpeg'); // Ajusta el tipo de contenido según el tipo de imagen
+
+        // Transmitir la respuesta al objeto de respuesta del servidor Express
+        // Devolver la URL de la imagen como respuesta
+        res.json({ imagenURL: url });
+        //imageRequest.pipe(res);
+
+    } catch (error) {
+        console.error('Error general al procesar la solicitud:', error);
+        res.status(500).json({ error: 'Error general al procesar la solicitud' });
+    }
+
+});
+
+
+
+router.get('/proxyImage3', (req, res) => {
 //    const imageUrl = 'http://dovemailer.net/img/uploads/tbs-it/promoBlog-8SsdogmDT.jpg';
 
 const imageUrl = 'http://dovemailer.net/img/uploads/tbs-it/promoBlog-8SsdogmDT.jpg';
