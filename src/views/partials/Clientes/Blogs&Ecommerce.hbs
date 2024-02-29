@@ -785,132 +785,181 @@
                     {{/if}}
                     {{!-- Agregar productos --}}
                     {{#if Ecommerce}}
-                        <div class="content" id="opcion4">
-                            <style>
-                                /* Reset or Normalize CSS can be added here if needed */
+                        <div class="" id="opcion4">
 
-                                /* General styling for the form */
-                                form {
-                                    background-color: #fff;
-                                    border-radius: 8px;
-                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                                    padding: 20px;
-                                    max-width: 500px;
-                                    width: 100%;
-                                    transition: transform 0.3s ease;
-                                }
+<h3>Arrastrar y Soltar Archivos</h3>
+<style>
+    #drop-area {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+    }
 
-                                form:hover {
-                                    transform: scale(1.05);
-                                }
+    #file-list {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+    }
 
-                                /* Label styling */
-                                label {
-                                    display: block;
-                                    margin-bottom: 8px;
-                                    font-weight: bold;
-                                    color: #000;
-                                }
+    .file-item {
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        position: relative;
+    }
 
-                                /* Input, textarea, select styling */
-                                input, textarea, select {
-                                    width: 100%;
-                                    padding: 8px;
-                                    margin-bottom: 16px;
-                                    border: 1px solid #ccc;
-                                    border-radius: 4px;
-                                    transition: border-color 0.3s ease;
-                                    color: #000;
-                                }
+    .delete-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+        font-size: 12px;
+        color: red;
+    }
 
-                                input:focus, textarea:focus, select:focus {
-                                    border-color: #007bff;
-                                }
+    #first-file {
+        margin-top: 10px;
+    }
+</style>
 
-                                /* Button styling */
-                                button {
-                                    background-color: #007bff;
-                                    color: #fff;
-                                    padding: 10px 15px;
-                                    border: none;
-                                    border-radius: 4px;
-                                    cursor: pointer;
-                                    transition: background-color 0.3s ease;
-                                }
+<div id="drop-area" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)" style="color: #000 !important;">
+    <h3>Arrastra y suelta archivos aquí (hasta 20)</h3>
+    <form id="file-form" action="/enviarArchivos/ecommerce" method="post" enctype="multipart/form-data">
+        <input type="file" id="file-input" name="archivos[]" multiple style="display:none;" />
+        <button type="button" onclick="browseFiles()">Seleccionar Archivos</button>
+        <button type="submit">Enviar Archivos</button>
+    </form>
+    <ul id="file-list"></ul>
+    <div id="first-file"></div>
+</div>
 
-                                button:hover {
-                                    background-color: #0056b3;
-                                }
+<script>
+    let droppedFiles = [];
 
-                                /* File upload styling */
-                                .file-upload {
-                                    position: relative;
-                                    overflow: hidden;
-                                    margin: 10px 0;
-                                }
+    function dragOverHandler(event) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'copy';
+        const dropArea = document.getElementById('drop-area');
+        dropArea.style.border = '2px dashed #aaa';
+    }
 
-                                .file-upload input {
-                                    position: absolute;
-                                    top: 0;
-                                    right: 0;
-                                    margin: 0;
-                                    opacity: 0;
-                                    cursor: pointer;
-                                }
+    function dropHandler(event) {
+        event.preventDefault();
 
-                                /* Quantity styling */
-                                .quantity {
-                                    display: flex;
-                                    align-items: center;
-                                }
+        const fileInput = document.getElementById('file-input');
+        const dropArea = document.getElementById('drop-area');
+        const fileList = document.getElementById('file-list');
+        const firstFileContainer = document.getElementById('first-file');
 
-                                .quantity button {
-                                    background-color: #007bff;
-                                    color: #fff;
-                                    border: none;
-                                    border-radius: 4px;
-                                    cursor: pointer;
-                                    margin: 0 5px;
-                                    padding: 5px 10px;
-                                    transition: background-color 0.3s ease;
-                                }
+        fileInput.files = event.dataTransfer.files;
+        dropArea.style.border = '2px dashed #ccc';
 
-                                .quantity button:hover {
-                                    background-color: #0056b3;
-                                }
+        // Add new dropped files to the existing droppedFiles array
+        for (const file of fileInput.files) {
+            droppedFiles.push(file);
+        }
 
-                                /* Product image container styling */
-                                .product-image-container {
-                                    display: flex;
-                                    flex-direction: column;
-                                    align-items: center;
-                                    margin-top: 10px;
-                                }
+        // Display files
+        fileList.innerHTML = '';
+        for (let i = 0; i < droppedFiles.length; i++) {
+            const file = droppedFiles[i];
+            const fileItem = document.createElement('li');
+            fileItem.className = 'file-item';
 
-                                .product-image-container img {
-                                    max-width: 100%;
-                                    height: auto;
-                                    border-radius: 4px;
-                                    display: none;
-                                }
+            // Display image if it's an image file
+            if (file.type.startsWith('image/')) {
+                const image = document.createElement('img');
+                image.style.width = '100px';
+                image.style.height = '100px';
 
-                                /* Product image placeholder styling */
-                                .product-image-placeholder {
-                                    width: 100%;
-                                    height: 150px;
-                                    background-color: #eee;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    border-radius: 4px;
-                                }
-                            </style>
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    image.src = e.target.result;
+                };
 
-                            <h3>Formulario de Producto/Servicio</h3>
-                            <div class="product-image-container">
-                                <div class="product-image-placeholder">Agrega tu imagen</div>
-                                <img id="productImage" alt="Vista previa de la imagen del producto/servicio">
-                            </div>
+                reader.readAsDataURL(file);
+
+                // Create delete icon
+                const deleteIcon = document.createElement('div');
+                deleteIcon.className = 'delete-icon';
+                deleteIcon.innerHTML = '&#10006;'; // "x" character
+
+                deleteIcon.addEventListener('click', function () {
+                    deleteFile(file, fileItem, i);
+                });
+
+                fileItem.appendChild(image);
+                fileItem.appendChild(deleteIcon);
+            } else {
+                // Display file name and extension if it's not an image
+                fileItem.textContent = `${file.name} (${file.type})`;
+
+                // Create delete icon
+                const deleteIcon = document.createElement('div');
+                deleteIcon.className = 'delete-icon';
+                deleteIcon.innerHTML = '&#10006;'; // "x" character
+
+                deleteIcon.addEventListener('click', function () {
+                    deleteFile(file, fileItem, i);
+                });
+
+                fileItem.appendChild(deleteIcon);
+            }
+
+            fileList.appendChild(fileItem);
+        }
+
+        // Display only the first dropped file
+        if (droppedFiles.length > 0) {
+            const firstFile = droppedFiles[0];
+            const firstFileItem = document.createElement('div');
+            firstFileItem.className = 'file-item';
+            firstFileItem.textContent = `Primer archivo: ${firstFile.name}`;
+            firstFileContainer.innerHTML = '';
+            firstFileContainer.appendChild(firstFileItem);
+        } else {
+            // Display a message if no files are dropped
+            firstFileContainer.innerHTML = '<p>Suelta archivos aquí</p>';
+        }
+    }
+
+    function browseFiles() {
+        const fileInput = document.getElementById('file-input');
+        fileInput.click();
+    }
+
+    function deleteFile(file, fileItem, index) {
+        // Remove the file from the droppedFiles array
+        droppedFiles.splice(index, 1);
+
+        // Remove the file item from the file list
+        fileItem.parentNode.removeChild(fileItem);
+
+        // Redraw the file list
+        dropHandler(event);
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             <form>
                                 <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
                                 <label for="descripcion">Descripción del Producto/Servicio:</label>
