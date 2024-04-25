@@ -135,38 +135,27 @@ router.post('/create_preference2', async (req, res) => {
 
 
 router.get('/cobroExitosoMP', async (req, res) => {
-  console.log("Entro al cobro exitoso de MP");
   console.log("Datos recibidos en req.query:", req.query);
-
+  
   // Desestructurar la información de req.query
-  const { 
-    collection_id,
-    collection_status,
-    payment_id,
-    status,
-    external_reference,
-    payment_type,
-    merchant_order_id,
-    preference_id,
-    site_id,
-    processing_mode,
-    merchant_account_id
-  } = req.query;
+  const { collection_id, collection_status, payment_id, status, external_reference, payment_type, merchant_order_id, preference_id, site_id, processing_mode, merchant_account_id } = req.query;
+  
+  if (collection_status === "aproved") {
+    // poner cobro exitos  en la BD
 
-  console.log("collection_id:", collection_id);
-  console.log("collection_status:", collection_status);
-  console.log("payment_id:", payment_id);
-  console.log("status:", status);
-  console.log("external_reference:", external_reference);
-  console.log("payment_type:", payment_type);
-  console.log("merchant_order_id:", merchant_order_id);
-  console.log("preference_id:", preference_id);
-  console.log("site_id:", site_id);
-  console.log("processing_mode:", processing_mode);
-  console.log("merchant_account_id:", merchant_account_id);
+    // poner en mensajes push el cobro exitoso asi el frontend re toma desde ahi
+    
+
+    console.log("Cobro exitoso");
+    res.json({ message: "Entro al cobro exitoso de MP" });
+  }
+  else{
+    console.log("Cobro NO exitoso");
+    res.json({ message: "No se cobro" });
+  }
+
 
   // Simplemente enviar un mensaje de confirmación como respuesta
-  res.json({ message: "Entro al cobro exitoso de MP" });
 });
 
 
@@ -174,10 +163,20 @@ router.get('/cobroExitosoMP', async (req, res) => {
 
 router.post('/cobroFallidoMP', async (req, res) => {
 
-  console.log("entro al cobro cobroFallidoMP de MP req.params", req.params)
-  console.log("entro al cobro cobroFallidoMP de MP req.body", req.body)
-  res.send("Hola mundo Fallo");
-  return
+  console.log("Datos recibidos en req.query:", req.query);
+  
+  // Desestructurar la información de req.query
+  const { collection_id, collection_status, payment_id, status, external_reference, payment_type, merchant_order_id, preference_id, site_id, processing_mode, merchant_account_id } = req.query;
+  
+  if (collection_status === "aproved") {
+    console.log("Cobro exitoso");
+    res.json({ message: "Entro al cobro exitoso de MP" });
+  }
+  else{
+    console.log("Cobro NO exitoso");
+    res.json({ message: "No se cobro" });
+  }
+
 });
 
 
