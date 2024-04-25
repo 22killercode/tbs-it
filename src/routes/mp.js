@@ -112,7 +112,7 @@ router.post('/create_preference2', async (req, res) => {
         payer: {
           firstName: "Seba",
           lastName: "Paysse",
-          email: "sebastianpaysse@gmail.com.net",
+          email: "sebastianpaysse@gmail.com",
         },
         purpose: "wallet_purchase",
         auto_return: "approved",
