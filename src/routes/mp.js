@@ -134,7 +134,7 @@ router.post('/create_preference2', async (req, res) => {
 });
 
 
-router.post('/cobroExitosoMP', async (req, res) => {
+router.get('/cobroExitosoMP', async (req, res) => {
   console.log("Entro al cobro exitoso de MP");
   console.log("Datos recibidos en req.query:", req.query);
 
