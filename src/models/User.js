@@ -12,12 +12,14 @@ const UserSchema = new Schema({
     staffing: { type: Boolean },
     Ecommerce: { type: Boolean },
     Clave: { type: Boolean },
-    Blogs: [],
-    productServ: [],
+    Blogs: [ ],
+    Ventas: [ ],
+    idOwner: { type: String },
+    clientes: [ ],
 
     nombrePagAppWeb: { type: String },
 
-
+    transportEmail: {},
     //datos de beststaff    
     empresa: { type: String },
     cuit: { type: String },
@@ -27,10 +29,12 @@ const UserSchema = new Schema({
     nombre:{ type: String },
     apellido: { type: String },
     email: { type: String },
+    emailOficial: { type: String },
+    otrosEmails : [],
     password: { type: String },
     user: { type: String },
     //datos  totales
-    numCel: { type: String },
+    numCel: [],
     lat: { type: Number },
     long: { type: Number },
     country: { type: String },
@@ -40,6 +44,8 @@ const UserSchema = new Schema({
     numCalle: { type: Number },
     membresia: { type: String },
     precio: { type: Number },
+    nombreEcommerce: { type: String },
+
 
     date: { type: Date, default: Date.now },
 

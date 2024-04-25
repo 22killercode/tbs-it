@@ -83,7 +83,11 @@
         font-size: 1rem !important;
     }
 
-    input, textarea {
+strongs{
+    font-weight: 800;
+    color: #000 !important;
+}
+    input, textarea  {
         width: 100%;
         padding: 8px;
         margin-bottom: 16px;
@@ -516,7 +520,6 @@
                             </div>
                         </div>
                     {{/if}}
-
                     {{!-- Blogs --}}
                     {{#if blog}}
                         <div class="content" id="opcion3" style="">
@@ -549,10 +552,10 @@
                                             </div>
                                             <div style="border-color: black !important">
                                                 <label for="titulo" style="color: #000 !important;">Título del Blog:</label>
-                                                <input type="text" id="titulo" name="titulo" required>
+                                                <input type="text" id="titulo" name="titulo" >
                                                 <label for="contenido" style="color: #000 !important;">Contenido del Blog:</label>
                                                 <textarea placeholder="Puedes copiar y pegar cualquier documento"
-                                                    id="contenido" name="mensaje" rows="6" style="color: #000 !important; width: 100%;" required>
+                                                    id="contenido" name="mensaje" rows="6" style="color: #000 !important; width: 100%;">
                                                 </textarea>
                                             </div>
                                             <button type="submit">Publicar Blog</button>
@@ -785,277 +788,372 @@
                     {{/if}}
                     {{!-- Agregar productos --}}
                     {{#if Ecommerce}}
-                        <div class="" id="opcion4">
+                        <style>
+                            #drop-area {
+                                border: 2px dashed #ccc;
+                                background-color: #b5b4b4;
+                                padding: 20px;
+                                text-align: center;
+                                cursor: pointer;
+                                position: relative;
+                            }
 
-<h3>Arrastrar y Soltar Archivos</h3>
-<style>
-    #drop-area {
-        border: 2px dashed #ccc;
-        padding: 20px;
-        text-align: center;
-        cursor: pointer;
-        position: relative;
-    }
+                            #file-list {
+                                list-style-type: none;
+                                padding: 0;
+                                display: flex;
+                                flex-wrap: wrap;
+                                color: black !important;
+                            }
 
-    #file-list {
-        list-style-type: none;
-        padding: 0;
-        display: flex;
-    }
+                            .file-item {
+                                margin: 5px;
+                                padding: 5px;
+                                border: 1px solid #ccc;
+                                position: relative;
+                                color: black !important;
+                            }
 
-    .file-item {
-        margin: 5px;
-        padding: 5px;
-        border: 1px solid #ccc;
-        position: relative;
-    }
+                            .delete-icon {
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                cursor: pointer;
+                                font-size: 12px;
+                                color: red;
+                            }
 
-    .delete-icon {
-        position: absolute;
-        top: 0;
-        right: 0;
-        cursor: pointer;
-        font-size: 12px;
-        color: red;
-    }
+                            #first-file {
+                                margin-top: 10px;
+                                color: black !important;
+                            }
 
-    #first-file {
-        margin-top: 10px;
-    }
-</style>
+                            body {
+                                color: black !important;
+                            }
 
-<div id="drop-area" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)" style="color: #000 !important;">
-    <h3>Arrastra y suelta archivos aquí (hasta 20)</h3>
-    <form id="file-form" action="/enviarArchivos/ecommerce" method="post" enctype="multipart/form-data">
-        <input type="file" id="file-input" name="archivos[]" multiple style="display:none;" />
-        <button type="button" onclick="browseFiles()">Seleccionar Archivos</button>
-        <button type="submit">Enviar Archivos</button>
-    </form>
-    <ul id="file-list"></ul>
-    <div id="first-file"></div>
-</div>
+                            h1, h2, h3, h4, h5, h6, p, span, div, label, ul, li {
+                                color: black !important;
+                            }
 
-<script>
-    let droppedFiles = [];
+                            .form-group {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                            }
 
-    function dragOverHandler(event) {
-        event.preventDefault();
-        event.dataTransfer.dropEffect = 'copy';
-        const dropArea = document.getElementById('drop-area');
-        dropArea.style.border = '2px dashed #aaa';
-    }
-
-    function dropHandler(event) {
-        event.preventDefault();
-
-        const fileInput = document.getElementById('file-input');
-        const dropArea = document.getElementById('drop-area');
-        const fileList = document.getElementById('file-list');
-        const firstFileContainer = document.getElementById('first-file');
-
-        fileInput.files = event.dataTransfer.files;
-        dropArea.style.border = '2px dashed #ccc';
-
-        // Add new dropped files to the existing droppedFiles array
-        for (const file of fileInput.files) {
-            droppedFiles.push(file);
-        }
-
-        // Display files
-        fileList.innerHTML = '';
-        for (let i = 0; i < droppedFiles.length; i++) {
-            const file = droppedFiles[i];
-            const fileItem = document.createElement('li');
-            fileItem.className = 'file-item';
-
-            // Display image if it's an image file
-            if (file.type.startsWith('image/')) {
-                const image = document.createElement('img');
-                image.style.width = '100px';
-                image.style.height = '100px';
-
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    image.src = e.target.result;
-                };
-
-                reader.readAsDataURL(file);
-
-                // Create delete icon
-                const deleteIcon = document.createElement('div');
-                deleteIcon.className = 'delete-icon';
-                deleteIcon.innerHTML = '&#10006;'; // "x" character
-
-                deleteIcon.addEventListener('click', function () {
-                    deleteFile(file, fileItem, i);
-                });
-
-                fileItem.appendChild(image);
-                fileItem.appendChild(deleteIcon);
-            } else {
-                // Display file name and extension if it's not an image
-                fileItem.textContent = `${file.name} (${file.type})`;
-
-                // Create delete icon
-                const deleteIcon = document.createElement('div');
-                deleteIcon.className = 'delete-icon';
-                deleteIcon.innerHTML = '&#10006;'; // "x" character
-
-                deleteIcon.addEventListener('click', function () {
-                    deleteFile(file, fileItem, i);
-                });
-
-                fileItem.appendChild(deleteIcon);
-            }
-
-            fileList.appendChild(fileItem);
-        }
-
-        // Display only the first dropped file
-        if (droppedFiles.length > 0) {
-            const firstFile = droppedFiles[0];
-            const firstFileItem = document.createElement('div');
-            firstFileItem.className = 'file-item';
-            firstFileItem.textContent = `Primer archivo: ${firstFile.name}`;
-            firstFileContainer.innerHTML = '';
-            firstFileContainer.appendChild(firstFileItem);
-        } else {
-            // Display a message if no files are dropped
-            firstFileContainer.innerHTML = '<p>Suelta archivos aquí</p>';
-        }
-    }
-
-    function browseFiles() {
-        const fileInput = document.getElementById('file-input');
-        fileInput.click();
-    }
-
-    function deleteFile(file, fileItem, index) {
-        // Remove the file from the droppedFiles array
-        droppedFiles.splice(index, 1);
-
-        // Remove the file item from the file list
-        fileItem.parentNode.removeChild(fileItem);
-
-        // Redraw the file list
-        dropHandler(event);
-    }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            <form>
-                                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
-                                <label for="descripcion">Descripción del Producto/Servicio:</label>
-                                <div class="quantity">
-                                    <label for="cantidad">Cantidad:</label>
-                                    <button type="button" id="decrementar">-</button>
-                                    <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
-                                    <button type="button" id="incrementar">+</button>
-                                </div>
-                                <label for="precio">Precio:</label>
-                                <input type="number" id="precio" name="precio" min="0.01" step="0.01" required>
-                                <label for="moneda">Moneda:</label>
-                                <select id="moneda" name="moneda" required>
-                                    <option value="pesos">Pesos</option>
-                                    <option value="dolares">Dólares</option>
-                                </select>
-                                <div class="file-upload">
-                                    <label for="imagen">Subir Imagen:</label>
-                                    <input type="file" id="imagen" name="imagen" accept="image/*" required>
-                                    <button type="button">Seleccionar Archivo</button>
-                                </div>
-                                <button type="submit">Agregar Producto/Servicio</button>
-                            </form>
-                            {{!-- listado de lo que ya se agrego --}}
-                            <div style="color: #000 !important};">
-                                {{#each list1 }}
-                                    <form>
-                                        <div class="product-image-container">
-                                            <div class="product-image-placeholder">Agrega tu imagen</div>
-                                            <img id="productImage" alt="Vista previa de la imagen del producto/servicio">
+                            .quantity,
+                            .price,
+                            .currency {
+                                margin-right: 10px; /* Espacio entre los elementos */
+                            }
+                        </style>
+                        <div class="content" id="opcion4">
+                            {{!-- configura y crea sus productos y servicios --}}
+                            <div>
+                                <h3 align="center">Configuremos tus productos/servicios</h3>
+                                <form id="file-form" action="/enviarArchivos/ecommerce" method="post" enctype="multipart/form-data">
+                                    <input type="text" name="id" value="{{userId}}" hidden>
+                                    <div id="drop-area" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
+                                        <h4>Arrastra y suelta imágenes aquí. (hasta 5)</h4>
+                                        <input type="file" id="file-input" name="archivos" multiple style="display:none;" onchange="handleFiles(this.files)" />
+                                        <button type="button" onclick="browseFiles()">Seleccionar Archivos</button>
+                                        <ul id="file-list"></ul>
+                                        <div id="first-file"></div>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <div class="form-floating" hidden>
+                                            <input name="rubro" type="text" class="form-control" id="floatingInput" placeholder="Rubro">
+                                            <label for="floatingInput">Rubro</label>
                                         </div>
-                                        <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
-                                        <label for="descripcion">Descripción del Producto/Servicio:</label>
-                                        <div class="quantity">
-                                            <label for="cantidad">Cantidad:</label>
-                                            <button type="button" id="decrementar">-</button>
-                                            <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
-                                            <button type="button" id="incrementar">+</button>
+                                        <div class="form-floating" >
+                                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="categoria">
+                                                <option selected></option>
+                                                <optgroup label="Promociones">
+                                                    <option value="Promociones con descuentos">Promociones con descuentos</option>
+                                                </optgroup>
+                                                <optgroup label="Compras en línea">
+                                                    <option value="Electrónica">Electrónica</option>
+                                                    <option value="Ropa y Moda">Ropa y Moda</option>
+                                                    <option value="Hogar y Jardín">Hogar y Jardín</option>
+                                                    <option value="Deportes">Deportes</option>
+                                                    <option value="Belleza y Cuidado Personal">Belleza y Cuidado Personal</option>
+                                                    <option value="Juguetes y Juegos">Juguetes y Juegos</option>
+                                                    <option value="Libros y Medios">Libros y Medios</option>
+                                                    <option value="Automotriz">Automotriz</option>
+                                                    <option value="Electrodomésticos">Electrodomésticos</option>
+                                                    <option value="Muebles y Decoración">Muebles y Decoración</option>
+                                                    <option value="Salud y Bienestar">Salud y Bienestar</option>
+                                                    <option value="Joyería y Accesorios">Joyería y Accesorios</option>
+                                                </optgroup>
+                                                <optgroup label="Alimentos y Bebidas">
+                                                    <option value="Bebidas Gaseosas">Bebidas Gaseosas</option>
+                                                    <option value="Agua">Agua</option>
+                                                    <option value="Alimentos Secos">Alimentos Secos</option>
+                                                    <option value="Bebidas (general)">Bebidas (general)</option>
+                                                    <option value="Frutas y Verduras">Frutas y Verduras</option>
+                                                    <option value="Carnes y Aves">Carnes y Aves</option>
+                                                    <option value="Pescados y Mariscos">Pescados y Mariscos</option>
+                                                    <option value="Productos Lácteos">Productos Lácteos</option>
+                                                    <option value="Panadería y Repostería">Panadería y Repostería</option>
+                                                    <option value="Bebidas Alcohólicas">Bebidas Alcohólicas</option>
+                                                </optgroup>
+                                                <optgroup label="Herramientas y Equipamiento">
+                                                    <option value="Herramientas y Mejoras para el Hogar">Herramientas y Mejoras para el Hogar</option>
+                                                    <option value="Equipamiento de Jardinería">Equipamiento de Jardinería</option>
+                                                    <option value="Equipamiento para Pintura Corporal">Equipamiento para Pintura Corporal</option>
+                                                    <option value="Equipamiento para Caza y Tiro">Equipamiento para Caza y Tiro</option>
+                                                </optgroup>
+                                            </select>
+                                            <label for="floatingSelect">Elije tu categoría</label>
                                         </div>
-                                        <label for="precio">Precio:</label>
-                                        <input type="number" id="precio" name="precio" min="0.01" step="0.01" required>
-                                        <label for="moneda">Moneda:</label>
-                                        <select id="moneda" name="moneda" required>
-                                            <option value="pesos">Pesos</option>
-                                            <option value="dolares">Dólares</option>
-                                        </select>
-                                        <div class="file-upload">
-                                            <label for="imagen">Subir Imagen:</label>
-                                            <input type="file" id="imagen" name="imagen" accept="image/*" required>
-                                            <button type="button">Seleccionar Archivo</button>
+                                        <div class="form-floating">
+                                            <input name="rubro" type="txt" class="form-control" id="floatingPassword" placeholder="Rubro">
+                                            <label for="floatingPassword">Rubro</label>
                                         </div>
-                                        <button type="submit">Agregar Producto/Servicio</button>
-                                    </form>
+                                        <div class="form-floating">
+                                            <input name="nombreProducto" type="txt" class="form-control" id="floatingPassword" placeholder="Nombre del Prod/Serv">
+                                            <label for="floatingPassword">Nombre del Prod/Serv</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <textarea name="descripcion" class="form-control" placeholder="Describe el producto/servicio" id="floatingTextarea2" style="height: 100px" oninput="limitWords(this, 150)"></textarea>
+                                            <script>
+                                                function limitWords(textarea, maxWords) {
+                                                    // Get the content of the textarea
+                                                    var text = textarea.value;
+
+                                                    // Split the content into an array of words
+                                                    var words = text.trim().split(/\s+/);
+
+                                                    // Check if the number of words exceeds the limit
+                                                    if (words.length > maxWords) {
+                                                        // Trim the excess words
+                                                        var trimmedWords = words.slice(0, maxWords).join(' ');
+
+                                                        // Update the textarea with the trimmed content
+                                                        textarea.value = trimmedWords;
+
+                                                        // Show an alert
+                                                        alert('¡Has alcanzado el límite de 150 palabras!');
+                                                    }
+                                                }
+                                            </script>
+                                            <label for="floatingTextarea2">Descripcion</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input type="number" name="cantidad" class="form-control" id="floatingInput" placeholder="Rubro">
+                                            <label for="floatingInput">Cantidad</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input type="number" name="precio" class="form-control" id="floatingPassword" placeholder="Titulo">
+                                            <label for="floatingPassword">Precio</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                                <option selected></option>
+                                                <option value="1">Pesos</option>
+                                                <option value="2">Dolares</option>
+                                                <option value="3">Otra</option>
+                                            </select>
+                                            <label for="floatingSelect">Elije tu moneda</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit">Enviar Archivos y datos</button>
+                                </form>
+                                <script>
+                                    let droppedFiles = [];
+
+                                    function dragOverHandler(event) {
+                                        event.preventDefault();
+                                        event.dataTransfer.dropEffect = 'copy';
+                                        const dropArea = document.getElementById('drop-area');
+                                        dropArea.style.border = '2px dashed #aaa';
+                                    }
+
+                                    function dropHandler(event) {
+                                        event.preventDefault();
+
+                                        const fileInput = document.getElementById('file-input');
+                                        const dropArea = document.getElementById('drop-area');
+                                        const fileList = document.getElementById('file-list');
+                                        const firstFileContainer = document.getElementById('first-file');
+
+                                        fileInput.files = event.dataTransfer.files;
+                                        dropArea.style.border = '2px dashed #ccc';
+
+                                        // Add new dropped files to the existing droppedFiles array
+                                        for (const file of fileInput.files) {
+                                            droppedFiles.push(file);
+                                        }
+
+                                        // Display files
+                                        updateFileList();
+                                    }
+
+                                    function browseFiles() {
+                                        const fileInput = document.getElementById('file-input');
+
+                                        // Clear the existing input value to allow selecting the same file again
+                                        fileInput.value = '';
+
+                                        fileInput.click();
+                                    }
+
+                                    function deleteFile(file, fileItem, index) {
+                                        // Remove the file from the droppedFiles array
+                                        droppedFiles.splice(index, 1);
+
+                                        // Remove the file item from the file list
+                                        fileItem.parentNode.removeChild(fileItem);
+
+                                        // Redraw the file list
+                                        updateFileList();
+                                    }
+
+                                    function handleFiles(files) {
+                                        // Handle files selected via the file input
+                                        for (const file of files) {
+                                            droppedFiles.push(file);
+                                        }
+
+                                        // Redraw the file list
+                                        updateFileList();
+                                    }
+
+                                    function updateFileList() {
+                                        const fileList = document.getElementById('file-list');
+                                        const firstFileContainer = document.getElementById('first-file');
+
+                                        fileList.innerHTML = '';
+                                        for (let i = 0; i < droppedFiles.length; i++) {
+                                            const file = droppedFiles[i];
+                                            const fileItem = document.createElement('li');
+                                            fileItem.className = 'file-item';
+
+                                            // Display image if it's an image file
+                                            if (file.type.startsWith('image/')) {
+                                                const image = document.createElement('img');
+                                                image.style.width = '100px';
+                                                image.style.height = '100px';
+
+                                                const reader = new FileReader();
+                                                reader.onload = function (e) {
+                                                    image.src = e.target.result;
+                                                };
+
+                                                reader.readAsDataURL(file);
+
+                                                // Create delete icon
+                                                const deleteIcon = document.createElement('div');
+                                                deleteIcon.className = 'delete-icon';
+                                                deleteIcon.innerHTML = '&#10006;'; // "x" character
+
+                                                deleteIcon.addEventListener('click', function () {
+                                                    deleteFile(file, fileItem, i);
+                                                });
+
+                                                fileItem.appendChild(image);
+                                                fileItem.appendChild(deleteIcon);
+                                            } else {
+                                                // Display file name and extension if it's not an image
+                                                fileItem.textContent = `${file.name} (${file.type})`;
+
+                                                // Create delete icon
+                                                const deleteIcon = document.createElement('div');
+                                                deleteIcon.className = 'delete-icon';
+                                                deleteIcon.innerHTML = '&#10006;'; // "x" character
+
+                                                deleteIcon.addEventListener('click', function () {
+                                                    deleteFile(file, fileItem, i);
+                                                });
+
+                                                fileItem.appendChild(deleteIcon);
+                                            }
+
+                                            fileList.appendChild(fileItem);
+                                        }
+
+                                        // Display only the first dropped file
+                                        if (droppedFiles.length > 0) {
+                                            const firstFile = droppedFiles[0];
+                                            const firstFileItem = document.createElement('div');
+                                            firstFileItem.className = 'file-item';
+                                            firstFileItem.textContent = `Imagen de portada: ${firstFile.name}`;
+                                            firstFileContainer.innerHTML = '';
+                                            firstFileContainer.appendChild(firstFileItem);
+                                        } else {
+                                            // Display a message if no files are dropped
+                                            firstFileContainer.innerHTML = '<h4>Suelta archivos aquí</h4>';
+                                        }
+                                    }
+                                </script>
+                            </div>
+                            <hr>
+                            <hr>
+                            {{!-- pinta cada producto --}}
+                            <div style="" class="row">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="color: black !important;">Categorías</a>
+                                        <ul class="dropdown-menu" style="color: black !important;">
+                                            {{#each dataEcommerce}}
+                                                <li>
+                                                    <a class="dropdown-item" href="#{{categoria}}" style="color: black !important;">{{categoria}}</a>
+                                                </li>
+                                            {{/each}}
+                                        </ul>
+                                    </li>
+                                </ul>
+                                {{#each dataEcommerce}}
+                                    <br>
+                                    <div align="center" class="col-md-6" style="width: 45%; margin: 1rem !important;" id="{{categoria}}">
+                                        <div class="" style="border: 0.1rem solid black; padding: 0.51rem;" >
+                                            <h3>Categoria {{categoria}}</h3>
+                                            {{!-- Carrusel de beneficios --}}
+                                            <div align="center" id="carouselExampleControls-{{@index}}" class="carousel slide" data-bs-ride="carousel">
+                                                <div class="carousel-inner">
+                                                        <div class="carousel-item active" data-bs-interval="1000" style="height: 400px;">
+                                                            <h4 class="">{{nombreProducto}}</h4>
+                                                        </div>
+                                                    {{#each rutaSimpleImg}}
+                                                        <div class="carousel-item" data-bs-interval="2000">
+                                                            <img src="{{this}}" style="height: 400px; width: auto;">
+                                                        </div>
+                                                    {{/each}}
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div id="" align="center" class="cardGold"  style="border: 0.1rem solid black; padding: 1rem; margin: 0" >
+                                                <h4 class="card-title"><strongs>{{nombreProducto}}</strongs></h4>
+                                                <h4 align="left"><strongs>Descripción</strongs></h4>
+                                                <h5 class="card-text" style="text-align: justify; height: 150px; overflow: hidden;">{{{descripcion}}}</h5>
+                                                <h5 class="card-text" align="left"><strongs>Cantidad</strongs> {{cantidad}}</h5>
+                                                <h5><strongs>Precio $</strongs>{{precio}}</h5>
+                                                <form action="/eliminarProdServ" method="post">
+                                                    <input type="text" name="id" value="{{_id}}" hidden>
+                                                    <button class="btn btn-danger" type="submit">Eliminar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <br>
                                 {{else}}
-                                    <h3 style="color: #000 !important;">No tiene productos/servicios publicados en su pagina web</h3>
+                                    <div align="center">
+                                        <h4>No tienes productos/servicios cargados</h4>
+                                    </div>
                                 {{/each}}
                             </div>
-                            <script>
-                                const decrementarBtn = document.getElementById('decrementar');
-                                const incrementarBtn = document.getElementById('incrementar');
-                                const cantidadInput = document.getElementById('cantidad');
-                                const imagenInput = document.getElementById('imagen');
-                                const productImage = document.getElementById('productImage');
-                                const imagePlaceholder = document.querySelector('.product-image-placeholder');
-
-                                decrementarBtn.addEventListener('click', () => {
-                                    cantidadInput.stepDown();
-                                });
-
-                                incrementarBtn.addEventListener('click', () => {
-                                    cantidadInput.stepUp();
-                                });
-
-                                imagenInput.addEventListener('change', (event) => {
-                                    const file = event.target.files[0];
-                                    if (file) {
-                                        const reader = new FileReader();
-                                        reader.onload = function(e) {
-                                            imagePlaceholder.style.display = 'none';
-                                            productImage.style.display = 'block';
-                                            productImage.src = e.target.result;
-                                        };
-                                        reader.readAsDataURL(file);
-                                    }
-                                });
-                            </script>
                         </div>
                     {{/if}}
                     {{!-- icono --}}
                     <div class="content" id="opcion5">
                         <div class="card" style="margin: 0.5rem; padding:0.5rem 1.5rem;">
                             <div class="card-header" style="width: 100%;">
-                                <h2>Agrega un icono de inicio rápido a tu pantalla</h2>
+                                <h2>Agrega un icono de inicio rapido a tu pantalla</h2>
                             </div>
                             <div class="row card-body" style="padding: 0.5rem;">
-                                <h3>Elije el tipo de navegador y dispositivo en el que quieres agregar el icono.</h3>
+                                <h3>Elije el tipo de navegador y dispositivo en el que quieres aregar el icono.</h3>
                                 <br>
                                 <div class="col card-header" style="margin: 0.2rem;">
                                         <h3>PC</h3>
@@ -1123,12 +1221,12 @@
 <h4>Agregar un icono en el escritorio de Android de una aplicación web</h4>
 <p>Para agregar un acceso directo a una aplicación web en tu escritorio de Android, sigue estos pasos:</p>
 <ol>
-<li>Abre el navegador web en tu dispositivo Android.</li>
-<li>Dirígete a la aplicación web que deseas agregar.</li>
-<li>Toca el botón de menú en el navegador (generalmente representado por tres puntos verticales o un icono similar) para acceder a las opciones adicionales.</li>
-<li>Busca y selecciona la opción "Agregar a pantalla de inicio" o "Añadir acceso directo" en el menú desplegable.</li>
-<li>Se te pedirá que personalices el nombre del acceso directo. Puedes cambiar el nombre si lo deseas o dejarlo tal como está.</li>
-<li>Toca el botón "Agregar" o "Aceptar" para confirmar la creación del acceso directo.</li>
+  <li>Abre el navegador web en tu dispositivo Android.</li>
+  <li>Dirígete a la aplicación web que deseas agregar.</li>
+  <li>Toca el botón de menú en el navegador (generalmente representado por tres puntos verticales o un icono similar) para acceder a las opciones adicionales.</li>
+  <li>Busca y selecciona la opción "Agregar a pantalla de inicio" o "Añadir acceso directo" en el menú desplegable.</li>
+  <li>Se te pedirá que personalices el nombre del acceso directo. Puedes cambiar el nombre si lo deseas o dejarlo tal como está.</li>
+  <li>Toca el botón "Agregar" o "Aceptar" para confirmar la creación del acceso directo.</li>
 </ol>
 <p>Una vez que hayas seguido estos pasos, se creará un acceso directo en tu pantalla de inicio de Android que te llevará directamente a la aplicación web cuando lo selecciones.</p>
 <p>Cabe mencionar que los nombres y las ubicaciones exactas de los botones y las opciones pueden variar según la versión del navegador web y la interfaz de tu dispositivo Android, pero en general, estos pasos deberían ayudarte a agregar un acceso directo de una aplicación web a tu pantalla de inicio.</p>
@@ -1165,7 +1263,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>                    
+                    </div>     
                 </div>
                 <script>
                 const navTabs = document.querySelector('.nav-tabs');
@@ -1207,3 +1305,8 @@
             </div>
         </div>
 </div>
+
+
+
+
+

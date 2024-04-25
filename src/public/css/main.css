@@ -6944,7 +6944,6 @@ span
   }
   
   .cardGold {
-	align-content: center;
 	margin: 1rem 0.5rem;
 	padding: 1rem;
 	font-size: 1.6rem;
@@ -6952,19 +6951,19 @@ span
 	background: gold;
 	height: auto;
 	width: 100%;
-	border-radius: 4rem;
+	border-radius: 1.5rem;
 	color: black;
-	border-top: lightgray 0.5em solid;
-	border-left: lightgray 0.5em solid;
-	border-bottom: gray 0.5em solid;
-	border-right: gray 0.5em solid;
+	border-top: lightgray 0.125em solid;
+	border-left: lightgray 0.125em solid;
+	border-bottom: gray 0.125em solid;
+	border-right: gray 0.125em solid;
   }
   
   .cardGold:hover,
   .cardGold:active,
   .cardGold:target {
-	transform: scale(1.15);
-	box-shadow: 0.2rem 0.2rem 0.4rem 0.4rem gold;
+	transform: scale(1.0115);
+	box-shadow: 0.2rem 0.2rem 0.21rem 0.21rem gold;
 	transition: 0.5s;
 	color: blue;
   }

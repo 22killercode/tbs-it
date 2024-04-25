@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const messages = new Schema({
+const pushMes = new Schema({
+    dataPushCliente : {},
     //direccion
     email: { type: String },
     names: { type: String },
@@ -18,9 +19,8 @@ const messages = new Schema({
     nombreCliente: { type: String },
     idOwner: { type: String },
     idCliente: { type: String },
-    codigoPedido: { type: String },
 
     date: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('messages', messages)
+module.exports = mongoose.model('pushMes', pushMes)

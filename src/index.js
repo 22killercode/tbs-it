@@ -10,6 +10,9 @@ const Handlebars     = require('handlebars');
 const fileUpload     = require('express-fileupload');
 const favicon        = require('serve-favicon')
 const session        = require('express-session');
+const mercadopago    = require('mercadopago');
+const xl = require('excel4node');
+
 
 
 // parche de handlebars
@@ -44,6 +47,18 @@ app.use(cors({
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 }));
+
+
+
+// Configurar CORS
+app.use(cors({
+    origin: 'http://127.0.0.1:5500/',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+}));
+
+
+
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500/index.html'); // Reemplaza con el dominio de tu aplicación
@@ -92,7 +107,8 @@ app.use(require('./routes/users'));
 app.use(require('./routes/RRHH'));
 app.use(require('./routes/consuSitiosWeb'));
 app.use(require('./routes/blogs'));
-
+app.use(require('./routes/Ecommerce'));
+app.use(require('./routes/mp'));
 
 
 //Statics Files

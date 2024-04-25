@@ -3,11 +3,10 @@ const { Router } = require('express');
 const router     = Router();
 const nodemailer = require('nodemailer');
 const path       = require('path')//no sacar
-
-require('dotenv').config();
+const passport   = require('passport'); 
 
 //models
-const User = require('../models/User');
+const User         = require('../models/User');
 const cotiStaffing = require('../models/cotiStaffing');
 const cotizaciones = require('../models/cotizaciones');
 const talentos     = require('../models/talentos');
@@ -152,7 +151,7 @@ router.post('/signUp', async (req, res) => {
             res.render('partials/Usuarios/inscribirme', { errors, catego, name,  tyc, apellido, email, password, confirm_password });
             req.flash('error', 'Este email ya esta en uso.');
         } else {
-            const nroCliEmp = shortid.generate();
+            const nroCliEmp = shortid.generate(); 
             const fecha = new Date()
             const statusInscrip = 'incompleto'
             const usuarioBloqueado = false
@@ -168,7 +167,7 @@ router.post('/signUp', async (req, res) => {
 
 
 // ruta que te envia a opciones de los usuarios 
-router.get('/probando', async (req, res) => {
+router.get('/probando1', async (req, res) => {
     console.log("/entraraOpciones")
     res.render('partials/cotisSoftFactory/cotipagWeb');
 });

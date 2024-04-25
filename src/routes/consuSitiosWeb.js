@@ -146,7 +146,6 @@ router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async 
 });
 
 
-
 // Ruta de los mensajes del cliente PUEBLOIRUYA.COM de gustavo
 router.post('/mensajedecontactnuestrosclient/claveCliente/puebloiruya', async (req, res) => {
     const cliente = "puebloIruya.com & GustavoTour´s"
@@ -284,4 +283,4 @@ router.post('/mensajedecontactnuestrosclient/claveCliente/puebloiruya', async (r
 });
 
 
-module.exports = router
+module.exports = router 

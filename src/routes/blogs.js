@@ -7,6 +7,11 @@ const axios     = require("axios")
 const request = require('request');
 const mongoose  = require('mongoose');
 
+const cors           = require('cors')
+
+router.use(cors());
+
+
 // codificador
 const bcrypt = require('bcrypt');
 
@@ -14,22 +19,23 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 //models
-const User = require('../models/User');
-const Blogs = require('../models/blogs');
+const User      = require('../models/User');
+const Blogs     = require('../models/blogs');
+const Ecommerce2 = require('../models/Ecommerce');
 
 // Middleware para verificar el token JWT
 const verificarToken = (req, res, next) => {
     const token = req.headers.authorization || req.query.token || req.body.jwtToken || req.body.jwtToken2 || req.body.jwtToken3 || null;
-    console.log("Entro a verificar token", token, req.headers)
+    //console.log("Entro a verificar token", token )
     if (!token) {
-        console.log("token no proporcionado", token)
+      //  console.log("token no proporcionado", token)
         req.flash("error", "Clave de seguridad no proporcionado desde el frontend");
         // aqui hay que avisar si se cargo bien o no el usuario y salir a la pagina principal
         //return res.redirect("/")
         return res.status(401).json({ mensaje: 'Token no proporcionado desde el frontend' });
     }
     jwt.verify(token, 'Sebatoken22', (err, decoded) => {
-        console.log("Verificando el token")
+//console.log("Verificando el token")
         if (err) {
             console.log("token invalido", err)
             //return res.status(403).json({ mensaje: 'Token inválido' });
@@ -39,7 +45,7 @@ const verificarToken = (req, res, next) => {
         } 
       // El token es válido, puedes acceder a la información del usuario en decoded
         req.usuario = decoded; 
-        console.log("token verificado", token)
+      //  console.log("token verificado", token)
         next();
     });
 };
@@ -50,7 +56,7 @@ const verificarToken = (req, res, next) => {
 router.post('/users/signIN/clientesyempleados',  (req, res) => {
   // Extracción del email y contraseña del cuerpo de la solicitud
     const { email, password } = req.body;
-    console.log("Entro en /users/signIN/clientesyempleados que hay en req.body",req.body)
+   // console.log("Entro en /users/signIN/clientesyempleados que hay en req.body",req.body)
   // Búsqueda del usuario en la base de datos por su email
     User.findOne({ email: email }, (err, usuarioEncontrado) => {
                 if (err) {
@@ -73,17 +79,17 @@ router.post('/users/signIN/clientesyempleados',  (req, res) => {
                     return res.redirect(`/`);
                 } else if (coinciden) {
                 // Las contraseñas coinciden, el usuario ha iniciado sesión con éxito
-                    console.log('Inicio de envio de jwt sesión exitoso');
+                    //console.log('Inicio de envio de jwt sesión exitoso');
 
                     // Generar el token JWT con la información del usuario (en este caso, solo el email)
                     const token = jwt.sign({ email: usuarioEncontrado.email }, 'Sebatoken22', { expiresIn: '15m' });
-                    console.log('LLEgo al final de inicio de sesion y Token generado:', token);
+                    //console.log('LLEgo al final de inicio de sesion y Token generado:', token);
                     const data = { token, email: usuarioEncontrado.email }
 
                 // Redirigir a la página de configuraciones con el token en la URL
                 // Enviar el token al cliente como parte de la respuesta HTTP
                 // Antes de enviar la respuesta en el servidor
-                console.log('Respuesta del servidor:', data); 
+                //console.log('Respuesta del servidor:', data); 
                 res.status(200).json(data);
                 //return res.redirect(`/configuracionesBlogsProductsEildamais?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`);
                 } else {
@@ -100,22 +106,23 @@ router.post('/users/signIN/clientesyempleados',  (req, res) => {
 // ruta para ingresar al menu de blogs y Ecommerce OK
 router.get('/configuracionesBlogsProductsEildamais',  verificarToken, async (req, res) => {
     //identificar si el usauario tiene permisos de administrador
-    console.log("Entro en /configuracionesBlogsProductsEildamais")
+    //console.log("Entro en /configuracionesBlogsProductsEildamais")
     try {
         const  email  =  req.query.email;
         const dataUser = await User.findOne({email:email})
         //console.log("que encontro en dataUser", dataUser)
         const {Clave, Ecommerce, blog, staffing, _id} = dataUser
         const userId = _id
-        const dataBlogs = await Blogs.find({ idCliente:_id }).sort({ date: -1 });
+        const dataBlogs     = await Blogs.find({ idCliente:_id }).sort({ date: -1 });
+        const dataEcommerce = await Ecommerce2.find({ idCliente:_id }).sort({ date: -1 });
         if (Clave) {
-            console.log("Administrador",Clave, Ecommerce, blog, staffing)
-            res.render('partials/Clientes/Blogs&Ecommerce', {Clave, Ecommerce, blog, staffing, dataBlogs, userId})
+            //console.log("Administrador",Clave, Ecommerce, blog, staffing)
+            res.render('partials/Clientes/Blogs&Ecommerce', {Clave, Ecommerce, blog, staffing, dataBlogs, dataEcommerce, userId})
         }
         else{
             const Clave = false
-            console.log("NO Administrador")
-            res.render('partials/Clientes/Blogs&Ecommerce', {Clave, Ecommerce, blog, staffing, dataBlogs, userId})
+            //console.log("NO Administrador")
+            res.render('partials/Clientes/Blogs&Ecommerce', {Clave, Ecommerce, blog, staffing, dataBlogs, dataEcommerce, userId})
         }
             
     } catch (error) {
@@ -173,6 +180,7 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
     try {
         // busca la informacion del cliente que quiere emitir un nuevo blog
         const usuario = await User.findById(id);
+        const emailCliente = usuario.email
         const empresa = usuario ? usuario.empresa : null;
         const cheqCantidadBlogs = usuario.Blogs.length
         // revisa si ya tiene los 10 blogs maximos permitidos
@@ -185,38 +193,39 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
             return
         }
         console.log("0 que empresa encontro", empresa, id);
-        // Enviar solicitud a Dovemailer Cloud Archivos usando AXIOS
+            // Enviar solicitud a Dovemailer Cloud Archivos usando AXIOS
             async function enviarImagenAServidorB(imagen, ob1, ob2) {
-            try {
-                // 1. Leer la imagen en formato base64
-                const data = fs.readFileSync(imagen.tempFilePath, { encoding: 'base64' });
-                // 2. Construir el objeto de datos a enviar
-                const datosAEnviar = {
-                    imagen: {
-                        name: imagen.name,
-                        data: data,
-                        size: imagen.size,
-                        encoding: imagen.encoding,
-                        mimetype: imagen.mimetype,
-                        md5: imagen.md5
-                    },
-                    ob1: ob1,
-                    ob2: ob2
-                };
-                
-                // 3. Enviar la imagen y los objetos al servidor B
-                const urlServidorB = 'https://dovemailer.net/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
-                //const urlServidorB = 'http://localhost:3009/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
-                const respuesta = await axios.post(urlServidorB, datosAEnviar, {
-                    withCredentials: true, // Importante para incluir las cookies o credenciales
-                });
+                try {
+                    // 1. Leer la imagen en formato base64
+                    const data = fs.readFileSync(imagen.tempFilePath, { encoding: 'base64' });
+                    // 2. Construir el objeto de datos a enviar
+                    const datosAEnviar = {
+                        imagen: {
+                            name: imagen.name,
+                            data: data,
+                            size: imagen.size,
+                            encoding: imagen.encoding,
+                            mimetype: imagen.mimetype,
+                            md5: imagen.md5
+                        },
+                        ob1: ob1,
+                        ob2: ob2
+                    };
+                    
+                    // 3. Enviar la imagen y los objetos al servidor B
+                    const urlServidorB = 'https://dovemailer.net/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
+                    //const urlServidorB = 'http://localhost:3009/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
+                    const respuesta = await axios.post(urlServidorB, datosAEnviar, {
+                        withCredentials: true, // Importante para incluir las cookies o credenciales
+                    });
 
-                // 4. Manejar la respuesta del servidor B
-                console.log('Respuesta del servidor B:', respuesta.data);
-                return respuesta.data
-                } catch (error) {
-                console.error('Error al procesar la solicitud:', error.message);
-                }
+                    // 4. Manejar la respuesta del servidor B
+                    console.log('Respuesta del servidor B:', respuesta.data);
+                    return respuesta.data
+                    } 
+                catch (error) {
+                    console.error('Error al procesar la solicitud:', error.message);
+                    }
             }
             
             // Llamada a la función para enviar las imagenes al server de Dovemailer con los datos necesarios
@@ -234,7 +243,7 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
                     const rutaURL      = rutaRelativa;
                     const pathImg      = rutaCompleta
                     console.log("Que ruta URL fabrico",rutaURL);
-                    const newBlog = new Blogs({rutaURL, titulo, mensaje, pathImg, rutaSimple, rutaSimple2, idCliente, tamanoImg});
+                    const newBlog = new Blogs({rutaURL, titulo, mensaje, pathImg, rutaSimple, rutaSimple2, idCliente, tamanoImg, emailCliente});
                     const idBlog = newBlog.id
                     await newBlog.save();
                     console.log(" el  blog se cargo exitosamente")
@@ -268,7 +277,7 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
 });
 
 
-
+// solicita la simagenes a docvemailer y las envia
 router.post('/proxyImage', async (req, res) => {
     try {
         // Obtenemos la dirección web del cuerpo de la solicitud
@@ -300,31 +309,6 @@ router.post('/proxyImage', async (req, res) => {
     }
 
 });
-
-
-
-router.get('/proxyImage3', (req, res) => {
-//    const imageUrl = 'http://dovemailer.net/img/uploads/tbs-it/promoBlog-8SsdogmDT.jpg';
-
-const imageUrl = 'http://dovemailer.net/img/uploads/tbs-it/promoBlog-8SsdogmDT.jpg';
-
-// Realizar una solicitud al servidor HTTP para obtener la imagen
-const imageRequest = request.get(imageUrl);
-
-// Manejar eventos de error en la solicitud de la imagen
-imageRequest.on('error', (error) => {
-    console.error('Error al obtener la imagen:', error);
-    res.status(500).send('Error al obtener la imagen');
-});
-
-// Transmitir la respuesta al objeto de respuesta del servidor Express
-imageRequest.pipe(res);
-
-});
-
-
-
-
 
 
 // para eliminar blogs
@@ -400,13 +384,15 @@ router.get('/volviendoleruleru', async (req, res) => {
 });
 
 
+
+
 // solicitando datos desde la pagina  que compro el BLOG cambia para cada cliente
 router.post('/buscandoPostdeBlogs', async (req, res) => {
-    console.log("que enciuentra desd el apgina web")
+   // console.log("que enciuentra desd el apgina web")
     try {
         // accesos de seguridad
         const formData = req.body;
-        console.log("llega la petición /buscandoPostdeBlogs", formData);
+        //console.log("llega la petición /buscandoPostdeBlogs", formData);
 
         // if (formData === '147852369') {
         //     console.log("NO paso el filtro de seguridad");
@@ -416,7 +402,7 @@ router.post('/buscandoPostdeBlogs', async (req, res) => {
         // busca los datos de la BD de los blogs // CARGA EL EMAIL DEL CLIENTE DE LOS BLOGS
         const dataBlogs = await Blogs.find({ emailCliente: "sebastianpaysse@gmail.com" }).sort({ date: -1 });
 
-        console.log('Desde TBSIT dataSend recibidas:', dataBlogs);
+        //console.log('Desde TBSIT dataSend recibidas:', dataBlogs);
 
         res.status(200).json({ success: true, data: dataBlogs });
 
