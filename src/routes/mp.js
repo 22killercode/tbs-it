@@ -173,9 +173,14 @@ router.post('/cobroFallidoMP', async (req, res) => {
     res.json({ message: "Entro al cobro exitoso de MP" });
   }
   else{
+    
     console.log("Cobro NO exitoso");
-    res.json({ message: "No se cobro" });
+    // poner cobro NO exitoso  en la BD
+
+    // poner en mensajes push el cobro NO exitoso asi el frontend re toma desde ahi
+    res.json({ message: "No se cobro el pago" });
   }
+
 
 });
 
