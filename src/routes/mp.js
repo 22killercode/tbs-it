@@ -161,7 +161,7 @@ router.get('/cobroExitosoMP', async (req, res) => {
 
 
 
-router.post('/cobroFallidoMP', async (req, res) => {
+router.get('/cobroFallidoMP', async (req, res) => {
 
   console.log("Datos recibidos en req.query:", req.query);
   
@@ -173,7 +173,7 @@ router.post('/cobroFallidoMP', async (req, res) => {
     res.json({ message: "Entro al cobro exitoso de MP" });
   }
   else{
-    
+
     console.log("Cobro NO exitoso");
     // poner cobro NO exitoso  en la BD
 
