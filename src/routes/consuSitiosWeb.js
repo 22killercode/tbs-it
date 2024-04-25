@@ -9,6 +9,7 @@ const shortid = require('shortid');
 
 // // Ruta de los mensajes del cliente TROPILUZ.ORG radio de Marios Pereyra
 router.post('/mensajedecontactosdenuestrosclientes/claveClienteTropiluz', async (req, res) => {
+    return
     const cliente = "TROPILUZ radio"
     console.log("Llego a mensajes de clentes en tropiluz TBS-IT", req.body)
     try {
