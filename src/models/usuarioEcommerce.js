@@ -73,6 +73,10 @@ const UserEcommSchema = new Schema({
         type: String,
     },
 
+    clientPreference_idMP: {
+        type: String,
+    },
+
     idEcom: {
         type: String,
     },

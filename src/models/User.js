@@ -16,7 +16,9 @@ const UserSchema = new Schema({
     Ventas: [ ],
     idOwner: { type: String },
     clientes: [ ],
-
+    ownerPreference_idMP: {
+        type: String,
+    },
     nombrePagAppWeb: { type: String },
 
     transportEmail: {},

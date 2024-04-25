@@ -109,6 +109,11 @@ router.post('/create_preference2', async (req, res) => {
           failure: "https://tbs-it.net/cobroFallidoMP",
           pending: "http://google.com",
         },
+        payer: {
+          firstName: "Seba",
+          lastName: "Paysse",
+          email: "sebastianpaysse@gmail.com.net",
+        },
         purpose: "wallet_purchase",
         auto_return: "approved",
         binary_mode: true,
@@ -141,6 +146,10 @@ router.get('/cobroExitosoMP', async (req, res) => {
   const { collection_id, collection_status, payment_id, status, external_reference, payment_type, merchant_order_id, preference_id, site_id, processing_mode, merchant_account_id } = req.query;
   
   if (collection_status === "aproved") {
+    // identificar a el cliente
+    const primeraCifra = preference_id.split('-')[0];
+
+    
     // poner cobro exitos  en la BD
 
     // poner en mensajes push el cobro exitoso asi el frontend re toma desde ahi
@@ -168,19 +177,15 @@ router.get('/cobroFallidoMP', async (req, res) => {
   // Desestructurar la información de req.query
   const { collection_id, collection_status, payment_id, status, external_reference, payment_type, merchant_order_id, preference_id, site_id, processing_mode, merchant_account_id } = req.query;
   
-  if (collection_status === "aproved") {
-    console.log("Cobro exitoso");
-    res.json({ message: "Entro al cobro exitoso de MP" });
-  }
-  else{
-
+  if (collection_status === null) {
     console.log("Cobro NO exitoso");
+    // identificar a el cliente
+
     // poner cobro NO exitoso  en la BD
 
     // poner en mensajes push el cobro NO exitoso asi el frontend re toma desde ahi
     res.json({ message: "No se cobro el pago" });
   }
-
 
 });
 
