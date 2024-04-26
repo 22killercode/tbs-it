@@ -230,7 +230,8 @@ router.get('/resultado/del/cobro/enMP', async (req, res) => {
     const primeraCifra = preference_id.split('-')[0];
     const idCliente = external_reference.idCliente;
     const idOwner = external_reference.idOwner;
-    const EmailCliente = primeraCifra
+    const dataCliente    = await EcommUser.findById(idCliente);
+    const EmailCliente = dataCliente.emails[0]
     const statusCobro = status
     // poner cobro exitoso en la BD
   

@@ -669,10 +669,8 @@ function metodo1(a,b,c) {
 
 
         // guardar el mensaje el pull mensajes
-        async function guardarRemito(dataOwner, dataCliente, statusCobro){
-            const idCliente = dataCliente._id
-            const idOwner = dataOwner._id
-            const EmailCliente = dataCliente.emails[0]
+        async function guardarRemito(idCliente, idOwner, EmailCliente, statusCobro){
+
             try {
                 // Crear objeto para el mensaje del propietario
                 const mensajeOwner = new Remitos({ idCliente, idOwner, EmailCliente, statusCobro });
