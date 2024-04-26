@@ -628,7 +628,7 @@ try {
 // SIGNIN desde el signIn MANUAL busca el usuario cliente del ecommerce de forma MANUAL
 router.post('/buscarUsurarioEcommerce', async (req, res) => {
     const ipCliente = req.ip || req.connection.remoteAddress;
-    console.log("Llega algo desde buscarUsurarioEcommerce de forma MANUAL del Ecommerce para inscribir clientes", req.body, ipCliente);
+    //console.log("Llega algo desde buscarUsurarioEcommerce de forma MANUAL del Ecommerce para inscribir clientes", req.body, ipCliente);
 
     try {
         const { email, password, ip } = req.body;
