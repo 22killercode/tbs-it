@@ -45,7 +45,7 @@ const bodyParser = require('body-parser');
 
 router.use(bodyParser.text());
 
-const {sendMail,guardarMensajes,pushMensajeFunc} = require('../routes/Midlewares');
+const {guardarRemito,sendMail,guardarMensajes,pushMensajeFunc} = require('../routes/Midlewares');
 
 
 // // // Agrega credenciales
@@ -162,6 +162,7 @@ router.post('/MPwallets', async (req, res) => {
   console.log("Qué datos obtiene MP", req.body);
 
   const idCliente = req.body.dataCliente._id
+  const idOwner = req.body.dataCliente.idOwner
   const pedidosItems = []
   req.body.pedidoPendCobrar.forEach(e => {
     let title = e.nombreProducto
@@ -185,16 +186,16 @@ router.post('/MPwallets', async (req, res) => {
       body : {
         items: pedidosItems,
         back_urls: {
-          success: "https://tbs-it.net/cobroExitosoMP",
-          failure: "https://tbs-it.net/cobroFallidoMP",
-          pending: "http://google.com",
+          success: "https://tbs-it.net/resultado/del/cobro/enMP",
+          failure: "https://tbs-it.net/resultado/del/cobro/enMP",
+          pending: "https://tbs-it.net/resultado/del/cobro/enMP",
         },
         payer: req.body.dataCliente.payer,
         purpose: "wallet_purchase",
         auto_return: "approved",
         binary_mode: true,
         statement_descriptor: "mitiendaya!",
-        external_reference : idCliente,
+        external_reference : {idCliente,idOwner}
       }
       })
     
@@ -216,7 +217,7 @@ router.post('/MPwallets', async (req, res) => {
 });
 
 // devolucciones de MP wallets
-router.get('/cobroExitosoMP', async (req, res) => {
+router.get('/resultado/del/cobro/enMP', async (req, res) => {
   console.log("Datos recibidos en req.query:", req.query);
 
   // Desestructurar la información de req.query
@@ -227,12 +228,16 @@ router.get('/cobroExitosoMP', async (req, res) => {
   if (collection_status === "approved") {
     // identificar al cliente
     const primeraCifra = preference_id.split('-')[0];
-    const idCliente = external_reference;
-  
+    const idCliente = external_reference.idCliente;
+    const idOwner = external_reference.idOwner;
+    const EmailCliente = primeraCifra
+    const statusCobro = status
     // poner cobro exitoso en la BD
   
     // poner en mensajes push el cobro exitoso para que el frontend lo tome desde allí
-  
+    guardarRemito( idCliente, idOwner, EmailCliente, statusCobro )
+
+
     console.log("Cobro exitoso");
     res.json({ message: "Entro al cobro exitoso de MP" });
   } else {
@@ -241,22 +246,10 @@ router.get('/cobroExitosoMP', async (req, res) => {
   }
 
 });
-router.get('/cobroFallidoMP', async (req, res) => {
+router.post('/buscandioRemitosMP', async (req, res) => {
 
-  console.log("Datos recibidos en req.query:", req.query);
+  console.log("Datos recibidos en buscandioRemitosMP:", req.body);
   
-  // Desestructurar la información de req.query
-  const { collection_id, collection_status, payment_id, status, external_reference, payment_type, merchant_order_id, preference_id, site_id, processing_mode, merchant_account_id } = req.query;
-  
-  if (collection_status === null) {
-    console.log("Cobro NO exitoso");
-    // identificar a el cliente
-
-    // poner cobro NO exitoso  en la BD
-
-    // poner en mensajes push el cobro NO exitoso asi el frontend re toma desde ahi
-    res.json({ message: "No se cobro el pago" });
-  }
 
 });
 

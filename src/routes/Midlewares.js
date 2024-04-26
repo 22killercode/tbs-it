@@ -17,7 +17,7 @@ const cotizaciones  = require('../models/cotizaciones');
 const Tokens        = require('../models/Tokens');
 const PushMensajes  = require('../models/messages');
 const pushMess      = require('../models/pushMes');
-
+const Remitos       = require('../models/remito');
 const JSONTransport = require('nodemailer/lib/json-transport');
 const { Script } = require('vm');
 const PrecioDolar = 450
@@ -667,7 +667,26 @@ function metodo1(a,b,c) {
         }
 
 
+
+        // guardar el mensaje el pull mensajes
+        async function guardarRemito(dataOwner, dataCliente, statusCobro){
+            const idCliente = dataCliente._id
+            const idOwner = dataOwner._id
+            const EmailCliente = dataCliente.emails[0]
+            try {
+                // Crear objeto para el mensaje del propietario
+                const mensajeOwner = new Remitos({ idCliente, idOwner, EmailCliente, statusCobro });
+                // Guardar el mensaje del propietario en la base de datos
+                await mensajeOwner.save();
+                return true
+            } catch (error) {
+                return false
+            }
+        }
+
+
 module.exports = {
+    guardarRemito,
     sendMail,
     guardarMensajes,
     pushMensajeFunc,
