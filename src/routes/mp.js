@@ -218,35 +218,41 @@ router.post('/MPwallets', async (req, res) => {
 
 // devolucciones de MP wallets
 router.get('/resultado/del/cobro/enMP', async (req, res) => {
-  console.log("Datos recibidos en req.query:", req.query);
+  try {
+    console.log("Datos recibidos en req.query:", req.query);
 
-  // Desestructurar la información de req.query
-  const { collection_id, collection_status, payment_id, status, external_reference, payment_type, merchant_order_id, preference_id, site_id, processing_mode, merchant_account_id } = req.query;
-  
-  console.log("Estado de la colección:", collection_status);
-  
-  if (collection_status === "approved") {
-    // identificar al cliente
-    const primeraCifra = preference_id.split('-')[0];
-    const idCliente = external_reference.idCliente;
-    const idOwner = external_reference.idOwner;
-    const dataCliente    = await EcommUser.findById(idCliente);
-    const EmailCliente = dataCliente.emails[0]
-    const statusCobro = status
-    // poner cobro exitoso en la BD
-  
-    // poner en mensajes push el cobro exitoso para que el frontend lo tome desde allí
-    guardarRemito( idCliente, idOwner, EmailCliente, statusCobro )
+    // Desestructurar la información de req.query
+    const { collection_id, collection_status, payment_id, status, external_reference, payment_type, merchant_order_id, preference_id, site_id, processing_mode, merchant_account_id } = req.query;
+    
+    console.log("Estado de la colección:", collection_status);
+    
+    if (collection_status === "approved") {
+      // identificar al cliente
+      const primeraCifra = preference_id.split('-')[0];
+      const idCliente = external_reference.idCliente;
+      const idOwner = external_reference.idOwner;
+      const dataCliente = await EcommUser.findById(idCliente);
+      const EmailCliente = dataCliente.emails[0];
+      const statusCobro = status;
+      // poner cobro exitoso en la BD
+    
+      // poner en mensajes push el cobro exitoso para que el frontend lo tome desde allí
+      await guardarRemito(idCliente, idOwner, EmailCliente, statusCobro);
 
-
-    console.log("Cobro exitoso");
-    res.json({ message: "Entro al cobro exitoso de MP" });
-  } else {
-    console.log("Cobro NO exitoso");
-    res.json({ message: "No se cobró" });
+      console.log("Cobro exitoso");
+      return res.json({ message: "Entro al cobro exitoso de MP" });
+    } else {
+      console.log("Cobro NO exitoso");
+      return res.json({ message: "No se cobró" });
+    }
+  } catch (error) {
+    console.error("Error al procesar el cobro en MP:", error);
+    return res.status(500).json({ error: "Error al procesar el cobro en MP" });
   }
-
 });
+
+
+
 router.post('/buscandioRemitosMP', async (req, res) => {
 
   console.log("Datos recibidos en buscandioRemitosMP:", req.body);
