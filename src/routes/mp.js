@@ -232,12 +232,12 @@ router.get('/resultado/del/cobro/enMP', async (req, res) => {
       const idCliente = external_reference.idCliente;
       const idOwner = external_reference.idOwner;
       const dataCliente = await EcommUser.findById(idCliente);
-      const EmailCliente = dataCliente.emails[0].emailCliente;
+      const emailCliente = dataCliente.emails[0].emailCliente;
       const statusCobro = status;
       // poner cobro exitoso en la BD
     
       // poner en mensajes push el cobro exitoso para que el frontend lo tome desde allí
-      await guardarRemito(idCliente, idOwner, EmailCliente, statusCobro);
+      await guardarRemito(idCliente, idOwner, emailCliente, statusCobro);
 
       console.log("Cobro exitoso");
       return res.json({ message: "Entro al cobro exitoso de MP" });

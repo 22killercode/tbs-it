@@ -6,7 +6,7 @@ const Remitos = new Schema({
 
     idOwner: { type: String },
     idCliente: { type: String },
-    EmailCliente: { type: String },
+    emailCliente: { type: String },
     statusCobro: { type: String },
 
     date: { type: Date, default: Date.now },

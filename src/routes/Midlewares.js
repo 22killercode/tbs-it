@@ -669,15 +669,16 @@ function metodo1(a,b,c) {
 
 
         // guardar el mensaje el pull mensajes
-        async function guardarRemito(idCliente, idOwner, EmailCliente, statusCobro){
-            console.log("Entro a la funcion guardar remito",idCliente, idOwner, EmailCliente, statusCobro)
+        async function guardarRemito(idCliente, idOwner, emailCliente, statusCobro){
+            console.log("Entro a la funcion guardar remito",idCliente, idOwner, emailCliente, statusCobro)
             try {
                 // Crear objeto para el mensaje del propietario
-                const mensajeOwner = new Remitos({ idCliente, idOwner, EmailCliente, statusCobro });
+                const mensajeOwner = new Remitos({ idCliente, idOwner, emailCliente, statusCobro });
                 // Guardar el mensaje del propietario en la base de datos
                 await mensajeOwner.save();
                 return true
             } catch (error) {
+                console.error("que erro encontro en guardarRemito", error)
                 return false
             }
         }
