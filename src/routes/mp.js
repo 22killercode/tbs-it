@@ -224,7 +224,7 @@ router.get('/resultado/del/cobro/enMP', async (req, res) => {
     // Desestructurar la información de req.query
     const { collection_id, collection_status, payment_id, status, external_reference, payment_type, merchant_order_id, preference_id, site_id, processing_mode, merchant_account_id } = req.query;
     
-    console.log("Estado de la colección:", collection_status);
+    console.log("Estado de la colección:", collection_status,  external_reference);
     
     if (collection_status === "approved") {
       // identificar al cliente
