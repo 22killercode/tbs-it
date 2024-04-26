@@ -227,11 +227,12 @@ router.get('/resultado/del/cobro/enMP', async (req, res) => {
     console.log("Estado de la colección:", collection_status,  external_reference);
     
     if (collection_status === "approved") {
-      // identificar al cliente
-      const primeraCifra = preference_id.split('-')[0];
-      const idCliente = external_reference.idCliente;
-      const idOwner = external_reference.idOwner;
+    // Convertir external_reference a un objeto si es una cadena
+      const externalReferenceObj = typeof external_reference === 'string' ? JSON.parse(external_reference) : external_reference;
+      // Extraer idCliente e idOwner del objeto external_reference
+      const { idCliente, idOwner } = externalReferenceObj;
       const dataCliente = await EcommUser.findById(idCliente);
+      console.log("Estado de la colección:", idCliente, idOwner, dataCliente);
       const emailCliente = dataCliente.emails[0].emailCliente;
       const statusCobro = status;
       // poner cobro exitoso en la BD
