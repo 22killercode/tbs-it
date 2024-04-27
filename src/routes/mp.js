@@ -9,7 +9,6 @@ const cors      = require('cors')
 const passport  = require('passport'); 
 const ExcelJS = require('exceljs');
 const webpush = require('web-push');
-
 // Step 1: Import the parts of the module you want to use
 // import { MercadoPagoConfig, Payment } from 'mercadopago';
 
@@ -40,6 +39,7 @@ const Blogs      = require('../models/blogs');
 const EcommUser  = require('../models/usuarioEcommerce');
 const pushMensaje  = require('../models/messages');
 const pushMess     = require('../models/pushMes');
+const Remitos       = require('../models/remito');
 
 const bodyParser = require('body-parser');
 
@@ -155,7 +155,7 @@ router.post('/process_payment', async (req, res) => {
   }
 });
 
-// para cobrar opagar con mercado pago wallet y tarjetas aprovadas
+// para cobrar o pagar con mercado pago wallet y tarjetas aprovadas
 router.post('/MPwallets', async (req, res) => {
   const { MercadoPagoConfig, Preference } = require('mercadopago');
   // Agrega credenciales
@@ -255,10 +255,27 @@ router.get('/resultado/del/cobro/enMP', async (req, res) => {
 
 
 router.post('/buscandioRemitosMP', async (req, res) => {
-
-  console.log("Datos recibidos en buscandioRemitosMP:", req.body);
-  
-
+  try {
+    console.log("Datos recibidos en buscandioRemitosMP:", req.body);
+    // Desestructurar la información recibida en req.body
+    const { idCliente, idOwner } = req.body.datos;
+    // Buscar el remito
+    const dataRemito = await Remitos.findOne(idCliente);
+    // Enviar la información del cliente al frontend para continuar cargando la dirección de entrega
+    if (statusCobro === "approved") {
+      // Envía una respuesta al frontend con código 200 y el objeto cobroExitoso en true
+      res.status(200).json({ cobroExitoso: true });
+      // Debe borrar el remito
+      await Remitos.findOneAndDelete(idCliente);
+    } else {
+      // Envía una respuesta al frontend con código 400 y el objeto cobroExitoso en false
+      res.status(400).json({ cobroExitoso: false });
+    }
+  } catch (error) {
+    // Manejar errores
+    console.error("Error en la función buscandioRemitosMP:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
 });
 
 
