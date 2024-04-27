@@ -10,6 +10,7 @@ const compraSchema = new mongoose.Schema({
     nombreEcomm: String,
     idCliente: String,
     idDueno: String,
+    idPedido: String,
     tipoDePago: String,
     statusEnvio: String,
     listaProductos: [{

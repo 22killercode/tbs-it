@@ -216,37 +216,24 @@ router.post('/MPwallets', async (req, res) => {
 // devolucciones de MP wallets
 router.get('/resultado/del/cobro/enMP', async (req, res) => {
   try {
-    //console.log("Datos recibidos en req.query:", req.query);
-
     // Desestructurar la información de req.query
-    const { collection_id, collection_status, payment_id, status, external_reference, payment_type, merchant_order_id, preference_id, site_id, processing_mode, merchant_account_id } = req.query;
+    const { collection_status, external_reference } = req.query;
     
-    //console.log("Estado de la colección:", collection_status,  external_reference);
-    
+    // Verificar si el cobro fue aprobado
     if (collection_status === "approved") {
-    // Convertir external_reference a un objeto si es una cadena
+      // Convertir external_reference a un objeto si es una cadena
       const externalReferenceObj = typeof external_reference === 'string' ? JSON.parse(external_reference) : external_reference;
       // Extraer idCliente e idOwner del objeto external_reference
       const { idCliente, idOwner } = externalReferenceObj;
-      const dataCliente = await EcommUser.findById(idCliente);
-      console.log("Paso los filtro y contruyo el remito:", idCliente, idOwner);
-      const emailCliente = dataCliente.emails[0].emailCliente;
-      const statusCobro = status;
-      // poner cobro exitoso en la BD
-    
-      // Arma el remito del cobro exitoso para que el frontend lo tome desde allí
-      const cheqSave = await guardarRemito(idCliente, idOwner, emailCliente, statusCobro);
 
-      if (cheqSave) {
-        console.log("Cobro exitoso", cheqSave);
-        return res.json({ message: "Entro al cobro exitoso de MP" });
-      } else {
-        console.log("Cobro NO exitoso");
-        return res.json({ message: "No se cobró" });
-      }
+      // Armar la URL de redirección con los datos como parámetros de consulta
+      const redirectURL = `http://127.0.0.1:5500/?statusCobro=approved&idCliente=${idCliente}&idOwner=${idOwner}`;
+      // Redirigir a la nueva URL con los datos como parámetros de consulta
+      res.redirect(redirectURL);
     } else {
-      console.log("Cobro NO exitoso");
-      return res.json({ message: "No se cobró" });
+      // Si el cobro no fue aprobado, devolver un error
+      const redirectURL = `http://127.0.0.1:5500/?statusCobro=failed&idCliente=${idCliente}&idOwner=${idOwner}`;
+      res.redirect(redirectURL);
     }
   } catch (error) {
     console.error("Error al procesar el cobro en MP:", error);
@@ -256,35 +243,42 @@ router.get('/resultado/del/cobro/enMP', async (req, res) => {
 
 
 
-router.post('/buscandioRemitosMP', async (req, res) => {
 
+router.post('/buscandioRemitosMP', async (req, res) => {
     console.log("Datos recibidos en buscandioRemitosMP:", req.body);
     // Desestructurar la información recibida en req.body
     const { idCliente, idOwner } = req.body;
-
     // Función para buscar el estado del cobro
     const buscarEstadoCobro = async () => {
       try {
         // Buscar el remito
         const dataRemito = await Remitos.findOne({idCliente:idCliente});
-        
         // Verificar si se encontró el remito
         if (dataRemito) {
           const statusCobro = dataRemito.statusCobro;
-          
           // Verificar si el estado del cobro es válido
           if (statusCobro === "approved" || statusCobro === "failed") {
             // Si el estado es "approved", borrar el remito
             if (statusCobro === "approved") {
               await Remitos.findOneAndDelete(idCliente);
+              // Enviar la información del cliente al frontend para continuar cargando la dirección de entrega
+              return res.status(200).json({ cobroExitoso: true, ok: true });
+            }else{
+              setTimeout(buscarEstadoCobro, 5000);
             }
-            // Enviar la información del cliente al frontend para continuar cargando la dirección de entrega
-            return res.status(200).json({ cobroExitoso: true, ok: true });
+            // Si el estado es "approved", borrar el remito
+            if (statusCobro === "failed") {
+              await Remitos.findOneAndDelete(idCliente);
+              // Enviar la información del cliente al frontend para continuar cargando la dirección de entrega
+              return res.status(400).json({ cobroExitoso: false, ok: true });
+            }
           }
         }
+        else{
         // Esperar un segundo antes de volver a buscar
         console.error("NO encontro el remito lo vuelve a buscar");
         setTimeout(buscarEstadoCobro, 5000);
+        }
       } catch (error) {
         // Manejar errores
         console.error("Error en la función buscarEstadoCobro:", error);
