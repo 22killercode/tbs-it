@@ -219,12 +219,12 @@ router.post('/MPwallets', async (req, res) => {
 // devolucciones de MP wallets
 router.get('/resultado/del/cobro/enMP', async (req, res) => {
   try {
-    console.log("Datos recibidos en req.query:", req.query);
+    //console.log("Datos recibidos en req.query:", req.query);
 
     // Desestructurar la información de req.query
     const { collection_id, collection_status, payment_id, status, external_reference, payment_type, merchant_order_id, preference_id, site_id, processing_mode, merchant_account_id } = req.query;
     
-    console.log("Estado de la colección:", collection_status,  external_reference);
+    //console.log("Estado de la colección:", collection_status,  external_reference);
     
     if (collection_status === "approved") {
     // Convertir external_reference a un objeto si es una cadena
@@ -232,7 +232,7 @@ router.get('/resultado/del/cobro/enMP', async (req, res) => {
       // Extraer idCliente e idOwner del objeto external_reference
       const { idCliente, idOwner } = externalReferenceObj;
       const dataCliente = await EcommUser.findById(idCliente);
-      console.log("Estado de la colección:", idCliente, idOwner, dataCliente);
+      console.log("Paso los filtro y contruyo el remito:", idCliente, idOwner, dataCliente);
       const emailCliente = dataCliente.emails[0].emailCliente;
       const statusCobro = status;
       // poner cobro exitoso en la BD
@@ -259,25 +259,40 @@ router.post('/buscandioRemitosMP', async (req, res) => {
     console.log("Datos recibidos en buscandioRemitosMP:", req.body);
     // Desestructurar la información recibida en req.body
     const { idCliente, idOwner } = req.body;
-    // Buscar el remito
-    const dataRemito = await Remitos.findOne(idCliente);
-    const statusCobro = dataRemito.statusCobro
-    // Enviar la información del cliente al frontend para continuar cargando la dirección de entrega
-    if (statusCobro === "approved") {
-      // Envía una respuesta al frontend con código 200 y el objeto cobroExitoso en true
-      res.status(200).json({ cobroExitoso: true, ok : true });
-      // Debe borrar el remito
-      await Remitos.findOneAndDelete(idCliente);
-    } else {
-      // Envía una respuesta al frontend con código 400 y el objeto cobroExitoso en false
-      res.status(400).json({ cobroExitoso: false });
-    }
+    let cobroExitoso = false;
+
+    // Función para buscar el estado del cobro
+    const buscarEstadoCobro = async () => {
+      // Buscar el remito
+      const dataRemito = await Remitos.findOne(idCliente);
+      const statusCobro = dataRemito.statusCobro;
+      
+      // Verificar si el estado del cobro es válido
+      if (statusCobro === "approved" || statusCobro === "failed") {
+        // Enviar la información del cliente al frontend para continuar cargando la dirección de entrega
+        cobroExitoso = true;
+        // Si el estado es "approved", borrar el remito
+        if (statusCobro === "approved") {
+          await Remitos.findOneAndDelete(idCliente);
+        }
+        // Enviar la respuesta al frontend
+        res.status(200).json({ cobroExitoso, ok: true });
+        return;
+      } else {
+        // Esperar un segundo antes de volver a buscar
+        setTimeout(buscarEstadoCobro, 1000);
+      }
+    };
+
+    // Iniciar la búsqueda del estado del cobro
+    buscarEstadoCobro();
   } catch (error) {
     // Manejar errores
     console.error("Error en la función buscandioRemitosMP:", error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
+
 
 
 module.exports = router;
