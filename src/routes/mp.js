@@ -228,16 +228,20 @@ router.get('/resultado/del/cobro/enMP', async (req, res) => {
       // Extraer idCliente e idOwner del objeto external_reference
       const { idCliente, idOwner } = externalReferenceObj;
       const dataCliente = await EcommUser.findById(idCliente);
-      console.log("Paso los filtro y contruyo el remito:", idCliente, idOwner, dataCliente);
+      console.log("Paso los filtro y contruyo el remito:", idCliente, idOwner);
       const emailCliente = dataCliente.emails[0].emailCliente;
       const statusCobro = status;
       // poner cobro exitoso en la BD
     
       // poner en mensajes push el cobro exitoso para que el frontend lo tome desde allí
-      await guardarRemito(idCliente, idOwner, emailCliente, statusCobro);
-
-      console.log("Cobro exitoso");
-      return res.json({ message: "Entro al cobro exitoso de MP" });
+      const cheqSave = await guardarRemito(idCliente, idOwner, emailCliente, statusCobro);
+      if (cheqSave) {
+        console.log("Cobro exitoso", cheqSave);
+        return res.json({ message: "Entro al cobro exitoso de MP" });
+      } else {
+        console.log("Cobro NO exitoso");
+        return res.json({ message: "No se cobró" });
+      }
     } else {
       console.log("Cobro NO exitoso");
       return res.json({ message: "No se cobró" });
