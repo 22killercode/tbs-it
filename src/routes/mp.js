@@ -234,8 +234,9 @@ router.get('/resultado/del/cobro/enMP', async (req, res) => {
       const statusCobro = status;
       // poner cobro exitoso en la BD
     
-      // poner en mensajes push el cobro exitoso para que el frontend lo tome desde allí
+      // Arma el remito del cobro exitoso para que el frontend lo tome desde allí
       const cheqSave = await guardarRemito(idCliente, idOwner, emailCliente, statusCobro);
+
       if (cheqSave) {
         console.log("Cobro exitoso", cheqSave);
         return res.json({ message: "Entro al cobro exitoso de MP" });
