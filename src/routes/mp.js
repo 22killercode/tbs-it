@@ -257,7 +257,7 @@ router.get('/resultado/del/cobro/enMP', async (req, res) => {
 
 
 router.post('/buscandioRemitosMP', async (req, res) => {
-  try {
+
     console.log("Datos recibidos en buscandioRemitosMP:", req.body);
     // Desestructurar la información recibida en req.body
     const { idCliente, idOwner } = req.body;
@@ -282,9 +282,9 @@ router.post('/buscandioRemitosMP', async (req, res) => {
             return res.status(200).json({ cobroExitoso: true, ok: true });
           }
         }
-        
         // Esperar un segundo antes de volver a buscar
-        setTimeout(buscarEstadoCobro, 500);
+        console.error("NO encontro el remito lo vuelve a buscar");
+        setTimeout(buscarEstadoCobro, 5000);
       } catch (error) {
         // Manejar errores
         console.error("Error en la función buscarEstadoCobro:", error);
@@ -295,11 +295,7 @@ router.post('/buscandioRemitosMP', async (req, res) => {
     
     // Iniciar la búsqueda del estado del cobro
     buscarEstadoCobro();
-  } catch (error) {
-    // Manejar errores
-    console.error("Error en la función buscandioRemitosMP:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
-  }
+
 });
 
 
