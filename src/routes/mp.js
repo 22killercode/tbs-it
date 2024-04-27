@@ -261,6 +261,7 @@ router.post('/buscandioRemitosMP', async (req, res) => {
     const { idCliente, idOwner } = req.body.datos;
     // Buscar el remito
     const dataRemito = await Remitos.findOne(idCliente);
+    const statusCobro = dataRemito.statusCobro
     // Enviar la información del cliente al frontend para continuar cargando la dirección de entrega
     if (statusCobro === "approved") {
       // Envía una respuesta al frontend con código 200 y el objeto cobroExitoso en true
