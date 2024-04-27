@@ -263,26 +263,38 @@ router.post('/buscandioRemitosMP', async (req, res) => {
 
     // Función para buscar el estado del cobro
     const buscarEstadoCobro = async () => {
-      // Buscar el remito
-      const dataRemito = await Remitos.findOne(idCliente);
-      const statusCobro = dataRemito.statusCobro;
-      
-      // Verificar si el estado del cobro es válido
-      if (statusCobro === "approved" || statusCobro === "failed") {
-        // Enviar la información del cliente al frontend para continuar cargando la dirección de entrega
-        cobroExitoso = true;
-        // Si el estado es "approved", borrar el remito
-        if (statusCobro === "approved") {
-          await Remitos.findOneAndDelete(idCliente);
+      try {
+        // Buscar el remito
+        const dataRemito = await Remitos.findOne(idCliente);
+        
+        // Verificar si se encontró el remito
+        if (dataRemito) {
+          const statusCobro = dataRemito.statusCobro;
+          
+          // Verificar si el estado del cobro es válido
+          if (statusCobro === "approved" || statusCobro === "failed") {
+            // Enviar la información del cliente al frontend para continuar cargando la dirección de entrega
+            const cobroExitoso = true;
+            
+            // Si el estado es "approved", borrar el remito
+            if (statusCobro === "approved") {
+              await Remitos.findOneAndDelete(idCliente);
+            }
+            
+            // Enviar la respuesta al frontend
+            return res.status(200).json({ cobroExitoso, ok: true });
+          }
         }
-        // Enviar la respuesta al frontend
-        res.status(200).json({ cobroExitoso, ok: true });
-        return;
-      } else {
+        
         // Esperar un segundo antes de volver a buscar
         setTimeout(buscarEstadoCobro, 1000);
+      } catch (error) {
+        // Manejar errores
+        console.error("Error en la función buscarEstadoCobro:", error);
+        return res.status(500).json({ error: "Error interno del servidor" });
       }
     };
+    
 
     // Iniciar la búsqueda del estado del cobro
     buscarEstadoCobro();
