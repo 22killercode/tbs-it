@@ -265,7 +265,7 @@ router.post('/buscandioRemitosMP', async (req, res) => {
     // Enviar la información del cliente al frontend para continuar cargando la dirección de entrega
     if (statusCobro === "approved") {
       // Envía una respuesta al frontend con código 200 y el objeto cobroExitoso en true
-      res.status(200).json({ cobroExitoso: true });
+      res.status(200).json({ cobroExitoso: true, ok : true });
       // Debe borrar el remito
       await Remitos.findOneAndDelete(idCliente);
     } else {
