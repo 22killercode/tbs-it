@@ -79,7 +79,7 @@ const {guardarRemito,sendMail,guardarMensajes,pushMensajeFunc} = require('../rou
 router.post('/create_preference3', async (req, res) => {
   const { MercadoPagoConfig, Preference } = require('mercadopago');
   // Agrega credenciales
-  console.log("Qué datos obtiene MP", req.body);
+  //console.log("Qué datos obtiene MP", req.body);
 
   const pedidosItems = []
   req.body.forEach(e => {
@@ -114,7 +114,7 @@ router.post('/create_preference3', async (req, res) => {
     .then(data => {
       //console.log("Que data encontro", data);
       preference.idMPUser = data.id
-      console.log("Qué datos obtiene MPreference", preference);
+      //console.log("Qué datos obtiene MPreference", preference);
       res.status(200).json(preference);
     })
 
@@ -130,7 +130,7 @@ router.post('/create_preference3', async (req, res) => {
 router.post('/process_payment', async (req, res) => {
   const { MercadoPagoConfig, Payment } = require('mercadopago');
   // Agrega credenciales
-  console.log("Qué datos obtiene MP", req.body);
+  //console.log("Qué datos obtiene MP", req.body);
 
   try {
 
@@ -144,7 +144,7 @@ router.post('/process_payment', async (req, res) => {
     .then(data => {
       console.log("Que data encontro", data);
       data.idMPUser = data.id
-      console.log("Qué datos obtiene MPreference", data);
+      //console.log("Qué datos obtiene MPreference", data);
       res.status(200).json(data);
     })
 
@@ -159,7 +159,7 @@ router.post('/process_payment', async (req, res) => {
 router.post('/MPwallets', async (req, res) => {
   const { MercadoPagoConfig, Preference } = require('mercadopago');
   // Agrega credenciales
-  console.log("Qué datos obtiene MP", req.body);
+  //console.log("Qué datos obtiene MP MPwallets", req.body);
 
   const idCliente = req.body.dataCliente._id
   const idOwner = req.body.dataCliente.idOwner
@@ -182,7 +182,6 @@ router.post('/MPwallets', async (req, res) => {
     const preference = new Preference(client);
     
     preference.create({
-
       body : {
         items: pedidosItems,
         back_urls: {
@@ -197,17 +196,14 @@ router.post('/MPwallets', async (req, res) => {
         statement_descriptor: "mitiendaya!",
         external_reference : {idCliente,idOwner}
       }
-      })
-    
-    //preference.idMPUser = "540933245-8123afb8-695a-4159-94ca-91dbca9e8e14"
+    })
     
     .then(data => {
       //console.log("Que data encontro", data);
       preference.idMPUser = data.id
-      console.log("Qué datos obtiene MPreference", preference);
+      //console.log("Qué datos obtiene MPreference", preference);
       res.status(200).json(preference);
     })
-
 
   } catch (error) {
     // Enviar una respuesta de error si ocurre algún problema
@@ -259,13 +255,12 @@ router.post('/buscandioRemitosMP', async (req, res) => {
     console.log("Datos recibidos en buscandioRemitosMP:", req.body);
     // Desestructurar la información recibida en req.body
     const { idCliente, idOwner } = req.body;
-    let cobroExitoso = false;
 
     // Función para buscar el estado del cobro
     const buscarEstadoCobro = async () => {
       try {
         // Buscar el remito
-        const dataRemito = await Remitos.findOne(idCliente);
+        const dataRemito = await Remitos.findOne({idCliente:idCliente});
         
         // Verificar si se encontró el remito
         if (dataRemito) {
@@ -273,16 +268,12 @@ router.post('/buscandioRemitosMP', async (req, res) => {
           
           // Verificar si el estado del cobro es válido
           if (statusCobro === "approved" || statusCobro === "failed") {
-            // Enviar la información del cliente al frontend para continuar cargando la dirección de entrega
-            const cobroExitoso = true;
-            
             // Si el estado es "approved", borrar el remito
             if (statusCobro === "approved") {
               await Remitos.findOneAndDelete(idCliente);
             }
-            
-            // Enviar la respuesta al frontend
-            return res.status(200).json({ cobroExitoso, ok: true });
+            // Enviar la información del cliente al frontend para continuar cargando la dirección de entrega
+            return res.status(200).json({ cobroExitoso: true, ok: true });
           }
         }
         
@@ -295,7 +286,6 @@ router.post('/buscandioRemitosMP', async (req, res) => {
       }
     };
     
-
     // Iniciar la búsqueda del estado del cobro
     buscarEstadoCobro();
   } catch (error) {
@@ -304,6 +294,7 @@ router.post('/buscandioRemitosMP', async (req, res) => {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
+
 
 
 
