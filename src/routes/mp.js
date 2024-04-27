@@ -258,7 +258,7 @@ router.post('/buscandioRemitosMP', async (req, res) => {
   try {
     console.log("Datos recibidos en buscandioRemitosMP:", req.body);
     // Desestructurar la información recibida en req.body
-    const { idCliente, idOwner } = req.body.datos;
+    const { idCliente, idOwner } = req.body;
     // Buscar el remito
     const dataRemito = await Remitos.findOne(idCliente);
     const statusCobro = dataRemito.statusCobro
