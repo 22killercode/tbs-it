@@ -278,11 +278,12 @@ router.post('/buscandioRemitosMP', async (req, res) => {
         }
         
         // Esperar un segundo antes de volver a buscar
-        setTimeout(buscarEstadoCobro, 1000);
+        setTimeout(buscarEstadoCobro, 500);
       } catch (error) {
         // Manejar errores
         console.error("Error en la función buscarEstadoCobro:", error);
-        return res.status(500).json({ error: "Error interno del servidor" });
+        setTimeout(buscarEstadoCobro, 500);
+        //return res.status(500).json({ error: "Error interno del servidor" });
       }
     };
     
