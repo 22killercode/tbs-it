@@ -184,6 +184,7 @@ router.post('/MPwallets', async (req, res) => {
     preference.create({
       body : {
         items: pedidosItems,
+        //purpose: 'wallet_purchase',
         back_urls: {
           success: "https://tbs-it.net/resultado/del/cobro/enMP",
           failure: "https://tbs-it.net/resultado/del/cobro/enMP",
