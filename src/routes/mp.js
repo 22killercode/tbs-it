@@ -130,7 +130,7 @@ router.post('/create_preference3', async (req, res) => {
 router.post('/process_payment', async (req, res) => {
   const { MercadoPagoConfig, Payment } = require('mercadopago');
   // Agrega credenciales
-  //console.log("Qué datos obtiene MP", req.body);
+  console.log("Qué datos obtiene MP para pagar/cobrar con tarjetas de credito debito", req.body);
 
   try {
 
@@ -216,6 +216,7 @@ router.post('/MPwallets', async (req, res) => {
 // devolucciones de MP wallets
 router.get('/resultado/del/cobro/enMP', async (req, res) => {
   try {
+    console.log("que devuelve cunado va aotras", req.query)
     // Desestructurar la información de req.query
     const { collection_status, external_reference } = req.query;
     
@@ -225,18 +226,14 @@ router.get('/resultado/del/cobro/enMP', async (req, res) => {
       const externalReferenceObj = typeof external_reference === 'string' ? JSON.parse(external_reference) : external_reference;
       // Extraer idCliente e idOwner del objeto external_reference
       const { idCliente, idOwner } = externalReferenceObj;
-      // debe cambiar el estado del pedido y guardarlo en la BD
-
-
-
-      
       // Armar la URL de redirección con los datos como parámetros de consulta
       const redirectURL = `http://127.0.0.1:5500/?statusCobro=approved&idCliente=${idCliente}&idOwner=${idOwner}`;
       // Redirigir a la nueva URL con los datos como parámetros de consulta
       res.redirect(redirectURL);
-    } else {
+    } 
+    else {
       // Si el cobro no fue aprobado, devolver un error
-      const redirectURL = `http://127.0.0.1:5500/?statusCobro=failed&idCliente=${idCliente}&idOwner=${idOwner}`;
+      const redirectURL = `http://127.0.0.1:5500/?statusCobro=failed&ref1=null&ref2=null`;
       res.redirect(redirectURL);
     }
   } catch (error) {

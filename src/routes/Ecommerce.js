@@ -597,7 +597,7 @@ router.post('/chekandoDatosOwnerEcomm', async (req, res) => {
 router.post('/chekandoSiEsCliente', async (req, res) => {
 
     //const ipCliente = req.ip || req.connection.remoteAddress;
-    console.log("llega algo de FORMA AUTOMATICA Ecommerce para enconrar AUTOMATICAMENTE a slo cleintes", req.body)
+    //console.log("llega algo de FORMA AUTOMATICA Ecommerce para enconrar AUTOMATICAMENTE a slo cleintes", req.body)
     const {  idCliente, nombre, email, token, ip, urlOwner} = req.body
     try {
         // Buscar al cliente por email
@@ -1123,7 +1123,7 @@ router.post('/bajando/aExcell/los/datos2365', async (req, res) => {
         }
         
         const { filePath, fileName} = dataExcell
-
+        console.log("que archiovo filepath gneero desde bajar excell", filePath)
                 // Obtener los datos del cliente y del propietario
                 const idCliente = pedidos[0].idCliente;
                 const idOwner = pedidos[0].idDueno;
