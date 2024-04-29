@@ -16,6 +16,7 @@ const UserSchema = new Schema({
     Ventas: [ ],
     idOwner: { type: String },
     urlOwner: { type: String },
+    ipOwner: { type: String },
     clientes: [ ],
     ownerPreference_idMP: {
         type: String,

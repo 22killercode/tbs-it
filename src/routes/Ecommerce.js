@@ -312,7 +312,7 @@ router.post('/obteniendo/los/datos/del/cliente', async (req, res) => {
     const { jwtToken, cliente } = dataFronCli;
 
     // Desestructurar la información del cliente
-    const { email, nombre, numCel, ipCliente, duenoEcom, idCliente } = cliente;
+    const { idCliente } = cliente;
     
     // Luego puedes usar estas variables según sea necesario en tu código
     
@@ -596,39 +596,36 @@ router.post('/chekandoDatosOwnerEcomm', async (req, res) => {
 // revisa si es clinte y llega el IP de forma automatica cuando se abre a pagina
 router.post('/chekandoSiEsCliente', async (req, res) => {
 
-    const ipCliente = req.ip || req.connection.remoteAddress;
-    //console.log("llega algo de FORMA AUTOMATICA Ecommerce para enconrar AUTOMATICAMENTE a slo cleintes", req.body, ipCliente)
-    const {  idCliente, nombre, email, token, ip, idOwner} = req.body
-try {
-    //revisar con los datos que me tira si este ip o los datos del local storage me hayan un cliente
+    //const ipCliente = req.ip || req.connection.remoteAddress;
+    console.log("llega algo de FORMA AUTOMATICA Ecommerce para enconrar AUTOMATICAMENTE a slo cleintes", req.body)
+    const {  idCliente, nombre, email, token, ip, urlOwner} = req.body
+    try {
         // Buscar al cliente por email
-        //const cienteEcomm = await EcommUser.findOne({ email: { $elemMatch: { emailCliente: primerEmail } } });
+        //const cienteEcomm = await EcommUser.findByIdAndUpdate(idCliente, { ipCliente: ip }, { new: true });
         const cienteEcomm = await EcommUser.findById(idCliente);
-        const ownerEcomm  = await User.findOne({ idOwner: idOwner });
-        
-        //cienteEcomm.idCliente = cienteEcomm._id
-    
-    if (cienteEcomm) {
+        const ownerEcomm  = await User.findOne({ urlOwner: urlOwner });
+        //console.log("Que cliente encontro?",req.body, ownerEcomm)
+        if (cienteEcomm) {
             // Generar el token JWT con la información del usuario (en este caso, solo el email)
+            const email = cienteEcomm.emails[0]
             const token = jwt.sign({ email: email }, 'Sebatoken22', { expiresIn: '15m' });
             const data = {token, cienteEcomm, ownerEcomm}
             res.status(200).json({ success: true, data: data });
-        } else {
+        } 
+        else {
             res.status(500).json({ success: false, data: "No es cliente" });
         }
-    
-} catch (error) {
-    console.error("Error en la busqueda de datos dle cleinte", error)
-}
-
-
+    } catch (error) {
+        console.error("Desde el ctch del server no encontro los datos", error)
+        res.status(400).json({ success: false, data: "No eencotnro los datos en el server" });
+    }
 });
 
 
 // SIGNIN desde el signIn MANUAL busca el usuario cliente del ecommerce de forma MANUAL
 router.post('/buscarUsurarioEcommerce', async (req, res) => {
     const ipCliente = req.ip || req.connection.remoteAddress;
-    //console.log("Llega algo desde buscarUsurarioEcommerce de forma MANUAL del Ecommerce para inscribir clientes", req.body, ipCliente);
+    console.log("Llega algo desde buscarUsurarioEcommerce de forma MANUAL del Ecommerce para inscribir clientes", req.body);
 
     try {
         const { email, password, ip } = req.body;
@@ -660,7 +657,7 @@ router.post('/buscarUsurarioEcommerce', async (req, res) => {
                             const token = jwt.sign({ email: clienteEcomm.emailOficial }, 'Sebatoken22', { expiresIn: '15m' });
                             const data = { token, clienteEcomm };
                             res.status(200).json({ success: true, data });
-                            console.log("Encontró un cliente Ecommerce y se envio la data al Frontend", data);
+                            //console.log("Encontró un cliente Ecommerce y se envio la data al Frontend", data);
                             return
                         } else {
                             // La contraseña es incorrecta, muestra un mensaje de error al usuario
@@ -1379,7 +1376,7 @@ router.post('/actualizar/cambioDeDireccionDelPedido', async (req, res) => {
 // busca mensajes pull
 router.post('/messagesPull', async (req, res) => {
     try {
-        //console.log("Que datos llegan a mensajes pull cada 5 minutos", req.body);
+        console.log("Que datos llegan a mensajes pull cada 5 minutos", req.body);
 
         // Supongamos que obtienes los datos de alguna fuente, como una base de datos
         const idCliente = req.body.idCliente

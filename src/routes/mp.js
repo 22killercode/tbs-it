@@ -225,7 +225,11 @@ router.get('/resultado/del/cobro/enMP', async (req, res) => {
       const externalReferenceObj = typeof external_reference === 'string' ? JSON.parse(external_reference) : external_reference;
       // Extraer idCliente e idOwner del objeto external_reference
       const { idCliente, idOwner } = externalReferenceObj;
+      // debe cambiar el estado del pedido y guardarlo en la BD
 
+
+
+      
       // Armar la URL de redirección con los datos como parámetros de consulta
       const redirectURL = `http://127.0.0.1:5500/?statusCobro=approved&idCliente=${idCliente}&idOwner=${idOwner}`;
       // Redirigir a la nueva URL con los datos como parámetros de consulta

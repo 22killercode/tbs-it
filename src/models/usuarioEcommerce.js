@@ -69,7 +69,9 @@ const UserEcommSchema = new Schema({
     desingOwner: {
         type: String,
     },
-
+    ipCliente: {
+        type: String,
+    },
     idCliente: {
         type: String,
     },
