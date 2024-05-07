@@ -8,25 +8,23 @@ const mongoose  = require('mongoose');
 const cors      = require('cors')
 const passport  = require('passport'); 
 const ExcelJS = require('exceljs');
-const webpush = require('web-push');
+//const webpush = require('web-push');
 // Step 1: Import the parts of the module you want to use
 // import { MercadoPagoConfig, Payment } from 'mercadopago';
 
 
 
-const nodemailer = require('nodemailer');
+const nodemailer     = require('nodemailer');
 // codificador
-const bcrypt    = require('bcrypt');
+const bcrypt         = require('bcrypt');
 //auntenticador
-const jwt       = require('jsonwebtoken');
+const jwt            = require('jsonwebtoken');
 //pasarela de pagos
-const mercadopago    = require('mercadopago');
+const { MercadoPagoConfig, Payment } = require('mercadopago');
 
 const shortid = require('shortid');
 
 
-//config MP
-//mercadopago.configurations.setAccessToken('TU_ACCESS_TOKEN');
 
 router.use(cors());
 
@@ -39,13 +37,12 @@ const Blogs      = require('../models/blogs');
 const EcommUser  = require('../models/usuarioEcommerce');
 const pushMensaje  = require('../models/messages');
 const pushMess     = require('../models/pushMes');
-const Remitos       = require('../models/remito');
 
 const bodyParser = require('body-parser');
 
 router.use(bodyParser.text());
 
-const {guardarRemito,sendMail,guardarMensajes,pushMensajeFunc} = require('../routes/Midlewares');
+const {guardarRemito,sendMail,guardarMensajes,pushMensajeFunc} = require('./funcionesymas');
 
 
 // // // Agrega credenciales
@@ -77,17 +74,17 @@ const {guardarRemito,sendMail,guardarMensajes,pushMensajeFunc} = require('../rou
 
 // solo para obtener tl oken id de MP
 router.post('/create_preference3', async (req, res) => {
-  const { MercadoPagoConfig, Preference } = require('mercadopago');
+
   // Agrega credenciales
   //console.log("Qué datos obtiene MP", req.body);
 
   const pedidosItems = []
   req.body.forEach(e => {
-    let title = e.nombreProducto
+    let title       = e.nombreProducto
     let description = e.descripcion
-    let quantity = e.cantidad
-    let unit_price = e.precio
-    let subTotal = e.subTotal
+    let quantity    = e.cantidad
+    let unit_price  = e.precio
+    let subTotal    = e.subTotal
     pedidosItems.push({title, description, quantity, unit_price})
   });
 
@@ -128,7 +125,7 @@ router.post('/create_preference3', async (req, res) => {
 
 // para pagar/cobrar con tarjetas de credito debito
 router.post('/process_payment', async (req, res) => {
-  const { MercadoPagoConfig, Payment } = require('mercadopago');
+  
   // Agrega credenciales
   console.log("Qué datos obtiene MP para pagar/cobrar con tarjetas de credito debito", req.body);
 
@@ -159,24 +156,29 @@ router.post('/process_payment', async (req, res) => {
 router.post('/MPwallets', async (req, res) => {
   const { MercadoPagoConfig, Preference } = require('mercadopago');
   // Agrega credenciales
-  //console.log("Qué datos obtiene MP MPwallets", req.body);
+  console.log("Qué datos obtiene MP MPwallets", req.body);
 
   const idCliente = req.body.dataCliente._id
-  const idOwner = req.body.dataCliente.idOwner
+  const idOwner   = req.body.dataCliente.idOwner
+  const Token     = req.body.dataCliente.jwtoken
   const pedidosItems = []
   req.body.pedidoPendCobrar.forEach(e => {
-    let title = e.nombreProducto
+    let title       = e.nombreProducto
     let description = e.descripcion
-    let quantity = e.cantidad
-    let unit_price = e.precio
-    let subTotal = e.subTotal
+    let quantity    = e.cantidad
+    let unit_price  = e.precio
+    let subTotal    = e.subTotal
     pedidosItems.push({title, description, quantity, unit_price})
   });
 
   try {
 
-    let client = new MercadoPagoConfig({   accessToken: 'TEST-383820322456837-042513-b162ed609c87a4f6f7727ec84ddf7a78-1782759351'});
-    
+    // let client = new MercadoPagoConfig({   accessToken: 'TEST-383820322456837-042513-b162ed609c87a4f6f7727ec84ddf7a78-1782759351'});
+
+    const ArTokenPrivateMP = req.body.dataCliente.ArTokenPrivateMP
+
+    let client = new MercadoPagoConfig({   accessToken: ArTokenPrivateMP});
+
     let idMPUser = {}
     
     const preference = new Preference(client);
@@ -195,7 +197,7 @@ router.post('/MPwallets', async (req, res) => {
         auto_return: "approved",
         binary_mode: true,
         statement_descriptor: "mitiendaya!",
-        external_reference : {idCliente,idOwner}
+        external_reference : {idCliente,idOwner,Token}
       }
     })
     
@@ -216,24 +218,24 @@ router.post('/MPwallets', async (req, res) => {
 // devolucciones de MP wallets
 router.get('/resultado/del/cobro/enMP', async (req, res) => {
   try {
-    console.log("que devuelve cunado va aotras", req.query)
+    console.log("que devuelve desde MP????????????????????????????????", req.query)
     // Desestructurar la información de req.query
     const { collection_status, external_reference } = req.query;
     
     // Verificar si el cobro fue aprobado
+    // Convertir external_reference a un objeto si es una cadena
+    const externalReferenceObj = typeof external_reference === 'string' ? JSON.parse(external_reference) : external_reference;
+    // Extraer idCliente e idOwner del objeto external_reference
+    const { idCliente, idOwner, Token } = externalReferenceObj;
     if (collection_status === "approved") {
-      // Convertir external_reference a un objeto si es una cadena
-      const externalReferenceObj = typeof external_reference === 'string' ? JSON.parse(external_reference) : external_reference;
-      // Extraer idCliente e idOwner del objeto external_reference
-      const { idCliente, idOwner } = externalReferenceObj;
       // Armar la URL de redirección con los datos como parámetros de consulta
-      const redirectURL = `http://127.0.0.1:5500/?statusCobro=approved&idCliente=${idCliente}&idOwner=${idOwner}`;
+      const redirectURL = `http://127.0.0.1:5501/?statusCobro=approved&idCliente=${idCliente}&idOwner=${idOwner}&Token=${Token}`;
       // Redirigir a la nueva URL con los datos como parámetros de consulta
       res.redirect(redirectURL);
     } 
     else {
       // Si el cobro no fue aprobado, devolver un error
-      const redirectURL = `http://127.0.0.1:5500/?statusCobro=failed&ref1=null&ref2=null`;
+      const redirectURL = `http://127.0.0.1:5501/?statusCobro=failed&ref1=null&ref2=null&Token=${Token}`;
       res.redirect(redirectURL);
     }
   } catch (error) {

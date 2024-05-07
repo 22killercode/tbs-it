@@ -213,8 +213,8 @@ router.post('/crearCarpetayGurdarBlog',  verificarToken, async (req, res) => {
                     };
                     
                     // 3. Enviar la imagen y los objetos al servidor B
-                    const urlServidorB = 'https://dovemailer.net/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
-                    //const urlServidorB = 'http://localhost:3009/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
+                    //const urlServidorB = 'https://dovemailer.net/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
+                    const urlServidorB = 'http://localhost:3009/crearCarpetayGurdarBlog'; // Reemplaza con la URL correcta de tu servidor B
                     const respuesta = await axios.post(urlServidorB, datosAEnviar, {
                         withCredentials: true, // Importante para incluir las cookies o credenciales
                     });
@@ -328,8 +328,8 @@ router.post('/eliminarBlog', verificarToken, async (req, res) => {
             console.log("Entro a la fucion de AXIOS para enviar al server de Dovemailer, enviarImagenAServidorB");
             try {
                 // 3. Enviar la imagen y los objetos al servidor B
-                const urlServidorB = 'https://dovemailer.net/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu servidoB
-                //const urlServidorB = 'http://localhost:3009/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu 
+                //const urlServidorB = 'https://dovemailer.net/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu servidoB
+                const urlServidorB = 'http://localhost:3009/TBSeliminarImagen'; // Reemplaza con la URL correcta de tu 
                 const respuesta = await axios.post(urlServidorB, dataBlog, {
                     withCredentials: true, // Importante para incluir las cookies o credenciales
                 });
@@ -388,11 +388,11 @@ router.get('/volviendoleruleru', async (req, res) => {
 
 // solicitando datos desde la pagina  que compro el BLOG cambia para cada cliente
 router.post('/buscandoPostdeBlogs', async (req, res) => {
-   // console.log("que enciuentra desd el apgina web")
+    console.log("que enciuentra desd el buscandoPostdeBlogs web")
     try {
         // accesos de seguridad
         const formData = req.body;
-        //console.log("llega la petición /buscandoPostdeBlogs", formData);
+        console.log("llega la petición /buscandoPostdeBlogs", req.body);
 
         // if (formData === '147852369') {
         //     console.log("NO paso el filtro de seguridad");

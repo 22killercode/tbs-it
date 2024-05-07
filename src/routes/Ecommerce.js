@@ -77,7 +77,7 @@ const verificarToken = (req, res, next) => {
 };
 
 
-// para armar NUEVOS productos/servicios con AXIOS desde el panle de control de TBS // REVISAR FILTRO DE CANTIDAD DE PRODUCTOS 
+//01 para armar NUEVOS productos/servicios con AXIOS desde el panle de control de TBS // REVISAR FILTRO DE CANTIDAD DE PRODUCTOS 
 router.post('/enviarArchivos/ecommerce',   async (req, res) => {
     console.log("000 /enviarArchivos/ecommerce", req.body);
     console.log("000 /enviarArchivos/ecommerce   req.files",req.files );
@@ -192,7 +192,7 @@ router.post('/enviarArchivos/ecommerce',   async (req, res) => {
 });
 
 
-// Enviar solicitud a Dovemailer para retirar las imagenes Cloud Archivos usando AXIOS
+//02 Enviar solicitud a Dovemailer para retirar las imagenes Cloud Archivos usando AXIOS
 router.post('/eliminarProdServ',  async (req, res) => {
     console.log("Desde /eliminarProdServ server TBS ingreso a borrar el producto",req.body)
     const id = req.body.id
@@ -245,7 +245,7 @@ router.post('/eliminarProdServ',  async (req, res) => {
 });
 
 
-// solicita todos los productos y servicios
+//03 solicita todos los productos y servicios
 router.post('/buscandoPostdeEcommerce', async (req, res) => {
     try {
         // accesos de seguridad
@@ -275,7 +275,7 @@ router.post('/buscandoPostdeEcommerce', async (req, res) => {
 
 
 
-// revisa las direcciones del userEcomm
+//04 revisa las direcciones del userEcomm
 router.post('/averiguar/si/tiene/direecionesvalidadas', async (req, res) => {
 const clientIP = req.ip || req.connection.remoteAddress;
     console.log("llega algo del Ecommerce para revisar las direcciones de envio de los productos", clientIP, req.body)
@@ -303,7 +303,7 @@ try{
 });
 
 
-//obteniendo los datos dle cliente y sus pedidos de forma AUTOMATICA cuando se abre el modal usuario
+//05 obteniendo los datos dle cliente y sus pedidos de forma AUTOMATICA cuando se abre el modal usuario
 router.post('/obteniendo/los/datos/del/cliente', async (req, res) => {
     const dataFronCli  = JSON.parse(req.body);
 
@@ -337,7 +337,7 @@ router.post('/obteniendo/los/datos/del/cliente', async (req, res) => {
 });
 
 
-// cofirmar la compra desdpues de haber pasado por MP pasa directo si es contra entrega
+//06 cofirmar la compra desdpues de haber pasado por MP pasa directo si es contra entrega
 router.post('/confirmarCompra165165156', async (req, res) => {
     console.log("***************////////////////*****************llega algo del Ecommerce /confirmar-compra", req.body);
     const codigoPedido = shortid.generate()
@@ -404,14 +404,24 @@ router.post('/confirmarCompra165165156', async (req, res) => {
             if (dataProductos.cantidad <= 1) {
                 console.log("Envía un email avisando que solo queda una unidad de este producto");
                 // Aquí va la lógica para enviar el email
-
-                // guarda el mensaje para los push mensaje
                 const dataOwner = dataDueno
-                mensaje.messageOwner = `Te queda un solo producto en tu stock de: ${producto.nombreProd}`;
-                const subjectOwner = mensaje
-                const idOwner = dataOwner._id
-                guardarMensajes(dataOwner, dataCliente, mensaje, subjectOwner, idOwner,codigoPedido)
+                const emailOwner = dataOwner.email
+                const product = dataProductos.nombreProducto
+                const subjectOwner   =  `ATENCION Te queda un solo producto en tu stock de: ${product}`
+                const mensaje = {}
+                const logoOwner = dataOwner.logoOwner
+                const quedaUno = true
+                mensaje.messageOwner = `Te queda un solo producto en tu stock de: ${product}`;
+                const transportEmail = dataOwner.transportEmail
 
+                const { reclamo, enviarExcel, emailCliente, numCelCliente, numCelOwner, codigoPedido, nombreOwner, nombreCliente, subjectCliente, cancelaEnvio, pedidoCobrado } = { reclamo: false, enviarExcel: false, emailCliente: null, numCelCliente: null, numCelOwner: null, codigoPedido: null, nombreOwner: null, nombreCliente: null, subjectCliente: null, otraData: null, cancelaEnvio: false, pedidoCobrado: false };
+
+                const dataEnviarEmail = {transportEmail, reclamo:false, enviarExcel:false, emailOwner, emailCliente, numCelCliente, numCelOwner, mensaje, codigoPedido, nombreOwner, nombreCliente, subjectCliente, subjectOwner, otraData: null, logoOwner, cancelaEnvio:false, pedidoCobrado:false, quedaUno, product}
+                
+                sendMail(dataEnviarEmail) 
+
+                // Ojo los subject controlan a quien le mandas el mensaje push si es null no se manda
+                guardarMensajes(dataOwner, dataCliente, mensaje, subjectOwner, subjectCliente, codigoPedido)
             }
             await dataProductos.save(); // Guardar los cambios en la base de datos de los productos
         });
@@ -480,28 +490,11 @@ router.post('/confirmarCompra165165156', async (req, res) => {
             // Guardar los cambios en la base de datos del cliente y del dueño
             await dataDueno.save();
             await dataCliente.save();
-            const message = `
-                <div class="text-white">
-                    <p>Su pedido ${tiPago} ha sido aprobado 
-                        <br><br>
-                        <iframe style="border-radius:1rem" src="https://giphy.com/embed/f3orDrv1hzyMvgI3y6" width="130" height="130" frameborder="0" class="giphy-embed" allowfullscreen></iframe>
-                        <br><br>
-                        <strong>Código de pedido: ${codigoPedido}</strong>
-                    </p>
-                    <div class="text-body" style="text-align: justify; color:white !important">
-                        <h5>
-                            Le estamos enviando un email con los datos a usted y su proveedor para que coordinen el modo de pago contra entrega y los costos de envío si los hubiera, así como también la fecha y hora de entrega.
-                        </h5>
-                    </div>
-                </div>
-                <a style="margin-top:-0.51rem" class="btn btn-primary" href="/"><p>Terminar</p></a>
-                `;
 
             // Devolver el status adecuado al frontend con la leyenda de Pedido Aprobado
-            const data = {message, dataCliente}
+            const data = {dataCliente}
             console.log("Esta es la data que se envia al fronen una vz guardada la compra *************************************", data)
             res.status(200).json({ success: true, data });
-
 
 
         // enviar por email al cliente y owner el pedido y tambien a serviceWorker para que haga un pushnotification
@@ -512,7 +505,7 @@ router.post('/confirmarCompra165165156', async (req, res) => {
         const emailCliente = dataCliente.emails[0]
         const numCelCliente = dataCliente.numCel[0].numCelCliente
         const numCelOwner = dataOwner.numCel[0]
-        const messageOwner = `Teines un nuevo pedido con número de codigo ${codigoPedido}, comunicate para coordinar el dia y horario de entrega.`
+        const messageOwner = `Tienes un nuevo pedido con número de codigo ${codigoPedido}, comunicate para coordinar el dia y horario de entrega.`
         const messageCliente = `El pedido número de codigo ${codigoPedido} fue recibido con éxito y se esta armando, comunicate para coordinar el dia y horario de entrega.`
         const nombreOwner = dataOwner.nombreEcommerce
         const nombreCliente = dataCliente.nombre
@@ -542,14 +535,14 @@ router.post('/confirmarCompra165165156', async (req, res) => {
 
 
 
-// revisa si ahy internet
+//07 revisa si ahy internet
 router.get('/hayInternet', async (req, res) => {
 
     res.status(200).json({ success: true });
 });
 
 
-// pasa a confirmar cobro
+//08 pasa a confirmar cobro
 router.post('/Status200cobrarOkMP', async (req, res) => {
     console.log("llega algo del Ecommerce para cobrar los productos", req.body)
 
@@ -569,7 +562,7 @@ router.post('/Status200cobrarOkMP', async (req, res) => {
 
 })
 
-// revisa de forma automatica los datos del Owner el ecommerce
+//09 revisa de forma automatica los datos del Owner el ecommerce
 router.post('/chekandoDatosOwnerEcomm', async (req, res) => {
 
    // console.log("llega algo de FORMA AUTOMATICA Ecommerce para enconrar AUTOMATICAMENTE a slo cleintes", req.body)
@@ -593,7 +586,7 @@ router.post('/chekandoDatosOwnerEcomm', async (req, res) => {
 })
 
 
-// revisa si es clinte y llega el IP de forma automatica cuando se abre a pagina
+//10 revisa si es clinte y llega el IP de forma automatica cuando se abre a pagina
 router.post('/chekandoSiEsCliente', async (req, res) => {
 
     //const ipCliente = req.ip || req.connection.remoteAddress;
@@ -622,7 +615,7 @@ router.post('/chekandoSiEsCliente', async (req, res) => {
 });
 
 
-// SIGNIN desde el signIn MANUAL busca el usuario cliente del ecommerce de forma MANUAL
+//11 SIGNIN desde el signIn MANUAL busca el usuario cliente del ecommerce de forma MANUAL
 router.post('/buscarUsurarioEcommerce', async (req, res) => {
     const ipCliente = req.ip || req.connection.remoteAddress;
     console.log("Llega algo desde buscarUsurarioEcommerce de forma MANUAL del Ecommerce para inscribir clientes", req.body);
@@ -684,7 +677,7 @@ router.post('/buscarUsurarioEcommerce', async (req, res) => {
 });
 
 
-//SinUP de clientes en forma manual
+//12 SinUP de clientes en forma manual
 router.post('/inscribirClienteEcomerce', async (req, res) => {
     const ipCliente = req.ip || req.connection.remoteAddress;
     console.log("llega algo del Ecommerce para inscribir clientes", req.body, ipCliente)
@@ -746,7 +739,7 @@ router.post('/inscribirClienteEcomerce', async (req, res) => {
 });
 
 
-// se actualizan los datos del ususario del ecommerce
+//13 se actualizan los datos del ususario del ecommerce
 router.post('/upDate/datos/Cliente', async (req, res) => {
 
     console.log("llega algo del Ecommerce para inscribir clientes", req.body)
@@ -983,7 +976,7 @@ router.post('/upDate/datos/Cliente', async (req, res) => {
 });
 
 
-//Actualizar nueva direccion
+//14 Actualizar nueva direccion
 router.post('/update/nueva/direccion', async (req, res) => {
 
     console.log("Recibe la solicitud de agregar la direccion", req.body);
@@ -1021,7 +1014,7 @@ if (direccionesExistentes.includes(nuevaDireccion)) {
 })
 
 
-// ruta para renderiza la pagina de menu servicios al cliente 
+//15 ruta para renderiza la pagina de menu servicios al cliente 
 router.get('/volviendoleruleruProd', async (req, res) => {
     const { id } = req.query; // Extraer el valor de la propiedad id del objeto
     console.log("Entro a leru leru", id);
@@ -1039,7 +1032,7 @@ router.get('/volviendoleruleruProd', async (req, res) => {
     }
 });
 
-//descargar todos los pedidos en excell
+//16 descargar todos los pedidos en excell
 router.post('/bajando/aExcell/los/datos2365', async (req, res) => {
     try {
         const pedidos = JSON.parse(req.body.data);
@@ -1191,7 +1184,7 @@ router.post('/bajando/aExcell/los/datos2365', async (req, res) => {
 });
 
 
-// envia un reclamo por algun pedido
+//17  envia un reclamo por algun pedido
 router.post('/enviar/reclamo', async (req, res) => {
     const reclamo = true
     try {
@@ -1262,7 +1255,7 @@ router.post('/enviar/reclamo', async (req, res) => {
 });
 
 
-// envia un reclamo por algun pedido
+//18 envia un reclamo por algun pedido
 router.post('/cancelar/envio/pedido', async (req, res) => {
     const { codPedi, idCliente, idOwner} = req.body;
     try {
@@ -1317,20 +1310,20 @@ router.post('/cancelar/envio/pedido', async (req, res) => {
 });
 
 
-//cambio de direccion del envio del pedido
+//19 cambio de direccion del envio del pedido
 router.post('/actualizar/cambioDeDireccionDelPedido', async (req, res) => {
-    console.log("Datos recibidos en req.body:", req.body);
+    //console.log("Datos recibidos en req.body:", req.body);
 
     try {
         // Recibir los datos de la dirección del cuerpo de la solicitud
         const direccion = req.body.direccion;
         const { idCliente, pais, estado, localidad, calle, numero, codigoPostal, latitud, longitud, codigoPedido } = direccion;
 
-        console.log("Que direccion encontro??.", direccion);
+        //console.log("Que direccion encontro??.", direccion);
 
         // Buscar el cliente por su ID
         const dataOwner = await User.findById(direccion.idCliente);
-        console.log("Que idCliente encontro??.", idCliente, dataOwner);
+        //console.log("Que idCliente encontro??.", idCliente, dataOwner);
         // Verificar si se encontró el cliente
         if (!dataOwner) {
             console.log('No se encontró ningún cliente con el ID proporcionado.');
@@ -1345,6 +1338,11 @@ router.post('/actualizar/cambioDeDireccionDelPedido', async (req, res) => {
 
         // Verificar si se encontró el pedido
         if (pedidoIndex !== -1) {
+            const estadoEnvio = Ventas[pedidoIndex].statusEnvio
+            if (estadoEnvio !== "Armando su pedido") {
+                console.log('No puede cambiar la dirección del pedido el mismo esta en camino.', Ventas[pedidoIndex].statusEnvio);
+                return res.status(404).json({ message: 'No puede cambiar la dirección del pedido el mismo esta en camino.' });
+            }
             const CP = codigoPostal;
             // Convertir la cadena 'numero' a un número entero
             const numeroPuerta = parseInt(numero);
@@ -1373,7 +1371,7 @@ router.post('/actualizar/cambioDeDireccionDelPedido', async (req, res) => {
 
 
 
-// busca mensajes pull
+//20 busca mensajes pull
 router.post('/messagesPull', async (req, res) => {
     try {
         console.log("Que datos llegan a mensajes pull cada 5 minutos", req.body);
@@ -1393,7 +1391,7 @@ router.post('/messagesPull', async (req, res) => {
 });
 
 
-// Ruta para suscribirse a notificaciones push
+//21 Ruta para suscribirse a notificaciones push
 router.post('/subscribePush', async (req, res) => {
     try {
         // Lógica para guardar la suscripción en la base de datos
@@ -1430,7 +1428,7 @@ router.post('/subscribePush', async (req, res) => {
     }
 });
 
-
+// 22
 router.post('/eliminarPushMensaje', async (req, res) => {
     try {
         console.log("Qué datos llegan para eliminar pushMensajes", req.body);
@@ -1448,9 +1446,47 @@ router.post('/eliminarPushMensaje', async (req, res) => {
     }
 });
 
+// 23
+router.post('/recibiendoMensajeDesdeContacto', async (req, res) => {
+    try {
+        //console.log("Datos recibidos desde el formulario de contacto:", req.body.dataOwner);
+        const { nombre, email, ciudad, numCel, mensaje, dataOwner, dataCliente, jwToken } = req.body;
+        const codigoPedido = null
+        // Aquí podrías agregar la lógica para enviar un correo electrónico con la consulta
+        // envia los emails avisando la cancelacion del pedido
+        const transportEmail  = dataOwner.transportEmail
+        const emailCliente    = dataCliente.emails[0].emailCliente
+        const numCelCliente   = dataCliente.numCel[0].numCelCliente
+        const numCelOwner     = dataOwner.numCel[0]
+        const messageOwner    = `${mensaje}`
+        const messageCliente  = `${mensaje}`
+        const nombreOwner     = dataOwner.nombreEcommerce
+        const nombreCliente   = nombre
+        const subjectCliente  = `Hola ${nombreCliente} tu consulta ha sido enviada`
+        const subjectOwner    = `Hola ${nombreOwner} tienes una nueva consulta`
+        const logoOwner       = dataOwner.logoOwner
+        const emailOwner      = dataOwner.email
+        let otraData          = {}
+        const pais            = dataCliente.direcciones[0].pais
+        otraData.messageOwner = messageOwner
+        otraData.messageCliente = messageCliente
+        otraData.Consulta     = true
+        otraData.dataDir      = {nombre, email, ciudad, numCel, pais}
+        const dataEnviarEmail =  {transportEmail, reclamo: false, enviarExcel: false, emailOwner, emailCliente, numCelCliente, numCelOwner, mensaje, codigoPedido:null, nombreOwner, nombreCliente, subjectCliente, subjectOwner, otraData,logoOwner, cancelaEnvio:false, pedidoCobrado:false, quedaUno:false, product:false};
 
+        await sendMail(dataEnviarEmail) 
 
+        // guarda el mensaje para los push mensaje
+        await guardarMensajes(dataOwner, dataCliente, mensaje, subjectOwner, subjectCliente, codigoPedido)
 
+        // Si todo está bien, envía una respuesta con un status 200
+        return res.status(200).json({ message: "El mensaje se envió correctamente." });
+    } catch (error) {
+        // Si hay algún error, envía una respuesta con un status 400
+        console.error("Error al procesar el mensaje:", error);
+        return res.status(400).json({ message: "No se pudo enviar el mensaje." });
+    }
+});
 
 
 

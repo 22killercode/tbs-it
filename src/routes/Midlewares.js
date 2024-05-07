@@ -161,6 +161,17 @@ function metodo1(a,b,c) {
   };
 
 
+
+
+
+
+
+
+
+
+
+
+
         // guardar el mensaje el pull mensajes
         async function guardarMensajes(dataOwner, dataCliente, mensaje, subjectOwner, subjectCliente, codigoPedido){
 
@@ -171,15 +182,19 @@ function metodo1(a,b,c) {
             const nombreCliente = dataCliente.nombre + "" + dataCliente.apellido
             const idCliente = dataCliente._id
 
-            // Crear objeto para el mensaje del propietario
-            const mensajeOwner = new PushMensajes({ messageOwner, nombreCliente, subjectOwner, idOwner, codigoPedido });
-            // Guardar el mensaje del propietario en la base de datos
-            await mensajeOwner.save();
+            if (subjectOwner) {
+                // Crear objeto para el mensaje del propietario
+                const mensajeOwner = new PushMensajes({ messageOwner, nombreCliente, subjectOwner, idOwner, codigoPedido });
+                // Guardar el mensaje del propietario en la base de datos
+                await mensajeOwner.save();
+            }
 
-            // Crear objeto para el mensaje del cliente
-            const mensajeCliente = new PushMensajes({ messageCliente, nombreComercio,  subjectCliente, idCliente, codigoPedido });
-            // Guardar el mensaje del cliente en la base de datos
-            await mensajeCliente.save();
+            if (subjectCliente) {
+                // Crear objeto para el mensaje del cliente
+                const mensajeCliente = new PushMensajes({ messageCliente, nombreComercio,  subjectCliente, idCliente, codigoPedido });
+                // Guardar el mensaje del cliente en la base de datos
+                await mensajeCliente.save();
+            }
         
         }
 
@@ -187,12 +202,16 @@ function metodo1(a,b,c) {
         async function sendMail(dataEnviarEmail) {
             console.log("Datos recibidos en sendMail:", dataEnviarEmail);
 
-            const {transportEmail, reclamo, enviarExcel, emailOwner, emailCliente, numCelCliente, numCelOwner, mensaje, codigoPedido, nombreOwner, nombreCliente, subjectCliente, subjectOwner, otraData,logoOwner, cancelaEnvio, pedidoCobrado} = dataEnviarEmail;
+            const {transportEmail, reclamo, enviarExcel, emailOwner, emailCliente, numCelCliente, numCelOwner, mensaje, codigoPedido, nombreOwner, nombreCliente, subjectCliente, subjectOwner, otraData,logoOwner, cancelaEnvio, pedidoCobrado, quedaUno, product} = dataEnviarEmail;
 
             const cliente = nombreCliente;
-
-            const {pais, estado,localidad,calle,numeroPuerta,CP} = otraData.dataDir
-            const dataPedido23 = otraData.dataPedido23
+            let dataPedido23 = {}
+            let dataDir2 = {}
+            if (otraData !== null) {
+                const {pais, estado,localidad,calle,numeroPuerta,CP} = otraData.dataDir
+                dataPedido23 = otraData.dataPedido23
+                dataDir2 = otraData.dataDir
+            }
 
             try {
                 // Configuración del transporte de correo
@@ -366,6 +385,7 @@ function metodo1(a,b,c) {
                 }
                 // inicia un reclamo
                 if (reclamo) {
+                    console.log("ENTRO A RECLAMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
                     mailOptionsOwner = {
                         from: "tbs-it.info@tbs-it.net",
                         to: ["sebastianpaysse@gmail.com",emailOwner],
@@ -591,6 +611,139 @@ function metodo1(a,b,c) {
                     await transporter.sendMail(mailOptionsOwner);
                     await transporter.sendMail(mailOptionsCliente);
                 }
+                // avidsa por emial cuando solo queda un producto
+                if (quedaUno) {
+                    mailOptionsOwner = {
+                        from: "tbs-it.info@tbs-it.net",
+                        to: ["sebastianpaysse@gmail.com", emailOwner.value],
+                        subject: subjectOwner,
+                        html: `
+                            <!DOCTYPE html>
+                            <html lang="es">
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>Te queda un solo producto en stock</title>
+                            </head>
+                            <body style="font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0;">
+                
+                                <div style="background-color: #ff6f61; color: #fff; padding: 20px; text-align: center;">
+                                    <h1 style="margin-bottom: 10px;">¡Atención te queda un solo productos en stock!</h1>
+                                    <img src="${logoOwner}" alt="Logo" height="50%" width="50%" style="border-radius: 100%;">
+                                </div>
+                
+                                <div style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                    <p style="font-size: 16px;">Hemos detectado que te queda un solo producto de: <strong>${product}</strong> en stock. Cuando NO tengas mas automáticamente el mismo NO se ofrece en tu tienda online. </p>
+                                    <p style="font-size: 16px;">Si aun tienes de este producto, entra a tu panel de control y aumenta el stock de este producto:<strong> ${product}</strong></p>
+                                </div>
+                
+                                <div style="background-color: #ff6f61; color: #fff; padding: 20px; text-align: center;">
+                                <p style="font-size: 14px; color: #fff; "></p>
+                                </div>
+                
+                            </body>
+                            </html>
+                            `
+                        };
+                    // Envío de correos electrónicos
+                    const cheqEnvio1236 = await transporter.sendMail(mailOptionsOwner);
+                }
+                // inicia un reclamo
+                if (otraData.Consulta) {
+                    
+                    console.log("ENTRO A Consultaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", emailOwner, emailCliente)
+
+                    mailOptionsOwner = {
+                        from: "tbs-it.info@tbs-it.net",
+                        to: ["sebastianpaysse@gmail.com", emailOwner],
+                        subject: subjectOwner,
+                        html: `
+                        <!DOCTYPE html>
+                        <html lang="es">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Nueva Consulta Recibida</title>
+                        </head>
+                        <body style="font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0;">
+                        
+                            <div style="background-color: #ff6f61; color: #fff; padding: 20px; text-align: center;">
+                                <h1 style="margin-bottom: 10px;">¡Nueva Consulta Recibida!</h1>
+                                <p style="font-size: 16px;">Se ha recibido una nueva consulta desde tu sitio web. </p>
+                                <p style="font-size: 16px;">A continuación, se detallan los datos:</p>
+                            </div>
+                        
+                            <div style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                <p style="font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 20px;">
+                                    <strong>Nombre:</strong> ${nombreCliente} <br>
+                                    <strong>Email:</strong> ${emailCliente} <br>
+                                    <strong>Ciudad:</strong> ${dataDir2.ciudad} <br>
+                                    <strong>Número de Celular:</strong> ${numCelCliente}
+                                </p>
+                        
+                                <p style="font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 20px;">
+                                    <strong>Mensaje:</strong> ${mensaje}
+                                </p>
+                        
+                                <p style="font-size: 16px; color: #333; line-height: 1.6;">
+                                    Asegúrate de responder a esta consulta lo antes posible.
+                                </p>
+                            </div>
+                        
+                            <div style="background-color: #ff6f61; color: #fff; padding: 20px; text-align: center;">
+                                <p style="font-size: 14px; color: #fff; ">Este mensaje fue enviado por un cliente desde el correo electrónico ${emailCliente}.</p>
+                            </div>
+                        
+                        </body>
+                        </html>
+                        `
+                    };
+                    mailOptionsCliente = {
+                        from: "tbs-it.info@tbs-it.net",
+                        to: emailCliente,
+                        subject: subjectCliente,
+                        html: `
+                        <!DOCTYPE html>
+                        <html lang="es">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Respuesta a tu Consulta</title>
+                        </head>
+                        <body style="font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0;">
+                        
+                            <div style="background-color: #007bff; color: #fff; padding: 20px; text-align: center;">
+                                <h1 style="margin-bottom: 10px;">¡Hola ${nombreCliente}!</h1>
+                                <p style="font-size: 16px;">En ${nombreOwner}, hemos recibido tu consulta y queremos agradecerte por ponerte en contacto con nosotros desde la ciudad de ${dataDir2.ciudad}.</p>
+                            </div>
+                        
+                            <div style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                <p style="font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 20px;">
+                                    ${mensaje}
+                                </p>
+                        
+                                <p style="font-size: 16px; color: #333; line-height: 1.6; margin-bottom: 20px;">
+                                    Estamos trabajando en proporcionarte una respuesta y nos pondremos en contacto contigo a la brevedad posible.
+                                </p>
+                        
+                                <p style="font-size: 16px; color: #333; line-height: 1.6;">
+                                    Apreciamos tu paciencia y gracias por elegirnos ${nombreCliente}.
+                                </p>
+                            </div>
+                        
+                            <div style="background-color: #007bff; color: #fff; padding: 20px; text-align: center;">
+                                <p style="font-size: 14px;color: #fff !important">Este mensaje fue enviado desde el correo electrónico de ${emailCliente}.</p>
+                            </div>
+                        
+                        </body>
+                        </html>
+                        `
+                    };
+                    // Envío de correos electrónicos
+                    const cheqEnvio1236  = await transporter.sendMail(mailOptionsOwner);
+                    const cheqEnvio25879 = await transporter.sendMail(mailOptionsCliente);
+                }
+                
                 return true;
             } catch (error) {
                 console.log("Hubo un error al enviar el correo electrónico, intente más tarde:", error);
@@ -598,14 +751,6 @@ function metodo1(a,b,c) {
             }
         }
 
-        let idCLiente = {}
-        setInterval(() => {
-                if (Object.keys(idCLiente).length !== 0) { // Verificar si idCliente no está vacío
-                console.log('Hola');
-                pushMensajeFunc(idCLiente);
-            }
-        }, 200000); // 5000 milisegundos = 5 segundos
-        
 
         // Ruta para enviar una notificación push a un unico cliente
         async function pushMensajeFunc(idCliente) {
@@ -666,8 +811,6 @@ function metodo1(a,b,c) {
             }
         }
 
-
-
         // guardar el mensaje el pull mensajes
         async function guardarRemito(idCliente, idOwner, emailCliente, statusCobro){
             console.log("Entro a la funcion guardar remito",idCliente, idOwner, emailCliente, statusCobro)
@@ -682,6 +825,23 @@ function metodo1(a,b,c) {
                 return false
             }
         }
+
+
+
+
+
+
+
+        let idCLiente = {}
+        setInterval(() => {
+                if (Object.keys(idCLiente).length !== 0) { // Verificar si idCliente no está vacío
+                console.log('Hola');
+                pushMensajeFunc(idCLiente);
+            }
+        }, 200000); // 5000 milisegundos = 5 segundos
+
+
+
 
 
 module.exports = {
