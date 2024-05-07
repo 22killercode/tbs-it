@@ -159,7 +159,7 @@ router.post('/MPwallets', async (req, res) => {
 
   const idCliente = req.body.dataCliente._id
   const idOwner   = req.body.dataCliente.idOwner
-  const Token     = req.body.dataCliente.jwtoken
+  const Token     = req.body.dataCliente.Token
   const pedidosItems = []
   req.body.pedidoPendCobrar.forEach(e => {
     let title       = e.nombreProducto
