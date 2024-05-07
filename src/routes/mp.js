@@ -42,7 +42,6 @@ const bodyParser = require('body-parser');
 
 router.use(bodyParser.text());
 
-const {guardarRemito,sendMail,guardarMensajes,pushMensajeFunc} = require('./funcionesymas');
 
 
 // // // Agrega credenciales
