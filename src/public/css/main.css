@@ -1631,6 +1631,7 @@ span
 
 			body, input, select, textarea {
 				font-size: 11pt;
+				color:black !important
 			}
 
 		}
@@ -1639,6 +1640,7 @@ span
 
 			body, input, select, textarea {
 				font-size: 11pt;
+				color:black !important
 			}
 
 		}
@@ -1647,6 +1649,7 @@ span
 
 			body, input, select, textarea {
 				font-size: 12pt;
+				color:black !important
 			}
 
 		}
@@ -1782,6 +1785,10 @@ span
 		text-align: right;
 	}
 
+	input {
+		color:black !important
+	}
+	
 	input, select, textarea {
 		color: #fff;
 	}
