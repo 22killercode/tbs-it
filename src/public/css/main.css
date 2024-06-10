@@ -9,6 +9,14 @@
 */
 
  
+placeholder{
+	color:#000 !important;
+}
+
+input, placeholder{
+	color:#000 !important;
+}
+
 
 strong{
 	color:#000 !important;
@@ -1788,7 +1796,7 @@ span
 	input {
 		color:black !important
 	}
-	
+
 	input, select, textarea {
 		color: #fff;
 	}
