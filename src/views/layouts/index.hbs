@@ -81,49 +81,58 @@
                             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                            <ul class="links">
-                                <li class="">
-                                    <a class="" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal"><strong>Cotizar</strong></a>
-                                        <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <li class="">
-                                    <a class="" href="/Staffing"><strong>Staffing</strong></a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <li class="">
-                                    <a class="" href="/SoftDev"><strong>Software Factory</strong></a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <li class="">
-                                    <a class="" href="/portfolio"><strong>Portfolio & clientes</strong></a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <li class="">
-                                    <a class="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"><strong>Unite a nosotros / Sé un Partner</strong> </a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <li class="">
-                                    <a class="" href="http://dovemailer.net/"><strong>Nuestro SaaS</strong></a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>                        
-                                <li class="">
-                                    <a class="" href="/Nosotros">Nosotros</a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <li class="">
-                                    <a class="" href="/#paises">Países donde tenemos presencia</a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <li class="">
-                                    <a class="" href="#contacto1">Contacto</a>
-                                    <li><hr class="dropdown-divider"></li>
-                                </li>
-                                <br>
-                                <li>
-                                    <img src="/images/tec-firma.gif" alt="" style="width:100%; border-radius:1rem;">
-                                </li>
-                            </ul>
-                        </div>
+    <style>
+        .links li:hover {
+            transform: scale(0.95); /* Reducir tamaño al hacer hover */
+            transition: transform 0.3s ease; /* Animación suave de reducción de tamaño */
+        }
+        
+        .links li:hover a {
+            color: #6fda67; /* Cambiar color al hacer hover */
+        }
+    </style>
+    <ul class="links">
+        <li>
+            <a class="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><strong>Cotizar</strong></a>
+            <li><hr class="dropdown-divider"></li>
+        </li>
+        <li>
+            <a class="" href="/Staffing"><strong>Staffing</strong></a>
+            <li><hr class="dropdown-divider"></li>
+        </li>
+        <li>
+            <a class="" href="/SoftDev"><strong>Software Factory</strong></a>
+            <li><hr class="dropdown-divider"></li>
+        </li>
+        <li>
+            <a class="" href="/portfolio"><strong>Portfolio & clientes</strong></a>
+            <li><hr class="dropdown-divider"></li>
+        </li>
+        <li>
+            <a class="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"><strong>Unite a nosotros / Sé un Partner</strong> </a>
+            <li><hr class="dropdown-divider"></li>
+        </li>
+        <li hidden>
+            <a class="" href="http://dovemailer.net/"><strong>Nuestro SaaS</strong></a>
+            <li><hr class="dropdown-divider"></li>
+        </li>                        
+        <li>
+            <a class="" href="/Nosotros">Nosotros</a>
+            <li><hr class="dropdown-divider"></li>
+        </li>
+        <li>
+            <a class="" href="/#paises">Países donde tenemos presencia</a>
+            <li><hr class="dropdown-divider"></li>
+        </li>
+        <li>
+            <a class="" href="#contacto1">Contacto</a>
+            <li><hr class="dropdown-divider"></li>
+        </li>
+        <br>
+        <li>
+            <img src="/images/tec-firma.gif" alt="" style="width:100%; border-radius:1rem;">
+        </li>
+    </ul>                        </div>
                     </div>
                 </div>
             </nav>
