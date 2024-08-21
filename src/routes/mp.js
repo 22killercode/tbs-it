@@ -228,13 +228,13 @@ router.get('/resultado/del/cobro/enMP', async (req, res) => {
     const { idCliente, idOwner, Token } = externalReferenceObj;
     if (collection_status === "approved") {
       // Armar la URL de redirección con los datos como parámetros de consulta
-      const redirectURL = `http://127.0.0.1:5501/?statusCobro=approved&idCliente=${idCliente}&idOwner=${idOwner}&Token=${Token}`;
+      const redirectURL = `http://localhost3020/?statusCobro=approved&idCliente=${idCliente}&idOwner=${idOwner}&Token=${Token}`;
       // Redirigir a la nueva URL con los datos como parámetros de consulta
       res.redirect(redirectURL);
     } 
     else {
       // Si el cobro no fue aprobado, devolver un error
-      const redirectURL = `http://127.0.0.1:5501/?statusCobro=failed&ref1=null&ref2=null&Token=${Token}`;
+      const redirectURL = `http://localhost3020/?statusCobro=failed&ref1=null&ref2=null&Token=${Token}`;
       res.redirect(redirectURL);
     }
   } catch (error) {
